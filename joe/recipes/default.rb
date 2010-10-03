@@ -1,8 +1,8 @@
 #
-# Cookbook Name:: quick_start
+# Cookbook Name:: joe
 # Recipe:: default
 #
-# Copyright 2009, OpsCode
+# Copyright 2010, Chris Fordham
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,8 +17,3 @@
 # limitations under the License.
 #
 
-template "/tmp/deep_thought.txt" do
-  source "deep_thought.txt.erb"
-  variables :deep_thought => node[:deep_thought]
-  action :create
-end
