@@ -19,6 +19,8 @@
     },
     "name": "joe",
     "recipes": {
+      "default": "Installs JOE",
+      "install": "Installs JOE"
     },
     "platforms": {
     },

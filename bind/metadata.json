@@ -19,6 +19,8 @@
     },
     "name": "bind",
     "recipes": {
+      "default": "Installs BIND",
+      "install": "Installs BIND"
     },
     "platforms": {
     },
