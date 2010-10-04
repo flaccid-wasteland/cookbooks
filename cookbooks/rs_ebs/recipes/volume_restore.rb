@@ -41,8 +41,8 @@ ruby_block "restore_ebs_volume" do
     puts "EBS backup prefix to restore: #{ebs_prefix_name}"
     
     puts "Starting EBS volume restore."
-    puts `/opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}`
-    exit(-1) if $? != 0
+    #puts `/opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}`
+    #exit(-1) if $? != 0
     puts "Done."
     
     system("logger -t RightScale EBS volume successfuly restored from snapshot, mounted on #{mount_point}.")
