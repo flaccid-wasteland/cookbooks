@@ -19,9 +19,9 @@ attribute "ebs/restore_mount_point",
   :description => "The EBS volume restore mount point",
   :default => "/mnt/ebs"
 
-attribute "ebs/restore_backup_prefix",
-  :display_name => "EBS volume restore backup prefix",
-  :description => "The EBS volume restore backup prefix",
+attribute "ebs/backup_prefix",
+  :display_name => "EBS volume backup prefix",
+  :description => "The EBS volume backup prefix",
   :default => "mybackup"
   
 attribute "ebs/restore_prefix_override",
