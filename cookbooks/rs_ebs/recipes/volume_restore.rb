@@ -19,7 +19,7 @@
 include_recipe "rs_ebs::tools_install"
 
 # create the mount point for the EBS filesystem.
-directory node[:ebs][:mount_point]
+directory node[:ebs][:mount_point] do
   owner "root"
   group "root"
   mode "0755"
