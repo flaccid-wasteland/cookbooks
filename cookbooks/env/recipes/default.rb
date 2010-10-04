@@ -18,11 +18,9 @@
 #
 script "show_env" do
   interpreter "bash"
-  user "root"
-  cwd "/tmp"
   code <<-EOH
   home_dir=~
-  echo "Current user: `whoami`"
+  echo "User: `whoami`"
   echo "Home directory (\$HOME): $HOME"
   echo "Home directory (tilda): $home_dir"
   echo 'Printing shell variables (set):'
