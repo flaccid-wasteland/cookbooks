@@ -19,6 +19,7 @@
 include_recipe "rs_ebs::tools_install"
 
 mount_point = node[:ebs][:restore_mount_point]
+ebs_prefix_name = node[:ebs][:backup_prefix]
 
 # create the mount point for the EBS filesystem.
 directory "#{mount_point}" do
@@ -34,18 +35,19 @@ ruby_block "restore_ebs_volume" do
     require 'fileutils'
     require '/opt/rightscale/metadata/metadata.rb'
 
-    mount_point = node[:ebs][:restore_mount_point]
-    ebs_prefix_name = node[:ebs][:backup_prefix]
-
     #puts "EBS name of the EBS to be restore has been overridden with 'EBS_RESTORE_PREFIX_OVERRIDE'=#{ebs_prefix_name}"
     Chef::Log.info("Restoring from EBS prefix: #{ebs_prefix_name}")
     Chef::Log.info("EBS mount point: #{mount_point}")    
     Chef::Log.info("Starting EBS volume restore.")
     Chef::Log.info("Running /opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}")
-
-    puts `/opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}`
-    
-    system("logger -t RightScale EBS volume successfuly restored from snapshot, mounted on #{mount_point}.")
+  
+    #system("logger -t RightScale EBS volume successfuly restored from snapshot, mounted on #{mount_point}.")
   end
   action :create
 end
+
+execute "restore_ebs" do
+  command "/opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}"
+  action :run
+end
+
