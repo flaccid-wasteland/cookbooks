@@ -46,7 +46,7 @@ remote_directory "/opt/rightscale/ebs" do
   files_backup 10
   files_owner "root"
   files_group "root"
-  files_mode "0644"
+  files_mode "0755"
   owner "root"
   group "root"
   mode "0755"
