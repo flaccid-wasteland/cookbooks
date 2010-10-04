@@ -18,7 +18,7 @@
 #
 include_recipe "rs_ebs::tools_install"
 
-mount_point = @node[:ebs][:restore_mount_point]
+mount_point = node[:ebs][:restore_mount_point]
 
 # create the mount point for the EBS filesystem.
 directory "#{mount_point}" do
