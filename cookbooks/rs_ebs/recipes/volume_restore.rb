@@ -31,9 +31,9 @@ ruby_block "restore_ebs" do
     require 'rubygems'
     require 'fileutils'
     
-    mount_point=node[:ebs][:mount_point]
+    mount_point=node[:ebs][:restore_mount_point]
     ebs_prefix_name= ( node[:ebs][:restore_prefix_override]  ?  node[:ebs][:restore_prefix_override] : node[:ebs][:backup_prefix] )
-    puts "EBS name of the EBS to be restore has been overridden with 'EBS_RESTORE_PREFIX_OVERRIDE'=#{ebs_prefix_name]}"
+    puts "EBS name of the EBS to be restore has been overridden with 'EBS_RESTORE_PREFIX_OVERRIDE'=#{ebs_prefix_name}"
     puts "EBS_BACKUP_PREFIX to restore: #{ebs_prefix_name}"
     puts `/opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{node[:ebs][:mount_point]}`
     exit(-1) if $? != 0
