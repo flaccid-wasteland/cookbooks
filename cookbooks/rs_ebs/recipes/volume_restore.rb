@@ -35,7 +35,7 @@ ruby_block "restore_ebs_volume" do
     require '/opt/rightscale/metadata/metadata.rb'
 
     mount_point = node[:ebs][:restore_mount_point]
-    ebs_prefix_name = ( node[:ebs][:restore_prefix_override]  ?  node[:ebs][:restore_prefix_override] : node[:ebs][:backup_prefix] )
+    ebs_prefix_name = node[:ebs][:backup_prefix]
 
     #puts "EBS name of the EBS to be restore has been overridden with 'EBS_RESTORE_PREFIX_OVERRIDE'=#{ebs_prefix_name}"
     puts "EBS backup prefix to restore: #{ebs_prefix_name}"
