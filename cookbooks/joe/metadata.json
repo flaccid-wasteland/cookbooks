@@ -19,8 +19,8 @@
     },
     "name": "joe",
     "recipes": {
-      "default": "Installs JOE",
-      "install": "Installs JOE"
+      "joe::default": "Installs JOE",
+      "joe::install": "Installs JOE"
     },
     "platforms": {
     },
