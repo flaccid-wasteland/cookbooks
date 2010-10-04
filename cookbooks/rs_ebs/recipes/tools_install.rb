@@ -41,14 +41,13 @@ gem_package "terminator" do
   action :install
 end
 
-cookbook_file "/opt/rightscale/ebs" do
-  source "ebs" # this is the value that would be inferred from the path parameter
+remote_directory "/opt/rightscale/ebs" do
+  source "ebs"
+  files_backup 10
+  files_owner "root"
+  files_group "root"
+  files_mode "0644"
+  owner "root"
+  group "root"
   mode "0755"
 end
-
-#directory "/opt/rightscale/ebs" do
-#  owner "root"
-#  group "root"
-#  mode "0755"
-#  action :create
-#end
