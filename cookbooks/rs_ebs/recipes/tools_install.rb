@@ -22,18 +22,22 @@ package "xfsprogs" do
 end
 
 gem_package "right_aws" do
+  version "2.0.0"
   action :install
 end
 
 gem_package "rest_client" do
+  version "1.6.0"
   action :install
 end
 
 gem_package "json" do
+  version "1.4.6"
   action :install
 end
 
 gem_package "terminator" do
+  version "0.4.4"
   action :install
 end
 
