@@ -21,6 +21,21 @@ package "xfsprogs" do
   action :install
 end
 
+gem_package "right_aws" do
+  action :install
+end
+
+gem_package "rest_client" do
+  action :install
+end
+
+gem_package "json" do
+  action :install
+end
+
+gem_package "terminator" do
+  action :install
+end
 #directory "/opt/rightscale/ebs" do
 #  owner "root"
 #  group "root"
@@ -31,10 +46,4 @@ end
 cookbook_file "/opt/rightscale/ebs" do
   source "ebs" # this is the value that would be inferred from the path parameter
   mode "0755"
-end
-
-ruby_block do
-  block do
-    gem install right_aws rest-client json terminator -y --no-ri --no-rdoc
-  end
 end
