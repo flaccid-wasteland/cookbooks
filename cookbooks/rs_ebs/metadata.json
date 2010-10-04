@@ -12,7 +12,7 @@
         "choice": [
 
         ],
-        "default": null,
+        "default": "/mnt/ebs",
         "type": "string",
         "recipes": [
 
@@ -26,7 +26,7 @@
         "choice": [
 
         ],
-        "default": null,
+        "default": "",
         "type": "string",
         "recipes": [
 
@@ -40,7 +40,7 @@
         "choice": [
 
         ],
-        "default": null,
+        "default": "xfs",
         "type": "string",
         "recipes": [
 
@@ -54,7 +54,7 @@
         "choice": [
 
         ],
-        "default": null,
+        "default": "mybackup",
         "type": "string",
         "recipes": [
 
