@@ -20,6 +20,7 @@
     "name": "rs_ebs",
     "recipes": {
       "rs_ebs::default": "Installs RightScale EBS Tools",
+      "rs_ebs::volume_restore": "Restores a new EBS volume from an EBS snapshots",
       "rs_ebs::tools_install": "Installs RightScale EBS Tools"
     },
     "platforms": {
