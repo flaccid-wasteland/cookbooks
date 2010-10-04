@@ -47,7 +47,7 @@ ruby_block "restore_ebs_volume" do
 end
 
 execute "restore_ebs" do
-  command "/opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}"
+  command "ruby /opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}"
   action :run
 end
 
