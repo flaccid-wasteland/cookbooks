@@ -38,12 +38,11 @@ ruby_block "restore_ebs_volume" do
     ebs_prefix_name = node[:ebs][:backup_prefix]
 
     #puts "EBS name of the EBS to be restore has been overridden with 'EBS_RESTORE_PREFIX_OVERRIDE'=#{ebs_prefix_name}"
-    puts "EBS backup prefix to restore: #{ebs_prefix_name}"
+    Chef::Log.info("EBS backup prefix to restore: #{ebs_prefix_name}")
+    Chef::Log.info("EBS mount point: #{mount_point}")
     
-    #puts "Starting EBS volume restore."
-    #puts `/opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}`
-    #exit(-1) if $? != 0
-    #puts "Done."
+    Chef::Log.info("Starting EBS volume restore.")
+    puts `/opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}`
     
     system("logger -t RightScale EBS volume successfuly restored from snapshot, mounted on #{mount_point}.")
   end
