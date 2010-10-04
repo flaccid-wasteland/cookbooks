@@ -19,14 +19,14 @@
 include_recipe "rs_ebs::tools_install"
 
 # create the mount point for the EBS filesystem.
-directory node[:ebs][:mount_point] do
+directory node[:ebs][:restore_mount_point] do
   owner "root"
   group "root"
   mode "0755"
   action :create
 end
 
-ruby_block "restore_ebs" do
+ruby_block "restore_ebs_volume" do
   block do
     require 'rubygems'
     require 'fileutils'
