@@ -16,9 +16,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-script "show_env" do
+
+ruby_block "show_ruby_env" do
+  block do
+    puts "Ruby ENV:"
+    ENV.each {|k,v| puts "#{k}=#{v}"}
+  end
+  action :create
+end
+
+script "show_bash_env" do
   interpreter "bash"
   code <<-EOH
+  echo 'BASH env:'
   home_dir=~
   echo "User: `whoami`"
   echo "Home directory (\$HOME): $HOME"
