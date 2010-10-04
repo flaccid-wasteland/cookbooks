@@ -16,8 +16,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-bash "show_env" do
-user "root"
+script "show_env" do
+  interpreter "bash"
+  user "root"
   cwd "/tmp"
   code <<-EOH
   home_dir=~
