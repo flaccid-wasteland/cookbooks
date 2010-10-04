@@ -6,6 +6,62 @@
     "version": "0.0.1",
     "maintainer": "Chris Fordham",
     "attributes": {
+      "ebs/restore_mount_point": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": null,
+        "type": "string",
+        "recipes": [
+
+        ],
+        "description": "The EBS volume restore mount point",
+        "display_name": "EBS volume restore mount point"
+      },
+      "ebs/restore_prefix_override": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": null,
+        "type": "string",
+        "recipes": [
+
+        ],
+        "description": "Override the EBS volume restore backup prefix",
+        "display_name": "EBS volume restore prefix override"
+      },
+      "ebs/restore_fs_type": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": null,
+        "type": "string",
+        "recipes": [
+
+        ],
+        "description": "The EBS volume filestytem type",
+        "display_name": "EBS volume restore filesystem type"
+      },
+      "ebs/restore_backup_prefix": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": null,
+        "type": "string",
+        "recipes": [
+
+        ],
+        "description": "The EBS volume restore backup prefix",
+        "display_name": "EBS volume restore backup prefix"
+      }
     },
     "replacing": {
     },
@@ -20,7 +76,7 @@
     "name": "rs_ebs",
     "recipes": {
       "rs_ebs::default": "Installs RightScale EBS Tools",
-      "rs_ebs::volume_restore": "Restores a new EBS volume from an EBS snapshots",
+      "rs_ebs::volume_restore": "Restores a new EBS volume from an EBS snapshot",
       "rs_ebs::tools_install": "Installs RightScale EBS Tools"
     },
     "platforms": {
