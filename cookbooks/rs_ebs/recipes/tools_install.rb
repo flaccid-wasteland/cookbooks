@@ -36,6 +36,7 @@ end
 gem_package "terminator" do
   action :install
 end
+
 #directory "/opt/rightscale/ebs" do
 #  owner "root"
 #  group "root"
@@ -43,7 +44,7 @@ end
 #  action :create
 #end
 
-cookbook_file "/opt/rightscale/ebs" do
-  source "ebs" # this is the value that would be inferred from the path parameter
-  mode "0755"
-end
+#cookbook_file "/opt/rightscale/ebs" do
+#  source "ebs" # this is the value that would be inferred from the path parameter
+#  mode "0755"
+#end
