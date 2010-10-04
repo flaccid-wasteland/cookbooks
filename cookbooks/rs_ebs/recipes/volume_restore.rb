@@ -18,8 +18,10 @@
 #
 include_recipe "rs_ebs::tools_install"
 
+mount_point = @node[:ebs][:restore_mount_point]
+
 # create the mount point for the EBS filesystem.
-directory node[:ebs][:restore_mount_point] do
+directory "#{mount_point}" do
   owner "root"
   group "root"
   mode "0755"
@@ -30,30 +32,19 @@ ruby_block "restore_ebs_volume" do
   block do
     require 'rubygems'
     require 'fileutils'
+    require '/opt/rightscale/metadata/metadata.rb'
+
+    ebs_prefix_name = ( node[:ebs][:restore_prefix_override]  ?  node[:ebs][:restore_prefix_override] : node[:ebs][:backup_prefix] )
+
+    #puts "EBS name of the EBS to be restore has been overridden with 'EBS_RESTORE_PREFIX_OVERRIDE'=#{ebs_prefix_name}"
+    puts "EBS backup prefix to restore: #{ebs_prefix_name}"
     
-    mount_point=node[:ebs][:restore_mount_point]
-    ebs_prefix_name= ( node[:ebs][:restore_prefix_override]  ?  node[:ebs][:restore_prefix_override] : node[:ebs][:backup_prefix] )
-    puts "EBS name of the EBS to be restore has been overridden with 'EBS_RESTORE_PREFIX_OVERRIDE'=#{ebs_prefix_name}"
-    puts "EBS_BACKUP_PREFIX to restore: #{ebs_prefix_name}"
-    puts `/opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{node[:ebs][:mount_point]}`
+    puts "Starting EBS volume restore."
+    puts `/opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}`
     exit(-1) if $? != 0
-
-    system("logger -t RightScale EBS volume restored from backup.")
-
+    puts "Done."
+    
+    system("logger -t RightScale EBS volume successfuly restored from snapshot, mounted on #{mount_point}.")
   end
   action :create
-end
-
-ruby_block "get_ebs_mount_point" do
-  block do
-    ebsdev=`mount | grep #{mount_point} | awk '{ print $1 " #{mount_point} xfs defaults 0 0"}'`
-  end
-  action :create
-end
-
-mount node[:ebs][:mount_point] do
-  device #{ebsdev}
-  fstype "xfs"
-  options "rw"
-  action [:mount, :enable]
 end
