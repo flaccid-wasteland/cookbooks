@@ -20,6 +20,20 @@
         "description": "The EBS volume restore mount point",
         "display_name": "EBS volume restore mount point"
       },
+      "ebs/backup_prefix": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "mybackup",
+        "type": "string",
+        "recipes": [
+
+        ],
+        "description": "The EBS volume backup prefix",
+        "display_name": "EBS volume backup prefix"
+      },
       "ebs/restore_prefix_override": {
         "required": "optional",
         "calculated": false,
@@ -47,20 +61,6 @@
         ],
         "description": "The EBS volume filestytem type",
         "display_name": "EBS volume restore filesystem type"
-      },
-      "ebs/restore_backup_prefix": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": "mybackup",
-        "type": "string",
-        "recipes": [
-
-        ],
-        "description": "The EBS volume restore backup prefix",
-        "display_name": "EBS volume restore backup prefix"
       }
     },
     "replacing": {
