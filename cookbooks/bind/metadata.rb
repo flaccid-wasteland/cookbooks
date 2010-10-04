@@ -5,5 +5,5 @@ description      "Installs/Configures bind"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
-recipe "default", "Installs BIND"
-recipe "install", "Installs BIND"
+recipe "bind::default", "Installs BIND"
+recipe "bind::install", "Installs BIND"

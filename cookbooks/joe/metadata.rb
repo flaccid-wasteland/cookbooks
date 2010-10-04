@@ -5,5 +5,5 @@ description      "Installs/Configures joe"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
-recipe "default", "Installs JOE"
-recipe "install", "Installs JOE"
+recipe "joe::default", "Installs JOE"
+recipe "joe::install", "Installs JOE"
