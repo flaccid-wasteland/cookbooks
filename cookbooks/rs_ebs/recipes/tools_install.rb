@@ -26,7 +26,7 @@ gem_package "right_aws" do
   action :install
 end
 
-gem_package "rest_client" do
+gem_package "rest-client" do
   version "1.6.0"
   action :install
 end
@@ -41,14 +41,14 @@ gem_package "terminator" do
   action :install
 end
 
+cookbook_file "/opt/rightscale/ebs" do
+  source "ebs" # this is the value that would be inferred from the path parameter
+  mode "0755"
+end
+
 #directory "/opt/rightscale/ebs" do
 #  owner "root"
 #  group "root"
 #  mode "0755"
 #  action :create
-#end
-
-#cookbook_file "/opt/rightscale/ebs" do
-#  source "ebs" # this is the value that would be inferred from the path parameter
-#  mode "0755"
 #end
