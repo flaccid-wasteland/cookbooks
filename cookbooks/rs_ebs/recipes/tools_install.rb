@@ -41,9 +41,18 @@ gem_package "terminator" do
   action :install
 end
 
+remote_directory "/opt/rightscale/metadata" do
+  source "metadata"
+  files_owner "root"
+  files_group "root"
+  files_mode "0755"
+  owner "root"
+  group "root"
+  mode "0755"
+end
+
 remote_directory "/opt/rightscale/ebs" do
   source "ebs"
-  files_backup 10
   files_owner "root"
   files_group "root"
   files_mode "0755"
