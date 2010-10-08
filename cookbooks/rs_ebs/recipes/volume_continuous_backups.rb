@@ -30,8 +30,8 @@ ruby_block "ebs_volume_continuous_backups" do
     ebs_basedir="/opt/rightscale/ebs"
     #Install the cron backup template, substituting the variables
     template_file = "#{ebs_basedir}/etc/cron-backup-ebs.template"
-    target_dir="/usr/local/bin"
-    target_filename="ebs-backup.rb"
+    target_dir = "/usr/local/bin"
+    target_filename = "ebs-backup-#{node[:ebs][:backup_prefix]}.rb"
     target_cronfile = "#{target_dir}/#{target_filename}"
 
     #EBS backup cron task log file
@@ -74,6 +74,7 @@ ruby_block "ebs_volume_continuous_backups" do
       crontab.write("#{ebs_backup_freq} root #{target_cronfile} --max-snapshots #{max_snaps} -D #{keep_daily} -W #{keep_weekly} -M #{keep_monthly} -Y #{keep_yearly} >> #{ebs_log} 2>&1\n")
     end
     crontab.close
+    Chef::Log.info("Crontab update complete.")
 
     # Setup the logrotate of EBS backup cron log. It keeps the log file for a week
     File.open("/etc/logrotate.d/ebs_backup_cron", File::CREAT|File::TRUNC|File::WRONLY) {|file|
@@ -89,6 +90,8 @@ ruby_block "ebs_volume_continuous_backups" do
       file << "    endscript\n"
       file << "}\n"
     }
+    Chef::Log.info("Logrotate configuration complete.")
+    
   end
   action :create
 end
