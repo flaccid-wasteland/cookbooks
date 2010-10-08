@@ -38,7 +38,7 @@ ruby_block "restore_ebs_volume" do
     #puts "EBS name of the EBS to be restore has been overridden with 'EBS_RESTORE_PREFIX_OVERRIDE'=#{ebs_prefix_name}"
     Chef::Log.info("Restoring from EBS prefix: #{ebs_prefix_name}")
     Chef::Log.info("EBS mount point: #{mount_point}")
-    Chef::Log.info("RS_API_URL: #{rs_api_url}")
+    Chef::Log.info("RS_API_URL: #{ENV['RS_API_URL']}")
     Chef::Log.info("Starting EBS volume restore.")
     Chef::Log.info("Running /opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}")
   
