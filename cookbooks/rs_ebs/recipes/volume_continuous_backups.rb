@@ -25,7 +25,7 @@ ruby_block "ebs_volume_continuous_backups" do
     require '/var/spool/cloud/user-data.rb'
     
     # The run file to create for collectd to monitor
-    runfile = "/var/run/ebs-binary-backup"
+    runfile = "/var/run/ebs-binary-backup-#{node[:ebs][:backup_prefix]}"
 
     ebs_basedir="/opt/rightscale/ebs"
     #Install the cron backup template, substituting the variables
