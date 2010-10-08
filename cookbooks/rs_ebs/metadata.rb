@@ -12,13 +12,14 @@ end
 recipe "rs_ebs::default", "Installs RightScale EBS Tools"
 recipe "rs_ebs::tools_install", "Installs RightScale EBS Tools"
 recipe "rs_ebs::volume_restore", "Restores a new EBS volume from an EBS snapshot"
+recipe "rs_ebs::volume_continuous_backups", "Updates cron for regular EBS snapshots"
 
 attribute "ebs/restore_fs_type",
   :display_name => "EBS volume restore filesystem type",
   :description => "The EBS volume filestytem type",
   :default => "xfs"
 
-attribute "ebs/restore_mount_point",
+attribute "ebs/mount_point",
   :display_name => "EBS volume restore mount point",
   :description => "The EBS volume restore mount point",
   :default => "/mnt/ebs"
