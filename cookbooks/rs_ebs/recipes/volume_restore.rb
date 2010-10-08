@@ -18,9 +18,6 @@
 #
 include_recipe "rs_ebs::tools_install"
 
-rs_api_url = @node[:rightscale][:api_url]
-ENV['RS_API_URL'] = rs_api_url
-
 mount_point = node[:ebs][:restore_mount_point]
 ebs_prefix_name = node[:ebs][:backup_prefix]
 
@@ -37,7 +34,9 @@ ruby_block "restore_ebs_volume" do
     require 'rubygems'
     require 'fileutils'
     #require '/opt/rightscale/metadata/metadata.rb'
-
+    rs_api_url = @node[:rightscale][:api_url]
+    ENV['RS_API_URL'] = rs_api_url
+    
     #puts "EBS name of the EBS to be restore has been overridden with 'EBS_RESTORE_PREFIX_OVERRIDE'=#{ebs_prefix_name}"
     Chef::Log.info("Restoring from EBS prefix: #{ebs_prefix_name}")
     Chef::Log.info("EBS mount point: #{mount_point}")    
