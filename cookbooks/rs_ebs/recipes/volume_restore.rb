@@ -20,6 +20,7 @@ include_recipe "rs_ebs::tools_install"
 
 mount_point = node[:ebs][:restore_mount_point]
 ebs_prefix_name = node[:ebs][:backup_prefix]
+#ebs_restore_prefix_override = node[:ebs][:restore_prefix_override]
 
 # create the mount point for the EBS filesystem.
 directory "#{mount_point}" do
@@ -34,22 +35,23 @@ ruby_block "restore_ebs_volume" do
     require 'rubygems'
     require 'fileutils'
     require '/var/spool/cloud/user-data.rb'
-    
+
     #puts "EBS name of the EBS to be restore has been overridden with 'EBS_RESTORE_PREFIX_OVERRIDE'=#{ebs_prefix_name}"
     Chef::Log.info("Restoring from EBS prefix: #{ebs_prefix_name}")
     Chef::Log.info("EBS mount point: #{mount_point}")
-    Chef::Log.info("RS_API_URL: #{ENV['RS_API_URL']}")
+    #Chef::Log.info("RS_API_URL: #{ENV['RS_API_URL']}")
     Chef::Log.info("Starting EBS volume restore.")
     Chef::Log.info("Running /opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}")
   
     puts `/opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}`
-    #system("logger -t RightScale EBS volume successfuly restored from snapshot, mounted on #{mount_point}.")
+    Chef::Log.info("EBS volume restore complete.")
+    system("logger -t RightScale EBS volume successfuly restored from snapshot, mounted on #{mount_point}.")
+    
+    Chef::Log.info("Adding /etc/fstab entry for #{mount_point]}")
+    ebs_dev=`mount | grep #{mount_point} | awk '{ print $1 " #{mount_point} xfs defaults 0 0"}'`
+    Chef::Log.info("Adding #{ebs_dev} on #{mount_point}"
+    puts `echo "\n#{ebs_dev}" >> /etc/fstab`
   end
   action :create
 end
-
-#execute "restore_ebs" do
-#  command "ruby /opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}"
-#  action :run
-#end
 
