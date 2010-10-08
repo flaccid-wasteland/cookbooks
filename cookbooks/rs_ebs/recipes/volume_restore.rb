@@ -18,7 +18,7 @@
 #
 include_recipe "rs_ebs::tools_install"
 
-mount_point = node[:ebs][:restore_mount_point]
+mount_point = node[:ebs][:mount_point]
 ebs_backup_prefix = node[:ebs][:backup_prefix]
 ebs_restore_prefix_override = node[:ebs][:restore_prefix_override]
 
