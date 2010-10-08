@@ -54,4 +54,3 @@ ruby_block "restore_ebs_volume" do
   end
   action :create
 end
-
