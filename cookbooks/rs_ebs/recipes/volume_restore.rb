@@ -19,8 +19,8 @@
 include_recipe "rs_ebs::tools_install"
 
 mount_point = node[:ebs][:restore_mount_point]
-ebs_prefix_name = node[:ebs][:backup_prefix]
-#ebs_restore_prefix_override = node[:ebs][:restore_prefix_override]
+ebs_backup_prefix = node[:ebs][:backup_prefix]
+ebs_restore_prefix_override = node[:ebs][:restore_prefix_override]
 
 # create the mount point for the EBS filesystem.
 directory "#{mount_point}" do
@@ -36,6 +36,7 @@ ruby_block "restore_ebs_volume" do
     require 'fileutils'
     require '/var/spool/cloud/user-data.rb'
 
+    ebs_prefix_name = ( ebs_restore_prefix_override  ? ebs_restore_prefix_override : ebs_backup_prefix )
     #puts "EBS name of the EBS to be restore has been overridden with 'EBS_RESTORE_PREFIX_OVERRIDE'=#{ebs_prefix_name}"
     Chef::Log.info("Restoring from EBS prefix: #{ebs_prefix_name}")
     Chef::Log.info("EBS mount point: #{mount_point}")
