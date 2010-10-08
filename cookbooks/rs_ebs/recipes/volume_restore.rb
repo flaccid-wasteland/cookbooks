@@ -49,7 +49,7 @@ ruby_block "restore_ebs_volume" do
     
     Chef::Log.info("Adding /etc/fstab entry for #{mount_point}.")
     ebs_dev=`mount | grep #{mount_point} | awk '{ print $1 " #{mount_point} xfs defaults 0 0"}'`
-    Chef::Log.info("Adding #{ebs_dev} on #{mount_point}."
+    Chef::Log.info("Adding #{ebs_dev} on #{mount_point}.")
     puts `echo "\n#{ebs_dev}" >> /etc/fstab`
   end
   action :create
