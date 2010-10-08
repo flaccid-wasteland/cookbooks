@@ -33,9 +33,7 @@ ruby_block "restore_ebs_volume" do
   block do
     require 'rubygems'
     require 'fileutils'
-    #require '/opt/rightscale/metadata/metadata.rb'
-    rs_api_url = @node[:rightscale][:api_url]
-    ENV['RS_API_URL'] = rs_api_url
+    require '/var/spool/cloud/user-data.rb'
     
     #puts "EBS name of the EBS to be restore has been overridden with 'EBS_RESTORE_PREFIX_OVERRIDE'=#{ebs_prefix_name}"
     Chef::Log.info("Restoring from EBS prefix: #{ebs_prefix_name}")
@@ -44,13 +42,14 @@ ruby_block "restore_ebs_volume" do
     Chef::Log.info("Starting EBS volume restore.")
     Chef::Log.info("Running /opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}")
   
+    puts `/opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}`
     #system("logger -t RightScale EBS volume successfuly restored from snapshot, mounted on #{mount_point}.")
   end
   action :create
 end
 
-execute "restore_ebs" do
-  command "ruby /opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}"
-  action :run
-end
+#execute "restore_ebs" do
+#  command "ruby /opt/rightscale/ebs/restoreEBS.rb -n #{ebs_prefix_name} -p #{mount_point}"
+#  action :run
+#end
 
