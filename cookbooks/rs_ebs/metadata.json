@@ -6,20 +6,6 @@
     "version": "0.0.1",
     "maintainer": "Chris Fordham",
     "attributes": {
-      "ebs/restore_mount_point": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": "/mnt/ebs",
-        "type": "string",
-        "recipes": [
-
-        ],
-        "description": "The EBS volume restore mount point",
-        "display_name": "EBS volume restore mount point"
-      },
       "ebs/backup_prefix": {
         "required": "optional",
         "calculated": false,
@@ -61,6 +47,20 @@
         ],
         "description": "The EBS volume filestytem type",
         "display_name": "EBS volume restore filesystem type"
+      },
+      "ebs/mount_point": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "/mnt/ebs",
+        "type": "string",
+        "recipes": [
+
+        ],
+        "description": "The EBS volume restore mount point",
+        "display_name": "EBS volume restore mount point"
       }
     },
     "replacing": {
@@ -77,12 +77,25 @@
     "recipes": {
       "rs_ebs::default": "Installs RightScale EBS Tools",
       "rs_ebs::volume_restore": "Restores a new EBS volume from an EBS snapshot",
+      "rs_ebs::volume_continuous_backups": "Updates cron for regular EBS snapshots",
       "rs_ebs::tools_install": "Installs RightScale EBS Tools"
     },
     "platforms": {
+      "debian": [
+
+      ],
+      "centos": [
+
+      ],
+      "ubuntu": [
+
+      ],
+      "redhat": [
+
+      ]
     },
     "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
     "suggestions": {
     },
-    "description": "Installs/Configures rs_ebs"
+    "description": "Installs RightScale EBS Tools"
   }
