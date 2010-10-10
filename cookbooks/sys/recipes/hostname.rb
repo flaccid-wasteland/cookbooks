@@ -46,12 +46,9 @@ ruby_block "set_system_hostname" do
     Chef::Log.info("> Short host name (cut from first dot of hostname): `hostname -s`")
     Chef::Log.info("> Domain of hostname: `hostname -d`")
     Chef::Log.info("> FQDN of host: `hostname -f`")
-
-    # Call hostname command
-    bash "set_hostname" do
-      code <<-EOH
-        hostname #{node.sys.hostname}
-      EOH
+    
+    template "/etc/hosts" do
+      source "hosts.erb"
     end
     
     # Update /etc/hosts
@@ -96,4 +93,11 @@ ruby_block "set_system_hostname" do
     Chef::Log.info("> FQDN of host: `hostname -f`")
   end
   action :create
+end
+
+# Call hostname command
+bash "set_hostname" do
+  code <<-EOH
+    hostname #{node.sys.hostname}
+  EOH
 end
