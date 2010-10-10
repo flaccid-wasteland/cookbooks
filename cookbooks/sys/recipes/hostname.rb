@@ -42,9 +42,9 @@ ruby_block "set_system_hostname" do
     hostname = `hostname`
     network_node = `uname -n`
     alias_name = `hostname -a`
-    host_short = `hostname -a`
-    domain = `hostname -a`
-    fqdn = `hostname -a`
+    host_short = `hostname -s`
+    domain = `hostname -d`
+    fqdn = `hostname -f`
     Chef::Log.info("Current hostname values:")
     Chef::Log.info("> Hostname: #{hostname}")
     Chef::Log.info("> Network node hostname: #{network_node}")
@@ -107,8 +107,8 @@ hostname = `hostname`
 network_node = `uname -n`
 alias_name = `hostname -a`
 host_short = `hostname -s`
-domain = `hostname -a`
-fqdn = `hostname -a`
+domain = `hostname -d`
+fqdn = `hostname -f`
 Chef::Log.info("New hostname values:")
 Chef::Log.info("> Hostname: #{hostname}")
 Chef::Log.info("> Network node hostname: #{network_node}")
