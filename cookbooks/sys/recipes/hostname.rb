@@ -84,6 +84,7 @@ ruby_block "set_system_hostname" do
     	#hostname "$HOST_FQDN"
 
     #fi
+  end
   action :create
 end
 
