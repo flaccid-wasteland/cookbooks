@@ -13,7 +13,21 @@ attribute "sys/hostname",
   :required => "optional",
   :default => "localhost",
   :recipes => [ "sys::hostname" ]
+
+  attribute "sys/hostname_short",
+    :display_name => "Short Hostname",
+    :description => "The host's short hostname",
+    :required => "optional",
+    :default => nil,
+    :recipes => [ "sys::hostname" ]
   
+  attribute "sys/fqdn",
+    :display_name => "FQDN",
+    :description => "The host's fully qualified domain name (FQDN)",
+    :required => "optional",
+    :default => nil,
+    :recipes => [ "sys::hostname" ]
+
   attribute "sys/domain",
     :display_name => "Domain Name",
     :description => "The domain name that you would like this machine to have.",

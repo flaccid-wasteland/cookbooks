@@ -106,7 +106,7 @@ ruby_block "show_new_hostname" do
 hostname = `hostname`
 network_node = `uname -n`
 alias_name = `hostname -a`
-host_short = `hostname -a`
+host_short = `hostname -s`
 domain = `hostname -a`
 fqdn = `hostname -a`
 Chef::Log.info("New hostname values:")

@@ -6,6 +6,20 @@
     "version": "0.0.1",
     "maintainer": "Chris Fordham",
     "attributes": {
+      "sys/fqdn": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": null,
+        "type": "string",
+        "recipes": [
+          "sys::hostname"
+        ],
+        "description": "The host's fully qualified domain name (FQDN)",
+        "display_name": "FQDN"
+      },
       "sys/hostname": {
         "required": "optional",
         "calculated": false,
@@ -33,6 +47,20 @@
         ],
         "description": "The domain name that you would like this machine to have.",
         "display_name": "Domain Name"
+      },
+      "sys/hostname_short": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": null,
+        "type": "string",
+        "recipes": [
+          "sys::hostname"
+        ],
+        "description": "The host's short hostname",
+        "display_name": "Short Hostname"
       }
     },
     "replacing": {
