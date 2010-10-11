@@ -75,7 +75,7 @@ bash "set_hostname" do
   case node[:platform]
   when "centos","redhat"
     code <<-EOH
-      sed -i "s/HOSTNAME=.*/HOSTNAME=#{node[:sys][:hostname]}/" /etc/sysconfig/network
+      sed -i "s/HOSTNAME=.*/HOSTNAME=#{node.sys.hostname}/" /etc/sysconfig/network
       hostname #{node.sys.hostname}
     EOH
   end
