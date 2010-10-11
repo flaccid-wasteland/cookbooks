@@ -48,7 +48,7 @@ ruby_block "set_system_hostname" do
     Chef::Log.info("Current hostname values:")
     Chef::Log.info("> Hostname: #{hostname}")
     Chef::Log.info("> Network node hostname: #{network_node}")
-    Chef::Log.info("> Alias name of host: #{alias_name}")
+    Chef::Log.info("> Alias names of host: #{alias_name}")
     Chef::Log.info("> Short host name (cut from first dot of hostname): #{host_short}")
     Chef::Log.info("> Domain of hostname: #{domain}")
     Chef::Log.info("> FQDN of host: #{fqdn}")
@@ -102,21 +102,19 @@ end
 
 ruby_block "show_new_hostname" do
   block do
-
-hostname = `hostname`
-network_node = `uname -n`
-alias_name = `hostname -a`
-host_short = `hostname -s`
-domain = `hostname -d`
-fqdn = `hostname -f`
-Chef::Log.info("New hostname values:")
-Chef::Log.info("> Hostname: #{hostname}")
-Chef::Log.info("> Network node hostname: #{network_node}")
-Chef::Log.info("> Alias name of host: #{alias_name}")
-Chef::Log.info("> Short host name (cut from first dot of hostname): #{host_short}")
-Chef::Log.info("> Domain of hostname: #{domain}")
-Chef::Log.info("> FQDN of host: #{fqdn}")
-
+    hostname = `hostname`
+    network_node = `uname -n`
+    alias_name = `hostname -a`
+    host_short = `hostname -s`
+    domain = `hostname -d`
+    fqdn = `hostname -f`
+    Chef::Log.info("New hostname values:")
+    Chef::Log.info("> Hostname: #{hostname}")
+    Chef::Log.info("> Network node hostname: #{network_node}")
+    Chef::Log.info("> Alias names of host: #{alias_name}")
+    Chef::Log.info("> Short host name (cut from first dot of hostname): #{host_short}")
+    Chef::Log.info("> Domain of hostname: #{domain}")
+    Chef::Log.info("> FQDN of host: #{fqdn}")
   end
   action :create
 end
