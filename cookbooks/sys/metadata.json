@@ -6,20 +6,6 @@
     "version": "0.0.1",
     "maintainer": "Chris Fordham",
     "attributes": {
-      "sys/fqdn": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": "",
-        "type": "string",
-        "recipes": [
-          "sys::hostname"
-        ],
-        "description": "The host's fully qualified domain name (FQDN)",
-        "display_name": "FQDN"
-      },
       "sys/hostname": {
         "required": "optional",
         "calculated": false,

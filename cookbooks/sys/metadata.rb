@@ -15,13 +15,6 @@ attribute "sys/hostname",
   :default => "localhost",
   :recipes => [ "sys::hostname" ]
 
-attribute "sys/fqdn",
-  :display_name => "FQDN",
-  :description => "The host's fully qualified domain name (FQDN)",
-  :required => "optional",
-  :default => '',
-  :recipes => [ "sys::hostname" ]
-
 attribute "sys/domain_name",
   :display_name => "Domain Name",
   :description => "The domain name that you would like this machine to have.",
