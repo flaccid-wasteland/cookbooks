@@ -29,9 +29,9 @@ attribute "sys/domain_name",
   :default => '',
   :recipes => [ "sys::hostname" ]
 
-attribute "sys/suffix_search",
-  :display_name => "Domain suffix search",
-  :description => "The domain suffix search you would like this machine to have.",
+attribute "sys/search_suffix",
+  :display_name => "Domain Search Suffix",
+  :description => "The domain search suffix you would like this machine to have.",
   :required => "optional",
   :default => nil,
   :recipes => [ "sys::hostname" ]

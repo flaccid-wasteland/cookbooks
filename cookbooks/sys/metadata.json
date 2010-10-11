@@ -6,20 +6,6 @@
     "version": "0.0.1",
     "maintainer": "Chris Fordham",
     "attributes": {
-      "sys/suffix_search": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": null,
-        "type": "string",
-        "recipes": [
-          "sys::hostname"
-        ],
-        "description": "The domain suffix search you would like this machine to have.",
-        "display_name": "Domain suffix search"
-      },
       "sys/fqdn": {
         "required": "optional",
         "calculated": false,
@@ -75,6 +61,20 @@
         ],
         "description": "The time zone to set the system to. See zones in /usr/share/zoneinfo e.g. America/Los_Angeles or UTC",
         "display_name": "System Time Zone"
+      },
+      "sys/search_suffix": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": null,
+        "type": "string",
+        "recipes": [
+          "sys::hostname"
+        ],
+        "description": "The domain search suffix you would like this machine to have.",
+        "display_name": "Domain Search Suffix"
       }
     },
     "replacing": {
