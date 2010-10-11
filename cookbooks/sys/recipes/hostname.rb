@@ -97,8 +97,8 @@ nameserver=`cat /etc/resolv.conf  | grep -v '^#' | grep nameserver | awk '{print
 template "/etc/resolv.conf" do
   source "resolv.conf.erb"
   variables(
-    :nameserver => nameserver
-    :domain => "#{node[:sys][:domain_name]}"
+    :nameserver => nameserver,
+    :domain => "#{node[:sys][:domain_name]}",
     :search => "#{node[:sys][:search_suffix]}"
     )
 end
