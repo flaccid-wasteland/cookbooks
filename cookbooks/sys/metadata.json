@@ -12,7 +12,7 @@
         "choice": [
 
         ],
-        "default": null,
+        "default": "",
         "type": "string",
         "recipes": [
           "sys::hostname"
@@ -40,7 +40,7 @@
         "choice": [
 
         ],
-        "default": "localdomain",
+        "default": "",
         "type": "string",
         "recipes": [
           "sys::hostname"
@@ -61,20 +61,6 @@
         ],
         "description": "The time zone to set the system to. See zones in /usr/share/zoneinfo e.g. America/Los_Angeles or UTC",
         "display_name": "System Time Zone"
-      },
-      "sys/hostname_short": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": null,
-        "type": "string",
-        "recipes": [
-          "sys::hostname"
-        ],
-        "description": "The host's short hostname",
-        "display_name": "Short Hostname"
       }
     },
     "replacing": {
