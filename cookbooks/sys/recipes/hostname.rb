@@ -34,18 +34,30 @@
 # Note: this current does currently overwrite /etc/hosts
 #
 
+require 'socket'
+
+ def local_ip
+   orig, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true  # turn off reverse DNS resolution temporarily
+
+   UDPSocket.open do |s|
+     s.connect '64.233.187.99', 1
+     s.addr.last
+   end
+ ensure
+   Socket.do_not_reverse_lookup = orig
+ end
+
 ruby_block "set_system_hostname" do
   block do
-    #
-    # Display current hostname values
-    #
+     # Display current hostname values
     Chef::Log.info("Current hostname values:")
     Chef::Log.info("* Hostname: #{`hostname` == '' ? '<none>' : `hostname`}")
     Chef::Log.info("* Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}")
     Chef::Log.info("* Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}")
     Chef::Log.info("* Short host name (cut from first dot of hostname): #{`hostname -s` == '' ? '<none>' : `hostname -s`}")
-    #Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `hostname -d`}")
+    Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `hostname -d`}")
     Chef::Log.info("* FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}")
+    
     
     # Update /etc/hosts
     #echo "127.0.0.1	$HOST_FQDN $HOST_DOMAIN_NAME $HOST_SHORT_NAME localhost localhost.localdomain" > /etc/hosts
@@ -85,6 +97,8 @@ end
 # Update /etc/hosts
 template "/etc/hosts" do
   source "hosts.erb"
+  variables(
+    :local_ip => local_ip
 end
 
 # Call hostname command
@@ -94,6 +108,22 @@ bash "set_hostname" do
   EOH
 end
 
+# Call domainname command
+bash "set_hostname" do
+  code <<-EOH
+    domainname #{node.sys.domain_name}
+  EOH
+end
+
+service "hostname" do
+  case node[:platform]
+  when "debian","ubuntu"
+    service_name "hostname"
+  end
+  supports :restart => true, :status => true, :reload => true
+  action :restart
+end
+
 ruby_block "show_new_hostname" do
   block do
     Chef::Log.info("New hostname values:")
@@ -101,7 +131,7 @@ ruby_block "show_new_hostname" do
     Chef::Log.info("* Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}")
     Chef::Log.info("* Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}")
     Chef::Log.info("* Short host name (cut from first dot of hostname): #{`hostname -s` == '' ? '<none>' : `hostname -s`}")
-  #  Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `hostname -d`}")
+    Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `hostname -d`}")
     Chef::Log.info("* FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}")
   end
   action :create

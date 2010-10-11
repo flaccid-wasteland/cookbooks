@@ -26,7 +26,7 @@ attribute "sys/fqdn",
   :display_name => "FQDN",
   :description => "The host's fully qualified domain name (FQDN)",
   :required => "optional",
-  :default => nil,
+  :default => '',
   :recipes => [ "sys::hostname" ]
 
 attribute "sys/domain_name",
