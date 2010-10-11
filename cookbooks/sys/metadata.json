@@ -6,6 +6,20 @@
     "version": "0.0.1",
     "maintainer": "Chris Fordham",
     "attributes": {
+      "sys/suffix_search": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": null,
+        "type": "string",
+        "recipes": [
+          "sys::hostname"
+        ],
+        "description": "The domain suffix search you would like this machine to have.",
+        "display_name": "Domain suffix search"
+      },
       "sys/fqdn": {
         "required": "optional",
         "calculated": false,

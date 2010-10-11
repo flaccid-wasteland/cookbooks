@@ -29,6 +29,13 @@ attribute "sys/domain_name",
   :default => '',
   :recipes => [ "sys::hostname" ]
 
+attribute "sys/suffix_search",
+  :display_name => "Domain suffix search",
+  :description => "The domain suffix search you would like this machine to have.",
+  :required => "optional",
+  :default => nil,
+  :recipes => [ "sys::hostname" ]
+
 attribute "sys/timezone",
   :display_name => "System Time Zone",
   :description => "The time zone to set the system to. See zones in /usr/share/zoneinfo e.g. America/Los_Angeles or UTC",
