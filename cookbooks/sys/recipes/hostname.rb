@@ -62,15 +62,6 @@ hosts_ip = "#{local_ip}"
 
 show_host_info
 
-    #elif [ "$RS_DISTRO" = 'centos' ]; then
-
-    	#echo 'Setting hostname.'
-    	#sed -i "s/HOSTNAME=.*/HOSTNAME=$HOST_FQDN/" /etc/sysconfig/network
-    	#hostname "$HOST_FQDN"
-
-    #fi
-
-
 # Update /etc/hosts
 template "/etc/hosts" do
   source "hosts.erb"
@@ -104,6 +95,13 @@ bash "set_hostname" do
     hostname #{node.sys.hostname}
   EOH
 end
+#elif [ "$RS_DISTRO" = 'centos' ]; then
+
+	#echo 'Setting hostname.'
+	#sed -i "s/HOSTNAME=.*/HOSTNAME=$HOST_FQDN/" /etc/sysconfig/network
+	#hostname "$HOST_FQDN"
+
+#fi
 
 # Call domainname command
 bash "set_hostname" do
