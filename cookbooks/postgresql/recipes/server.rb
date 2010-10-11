@@ -19,17 +19,18 @@
 
 include_recipe "postgresql::client" 
 
+package "postgresql"
+
 case node.platform
 when "redhat","centos","fedora","suse"
   package "postgresql-server"
 end
 
-#service "postgresql" do
-#  case node[:platform]
-#  when "debian","ubuntu"
-#    service_name "postgresql-#{@postgres_version}"
-#  end
-#  supports :restart => true, :status => true, :reload => true
-#  action :nothing
-#end
-
+service "postgresql" do
+  case node[:platform]
+  when "debian","ubuntu"
+    service_name "postgresql-#{@postgres_version}"
+  end
+  supports :restart => true, :status => true, :reload => true
+  action :nothing
+end
