@@ -1,0 +1,50 @@
+{
+    "conflicting": {
+    },
+    "providing": {
+    },
+    "version": "0.0.1",
+    "maintainer": "Chris Fordham",
+    "attributes": {
+    },
+    "replacing": {
+    },
+    "license": "Apache 2.0",
+    "maintainer_email": "chris@xhost.com.au",
+    "groupings": {
+    },
+    "recommendations": {
+    },
+    "dependencies": {
+    },
+    "name": "postgresql",
+    "recipes": {
+      "postgresql::server": "Installs postgresql server",
+      "postgresql::client": "Installs postgresql client package(s)",
+      "postgresql::default": "Installs PostgreSQL server and client"
+    },
+    "platforms": {
+      "rhel": [
+
+      ],
+      "debian": [
+
+      ],
+      "fedora": [
+
+      ],
+      "centos": [
+
+      ],
+      "suse": [
+
+      ],
+      "ubuntu": [
+
+      ]
+    },
+    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+    "suggestions": {
+    },
+    "description": "Installs/Configures postgresql"
+  }
