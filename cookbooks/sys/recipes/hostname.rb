@@ -40,9 +40,9 @@ ruby_block "set_system_hostname" do
     # Display current hostname values
     #
     `hostname` == '' ? hostname = '<none>' : hostname = `hostname`
-    `uname -n` == '' ? network_node = '<none>' : domain = `uname -n`
-    `hostname -a` == '' ? alias_name = '<none>' : domain = `hostname -a`
-    `hostname -s` == '' ? host_short = '<none>' : domain = `hostname -s`
+    `uname -n` == '' ? network_node = '<none>' : network_node = `uname -n`
+    `hostname -a` == '' ? alias_name = '<none>' : alias_name = `hostname -a`
+    `hostname -s` == '' ? host_short = '<none>' : host_short = `hostname -s`
     `hostname -d` == '' ? domain = '<none>' : domain = `hostname -d`
     `hostname -f` == '' ? fqdn = '<none>' : fqdn = `hostname -f`
     Chef::Log.info("Current hostname values:")
@@ -103,9 +103,9 @@ end
 ruby_block "show_new_hostname" do
   block do
     `hostname` == '' ? hostname = '<none>' : hostname = `hostname`
-    `uname -n` == '' ? network_node = '<none>' : domain = `uname -n`
-    `hostname -a` == '' ? alias_name = '<none>' : domain = `hostname -a`
-    `hostname -s` == '' ? host_short = '<none>' : domain = `hostname -s`
+    `uname -n` == '' ? network_node = '<none>' : network_node = `uname -n`
+    `hostname -a` == '' ? alias_name = '<none>' : alias_name = `hostname -a`
+    `hostname -s` == '' ? host_short = '<none>' : host_short = `hostname -s`
     `hostname -d` == '' ? domain = '<none>' : domain = `hostname -d`
     `hostname -f` == '' ? fqdn = '<none>' : fqdn = `hostname -f`
     Chef::Log.info("New hostname values:")
