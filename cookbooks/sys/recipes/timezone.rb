@@ -17,16 +17,9 @@
 # limitations under the License.
 #
 
-# If this parameter is not set leave unchanged and use localtime
-if node[:sys][:timezone]  != "localtime" then
-
 # Set the Timezone
 # ln -s /usr/share/zoneinfo/#{node.sys.timezone} /etc/localtime
 link "/usr/share/zoneinfo/#{node[:sys][:timezone]}" do
   to "/etc/localtime"
   Chef::Log.info("Timezone set to #{node[:sys][:timezone]}")
-end
-
-else
-  Chef::Log.info("Leaving timezone set to localtime.")
 end
