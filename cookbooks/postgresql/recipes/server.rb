@@ -34,3 +34,17 @@ service "postgresql" do
   supports :restart => true, :status => true, :reload => true
   action :nothing
 end
+
+case node[:platform]
+when "debian","ubuntu"
+  script "install_something" do
+    interpreter "bash"
+    user "root"
+    cwd "/tmp"
+    code <<-EOH
+    echo 'Installing ssl-cert package and Debian workaround for bug...'
+    touch /etc/ssl/private/ssl-cert-snakeoil.key && apt-get install -y ssl-cert && make-ssl-cert generate-default-snakeoil
+    EOH
+  end
+end
+
