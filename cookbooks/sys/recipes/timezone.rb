@@ -18,13 +18,13 @@
 #
 
 # If this parameter is not set leave unchanged and use localtime
-if node.sys.hostname != "localtime" then
+if node[:sys][:timezone]  != "localtime" then
 
 # Set the Timezone
 # ln -s /usr/share/zoneinfo/#{node.sys.timezone} /etc/localtime
-link "/usr/share/zoneinfo/#{node.sys.timezone}" do
+link "/usr/share/zoneinfo/#{node[:sys][:timezone]}" do
   to "/etc/localtime"
-  Chef::Log.info("Timezone set to #{node.sys.timezone}")
+  Chef::Log.info("Timezone set to #{node[:sys][:timezone]}")
 end
 
 else
