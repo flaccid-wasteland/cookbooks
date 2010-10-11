@@ -84,7 +84,7 @@ end
 template "/etc/hosts" do
   source "hosts.erb"
   variables(
-    :local_ip => "#{hosts_ip}"
+    :hosts_ip => "#{hosts_ip}"
     )
 end
 
