@@ -24,7 +24,7 @@ Chef::Log.info("Setting time zone to #{node[:sys][:timezone]}")
 
 # Update /etc/hosts
 template "/etc/timezone" do
-  source "timezone"
+  source "timezone.erb"
 end
 
 link "/usr/share/zoneinfo/#{node[:sys][:timezone]}" do
