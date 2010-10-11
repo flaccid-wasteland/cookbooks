@@ -20,8 +20,6 @@
 # Set the Timezone
 # ln -s /usr/share/zoneinfo/#{node.sys.timezone} /etc/localtime
 
-Chef::Log.info("Setting time zone to #{node[:sys][:timezone]}")
-
 # Update /etc/timezone
 template "/etc/timezone" do
   source "timezone.erb"
@@ -29,16 +27,15 @@ end
 
 link "/usr/share/zoneinfo/#{node[:sys][:timezone]}" do
   to "/etc/localtime"
+  Chef::Log.info("Setting time zone to #{node[:sys][:timezone]}")
 end
 
 ruby_block "set_timezone" do
   block do
     case node[:platform]
-    when "ubuntu"
+    when "ubuntu" || "debian"
       `dpkg-reconfigure --frontend noninteractive tzdata`
     end
   end
   action :create
 end
-
-Chef::Log.info("Time zone set to #{node[:sys][:timezone]}")
