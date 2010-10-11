@@ -20,3 +20,7 @@
 package "bind9" do
   action :install
 end
+
+package "dnsutils" do
+  action: install
+end
