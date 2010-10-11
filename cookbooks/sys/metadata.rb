@@ -38,7 +38,7 @@ attribute "sys/domain",
 
 attribute "sys/timezone",
   :display_name => "System Time Zone",
-  :description => "The time zone to set the system to.",
+  :description => "The time zone to set the system to. See zones in /usr/share/zoneinfo e.g. America/Los_Angeles or UTC",
   :required => "optional",
   :default => "localtime",
   :recipes => [ "sys::timezone" ]
