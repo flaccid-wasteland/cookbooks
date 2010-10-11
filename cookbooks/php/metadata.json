@@ -1,0 +1,30 @@
+{
+    "conflicting": {
+    },
+    "providing": {
+    },
+    "version": "0.0.1",
+    "maintainer": "Chris Fordham",
+    "attributes": {
+    },
+    "replacing": {
+    },
+    "license": "Apache 2.0",
+    "maintainer_email": "chris@xhost.com.au",
+    "groupings": {
+    },
+    "recommendations": {
+    },
+    "dependencies": {
+    },
+    "name": "php",
+    "recipes": {
+      "php::php5": "Installs PHP 5."
+    },
+    "platforms": {
+    },
+    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+    "suggestions": {
+    },
+    "description": "Installs/Configures php"
+  }
