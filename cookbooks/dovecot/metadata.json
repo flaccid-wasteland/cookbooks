@@ -1,0 +1,46 @@
+{
+    "conflicting": {
+    },
+    "providing": {
+    },
+    "version": "0.0.1",
+    "maintainer": "Chris Fordham",
+    "attributes": {
+      "dovecot/antispam": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "no",
+        "type": "string",
+        "recipes": [
+          "dovecot::default"
+        ],
+        "description": "Whether or not to install the Dovecot plugin that helps train spam filters.",
+        "display_name": "Dovecot antispam plugin"
+      }
+    },
+    "replacing": {
+    },
+    "license": "Apache 2.0",
+    "maintainer_email": "chris@xhost.com.au",
+    "groupings": {
+    },
+    "recommendations": {
+    },
+    "dependencies": {
+    },
+    "name": "dovecot",
+    "recipes": {
+      "dovecot::pop3d": "Installs the Dovecot POP3d",
+      "dovecot::default": "Installs Dovecot, a secure mail server that supports mbox and maildir mailboxes; with optional plugin that helps train spam filters.",
+      "dovecot::imapd": "Installs the Dovecot IMAPd"
+    },
+    "platforms": {
+    },
+    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+    "suggestions": {
+    },
+    "description": "Installs/Configures Dovecot"
+  }
