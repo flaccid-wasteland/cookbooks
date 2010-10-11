@@ -29,7 +29,7 @@ attribute "sys/fqdn",
   :default => nil,
   :recipes => [ "sys::hostname" ]
 
-attribute "sys/domain",
+attribute "sys/domain_name",
   :display_name => "Domain Name",
   :description => "The domain name that you would like this machine to have.",
   :required => "optional",
