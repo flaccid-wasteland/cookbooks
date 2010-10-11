@@ -36,38 +36,36 @@
 
 require 'socket'
 
- def local_ip
-   orig, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true  # turn off reverse DNS resolution temporarily
+def local_ip
+  orig, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true  # turn off reverse DNS resolution temporarily
 
-   UDPSocket.open do |s|
-     s.connect '64.233.187.99', 1
-     s.addr.last
-   end
- ensure
-   Socket.do_not_reverse_lookup = orig
- end
+  UDPSocket.open do |s|
+    s.connect '64.233.187.99', 1
+    s.addr.last
+  end
+  ensure
+    Socket.do_not_reverse_lookup = orig
+end
+
+def show_host_info
+  # Display current hostname values
+  Chef::Log.info("Host information:")
+  Chef::Log.info("* Hostname: #{`hostname` == '' ? '<none>' : `hostname`}")
+  Chef::Log.info("* Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}")
+  Chef::Log.info("* Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}")
+  Chef::Log.info("* Short host name (cut from first dot of hostname): #{`hostname -s` == '' ? '<none>' : `hostname -s`}")
+  Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `domainname`}")
+  Chef::Log.info("* FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}")
+end
 
 hosts_ip = "#{local_ip}"
- 
-ruby_block "set_system_hostname" do
-  block do
-     # Display current hostname values
-    Chef::Log.info("Current hostname values:")
-    Chef::Log.info("* Hostname: #{`hostname` == '' ? '<none>' : `hostname`}")
-    Chef::Log.info("* Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}")
-    Chef::Log.info("* Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}")
-    Chef::Log.info("* Short host name (cut from first dot of hostname): #{`hostname -s` == '' ? '<none>' : `hostname -s`}")
-    Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `domainname`}")
-    Chef::Log.info("* FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}")
-    
-    # Update /etc/hosts
-    #echo "127.0.0.1	$HOST_FQDN $HOST_DOMAIN_NAME $HOST_SHORT_NAME localhost localhost.localdomain" > /etc/hosts
 
-    #
-    # Update /etc/resolv.conf
-    #
-    #echo "search $HOST_DOMAIN_SUFFIX_SEARCH" >> /etc/resolv.conf
-    #echo "domain $HOST_DOMAIN_NAME" >> /etc/resolv.conf
+ruby_block "show_host_info_before" do
+  block do
+    show_host_info
+  end
+  action :create
+end
 
     #elif [ "$RS_DISTRO" = 'centos' ]; then
 
@@ -76,9 +74,7 @@ ruby_block "set_system_hostname" do
     	#hostname "$HOST_FQDN"
 
     #fi
-  end
-  action :create
-end
+
 
 # Update /etc/hosts
 template "/etc/hosts" do
@@ -96,6 +92,16 @@ file "/etc/hostname" do
   action :create
 end
 
+# Update /etc/resolv.conf
+nameserver=`cat /etc/resolv.conf  | grep -v '^#' | grep nameserver | awk '{print $2}'`
+template "/etc/resolv.conf" do
+  source "resolv.conf.erb"
+  variables(
+    :nameserver => nameserver
+    :domain => "#{node[:sys][:domain_name]}"
+    :search => "#{node[:sys][:search_suffix]}"
+    )
+end
 
 # Call hostname command
 bash "set_hostname" do
@@ -121,15 +127,9 @@ service "hostname" do
   action :restart
 end
 
-ruby_block "show_new_hostname" do
+ruby_block "show_host_info_after" do
   block do
-    Chef::Log.info("New hostname values:")
-    Chef::Log.info("* Hostname: #{`hostname` == '' ? '<none>' : `hostname`}")
-    Chef::Log.info("* Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}")
-    Chef::Log.info("* Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}")
-    Chef::Log.info("* Short host name (cut from first dot of hostname): #{`hostname -s` == '' ? '<none>' : `hostname -s`}")
-    Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `domainname`}")
-    Chef::Log.info("* FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}")
+    show_host_info
   end
   action :create
 end
