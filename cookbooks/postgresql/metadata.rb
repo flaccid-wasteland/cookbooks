@@ -12,6 +12,3 @@ recipe            "postgresql::server", "Installs postgresql server"
 %w{rhel centos fedora ubuntu debian suse}.each do |os|
   supports os
 end
-
-attribute "postgresql/version",
-  :recipes => nil
