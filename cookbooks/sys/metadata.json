@@ -34,6 +34,20 @@
         "description": "The hostname that you would like this machine to have.",
         "display_name": "Hostname"
       },
+      "sys/timezone": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "localtime",
+        "type": "string",
+        "recipes": [
+          "sys::timezone"
+        ],
+        "description": "The time zone to set the system to.",
+        "display_name": "System Time Zone"
+      },
       "sys/domain": {
         "required": "optional",
         "calculated": false,
