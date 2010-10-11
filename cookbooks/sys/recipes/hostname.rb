@@ -60,12 +60,7 @@ end
 
 hosts_ip = "#{local_ip}"
 
-ruby_block "show_host_info_before" do
-  block do
-    show_host_info
-  end
-  action :create
-end
+show_host_info
 
     #elif [ "$RS_DISTRO" = 'centos' ]; then
 
@@ -127,9 +122,4 @@ service "hostname" do
   action :restart
 end
 
-ruby_block "show_host_info_after" do
-  block do
-    show_host_info
-  end
-  action :create
-end
+show_host_info
