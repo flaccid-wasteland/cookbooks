@@ -1,11 +1,12 @@
 maintainer       "Chris Fordham"
 maintainer_email "chris@xhost.com.au"
 license          "Apache 2.0"
-description      "Operating System administration tasks"
+description      "Operating System basic configuration tasks"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
-recipe "sys::hostname", "Sets the system hostname, domain name, FQDN and domain suffix search prefix"
+recipe "sys::hostname", "Sets the system hostname, domain name, FQDN and domain suffix search prefix."
+recipe "sys::timezone", "Sets the system time zone."
 
 attribute "sys/hostname",
   :display_name => "Hostname",
