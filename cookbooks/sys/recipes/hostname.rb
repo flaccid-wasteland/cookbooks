@@ -47,7 +47,7 @@ require 'socket'
    Socket.do_not_reverse_lookup = orig
  end
 
-node[:hosts_ip] = "#{local_ip}"
+hosts_ip = "#{local_ip}"
  
 ruby_block "set_system_hostname" do
   block do
@@ -84,7 +84,7 @@ end
 template "/etc/hosts" do
   source "hosts.erb"
   variables(
-    :hosts_ip => node[:hosts_ip}
+    :hosts_ip => hosts_ip
     )
 end
 
