@@ -44,7 +44,7 @@ ruby_block "set_system_hostname" do
     Chef::Log.info("* Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}")
     Chef::Log.info("* Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}")
     Chef::Log.info("* Short host name (cut from first dot of hostname): #{`hostname -s` == '' ? '<none>' : `hostname -s`}")
-    Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `hostname -d`}")
+    #Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `hostname -d`}")
     Chef::Log.info("* FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}")
     
     # Update /etc/hosts
@@ -101,7 +101,7 @@ ruby_block "show_new_hostname" do
     Chef::Log.info("* Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}")
     Chef::Log.info("* Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}")
     Chef::Log.info("* Short host name (cut from first dot of hostname): #{`hostname -s` == '' ? '<none>' : `hostname -s`}")
-    Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `hostname -d`}")
+  #  Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `hostname -d`}")
     Chef::Log.info("* FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}")
   end
   action :create
