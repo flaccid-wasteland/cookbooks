@@ -22,5 +22,5 @@ package "bind9" do
 end
 
 package "dnsutils" do
-  action: install
+  action :install
 end
