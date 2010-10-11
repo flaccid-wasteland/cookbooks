@@ -83,6 +83,7 @@ template "/etc/hosts" do
   source "hosts.erb"
   variables(
     :local_ip => local_ip
+    )
 end
 
 file "/etc/hostname" do
