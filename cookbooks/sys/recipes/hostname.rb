@@ -47,6 +47,8 @@ require 'socket'
    Socket.do_not_reverse_lookup = orig
  end
 
+ hosts_ip = "#{local_ip}"
+ 
 ruby_block "set_system_hostname" do
   block do
      # Display current hostname values
@@ -82,7 +84,7 @@ end
 template "/etc/hosts" do
   source "hosts.erb"
   variables(
-    :local_ip => local_ip
+    :local_ip => "#{hosts_ip}"
     )
 end
 
@@ -90,7 +92,7 @@ file "/etc/hostname" do
   owner "root"
   group "root"
   mode "0755"
-  content "#{nod[:sys][:hostname]}"
+  content "#{node[:sys][:hostname]}"
   action :create
 end
 
