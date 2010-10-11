@@ -1,2 +1,2 @@
 127.0.0.1			localhost localhost.localdomain
-<%= @hosts_ip %>			<%= node[:sys][:fqdn] %> <%= node[:sys][:hostname] %>
+<%= @hosts_ip %>			<%= node[:sys][:hostname] %>.<%= node[:sys][:domain_name] %> <%= node[:sys][:hostname] %>
