@@ -118,6 +118,5 @@ service "hostname" do
   end
   supports :restart => true, :status => true, :reload => true
   action :restart
+  show_host_info
 end
-
-show_host_info
