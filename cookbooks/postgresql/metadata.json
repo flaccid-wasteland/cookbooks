@@ -6,6 +6,17 @@
     "version": "0.0.1",
     "maintainer": "Chris Fordham",
     "attributes": {
+      "postgresql/version": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "type": "string",
+        "recipes": [
+
+        ]
+      }
     },
     "replacing": {
     },
