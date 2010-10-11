@@ -89,12 +89,13 @@
     },
     "name": "sys",
     "recipes": {
-      "sys::hostname": "Sets the system hostname, domain name, FQDN and domain suffix search prefix"
+      "sys::hostname": "Sets the system hostname, domain name, FQDN and domain suffix search prefix.",
+      "sys::timezone": "Sets the system time zone."
     },
     "platforms": {
     },
     "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
     "suggestions": {
     },
-    "description": "Operating System administration tasks"
+    "description": "Operating System basic configuration tasks"
   }
