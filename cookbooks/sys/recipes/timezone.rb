@@ -21,10 +21,16 @@
 # ln -s /usr/share/zoneinfo/#{node.sys.timezone} /etc/localtime
 link "/usr/share/zoneinfo/#{node[:sys][:timezone]}" do
   to "/etc/localtime"
-  case node[:platform]
-  when "ubuntu"
-    echo node[:sys][:timezone] | tee /etc/timezone
-    dpkg-reconfigure --frontend noninteractive tzdata
-  end
   Chef::Log.info("Timezone set to #{node[:sys][:timezone]}")
+end
+
+ruby_block "set_timezone" do
+  block do
+    case node[:platform]
+    when "ubuntu"
+      `echo node[:sys][:timezone] | tee /etc/timezone`
+      `dpkg-reconfigure --frontend noninteractive tzdata`
+    end
+  end
+  action :create
 end
