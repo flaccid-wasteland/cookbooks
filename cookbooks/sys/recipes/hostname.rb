@@ -58,7 +58,6 @@ ruby_block "set_system_hostname" do
     Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `domainname`}")
     Chef::Log.info("* FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}")
     
-    
     # Update /etc/hosts
     #echo "127.0.0.1	$HOST_FQDN $HOST_DOMAIN_NAME $HOST_SHORT_NAME localhost localhost.localdomain" > /etc/hosts
 
@@ -67,21 +66,6 @@ ruby_block "set_system_hostname" do
     #
     #echo "search $HOST_DOMAIN_SUFFIX_SEARCH" >> /etc/resolv.conf
     #echo "domain $HOST_DOMAIN_NAME" >> /etc/resolv.conf
-
-    # Update /etc/hostname with FQDN
-    #echo "$HOST_FQDN" > /etc/hostname
-
-    #if [ "$RS_DISTRO" = 'ubuntu' ]; then
-
-    	# Use new config
-    	#echo 'Resetting hostname.'
-    	#/etc/init.d/hostname.sh
-
-    #elif [ "$RS_DISTRO" = 'debian' ]; then
-
-    	# Use new config
-    	#echo 'Resetting hostname.'
-    	#/etc/init.d/hostname.sh
 
     #elif [ "$RS_DISTRO" = 'centos' ]; then
 
@@ -101,6 +85,15 @@ template "/etc/hosts" do
     :local_ip => local_ip
 end
 
+file "/etc/hostname" do
+  owner "root"
+  group "root"
+  mode "0755"
+  content "#{nod[:sys][:hostname]}"
+  action :create
+end
+
+
 # Call hostname command
 bash "set_hostname" do
   code <<-EOH
@@ -115,6 +108,7 @@ bash "set_hostname" do
   EOH
 end
 
+# can be /etc/init.d/hostname.sh
 service "hostname" do
   case node[:platform]
   when "debian","ubuntu"
