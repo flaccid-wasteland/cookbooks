@@ -29,7 +29,7 @@ end
 service "postgresql" do
   case node[:platform]
   when "debian","ubuntu"
-    service_name "postgresql-#{@postgres_version}"
+    service_name "postgresql-#{@postgresql_version}"
   end
   supports :restart => true, :status => true, :reload => true
   action :nothing
