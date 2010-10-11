@@ -72,20 +72,20 @@ end
 
 # Call hostname command
 bash "set_hostname" do
+  case node[:platform]
+  when "centos","redhat"
+    code <<-EOH
+      sed -i "s/HOSTNAME=.*/HOSTNAME=#{node[:sys][:hostname]}/" /etc/sysconfig/network
+      hostname #{node.sys.hostname}
+    EOH
+  end
   code <<-EOH
     hostname #{node.sys.hostname}
   EOH
 end
-#elif [ "$RS_DISTRO" = 'centos' ]; then
-
-	#echo 'Setting hostname.'
-	#sed -i "s/HOSTNAME=.*/HOSTNAME=$HOST_FQDN/" /etc/sysconfig/network
-	#hostname "$HOST_FQDN"
-
-#fi
 
 # Call domainname command
-bash "set_hostname" do
+bash "set_domainname" do
   code <<-EOH
     domainname #{node.sys.domain_name}
   EOH
