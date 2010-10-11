@@ -17,23 +17,6 @@
 # limitations under the License.
 #
 
-# RightScript: Set system host name
-#
-# Author: Chris Fordham <chris.fordham@rightscale.com>
-# Copyright (c) 2007-2008 by RightScale Inc., all rights reserved worldwide
-#
-# Description: Set the system's host name
-# Inputs:
-# HOST_SHORT_NAME			The short host name (non-canonical) of the server e.g. xhost.com.au
-# HOST_FQDN			The FQDN in DNS of the server e.g. starbug.xhost.com.au
-# HOST_DOMAIN_NAME			The domain name of the server e.g. xhost.com.au
-# HOST_SET_FQDN				Set the FQDN of the server in /etc/hostname (true/false)
-# HOST_DOMAIN_SUFFIX_SEARCH	The search domain suffixes to use in /etc/resolv.conf e.g. xhost.com.au dev.host.com.au
-# HOST_DOMAIN_LOCALHOST		Bind the domain name to /etc/hosts e.g. domain xhost.com.au (true/false)
-#
-# Note: this current does currently overwrite /etc/hosts
-#
-
 require 'socket'
 
 def local_ip
@@ -59,8 +42,6 @@ def show_host_info
 end
 
 hosts_ip = "#{local_ip}"
-
-show_host_info
 
 # Update /etc/hosts
 template "/etc/hosts" do
@@ -118,5 +99,6 @@ service "hostname" do
   end
   supports :restart => true, :status => true, :reload => true
   action :restart
-  show_host_info
 end
+
+show_host_info
