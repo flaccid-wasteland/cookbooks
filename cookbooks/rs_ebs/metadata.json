@@ -168,7 +168,8 @@
         "default": "/mnt/ebs",
         "type": "string",
         "recipes": [
-          "rs_ebs::volume_restore"
+          "rs_ebs::volume_restore",
+          "rs_ebs::volume_backup"
         ],
         "display_name": "EBS volume restore mount point",
         "description": "The EBS volume restore mount point"
