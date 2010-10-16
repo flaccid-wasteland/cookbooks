@@ -14,7 +14,7 @@ recipe "rs_ebs::tools_install", "Installs RightScale EBS Tools."
 recipe "rs_ebs::volume_restore", "Restores a new EBS volume from an EBS snapshot."
 recipe "rs_ebs::volume_continuous_backups", "Updates cron for regular EBS snapshots."
 recipe "rs_ebs::volume_backup", "Takes a regular EBS snapshot of an attached EBS volume."
-recipe "rs_ebs::volume_delete", "Unmounts, detaches and delets and EBS volume."
+recipe "rs_ebs::volume_delete", "Unmounts, detaches and deletes and EBS volume."
 
 attribute "ebs/restore_fs_type",
   :display_name => "EBS volume restore filesystem type",
