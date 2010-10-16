@@ -50,7 +50,7 @@ end
 
 ruby_block "show_hosts_info" do
   block do
-    show_host_info
+    @show_host_info
   end
   action :create
 end
@@ -115,7 +115,7 @@ end
 
 ruby_block "show_hosts_info" do
   block do
-    show_host_info
+    @show_host_info
   end
   action :create
 end
