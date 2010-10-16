@@ -25,7 +25,7 @@ template "/etc/timezone" do
   source "timezone.erb"
 end
 
-timezone = node[:sys][:timezone].gsub!('','_')
+timezone = node[:sys][:timezone].gsub!(' ','_')
 
 link "/usr/share/zoneinfo/#{timezone}" do
   to "/etc/localtime"
