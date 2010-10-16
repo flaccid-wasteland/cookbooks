@@ -30,18 +30,30 @@ def local_ip
     Socket.do_not_reverse_lookup = orig
 end
 
-def show_host_info
-  # Display current hostname values
-  Chef::Log.info("Host information:")
-  Chef::Log.info("* Hostname: #{`hostname` == '' ? '<none>' : `hostname`}")
-  Chef::Log.info("* Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}")
-  Chef::Log.info("* Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}")
-  Chef::Log.info("* Short host name (cut from first dot of hostname): #{`hostname -s` == '' ? '<none>' : `hostname -s`}")
-  Chef::Log.info("* Domain of hostname: #{`hostname -d` == '' ? '<none>' : `domainname`}")
-  Chef::Log.info("* FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}")
+hosts_ip = "#{local_ip}"
+
+ruby_block "show_host_info" do
+  block do
+    def show_host_info
+      # Display current hostname values
+      Chef::Log.info("Host information:")
+      Chef::Log.info("* Hostname: #{`hostname` == '' ? '<none>' : `hostname`}")
+      Chef::Log.info("* Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}")
+      Chef::Log.info("* Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}")
+      Chef::Log.info("* Short host name (cut from first dot of hostname): #{`hostname -s` == '' ? '<none>' : `hostname -s`}")
+      Chef::Log.info("* Domain of hostname: #{`domainname` == '' ? '<none>' : `domainname`}")
+      Chef::Log.info("* FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}")
+    end
+  end
+  action :create
 end
 
-hosts_ip = "#{local_ip}"
+ruby_block "show_hosts_before" do
+  block do
+    show_host_info
+  end
+  action :create
+end
 
 # Update /etc/hosts
 template "/etc/hosts" do
@@ -101,4 +113,9 @@ service "hostname" do
   action :restart
 end
 
-show_host_info
+ruby_block "show_hosts_after" do
+  block do
+    show_host_info
+  end
+  action :create
+end
