@@ -45,7 +45,7 @@ ruby_block "ebs_volume_backup" do
     #Apply parameter transformation
     template_contents = IO.read(template_file)
     template_contents.gsub!(/@@RUN_FILE@@/,runfile)
-    template_contents.gsub!(/@@EBS_BACKUP_PREFIX@@/, "-#{node.ebs.backup_prefix}")
+    template_contents.gsub!(/@@EBS_BACKUP_PREFIX@@/, "#{node.ebs.backup_prefix}-")
     template_contents.gsub!(/@@EBS_MOUNT_POINT@@/,node[:ebs][:mount_point])
     #Write configured template as the target backup file (let's restrict it to user exec since we have credentials stored...)
     cf = File.new(target_backup_script,File::CREAT|File::TRUNC|File::WRONLY,0700)
