@@ -1,154 +1,14 @@
 {
-    "conflicting": {
-    },
-    "providing": {
-    },
-    "version": "0.0.1",
-    "maintainer": "Chris Fordham",
-    "attributes": {
-      "ebs/backup_keep_weekly": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": "4",
-        "type": "string",
-        "recipes": [
-
-        ],
-        "description": "The number of weekly snapshots to keep (i.e. rotation size). Default: 6.  See \"Archiving Snapshots\" on RightScale Support for further details on the archiving logic.",
-        "display_name": "EBS backup keep weekly"
-      },
-      "ebs/backup_keep_yearly": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": "2",
-        "type": "string",
-        "recipes": [
-
-        ],
-        "description": "The number of yearly snapshots to keep (i.e. rotation size). Default: 2.  See \"Archiving Snapshots\" on RightScale Support for further details on the archiving logic.",
-        "display_name": "EBS backup keep yearly"
-      },
-      "ebs/backup_prefix": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": "mybackup",
-        "type": "string",
-        "recipes": [
-
-        ],
-        "description": "The EBS volume backup prefix",
-        "display_name": "EBS volume backup prefix"
-      },
-      "ebs/backup_keep_monthly": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": "12",
-        "type": "string",
-        "recipes": [
-
-        ],
-        "description": "The number of monthly snapshots to keep (i.e. rotation size).  Default: 12.  See \"Archiving Snapshots\" on RightScale Support for further details on the archiving logic.",
-        "display_name": "EBS backup keep monthly"
-      },
-      "ebs/backup_keep_daily": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": "14",
-        "type": "string",
-        "recipes": [
-
-        ],
-        "description": "The number of daily snapshots to keep (i.e. rotation size). Default: 14.  See \"Archiving Snapshots\" on RightScale Support for further details on the archiving logic.",
-        "display_name": "EBS backup keep daily"
-      },
-      "ebs/restore_prefix_override": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": "",
-        "type": "string",
-        "recipes": [
-
-        ],
-        "description": "Override the EBS volume restore backup prefix",
-        "display_name": "EBS volume restore prefix override"
-      },
-      "ebs/restore_fs_type": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": "xfs",
-        "type": "string",
-        "recipes": [
-
-        ],
-        "description": "The EBS volume filestytem type",
-        "display_name": "EBS volume restore filesystem type"
-      },
-      "ebs/backup_keep_last": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": "60",
-        "type": "string",
-        "recipes": [
-
-        ],
-        "description": "The total number of snapshots to keep.  The oldest snapshot will be deleted when this value is exceeded.  Default: 60.  See \"Archiving Snapshots\" on RightScale Support for further details on the archiving logic.",
-        "display_name": "EBS backup keep last"
-      },
-      "ebs/mount_point": {
-        "required": "optional",
-        "calculated": false,
-        "choice": [
-
-        ],
-        "default": "/mnt/ebs",
-        "type": "string",
-        "recipes": [
-
-        ],
-        "description": "The EBS volume restore mount point",
-        "display_name": "EBS volume restore mount point"
-      }
-    },
-    "replacing": {
-    },
     "license": "Apache 2.0",
-    "maintainer_email": "chris@xhost.com.au",
-    "groupings": {
-    },
-    "recommendations": {
+    "conflicting": {
     },
     "dependencies": {
     },
-    "name": "rs_ebs",
-    "recipes": {
-      "rs_ebs::default": "Installs RightScale EBS Tools",
-      "rs_ebs::volume_restore": "Restores a new EBS volume from an EBS snapshot",
-      "rs_ebs::volume_continuous_backups": "Updates cron for regular EBS snapshots",
-      "rs_ebs::tools_install": "Installs RightScale EBS Tools"
+    "providing": {
+    },
+    "maintainer": "Chris Fordham",
+    "description": "Installs RightScale EBS Tools",
+    "replacing": {
     },
     "platforms": {
       "debian": [
@@ -164,8 +24,156 @@
 
       ]
     },
-    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
-    "suggestions": {
+    "version": "0.0.1",
+    "maintainer_email": "chris@xhost.com.au",
+    "groupings": {
     },
-    "description": "Installs RightScale EBS Tools"
+    "recommendations": {
+    },
+    "name": "rs_ebs",
+    "recipes": {
+      "rs_ebs::default": "Installs RightScale EBS Tools.",
+      "rs_ebs::volume_restore": "Restores a new EBS volume from an EBS snapshot.",
+      "rs_ebs::volume_continuous_backups": "Updates cron for regular EBS snapshots.",
+      "rs_ebs::volume_backup": "Takes a regular EBS snapshot of an attached EBS volume.",
+      "rs_ebs::tools_install": "Installs RightScale EBS Tools."
+    },
+    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+    "attributes": {
+      "ebs/backup_keep_weekly": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "4",
+        "type": "string",
+        "recipes": [
+          "rs_ebs::volume_backup",
+          "rs_ebs::volume_continuous_backups"
+        ],
+        "display_name": "EBS backup keep weekly",
+        "description": "The number of weekly snapshots to keep (i.e. rotation size). Default: 6.  See \"Archiving Snapshots\" on RightScale Support for further details on the archiving logic."
+      },
+      "ebs/backup_keep_yearly": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "2",
+        "type": "string",
+        "recipes": [
+          "rs_ebs::volume_backup",
+          "rs_ebs::volume_continuous_backups"
+        ],
+        "display_name": "EBS backup keep yearly",
+        "description": "The number of yearly snapshots to keep (i.e. rotation size). Default: 2.  See \"Archiving Snapshots\" on RightScale Support for further details on the archiving logic."
+      },
+      "ebs/backup_prefix": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "mybackup",
+        "type": "string",
+        "recipes": [
+          "rs_ebs::volume_restore",
+          "rs_ebs::volume_backup",
+          "rs_ebs::volume_continuous_backups"
+        ],
+        "display_name": "EBS volume backup prefix",
+        "description": "The EBS volume backup prefix"
+      },
+      "ebs/backup_keep_monthly": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "12",
+        "type": "string",
+        "recipes": [
+          "rs_ebs::volume_backup",
+          "rs_ebs::volume_continuous_backups"
+        ],
+        "display_name": "EBS backup keep monthly",
+        "description": "The number of monthly snapshots to keep (i.e. rotation size).  Default: 12.  See \"Archiving Snapshots\" on RightScale Support for further details on the archiving logic."
+      },
+      "ebs/backup_keep_daily": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "14",
+        "type": "string",
+        "recipes": [
+          "rs_ebs::volume_backup",
+          "rs_ebs::volume_continuous_backups"
+        ],
+        "display_name": "EBS backup keep daily",
+        "description": "The number of daily snapshots to keep (i.e. rotation size). Default: 14.  See \"Archiving Snapshots\" on RightScale Support for further details on the archiving logic."
+      },
+      "ebs/restore_prefix_override": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "",
+        "type": "string",
+        "recipes": [
+          "rs_ebs::volume_restore"
+        ],
+        "display_name": "EBS volume restore prefix override",
+        "description": "Override the EBS volume restore backup prefix"
+      },
+      "ebs/restore_fs_type": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "xfs",
+        "type": "string",
+        "recipes": [
+          "rs_ebs::volume_restore"
+        ],
+        "display_name": "EBS volume restore filesystem type",
+        "description": "The EBS volume filestytem type"
+      },
+      "ebs/backup_keep_last": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "60",
+        "type": "string",
+        "recipes": [
+          "rs_ebs::volume_backup",
+          "rs_ebs::volume_continuous_backups"
+        ],
+        "display_name": "EBS backup keep last",
+        "description": "The total number of snapshots to keep.  The oldest snapshot will be deleted when this value is exceeded.  Default: 60.  See \"Archiving Snapshots\" on RightScale Support for further details on the archiving logic."
+      },
+      "ebs/mount_point": {
+        "required": "optional",
+        "calculated": false,
+        "choice": [
+
+        ],
+        "default": "/mnt/ebs",
+        "type": "string",
+        "recipes": [
+          "rs_ebs::volume_restore"
+        ],
+        "display_name": "EBS volume restore mount point",
+        "description": "The EBS volume restore mount point"
+      }
+    },
+    "suggestions": {
+    }
   }
