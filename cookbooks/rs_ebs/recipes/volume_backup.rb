@@ -24,7 +24,10 @@ ruby_block "ebs_volume_backup" do
     require '/var/spool/ec2/meta-data.rb'
     require '/var/spool/cloud/user-data.rb'
 
+    # ebstools directory
     ebs_basedir="/opt/rightscale/ebs"
+    # The run file to create for collectd to monitor
+    runfile = "/var/run/ebs-binary-backup-#{node[:ebs][:backup_prefix]}"
 
     # Set the backup template, substituting the variables
     template_file = "#{ebs_basedir}/etc/cron-backup-ebs.template"
