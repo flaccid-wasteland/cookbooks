@@ -12,7 +12,7 @@ attribute "sys/hostname",
   :display_name => "Hostname",
   :description => "The hostname that you would like this machine to have.",
   :required => "optional",
-  :default => "localhost",
+  :default => nil,
   :recipes => [ "sys::hostname" ]
 
 attribute "sys/domain_name",
