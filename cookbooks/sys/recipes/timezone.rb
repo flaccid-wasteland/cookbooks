@@ -25,7 +25,9 @@ template "/etc/timezone" do
   source "timezone.erb"
 end
 
-link "/usr/share/zoneinfo/#{node[:sys][:timezone]}" do
+timezone = node[:sys][:timezone].gsub!('_',' ')
+
+link "/usr/share/zoneinfo/#{timezone}" do
   to "/etc/localtime"
   Chef::Log.info("Setting time zone to #{node[:sys][:timezone]}")
 end
