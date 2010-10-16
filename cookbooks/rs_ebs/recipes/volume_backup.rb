@@ -27,7 +27,7 @@ ruby_block "ebs_volume_backup" do
     ebs_basedir="/opt/rightscale/ebs"
 
     # Set the backup template, substituting the variables
-    template_file = "#{ebs_basedir}/etc/ebs-vol-backup-#{node.ebs.backup_prefix}.template"
+    template_file = "#{ebs_basedir}/etc/cron-backup-ebs.template"
     target_dir = "/usr/local/bin"
     target_filename = "ebs-vol-backup-#{node.ebs.backup_prefix}.rb"
     target_backup_script = "#{target_dir}/#{target_filename}"
