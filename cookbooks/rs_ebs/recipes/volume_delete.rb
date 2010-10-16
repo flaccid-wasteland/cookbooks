@@ -24,8 +24,10 @@ ruby_block "delete_ebs_volume" do
     require 'fileutils'
     require '/var/spool/cloud/user-data.rb'
     require '/opt/rightscale/ebs/ec2_ebs_utils.rb'
-
-    ebs=RightScale::Ec2EbsUtils.new(
+    
+    puts `gem install rest-client`
+    
+    ebs = RightScale::Ec2EbsUtils.new(
       :mount_point => node[:ebs][:mount_point],
       :rs_api_url => ENV['RS_API_URL']
     )
