@@ -32,7 +32,7 @@ end
 
 hosts_ip = "#{local_ip}"
 
-ruby_block "show_host_info" do
+ruby_block "show_hosts_info" do
   block do
     def show_host_info
       # Display current hostname values
@@ -48,7 +48,7 @@ ruby_block "show_host_info" do
   action :create
 end
 
-ruby_block "show_hosts_before" do
+ruby_block "show_hosts_info" do
   block do
     show_host_info
   end
@@ -113,7 +113,7 @@ service "hostname" do
   action :restart
 end
 
-ruby_block "show_hosts_after" do
+ruby_block "show_hosts_info" do
   block do
     show_host_info
   end
