@@ -40,7 +40,7 @@ ruby_block "ebs_volume_continuous_backups" do
     #Apply parameter transformation
     template_contents = IO.read(template_file)
     template_contents.gsub!(/@@RUN_FILE@@/,runfile)
-    template_contents.gsub!(/@@EBS_BACKUP_PREFIX@@/,node[:ebs][:backup_prefix])
+    template_contents.gsub!(/@@EBS_BACKUP_PREFIX@@/, "-#{node.ebs.backup_prefix}")
     template_contents.gsub!(/@@EBS_MOUNT_POINT@@/,node[:ebs][:mount_point])
     #Write configured template as the target cron file (let's restrict it to user exec since we have credentials stored...)
     cf = File.new(target_cronfile,File::CREAT|File::TRUNC|File::WRONLY,0700)
@@ -60,10 +60,10 @@ ruby_block "ebs_volume_continuous_backups" do
     #  
     #  Still allow override via input variable,but hide the input variable
     cronmin = 5+rand(54)
-    keep_daily = node[:ebs][:ebs_backup_keep_daily] || "14"
-    keep_weekly = node[:ebs][:ebs_backup_keep_weekly] || "6" 
-    keep_monthly = node[:ebs][:ebs_backup_keep_monthly] || "12"
-    keep_yearly = node[:ebs][:ebs_backup_keep_yearly] || "2"
+    keep_daily = node[:ebs][:backup_keep_daily] || "14"
+    keep_weekly = node[:ebs][:backup_keep_weekly] || "6" 
+    keep_monthly = node[:ebs][:backup_keep_monthly] || "12"
+    keep_yearly = node[:ebs][:backup_keep_yearly] || "2"
 
     #If the user hasn't specified a time via the input,
     #revert to the default of hourly backups.

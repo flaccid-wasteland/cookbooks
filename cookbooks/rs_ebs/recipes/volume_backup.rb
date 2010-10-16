@@ -29,11 +29,11 @@ ruby_block "ebs_volume_backup" do
     # The run file to create for collectd to monitor
     runfile = "/var/run/ebs-binary-backup-#{node[:ebs][:backup_prefix]}"
 
-    max_snaps = node[:ebs][:ebs_backup_keep_last] || "60" # default keep 60 snapshots
-    keep_daily = node[:ebs][:ebs_backup_keep_daily] || "14"
-    keep_weekly = node[:ebs][:ebs_backup_keep_weekly] || "6" 
-    keep_monthly = node[:ebs][:ebs_backup_keep_monthly] || "12"
-    keep_yearly = node[:ebs][:ebs_backup_keep_yearly] || "2"
+    max_snaps = node[:ebs][:backup_keep_last] || "60" # default keep 60 snapshots
+    keep_daily = node[:ebs][:backup_keep_daily] || "14"
+    keep_weekly = node[:ebs][:backup_keep_weekly] || "6" 
+    keep_monthly = node[:ebs][:backup_keep_monthly] || "12"
+    keep_yearly = node[:ebs][:backup_keep_yearly] || "2"
     
     # Set the backup template, substituting the variables
     template_file = "#{ebs_basedir}/etc/cron-backup-ebs.template"
@@ -45,7 +45,7 @@ ruby_block "ebs_volume_backup" do
     #Apply parameter transformation
     template_contents = IO.read(template_file)
     template_contents.gsub!(/@@RUN_FILE@@/,runfile)
-    template_contents.gsub!(/@@EBS_BACKUP_PREFIX@@/,node[:ebs][:backup_prefix])
+    template_contents.gsub!(/@@EBS_BACKUP_PREFIX@@/, "-#{node.ebs.backup_prefix}")
     template_contents.gsub!(/@@EBS_MOUNT_POINT@@/,node[:ebs][:mount_point])
     #Write configured template as the target backup file (let's restrict it to user exec since we have credentials stored...)
     cf = File.new(target_backup_script,File::CREAT|File::TRUNC|File::WRONLY,0700)
