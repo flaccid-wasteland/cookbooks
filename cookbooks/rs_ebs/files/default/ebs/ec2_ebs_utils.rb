@@ -1,5 +1,7 @@
 # Common class for EBS based backups/restores
 
+puts `gem install rest-client`
+
 require 'rubygems'
 require 'rest-client'
 require 'cgi'
