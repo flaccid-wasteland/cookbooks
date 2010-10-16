@@ -34,6 +34,7 @@
     "recipes": {
       "rs_ebs::default": "Installs RightScale EBS Tools.",
       "rs_ebs::volume_restore": "Restores a new EBS volume from an EBS snapshot.",
+      "rs_ebs::volume_delete": "Unmounts, detaches and delets and EBS volume.",
       "rs_ebs::volume_continuous_backups": "Updates cron for regular EBS snapshots.",
       "rs_ebs::volume_backup": "Takes a regular EBS snapshot of an attached EBS volume.",
       "rs_ebs::tools_install": "Installs RightScale EBS Tools."
@@ -169,7 +170,9 @@
         "type": "string",
         "recipes": [
           "rs_ebs::volume_restore",
-          "rs_ebs::volume_backup"
+          "rs_ebs::volume_backup",
+          "rs_ebs::volume_continuous_backups",
+          "rs_ebs::volume_delete"
         ],
         "display_name": "EBS volume restore mount point",
         "description": "The EBS volume restore mount point"
