@@ -29,6 +29,8 @@ ruby_block "ebs_volume_backup" do
     # The run file to create for collectd to monitor
     runfile = "/var/run/ebs-binary-backup-#{node[:ebs][:backup_prefix]}"
 
+    max_snaps = node[:ebs][:ebs_backup_keep_last] || "60" # default keep 60 snapshots
+    
     # Set the backup template, substituting the variables
     template_file = "#{ebs_basedir}/etc/cron-backup-ebs.template"
     target_dir = "/usr/local/bin"
