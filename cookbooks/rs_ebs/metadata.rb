@@ -25,7 +25,7 @@ attribute "ebs/mount_point",
   :display_name => "EBS volume restore mount point",
   :description => "The EBS volume restore mount point",
   :default => "/mnt/ebs",
-  :recipes => [ "rs_ebs::volume_restore" ]
+  :recipes => [ "rs_ebs::volume_restore", "rs_ebs::volume_backup" ]
 
 attribute "ebs/backup_prefix",
   :display_name => "EBS volume backup prefix",
