@@ -20,6 +20,8 @@ include_recipe "rs_ebs::tools_install"
 
 ruby_block "delete_ebs_volume" do
   block do
+    puts `/opt/rightscale/sandbox/bin/gem install rest-client` # workaround because gem does not seem to install normally
+    
     require 'rubygems'
     require 'fileutils'
     require '/var/spool/cloud/user-data.rb'
