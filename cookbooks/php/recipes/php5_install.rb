@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: php
-# Recipe:: php5
+# Recipe:: php5_install
 #
 # Copyright 2010, Chris Fordham
 #
