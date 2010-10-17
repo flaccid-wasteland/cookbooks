@@ -1,0 +1,31 @@
+{
+    "license": "Apache 2.0",
+    "conflicting": {
+    },
+    "dependencies": {
+    },
+    "providing": {
+    },
+    "maintainer": "Chris Fordham",
+    "description": "Installs/Configures the Lynx www text browser",
+    "replacing": {
+    },
+    "platforms": {
+    },
+    "version": "0.0.1",
+    "maintainer_email": "chris@xhost.com.au",
+    "groupings": {
+    },
+    "recommendations": {
+    },
+    "name": "lynx",
+    "recipes": {
+      "lynx::default": "Installs Lynx via ::install",
+      "lynx::install": "Installs Lynx"
+    },
+    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+    "attributes": {
+    },
+    "suggestions": {
+    }
+  }
