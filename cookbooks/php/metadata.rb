@@ -5,4 +5,4 @@ description      "Installs/Configures php"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
-recipe "php::php5", "Installs PHP 5."
+recipe "php::php5_install", "Installs PHP 5."
