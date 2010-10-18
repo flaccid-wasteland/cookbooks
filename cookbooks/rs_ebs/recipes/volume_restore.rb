@@ -43,7 +43,7 @@ ruby_block "restore_ebs_volume" do
     #Chef::Log.info("RS_API_URL: #{ENV['RS_API_URL']}")
     Chef::Log.info("Starting EBS volume restore.")
     Chef::Log.info("Running /opt/rightscale/ebs/restoreEBS_stripe.rb -n #{ebs_prefix_name} -p #{mount_point}")
-    puts `/opt/rightscale/ebs/restoreEBS_stripe.rb -n #{ebs_prefix_name} -p #{mount_point}`
+    puts `/opt/rightscale/ebs/restoreEBS_stripe.rb --force -l #{ebs_prefix_name} -p #{mount_point}`
 
     Chef::Log.info("EBS volume restore complete.")
     system("logger -t RightScale EBS volume successfuly restored from snapshot, mounted on #{mount_point}.")
