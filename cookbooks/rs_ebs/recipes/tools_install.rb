@@ -29,6 +29,7 @@ end
 
 gem_package "SystemTimer" do
   gem_binary "/opt/rightscale/sandbox/bin/gem"
+  version "1.2"
   action :install
 end
 
