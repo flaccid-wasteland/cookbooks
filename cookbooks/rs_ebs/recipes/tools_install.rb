@@ -33,6 +33,17 @@ gem_package "SystemTimer" do
   action :install
 end
 
+gem_package "json" do
+  version "1.2.4"
+  action :install
+end
+
+gem_package "json" do
+  gem_binary "/opt/rightscale/sandbox/bin/gem"
+  version "1.2.4"
+  action :install
+end
+
 gem_package "rest-client" do
   version "1.6.0"
   action :install
