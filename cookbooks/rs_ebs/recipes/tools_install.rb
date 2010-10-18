@@ -28,6 +28,11 @@ gem_package "right_aws" do
 end
 
 gem_package "SystemTimer" do
+  version "1.2"
+  action :install
+end
+
+gem_package "SystemTimer" do
   gem_binary "/opt/rightscale/sandbox/bin/gem"
   version "1.2"
   action :install
