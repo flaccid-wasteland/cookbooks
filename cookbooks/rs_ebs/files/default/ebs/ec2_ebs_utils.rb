@@ -1,7 +1,7 @@
 # Common class for EBS based backups/restores
 
 require 'rubygems'
-require 'rest_client'
+require 'rest-client'
 require 'cgi'
 require 'json'
 require File.dirname(__FILE__) + '/disk_utils.rb'
