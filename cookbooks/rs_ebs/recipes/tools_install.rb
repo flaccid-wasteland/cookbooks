@@ -22,25 +22,25 @@ package "xfsprogs" do
 end
 
 gem_package "right_aws" do
-  gem_binary "/opt/rightscale/bin/gem"
+  gem_binary "/opt/rightscale/sandbox/bin/gem"
   version "2.0.0"
   action :install
 end
 
 gem_package "rest-client" do
-  gem_binary "/opt/rightscale/bin/gem"
+  gem_binary "/opt/rightscale/sandbox/bin/gem"
   version "1.6.0"
   action :install
 end
 
 gem_package "json" do
-  gem_binary "/opt/rightscale/bin/gem"
+  gem_binary "/opt/rightscale/sandbox/bin/gem"
   version "1.4.6"
   action :install
 end
 
 gem_package "terminator" do
-  gem_binary "/opt/rightscale/bin/gem"
+  gem_binary "/opt/rightscale/sandbox/bin/gem"
   version "0.4.4"
   action :install
 end
