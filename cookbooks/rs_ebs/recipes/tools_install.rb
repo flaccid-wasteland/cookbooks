@@ -48,3 +48,5 @@ remote_directory "/opt/rightscale/ebs" do
   group "root"
   mode "0755"
 end
+
+Gem.clear_paths
