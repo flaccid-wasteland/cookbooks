@@ -39,6 +39,11 @@ gem_package "rest-client" do
   action :install
 end
 
+gem_package "rest-client" do
+  version "1.6.0"
+  action :install
+end
+
 remote_directory "/opt/rightscale/ebs" do
   source "ebs"
   files_owner "root"
