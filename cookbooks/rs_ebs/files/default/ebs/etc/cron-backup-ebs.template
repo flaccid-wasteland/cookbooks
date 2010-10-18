@@ -68,7 +68,7 @@ cmd_params=""
 keep_params = "-D #{options[:keep_daily]} -W #{options[:keep_weekly]} -M #{options[:keep_monthly]} -Y #{options[:keep_yearly]}"
 puts "#{keep_params}"
 backupfile_date=`date +%Y%m%d%H%M`.strip
-cmd_params = "-s \'#{backupfile_date}\' -n \'#{backup_snap_prefix}\'  -c \'#{backup_snap_prefix}\' -t 'rs_snapshot' -p #{ebs_mount_point} -m #{options[:max_snapshots]} #{keep_params}"
+cmd_params = "-s \'#{backupfile_date}\' -l \'#{backup_snap_prefix}\' -n \'#{backup_snap_prefix}\'  -c \'#{backup_snap_prefix}\' -t 'rs_snapshot' -p #{ebs_mount_point} -m #{options[:max_snapshots]} #{keep_params}"
 
 # Execute the backup command
 puts "/opt/rightscale/ebs/backupEBS_stripe.rb #{cmd_params}" 
