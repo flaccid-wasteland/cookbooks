@@ -27,21 +27,14 @@ gem_package "right_aws" do
   action :install
 end
 
+gem_package "SystemTimer" do
+  gem_binary "/opt/rightscale/sandbox/bin/gem"
+  action :install
+end
+
 gem_package "rest-client" do
   gem_binary "/opt/rightscale/sandbox/bin/gem"
   version "1.6.0"
-  action :install
-end
-
-gem_package "json" do
-  gem_binary "/opt/rightscale/sandbox/bin/gem"
-  version "1.4.6"
-  action :install
-end
-
-gem_package "terminator" do
-  gem_binary "/opt/rightscale/sandbox/bin/gem"
-  version "0.4.4"
   action :install
 end
 
