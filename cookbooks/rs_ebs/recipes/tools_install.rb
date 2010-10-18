@@ -21,6 +21,10 @@ package "xfsprogs" do
   action :install
 end
 
+package "lvm2" do
+  action :install
+end
+
 gem_package "right_aws" do
   gem_binary "/opt/rightscale/sandbox/bin/gem"
   version "2.0.0"
