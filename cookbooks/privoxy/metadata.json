@@ -1,0 +1,31 @@
+{
+    "license": "Apache 2.0",
+    "conflicting": {
+    },
+    "dependencies": {
+    },
+    "providing": {
+    },
+    "maintainer": "Chris Fordham",
+    "description": "Installs/Configures privoxy",
+    "replacing": {
+    },
+    "platforms": {
+    },
+    "version": "0.0.1",
+    "maintainer_email": "chris@xhost.com.au",
+    "groupings": {
+    },
+    "recommendations": {
+    },
+    "name": "privoxy",
+    "recipes": {
+      "lynx::default": "Installs Privoxy via ::install",
+      "lynx::install": "Installs Privoxy"
+    },
+    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+    "attributes": {
+    },
+    "suggestions": {
+    }
+  }
