@@ -20,8 +20,8 @@
     },
     "name": "privoxy",
     "recipes": {
-      "lynx::default": "Installs Privoxy via ::install",
-      "lynx::install": "Installs Privoxy"
+      "privoxy::default": "Installs Privoxy via ::install",
+      "privoxy::install": "Installs Privoxy"
     },
     "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
     "attributes": {
