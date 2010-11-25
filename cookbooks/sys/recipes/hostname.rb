@@ -103,14 +103,23 @@ bash "set_domainname" do
   EOH
 end
 
-# can be /etc/init.d/hostname.sh
 service "hostname" do
   case node[:platform]
-  when "debian","ubuntu"
+  when "ubuntu"
     service_name "hostname"
   end
   supports :restart => true, :status => true, :reload => true
   action :restart
+end
+
+# can be /etc/init.d/hostname.sh
+service "hostname.sh" do
+  case node[:platform]
+  when "debian"
+    service_name "hostname.sh"
+  end
+  supports :restart => , :status => true, :reload => false
+  action :start
 end
 
 ruby_block "show_hosts_info" do
