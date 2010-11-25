@@ -118,7 +118,7 @@ service "hostname.sh" do
   when "debian"
     service_name "hostname.sh"
   end
-  supports :restart => , :status => true, :reload => false
+  supports :restart => false, :status => true, :reload => false
   action :start
 end
 
