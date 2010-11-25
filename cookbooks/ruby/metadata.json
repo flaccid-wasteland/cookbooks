@@ -1,0 +1,30 @@
+{
+  "groupings": {
+  },
+  "attributes": {
+  },
+  "recommendations": {
+  },
+  "dependencies": {
+  },
+  "suggestions": {
+  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "recipes": {
+    "ruby::default": "Installs ruby"
+  },
+  "conflicting": {
+  },
+  "platforms": {
+  },
+  "license": "Apache 2.0",
+  "version": "0.0.1",
+  "providing": {
+  },
+  "maintainer": "Chris Fordham",
+  "name": "ruby",
+  "replacing": {
+  },
+  "description": "Installs/Configures ruby",
+  "maintainer_email": "chris@xhost.com.au"
+}
