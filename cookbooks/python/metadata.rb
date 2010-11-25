@@ -5,4 +5,4 @@ description      "Installs python packages"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
-recipe "default", "Installs python and common python module packages"
+recipe "python::default", "Installs python and common python module packages"

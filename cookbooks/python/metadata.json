@@ -11,7 +11,7 @@
   },
   "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
   "recipes": {
-    "default": "Installs python and common python module packages"
+    "python::default": "Installs python and common python module packages"
   },
   "conflicting": {
   },
