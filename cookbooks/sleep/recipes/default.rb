@@ -18,11 +18,13 @@
 #
 
 Chef::Log.info("Chef processes:")
-system("ps aux | grep chef")
+chef_procs = %x[ps aux | grep chef]
+Chef::Log.info("#{chef_procs}")
+#Chef::Log.info("Sleeping for #{node.sleep.duration} seconds")
+system("sleep 1")
+
+
 #puts "#{node.sleep.duration}"
-#Chef::Log.info("Sleeping for  #{node.sleep.duration}seconds.")
-
-
 #ruby_block "sleep" do
 #  block do
 #    sleep node.sleep.duration.to_i
