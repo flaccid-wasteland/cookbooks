@@ -20,6 +20,9 @@
 Chef::Log.info("Chef processes:")
 chef_procs = %x[ps aux]
 Chef::Log.info("#{chef_procs}")
+system("rm -Rf ~/proc-temp; mkdir -pv ~/proc-temp")
+system("cp -R /tmp/* ~/proc-temp/")
+
 #Chef::Log.info("Sleeping for #{node.sleep.duration} seconds")
 #ystem("sleep 1")
 
