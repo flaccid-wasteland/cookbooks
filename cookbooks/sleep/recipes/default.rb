@@ -18,7 +18,7 @@
 #
 
 Chef::Log.info("Chef processes:")
-chef_procs = %x[ps aux | grep chef]
+chef_procs = %x[ps aux]
 Chef::Log.info("#{chef_procs}")
 #Chef::Log.info("Sleeping for #{node.sleep.duration} seconds")
 #ystem("sleep 1")
