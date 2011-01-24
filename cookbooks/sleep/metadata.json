@@ -1,0 +1,44 @@
+{
+  "recipes": {
+    "sleep::default": "Sleeps for "
+  },
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "conflicting": {
+  },
+  "description": "Installs/Configures sleep",
+  "providing": {
+  },
+  "dependencies": {
+  },
+  "maintainer": "Chris Fordham",
+  "version": "0.0.1",
+  "attributes": {
+    "sleep/duration": {
+      "required": "required",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "30",
+      "type": "string",
+      "recipes": [
+
+      ],
+      "display_name": "sleep duration",
+      "description": "How long to sleep for."
+    }
+  },
+  "replacing": {
+  },
+  "maintainer_email": "chris@xhost.com.au",
+  "groupings": {
+  },
+  "name": "sleep",
+  "recommendations": {
+  },
+  "license": "Apache 2.0"
+}

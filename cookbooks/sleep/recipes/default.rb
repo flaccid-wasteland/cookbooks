@@ -22,7 +22,8 @@ Chef::Log.info("Chef processes: #{chef_processes}")
 
 ruby_block "sleep" do
   block do
-    sleep "#{node.sleep.duration}"
+    Chef::Log.info("Sleeping for #{node.sleep.duration} seconds.")
+    sleep node.sleep.duration.to_i
   end
   action :create
 end

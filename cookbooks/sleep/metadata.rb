@@ -11,4 +11,4 @@ attribute "sleep/duration",
   :display_name => "sleep duration",
   :description => "How long to sleep for.",
   :required => "required",
-  :default => 30,
+  :default => '30'
