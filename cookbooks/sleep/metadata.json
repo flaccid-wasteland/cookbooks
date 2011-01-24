@@ -1,6 +1,6 @@
 {
   "recipes": {
-    "sleep::default": "Sleeps for "
+    "sleep::default": "Sleeps for a period of time"
   },
   "suggestions": {
   },
@@ -17,7 +17,7 @@
   "maintainer": "Chris Fordham",
   "version": "0.0.1",
   "attributes": {
-    "sleep/duration": {
+    "duration": {
       "required": "optional",
       "calculated": false,
       "choice": [
@@ -26,7 +26,7 @@
       "default": "30",
       "type": "string",
       "recipes": [
-
+        "sleep::default"
       ],
       "display_name": "sleep duration",
       "description": "How long to sleep for."

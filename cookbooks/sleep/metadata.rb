@@ -5,9 +5,10 @@ description      "Installs/Configures sleep"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
-recipe "sleep::default", "Sleeps for "
+recipe "sleep::default", "Sleeps for a period of time"
 
-attribute "sleep/duration",
+attribute "duration",
   :display_name => "sleep duration",
   :description => "How long to sleep for.",
-  :default => '30'
+  :recipes => [ 'sleep::default' ],
+  :default => "30"
