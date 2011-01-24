@@ -18,7 +18,7 @@
   "version": "0.0.1",
   "attributes": {
     "sleep/duration": {
-      "required": "required",
+      "required": "optional",
       "calculated": false,
       "choice": [
 

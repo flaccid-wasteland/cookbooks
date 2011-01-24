@@ -17,14 +17,15 @@
 # limitations under the License.
 #
 
-chef_processes = system("ps aux | grep chef")
-Chef::Log.info("Chef processes: #{chef_processes}")
+Chef::Log.info("Chef processes:")
+system("ps aux | grep chef")
+#puts "#{node.sleep.duration}"
+#Chef::Log.info("Sleeping for  #{node.sleep.duration}seconds.")
 
-ruby_block "sleep" do
-  block do
-    Chef::Log.info("Sleeping for #{node.sleep.duration} seconds.")
-    sleep node.sleep.duration.to_i
-  end
-  action :create
-end
-sleep
+
+#ruby_block "sleep" do
+#  block do
+#    sleep node.sleep.duration.to_i
+#  end
+#  action :create
+#end
