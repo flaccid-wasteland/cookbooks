@@ -1,5 +1,6 @@
 {
   "recipes": {
+    "denyhosts::default": "Installs DenyHosts"
   },
   "suggestions": {
   },
@@ -8,7 +9,7 @@
   "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
   "conflicting": {
   },
-  "description": "Installs/Configures denyhosts",
+  "description": "Installs/Configures DenyHosts",
   "providing": {
   },
   "dependencies": {
