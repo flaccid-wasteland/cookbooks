@@ -1,0 +1,10 @@
+default[:ebs][:mount_point] = '/mnt/ebs'
+default[:ebs][:restore_fs_type] = 'xfs'
+default[:ebs][:backup_prefix] = nil
+default[:ebs][:restore_prefix_override] = nil
+default[:ebs][:backup_frequency] = "1 * * * *"
+default[:ebs][:backup_keep_last] = "60"
+default[:ebs][:backup_keep_daily] = "14"
+default[:ebs][:backup_keep_monthly] = "12"
+default[:ebs][:backup_keep_weekly] = "6"
+default[:ebs][:backup_keep_yearly] = "2"
