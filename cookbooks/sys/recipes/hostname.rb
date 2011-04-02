@@ -67,7 +67,7 @@ file "/etc/hostname" do
   owner "root"
   group "root"
   mode "0755"
-  content "#{node[:sys][:hostname]}"
+  content "#{node[:sys][:short_hostname]}"
   action :create
 end
 
@@ -87,12 +87,12 @@ bash "set_hostname" do
   case node[:platform]
   when "centos","redhat"
     code <<-EOH
-      sed -i "s/HOSTNAME=.*/HOSTNAME=#{node.sys.hostname}/" /etc/sysconfig/network
-      hostname #{node.sys.hostname}
+      sed -i "s/HOSTNAME=.*/HOSTNAME=#{node.sys.short_hostname}.#{node.sys.domain_name}/" /etc/sysconfig/network
+      hostname #{node.sys.short_hostname}.#{node.sys.domain_name}
     EOH
   end
   code <<-EOH
-    hostname #{node.sys.hostname}
+    hostname #{node.sys.short_hostname}.#{node.sys.domain_name}
   EOH
 end
 
