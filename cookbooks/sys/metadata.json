@@ -28,7 +28,7 @@
       "description": "The short hostname that you would like this node to have, e.g. kryten"
     },
     "sys/domain_name": {
-      "required": "required",
+      "required": "optional",
       "calculated": false,
       "choice": [
 
