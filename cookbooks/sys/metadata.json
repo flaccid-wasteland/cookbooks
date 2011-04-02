@@ -13,8 +13,8 @@
     "sys::timezone": "Sets the system time zone."
   },
   "attributes": {
-    "sys/hostname": {
-      "required": "optional",
+    "sys/short_hostname": {
+      "required": "required",
       "calculated": false,
       "choice": [
 
@@ -24,22 +24,22 @@
       "recipes": [
         "sys::hostname"
       ],
-      "display_name": "Hostname",
-      "description": "The hostname that you would like this machine to have."
+      "display_name": "Short Hostname",
+      "description": "The short hostname that you would like this node to have, e.g. kryten"
     },
     "sys/domain_name": {
-      "required": "optional",
+      "required": "required",
       "calculated": false,
       "choice": [
 
       ],
-      "default": "",
+      "default": null,
       "type": "string",
       "recipes": [
         "sys::hostname"
       ],
       "display_name": "Domain Name",
-      "description": "The domain name that you would like this machine to have."
+      "description": "The domain name that you would like this node to have, e.g. domain.suf"
     },
     "sys/timezone": {
       "required": "optional",
@@ -67,7 +67,7 @@
         "sys::hostname"
       ],
       "display_name": "Domain Search Suffix",
-      "description": "The domain search suffix you would like this machine to have."
+      "description": "The domain search suffix you would like this node to have, e.g. domain.suf."
     }
   },
   "recommendations": {
