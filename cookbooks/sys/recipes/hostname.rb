@@ -55,7 +55,7 @@ log  "Setting hostname to #{hostname}"
 template "/etc/hosts" do
   source "hosts.erb"
   variables(
-    :node_ip => "{node_ip}",
+    :node_ip => "#{node_ip}",
     :hosts_list => "#{hosts_list}"
     )
 end
