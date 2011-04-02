@@ -52,6 +52,7 @@ if "#{node.sys.domain_name}" != "" then
 else
   hostname = node.sys.short_hostname
 end
+
 log  "Setting hostname for '#{hostname}'."
 
 # Update /etc/hosts
@@ -135,7 +136,6 @@ ruby_block "show_new_host_info" do
   block do
     # show new host values from system
     log "== New host/node information =="
-    @show_host_info
+    show_host_info
   end
-    action :create
 end
