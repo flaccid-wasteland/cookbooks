@@ -47,16 +47,14 @@ else
   hostname = node.sys.short_hostname
 end
 
+# show current host info
 log  "Setting hostname for '#{hostname}'."
 log "== Current host/node information =="
 show_host_info
 
-ruby_block "get_node_ip" do
-  block do
-    @node_ip = "#{@local_ip}"
-    Chef::Log.info("Node IP: #{@node_ip}")
-  end
-end
+# get node IP
+node_ip = "#{local_ip}"
+log "Node IP: #{node_ip}"
 
 # Update /etc/hosts
 log 'Configure /etc/hosts'
@@ -139,6 +137,6 @@ ruby_block "show_new_host_info" do
   block do
     # show new host values from system
     Chef::Log.info("== New host/node information ==")
-    @show_host_info
+    ::show_host_info
   end
 end
