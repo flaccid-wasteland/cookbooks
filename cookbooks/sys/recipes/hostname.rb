@@ -45,6 +45,7 @@ if "#{node.sys.domain_name}" != "" then
   hosts_lists = "#{sys.short_hostname}.#{node.sys.domain_name} #{node.sys.short_hostname}"
 else
   hostname = node.sys.short_hostname
+  hosts_lists = "#{sys.short_hostname}"
 end
 
 # show current host info
