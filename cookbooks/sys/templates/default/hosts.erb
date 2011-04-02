@@ -1,5 +1,5 @@
 127.0.0.1			localhost localhost.localdomain
-<%= @hosts_ip %>			<%= node[:sys][:hostname] %>.<%= node[:sys][:domain_name] %> <%= node[:sys][:hostname] %>
+<%= @hosts_ip %>			<%= node[:sys][:short_hostname] %>.<%= node[:sys][:domain_name] %> <%= node[:sys][:short_hostname] %>
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback
