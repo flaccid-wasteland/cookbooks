@@ -143,6 +143,7 @@ if platform?('debian')
   end
 end
 
+# rightlink commandline tools set tag with rs_tag
 log 'Setting hostname tag.'
 bash "set_node_hostname_tag" do
   code <<-EOH
