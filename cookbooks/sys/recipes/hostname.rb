@@ -31,7 +31,6 @@ end
 
 def show_host_info
   # Display current hostname values in log
-  log "== New host/node information =="
   log "Hostname: #{`hostname` == '' ? '<none>' : `hostname`}"
   log "Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}"
   log "Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}"
@@ -39,6 +38,9 @@ def show_host_info
   log "Domain of hostname: #{`domainname` == '' ? '<none>' : `domainname`}"
   log "FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}"
 end
+
+log "== Current host/node information =="
+show_host_info
 
 node_ip = "#{local_ip}"
 log "Node IP: #{node_ip}"
@@ -130,4 +132,5 @@ if platform?('debian')
 end
 
 # show new host values from system
+log "== New host/node information =="
 show_host_info
