@@ -107,6 +107,7 @@ case node[:platform]
       service_name "hostname"
       supports :restart => true, :status => true, :reload => true
       action :restart
+    end
   end
   when "debian"
     service "hostname.sh" do
@@ -114,6 +115,7 @@ case node[:platform]
       supports :restart => false, :status => true, :reload => false
       action :start
     end
+  end
 end
 
 # show new host values from system
