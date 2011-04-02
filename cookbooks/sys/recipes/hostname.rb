@@ -42,12 +42,17 @@ def show_host_info
 end
 
 hosts_ip = "#{local_ip}"
+hosts_list = node.sys.short_hostname
+if node.sys.domain_name then
+  hosts_lists = "#{sys.short_hostname}.#{node.sys.domain_name} #{node.sys.short_hostname}"
+end
 
 # Update /etc/hosts
 template "/etc/hosts" do
   source "hosts.erb"
   variables(
     :hosts_ip => hosts_ip
+    :hosts_list -=> hosts_list
     )
 end
 
