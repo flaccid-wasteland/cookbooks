@@ -18,7 +18,7 @@ attribute "sys/short_hostname",
 attribute "sys/domain_name",
   :display_name => "Domain Name",
   :description => "The domain name that you would like this node to have, e.g. domain.suf",
-  :required => "required",
+  :required => "optional",
   :default => nil,
   :recipes => [ "sys::hostname" ]
 
