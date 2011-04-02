@@ -107,6 +107,7 @@ if platform?("ubuntu")
     supports :restart => true, :status => true, :reload => true
     action :restart
   end
+end
 if platform?("debian")
   service "hostname.sh" do
     service_name "hostname.sh"
