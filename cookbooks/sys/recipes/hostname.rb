@@ -85,18 +85,20 @@ template "/etc/resolv.conf" do
 end
 
 # Call hostname command
-bash "set_hostname" do
-  case node[:platform]
-  when "centos","redhat"
-    log 'Setting hostname.'
+log 'Setting hostname.'
+if platform?('centos', 'redhat')
+  bash "set_hostname" do
     code <<-EOH
       sed -i "s/HOSTNAME=.*/HOSTNAME=#{hostname}/" /etc/sysconfig/network
       hostname #{hostname}
     EOH
   end
-  code <<-EOH
-    hostname #{hostname}
-  EOH
+else
+  bash "set_hostname" do
+    code <<-EOH
+      hostname #{hostname}
+    EOH
+  end
 end
 
 # Call domainname command
