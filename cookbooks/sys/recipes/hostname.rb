@@ -92,8 +92,6 @@ bash "set_domainname" do
 end
 
 # restart  hostname services on appropriate platforms
-
-
 case node[:platform]
   when "ubuntu"
     service "hostname" do
