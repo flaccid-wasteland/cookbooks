@@ -134,6 +134,7 @@ if platform?('debian')
   end
 end
 
+# Show the new host/node information
 ruby_block "show_new_host_info" do
   block do
     # show new host values from system
