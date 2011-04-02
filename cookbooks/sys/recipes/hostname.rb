@@ -53,7 +53,7 @@ end
 template "/etc/hosts" do
   source "hosts.erb"
   variables(
-    :hosts_ip => host_ip
+    :node_ip => node_ip
     :hosts_list -=> hosts_list
     )
 end
