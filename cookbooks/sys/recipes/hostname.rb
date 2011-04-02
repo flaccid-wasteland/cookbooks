@@ -55,7 +55,7 @@ file "/etc/hostname" do
   owner "root"
   group "root"
   mode "0755"
-  content "#{node[:sys][:short_hostname]}"
+  content "#{node.sys.short_hostname}"
   action :create
 end
 
@@ -65,8 +65,8 @@ template "/etc/resolv.conf" do
   source "resolv.conf.erb"
   variables(
     :nameserver => nameserver,
-    :domain => "#{node[:sys][:domain_name]}",
-    :search => "#{node[:sys][:search_suffix]}"
+    :domain => "#{node.sys.domain_name}",
+    :search => "#{node.sys.search_suffix}"
     )
 end
 
@@ -85,10 +85,12 @@ bash "set_hostname" do
 end
 
 # Call domainname command
-bash "set_domainname" do
-  code <<-EOH
-    domainname #{node.sys.domain_name}
-  EOH
+if "#{node.sys.domain_name}" != ""
+  bash "set_domainname" do
+    code <<-EOH
+      domainname #{node.sys.domain_name}
+      EOH
+  end
 end
 
 # restart  hostname services on appropriate platforms
