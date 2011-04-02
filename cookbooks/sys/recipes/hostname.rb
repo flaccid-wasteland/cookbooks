@@ -30,27 +30,23 @@ def local_ip
     Socket.do_not_reverse_lookup = orig
 end
 
-hosts_ip = "#{local_ip}"
-
-ruby_block "show_host_info" do
-  block do
-    def show_host_info
-      # Display current hostname values in log
-      log "Host/node information:"
-      log "* Hostname: #{`hostname` == '' ? '<none>' : `hostname`}"
-      log "* Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}"
-      log "* Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}"
-      log "* Short host name (cut from first dot of hostname): #{`hostname -s` == '' ? '<none>' : `hostname -s`}"
-      log "* Domain of hostname: #{`domainname` == '' ? '<none>' : `domainname`}"
-      log "* FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}"
-    end
-  end
-  action :create
+def show_host_info
+  # Display current hostname values in log
+  log "Host/node information:"
+  log "* Hostname: #{`hostname` == '' ? '<none>' : `hostname`}"
+  log "* Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}"
+  log "* Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}"
+  log "* Short host name (cut from first dot of hostname): #{`hostname -s` == '' ? '<none>' : `hostname -s`}"
+  log "* Domain of hostname: #{`domainname` == '' ? '<none>' : `domainname`}"
+  log "* FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}"
 end
+
+hosts_ip = "#{local_ip}"
+show_host_info
 
 ruby_block "show_hosts_info" do
   block do
-    @show_host_info
+    show_host_info
   end
   action :create
 end
@@ -103,6 +99,9 @@ bash "set_domainname" do
   EOH
 end
 
+# restart  hostname services on appropriate platforms
+
+
 case node[:platform]
   when "ubuntu"
     service "hostname" do
@@ -121,9 +120,4 @@ case node[:platform]
     end
 end
 
-ruby_block "show_hosts_info" do
-  block do
-    @show_host_info
-  end
-  action :create
-end
+show_host_info
