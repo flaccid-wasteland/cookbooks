@@ -21,7 +21,6 @@ require 'socket'
 
 def local_ip
   orig, Socket.do_not_reverse_lookup = Socket.do_not_reverse_lookup, true  # turn off reverse DNS resolution temporarily
-
   UDPSocket.open do |s|
     s.connect '64.233.187.99', 1
     s.addr.last
@@ -41,17 +40,20 @@ def show_host_info
   log "FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}"
 end
 
-hosts_ip = "#{local_ip}"
+node_ip = "#{local_ip}"
 hosts_list = node.sys.short_hostname
 if node.sys.domain_name then
+  hostname = "#{sys.short_hostname}.#{node.sys.domain_name}"
   hosts_lists = "#{sys.short_hostname}.#{node.sys.domain_name} #{node.sys.short_hostname}"
+else
+  hostname = node.sys.short_hostname
 end
 
 # Update /etc/hosts
 template "/etc/hosts" do
   source "hosts.erb"
   variables(
-    :hosts_ip => hosts_ip
+    :hosts_ip => host_ip
     :hosts_list -=> hosts_list
     )
 end
@@ -85,7 +87,7 @@ bash "set_hostname" do
     EOH
   end
   code <<-EOH
-    hostname #{node.sys.short_hostname}.#{node.sys.domain_name}
+    hostname #{@hostname}
   EOH
 end
 
