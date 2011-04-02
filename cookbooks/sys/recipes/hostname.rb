@@ -136,6 +136,6 @@ ruby_block "show_new_host_info" do
   block do
     # show new host values from system
     Chef::Log.info("== New host/node information ==")
-    show_host_info
+    @show_host_info
   end
 end
