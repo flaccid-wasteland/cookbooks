@@ -42,7 +42,7 @@ end
 
 node_ip = "#{local_ip}"
 hosts_list = node.sys.short_hostname
-if node.sys.domain_name != "" then
+if "#{node.sys.domain_name}" != "" then
   hostname = "#{sys.short_hostname}.#{node.sys.domain_name}"
   hosts_lists = "#{sys.short_hostname}.#{node.sys.domain_name} #{node.sys.short_hostname}"
 else
@@ -53,9 +53,9 @@ end
 template "/etc/hosts" do
   source "hosts.erb"
   variables(
-    :node_ip => node_ip
-    :hosts_list -=> hosts_list
-    )
+    :node_ip => "#{node_ip}"
+    :hosts_list => "#{hosts_list}"
+  )
 end
 
 file "/etc/hostname" do
