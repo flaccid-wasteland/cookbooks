@@ -137,6 +137,11 @@ ruby_block "show_new_host_info" do
   block do
     # show new host values from system
     Chef::Log.info("== New host/node information ==")
-    ::show_host_info
+    log "Hostname: #{`hostname` == '' ? '<none>' : `hostname`}"
+    log "Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}"
+    log "Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}"
+    log "Short host name (cut from first dot of hostname): #{`hostname -s` == '' ? '<none>' : `hostname -s`}"
+    log "Domain of hostname: #{`domainname` == '' ? '<none>' : `domainname`}"
+    log "FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}"
   end
 end
