@@ -42,7 +42,7 @@ end
 
 node_ip = "#{local_ip}"
 hosts_list = node.sys.short_hostname
-if node.sys.domain_name then
+if node.sys.domain_name != "" then
   hostname = "#{sys.short_hostname}.#{node.sys.domain_name}"
   hosts_lists = "#{sys.short_hostname}.#{node.sys.domain_name} #{node.sys.short_hostname}"
 else
