@@ -101,20 +101,17 @@ if "#{node.sys.domain_name}" != ""
 end
 
 # restart  hostname services on appropriate platforms
-case node[:platform]
-  when "ubuntu"
-    service "hostname" do
-      service_name "hostname"
-      supports :restart => true, :status => true, :reload => true
-      action :restart
-    end
+if platform?("ubuntu")
+  service "hostname" do
+    service_name "hostname"
+    supports :restart => true, :status => true, :reload => true
+    action :restart
   end
-  when "debian"
-    service "hostname.sh" do
-      service_name "hostname.sh"
-      supports :restart => false, :status => true, :reload => false
-      action :start
-    end
+if platform?("debian")
+  service "hostname.sh" do
+    service_name "hostname.sh"
+    supports :restart => false, :status => true, :reload => false
+    action :start
   end
 end
 
