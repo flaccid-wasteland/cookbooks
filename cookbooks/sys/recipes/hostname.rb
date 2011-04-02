@@ -44,13 +44,6 @@ end
 hosts_ip = "#{local_ip}"
 show_host_info
 
-ruby_block "show_hosts_info" do
-  block do
-    show_host_info
-  end
-  action :create
-end
-
 # Update /etc/hosts
 template "/etc/hosts" do
   source "hosts.erb"
