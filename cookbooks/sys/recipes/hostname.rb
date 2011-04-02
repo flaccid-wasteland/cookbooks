@@ -43,15 +43,17 @@ end
 node_ip = "#{local_ip}"
 log "Node IP: #{node_ip}"
 hosts_list = "#{node.sys.short_hostname}"
+
 if "#{node.sys.domain_name}" != "" then
   hostname = "#{sys.short_hostname}.#{node.sys.domain_name}"
   hosts_lists = "#{sys.short_hostname}.#{node.sys.domain_name} #{node.sys.short_hostname}"
 else
   hostname = node.sys.short_hostname
 end
-log  "Setting hostname to #{hostname}"
+log  "Setting hostname to ;#{hostname}'."
 
 # Update /etc/hosts
+log 'Updating /etc/hosts'
 template "/etc/hosts" do
   source "hosts.erb"
   variables(
@@ -60,6 +62,8 @@ template "/etc/hosts" do
     )
 end
 
+# Update /etc/hostname
+log 'Updating /etc/hostname'
 file "/etc/hostname" do
   owner "root"
   group "root"
@@ -69,6 +73,7 @@ file "/etc/hostname" do
 end
 
 # Update /etc/resolv.conf
+log 'Updating /etc/resolv.conf'
 nameserver=`cat /etc/resolv.conf  | grep -v '^#' | grep nameserver | awk '{print $2}'`
 template "/etc/resolv.conf" do
   source "resolv.conf.erb"
@@ -95,6 +100,7 @@ end
 
 # Call domainname command
 if "#{node.sys.domain_name}" != ""
+  log 'Running domainname'
   bash "set_domainname" do
     code <<-EOH
       domainname #{node.sys.domain_name}
@@ -104,6 +110,7 @@ end
 
 # restart  hostname services on appropriate platforms
 if platform?("ubuntu")
+  log 'Starting hostname service.'
   service "hostname" do
     service_name "hostname"
     supports :restart => true, :status => true, :reload => true
@@ -111,6 +118,7 @@ if platform?("ubuntu")
   end
 end
 if platform?("debian")
+  log 'Starting hostname.sh service.'
   service "hostname.sh" do
     service_name "hostname.sh"
     supports :restart => false, :status => true, :reload => false
