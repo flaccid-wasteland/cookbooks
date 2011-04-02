@@ -8,23 +8,23 @@ version          "0.0.1"
 recipe "sys::hostname", "Sets the system hostname, domain name, FQDN and domain suffix search prefix."
 recipe "sys::timezone", "Sets the system time zone."
 
-attribute "sys/hostname",
-  :display_name => "Hostname",
-  :description => "The hostname that you would like this machine to have.",
-  :required => "optional",
+attribute "sys/short_hostname",
+  :display_name => "Short Hostname",
+  :description => "The short hostname that you would like this node to have, e.g. kryten",
+  :required => "required",
   :default => nil,
   :recipes => [ "sys::hostname" ]
 
 attribute "sys/domain_name",
   :display_name => "Domain Name",
-  :description => "The domain name that you would like this machine to have.",
-  :required => "optional",
-  :default => '',
+  :description => "The domain name that you would like this node to have, e.g. domain.suf",
+  :required => "required",
+  :default => nil,
   :recipes => [ "sys::hostname" ]
 
 attribute "sys/search_suffix",
   :display_name => "Domain Search Suffix",
-  :description => "The domain search suffix you would like this machine to have.",
+  :description => "The domain search suffix you would like this node to have, e.g. domain.suf.",
   :required => "optional",
   :default => nil,
   :recipes => [ "sys::hostname" ]
