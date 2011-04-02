@@ -39,13 +39,7 @@ def show_host_info
   log "FQDN of host: #{`hostname -f` == '' ? '<none>' : `hostname -f`}"
 end
 
-log "== Current host/node information =="
-show_host_info
-
-node_ip = "#{local_ip}"
-log "Node IP: #{node_ip}"
-hosts_list = "#{node.sys.short_hostname}"
-
+# set hostname from short or long (when domain_name set)
 if "#{node.sys.domain_name}" != "" then
   hostname = "#{sys.short_hostname}.#{node.sys.domain_name}"
   hosts_lists = "#{sys.short_hostname}.#{node.sys.domain_name} #{node.sys.short_hostname}"
@@ -54,6 +48,15 @@ else
 end
 
 log  "Setting hostname for '#{hostname}'."
+log "== Current host/node information =="
+show_host_info
+
+ruby_block "get_node_ip" do
+  block do
+    @node_ip = "#{@local_ip}"
+    Chef::Log.info("Node IP: #{@node_ip}")
+  end
+end
 
 # Update /etc/hosts
 log 'Configure /etc/hosts'
