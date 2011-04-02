@@ -42,7 +42,6 @@ def show_host_info
 end
 
 hosts_ip = "#{local_ip}"
-show_host_info
 
 # Update /etc/hosts
 template "/etc/hosts" do
