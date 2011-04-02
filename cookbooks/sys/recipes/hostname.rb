@@ -135,7 +135,7 @@ end
 ruby_block "show_new_host_info" do
   block do
     # show new host values from system
-    log "== New host/node information =="
+    Chef::Log.info("== New host/node information ==")
     show_host_info
   end
 end
