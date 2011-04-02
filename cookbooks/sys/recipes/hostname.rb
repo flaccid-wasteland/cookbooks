@@ -55,7 +55,7 @@ log  "Setting hostname to #{hostname}"
 template "/etc/hosts" do
   source "hosts.erb"
   variables(
-    :node_ip => node_ip
+    :node_ip => node_ip,
     :hosts_list => hosts_list
     )
 end
@@ -103,20 +103,20 @@ if "#{node.sys.domain_name}" != ""
 end
 
 # restart  hostname services on appropriate platforms
-#if platform?("ubuntu")
-#  service "hostname" do
-#    service_name "hostname"
-#    supports :restart => true, :status => true, :reload => true
-#    action :restart
-#  end
-#end
-#if platform?("debian")
-#  service "hostname.sh" do
-#    service_name "hostname.sh"
-#    supports :restart => false, :status => true, :reload => false
-#    action :start
-#  end
-#end
+if platform?("ubuntu")
+  service "hostname" do
+    service_name "hostname"
+    supports :restart => true, :status => true, :reload => true
+    action :restart
+  end
+end
+if platform?("debian")
+  service "hostname.sh" do
+    service_name "hostname.sh"
+    supports :restart => false, :status => true, :reload => false
+    action :start
+  end
+end
 
 # show new host values from system
 show_host_info
