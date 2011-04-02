@@ -42,10 +42,10 @@ end
 # set hostname from short or long (when domain_name set)
 if "#{node.sys.domain_name}" != "" then
   hostname = "#{node.sys.short_hostname}.#{node.sys.domain_name}"
-  hosts_lists = "#{node.sys.short_hostname}.#{node.sys.domain_name} #{node.sys.short_hostname}"
+  hosts_list = "#{node.sys.short_hostname}.#{node.sys.domain_name} #{node.sys.short_hostname}"
 else
   hostname = "#{node.sys.short_hostname}"
-  hosts_lists = "#{node.sys.short_hostname}"
+  hosts_list = "#{node.sys.short_hostname}"
 end
 
 # show current host info
