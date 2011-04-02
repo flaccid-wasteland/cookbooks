@@ -33,7 +33,7 @@
       "choice": [
 
       ],
-      "default": null,
+      "default": "",
       "type": "string",
       "recipes": [
         "sys::hostname"
@@ -61,7 +61,7 @@
       "choice": [
 
       ],
-      "default": null,
+      "default": "",
       "type": "string",
       "recipes": [
         "sys::hostname"

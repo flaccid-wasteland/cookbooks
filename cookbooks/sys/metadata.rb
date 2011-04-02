@@ -19,14 +19,14 @@ attribute "sys/domain_name",
   :display_name => "Domain Name",
   :description => "The domain name that you would like this node to have, e.g. domain.suf",
   :required => "optional",
-  :default => nil,
+  :default => "" ,
   :recipes => [ "sys::hostname" ]
 
 attribute "sys/search_suffix",
   :display_name => "Domain Search Suffix",
   :description => "The domain search suffix you would like this node to have, e.g. domain.suf.",
   :required => "optional",
-  :default => nil,
+  :default => "",
   :recipes => [ "sys::hostname" ]
 
 attribute "sys/timezone",
