@@ -50,7 +50,7 @@ if "#{node.sys.domain_name}" != "" then
 else
   hostname = node.sys.short_hostname
 end
-log  "Setting hostname to ;#{hostname}'."
+log  "Setting hostname for '#{hostname}'."
 
 # Update /etc/hosts
 log 'Updating /etc/hosts'
@@ -88,13 +88,14 @@ end
 bash "set_hostname" do
   case node[:platform]
   when "centos","redhat"
+    log 'Setting hostname.'
     code <<-EOH
-      sed -i "s/HOSTNAME=.*/HOSTNAME=#{node.sys.short_hostname}.#{node.sys.domain_name}/" /etc/sysconfig/network
-      hostname #{node.sys.short_hostname}.#{node.sys.domain_name}
+      sed -i "s/HOSTNAME=.*/HOSTNAME=#{hostname}/" /etc/sysconfig/network
+      hostname #{hostname}
     EOH
   end
   code <<-EOH
-    hostname #{@hostname}
+    hostname #{hostname}
   EOH
 end
 
