@@ -143,6 +143,13 @@ if platform?('debian')
   end
 end
 
+log 'Setting hostname tag.'
+bash "set_node_hostname_tag" do
+  code <<-EOH
+    type -P rs_tag &>/dev/null && rs_tag --add "node:hostname=#{hostname}"
+  EOH
+end
+  
 # Show the new host/node information
 ruby_block "show_new_host_info" do
   block do
