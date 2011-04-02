@@ -31,7 +31,7 @@ end
 
 def show_host_info
   # Display current hostname values in log
-  log "-> Host/node information:"
+  log "== New host/node information =="
   log "Hostname: #{`hostname` == '' ? '<none>' : `hostname`}"
   log "Network node hostname: #{`uname -n` == '' ? '<none>' : `uname -n`}"
   log "Alias names of host: #{`hostname -a` == '' ? '<none>' : `hostname -a`}"
@@ -53,7 +53,7 @@ end
 log  "Setting hostname for '#{hostname}'."
 
 # Update /etc/hosts
-log 'Updating /etc/hosts'
+log 'Configure /etc/hosts'
 template "/etc/hosts" do
   source "hosts.erb"
   variables(
@@ -63,7 +63,7 @@ template "/etc/hosts" do
 end
 
 # Update /etc/hostname
-log 'Updating /etc/hostname'
+log 'Configure /etc/hostname'
 file "/etc/hostname" do
   owner "root"
   group "root"
@@ -73,7 +73,7 @@ file "/etc/hostname" do
 end
 
 # Update /etc/resolv.conf
-log 'Updating /etc/resolv.conf'
+log 'Configure /etc/resolv.conf'
 nameserver=`cat /etc/resolv.conf  | grep -v '^#' | grep nameserver | awk '{print $2}'`
 template "/etc/resolv.conf" do
   source "resolv.conf.erb"
@@ -112,7 +112,7 @@ if "#{node.sys.domain_name}" != ""
 end
 
 # restart  hostname services on appropriate platforms
-if platform?("ubuntu")
+if platform?('ubuntu')
   log 'Starting hostname service.'
   service "hostname" do
     service_name "hostname"
@@ -120,7 +120,7 @@ if platform?("ubuntu")
     action :restart
   end
 end
-if platform?("debian")
+if platform?('debian')
   log 'Starting hostname.sh service.'
   service "hostname.sh" do
     service_name "hostname.sh"
