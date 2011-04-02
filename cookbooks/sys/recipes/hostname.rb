@@ -80,12 +80,21 @@ end
 # Update /etc/resolv.conf
 log 'Configure /etc/resolv.conf'
 nameserver=`cat /etc/resolv.conf  | grep -v '^#' | grep nameserver | awk '{print $2}'`
+if nameserver != "" then
+  nameserver="nameserver #{nameserver}"
+end
+if "#{node.sys.domain_name}" != "" then
+  domain = "domain #{node.sys.domain_name}"
+end
+if "#{node.sys.search_suffix}" != "" then
+  search = "search #{node.sys.search_suffix}"
+end
 template "/etc/resolv.conf" do
   source "resolv.conf.erb"
   variables(
     :nameserver => nameserver,
-    :domain => "#{node.sys.domain_name}",
-    :search => "#{node.sys.search_suffix}"
+    :domain => domain,
+    :search => search
     )
 end
 
