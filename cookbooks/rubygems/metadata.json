@@ -1,0 +1,30 @@
+{
+  "providing": {
+  },
+  "maintainer": "Chris Fordham",
+  "replacing": {
+  },
+  "license": "Apache 2.0",
+  "maintainer_email": "chris@xhost.com.au",
+  "groupings": {
+  },
+  "recipes": {
+    "rubygems::default": "Installs RubyGems"
+  },
+  "attributes": {
+  },
+  "recommendations": {
+  },
+  "platforms": {
+  },
+  "version": "0.0.1",
+  "suggestions": {
+  },
+  "description": "Installs/Configures rubygems",
+  "dependencies": {
+  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "name": "rubygems",
+  "conflicting": {
+  }
+}
