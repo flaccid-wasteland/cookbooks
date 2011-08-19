@@ -23,10 +23,10 @@ end
 
 # -dev package not availble in el*/centos etc. (python-devel)
 # todo: add logic on platform?
+# (additional debian-specific packages removed)
 
 %w{ 
-  imaging matplotlib matplotlib-data matplotlib-doc mysqldb 
-  numpy paramiko scipy setuptools sqlite
+  imaging setuptools
 }.each do |pkg|
   package "python-#{pkg}" do
     action :install
