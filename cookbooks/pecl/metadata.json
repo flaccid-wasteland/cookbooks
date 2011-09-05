@@ -13,7 +13,7 @@
       "default": null,
       "type": "string",
       "recipes": [
-        "pecl::default"
+        "pecl::install_packages"
       ],
       "description": "The PECL packages to install, e.g. mongo apc",
       "display_name": "PECL packages"
@@ -31,7 +31,7 @@
   },
   "recipes": {
     "pecl::install_packages": "Installs PECL packages.",
-    "pecl::default": "Sets up PECL so packages can be installed."
+    "pecl::default": "Ensures PECL is installed so packages can be installed."
   },
   "groupings": {
   },
