@@ -4,3 +4,12 @@ license          "Apache 2.0"
 description      "Installs/Configures pecl"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
+
+recipe "pecl::default", "Sets up PECL so packages can be installed."
+recipe "pecl::install_packages", "Installs PECL packages."
+
+attribute "pecl/packages",
+  :display_name => "PECL packages",
+  :description => "The PECL packages to install, e.g. mongo apc",
+  :default => nil,
+  :recipes => [ "rs_ebs::default" ]

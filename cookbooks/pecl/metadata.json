@@ -1,0 +1,45 @@
+{
+  "dependencies": {
+  },
+  "name": "pecl",
+  "maintainer_email": "chris@xhost.com.au",
+  "attributes": {
+    "pecl/packages": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": null,
+      "type": "string",
+      "recipes": [
+        "rs_ebs::default"
+      ],
+      "description": "The PECL packages to install, e.g. mongo apc",
+      "display_name": "PECL packages"
+    }
+  },
+  "license": "Apache 2.0",
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "maintainer": "Chris Fordham",
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "version": "0.0.1",
+  "recommendations": {
+  },
+  "recipes": {
+    "pecl::install_packages": "Installs PECL packages.",
+    "pecl::default": "Sets up PECL so packages can be installed."
+  },
+  "groupings": {
+  },
+  "conflicting": {
+  },
+  "replacing": {
+  },
+  "description": "Installs/Configures pecl",
+  "providing": {
+  }
+}
