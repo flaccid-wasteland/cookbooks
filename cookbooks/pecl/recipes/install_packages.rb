@@ -20,8 +20,14 @@ if node.pecl.packages.nil?
   return
 end
 
+if node.pecl.packages.kind_of?(Array)
+  package_list = node.pecl.packages.join(' ')
+else
+  package_list = node.pecl.packages
+end
+
 execute "install_pecl_packages" do
-  command "pecl install --nobuild #{node.pecl.packages.join(' ')}"
+  command "pecl install --nobuild #{package_list}"
   action :run
 end
 
