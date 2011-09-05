@@ -25,4 +25,8 @@ execute "install_pecl_packages" do
   action :run
 end
 
-log `pecl list`
+ruby_block "show_installed_pecl_packages" do
+  block do
+    Chef::Log.info("`pecl list`")
+  end
+end
