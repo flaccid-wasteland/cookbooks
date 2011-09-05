@@ -12,4 +12,4 @@ attribute "pecl/packages",
   :display_name => "PECL packages",
   :description => "The PECL packages to install, e.g. mongo apc",
   :default => nil,
-  :recipes => [ "rs_ebs::default" ]
+  :recipes => [ "pecl::default" ]
