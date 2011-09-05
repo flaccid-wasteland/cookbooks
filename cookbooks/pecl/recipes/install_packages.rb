@@ -27,6 +27,6 @@ end
 
 ruby_block "show_installed_pecl_packages" do
   block do
-    Chef::Log.info("`pecl list`")
+    Chef::Log.info("#{`pecl list`}")
   end
 end
