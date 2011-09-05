@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-node.pecl.install_packages.each do |package|
+node.pecl.dep_sys_packages.each do |package|
   package package
 end
 
