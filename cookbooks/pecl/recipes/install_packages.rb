@@ -24,3 +24,5 @@ execute "install_pecl_packages" do
   command "pecl install --nobuild #{node.pecl.packages.join(' ')}"
   action :run
 end
+
+log `pecl list`
