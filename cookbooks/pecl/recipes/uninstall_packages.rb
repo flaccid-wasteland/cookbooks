@@ -21,9 +21,9 @@ if node.pecl.packages_remove.nil?
 end
 
 if node.pecl.packages.kind_of?(Array)
-  package_list = node.pecl.packages.join(' ')
+  package_list = node.pecl.remove_packages.join(' ')
 else
-  package_list = node.pecl.packages
+  package_list = node.pecl.remove_packages
 end
 
 execute "uninstall_pecl_packages" do
