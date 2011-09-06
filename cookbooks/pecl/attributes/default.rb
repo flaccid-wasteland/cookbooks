@@ -1,4 +1,5 @@
 default['pecl']['packages'] =  nil
+default['pecl']['packages_remove'] =  nil
 
 case platform
 when "centos"

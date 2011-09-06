@@ -4,6 +4,20 @@
   "name": "pecl",
   "maintainer_email": "chris@xhost.com.au",
   "attributes": {
+    "pecl/packages_remove": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": null,
+      "type": "string",
+      "recipes": [
+        "pecl::uninstall_packages"
+      ],
+      "description": "The PECL packages to uninstall, e.g. Xdebug memcache",
+      "display_name": "PECL remove packages"
+    },
     "pecl/packages": {
       "required": "optional",
       "calculated": false,
@@ -31,7 +45,8 @@
   },
   "recipes": {
     "pecl::install_packages": "Installs PECL packages.",
-    "pecl::default": "Ensures PECL is installed so packages can be installed."
+    "pecl::default": "Ensures PECL is installed so packages can be installed.",
+    "pecl::uninstall_packages": "Uninstalls PECL packages."
   },
   "groupings": {
   },
