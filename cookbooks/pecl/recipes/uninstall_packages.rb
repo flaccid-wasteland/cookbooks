@@ -20,10 +20,10 @@ if node.pecl.packages_remove.nil?
   return
 end
 
-if node.pecl.packages.kind_of?(Array)
-  package_list = node.pecl.remove_packages.join(' ')
+if node.pecl.packages_remove.kind_of?(Array)
+  package_list = node.pecl.packages_remove.join(' ')
 else
-  package_list = node.pecl.remove_packages
+  package_list = node.pecl.packages_remove
 end
 
 execute "uninstall_pecl_packages" do
