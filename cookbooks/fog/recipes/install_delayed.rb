@@ -18,7 +18,7 @@
 # workaround for no hash support in rs for rvm cookbook
 ruby_block "install_fog_delayed" do
   block do
-    system('/usr/bin/gem install fog --no-rdoc --no-ri')
+    Chef::Log.info("#{`/usr/bin/gem install fog --no-rdoc --no-ri`}")
   end
   action :create
 end
