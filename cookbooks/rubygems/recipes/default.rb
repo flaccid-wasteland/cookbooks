@@ -16,7 +16,7 @@
 # limitations under the License.
 #
 
-include_recipe 'ruby'
+include_recipe "ruby::default"
 
 if node['ruby']['install_source'] == 'ruby1.9.1'
 	package "rubygems1.9"
