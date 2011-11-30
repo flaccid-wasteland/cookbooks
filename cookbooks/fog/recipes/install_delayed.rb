@@ -15,24 +15,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+script "rvm_ruby1.9.2_fog" do
+  interpreter "bash"
+  code <<-EOH
+echo "fog" >> /usr/local/rvm/gemsets/default.gems
+echo "fog" >> /usr/local/rvm/gemsets/global.gems
+/usr/local/rvm/bin/rvm uninstall ruby-1.9.2-p290
+/usr/local/rvm/bin/rvm install ruby-1.9.2-p290
+/usr/local/rvm/bin/rvm use ruby-1.9.2-p290
+/usr/local/rvm/bin/rvm ruby-1.9.2-p290
+ruby -v
+gem list
+  EOH
+end
+
 # workaround for no hash support in rs for rvm cookbook
-ruby_block "install_fog_delayed" do
-  block do
-    Chef::Log.info("#{`echo "fog" >> /usr/local/rvm/gemsets/default.gems`}")
-    Chef::Log.info("#{`echo "fog" >> /usr/local/rvm/gemsets/global.gems`}")
-  	Chef::Log.info("#{`/usr/local/rvm/bin/rvm install ruby-1.9.2-p290`}")
-	Chef::Log.info("#{`/usr/local/rvm/bin/rvm use ruby-1.9.2-p290`}")
+#ruby_block "install_fog_delayed" do
+#  block do
   	#Chef::Log.info("#{`rvm --force gemset delete fog`}")
 	#Chef::Log.info("Current gemset: #{`rvm gemset name`}")
 	#Chef::Log.info("Current gemset directory: #{`rvm gemdir`}")
-	#Chef::Log.info("Gemsets: \n#{`rvm gemset list`}")	
+	#Chef::Log.info("Gemsets: \n#{`rvm gemset list`}")
   	#Chef::Log.info("#{`rvm gemset use fog`}")
 	#Chef::Log.info("#{`rvm --force gemset empty fog`}")
     #Chef::Log.info("#{`/usr/bin/gem install fog --no-rdoc --no-ri`}")
   	#Chef::Log.info("#{`rvm gemset create fog`}")
-    Chef::Log.info("#{`gem list`}")
+    #Chef::Log.info("#{`gem list`}")
     #Chef::Log.info("#{`rvm gemset export`}")
 	#Chef::Log.info("#{`rvm ruby-1.9.2-p290@fog`}")
-  end
-  action :create
-end
+  #end
+  #action :create
+#end
