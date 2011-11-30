@@ -10,7 +10,6 @@ recipe "ruby::default", "Installs ruby"
 attribute "ruby/install_source",
   :display_name => "Ruby Install Source",
   :description => "The install source for Ruby: none or package (default: package).",
-  :default => "package",
   :required => "required",
   :choices => [ "package", "none" ],
   :recipes => [ "ruby::default" ]
