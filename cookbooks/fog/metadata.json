@@ -20,6 +20,32 @@
   "replacing": {
   },
   "attributes": {
+    "aws/access_key_id": {
+      "display_name": "AWS Access Key ID",
+      "description": "The AWS Access Key ID.",
+      "recipes": [
+        "rvm::test"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string",
+      "required": "optional"
+    },
+    "aws/secret_access_key": {
+      "display_name": "AWS Secret Access Key",
+      "description": "The AWS Secret Access Key.",
+      "recipes": [
+        "rvm::test"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string",
+      "required": "optional"
+    }
   },
   "groupings": {
   },
