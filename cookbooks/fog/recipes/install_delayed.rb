@@ -18,12 +18,12 @@
 script "rvm_ruby1.9.2_fog" do
   interpreter "bash"
   code <<-EOH
-echo "fog" >> /usr/local/rvm/gemsets/default.gems
-echo "fog" >> /usr/local/rvm/gemsets/global.gems
-/usr/local/rvm/bin/rvm uninstall ruby-1.9.2-p290
-/usr/local/rvm/bin/rvm install ruby-1.9.2-p290
-/usr/local/rvm/bin/rvm use ruby-1.9.2-p290
-/usr/local/rvm/bin/rvm ruby-1.9.2-p290
+grep fog /usr/local/rvm/gemsets/default.gems > /dev/null 2>&1 || echo "fog" >> /usr/local/rvm/gemsets/default.gems
+grep fog /usr/local/rvm/gemsets/global.gems > /dev/null 2>&1 || echo "fog" >> /usr/local/rvm/gemsets/global.gems
+rvm use system
+rvm uninstall 1.9.2
+rvm install 1.9.2
+rvm use 1.9.2
 ruby -v
 gem list
   EOH
