@@ -21,6 +21,7 @@ script "test_fog" do
   code <<-EOH
 puts "Ruby Version: "+RUBY_VERSION
 
+require 'rubygems'
 require 'fog'
 
 storage = Fog::Storage.new(
