@@ -18,7 +18,21 @@
 # workaround for no hash support in rs for rvm cookbook
 ruby_block "install_fog_delayed" do
   block do
-    Chef::Log.info("#{`/usr/bin/gem install fog --no-rdoc --no-ri`}")
+    Chef::Log.info("#{`echo "fog" >> /usr/local/rvm/gemsets/default.gems`}")
+    Chef::Log.info("#{`echo "fog" >> /usr/local/rvm/gemsets/global.gems`}")
+  	Chef::Log.info("#{`rvm install ruby-1.9.2-p290`}")
+	Chef::Log.info("#{`rvm use ruby-1.9.2-p290`}")
+  	#Chef::Log.info("#{`rvm --force gemset delete fog`}")
+	#Chef::Log.info("Current gemset: #{`rvm gemset name`}")
+	#Chef::Log.info("Current gemset directory: #{`rvm gemdir`}")
+	#Chef::Log.info("Gemsets: \n#{`rvm gemset list`}")	
+  	#Chef::Log.info("#{`rvm gemset use fog`}")
+	#Chef::Log.info("#{`rvm --force gemset empty fog`}")
+    #Chef::Log.info("#{`/usr/bin/gem install fog --no-rdoc --no-ri`}")
+  	#Chef::Log.info("#{`rvm gemset create fog`}")
+    Chef::Log.info("#{`gem list`}")
+    #Chef::Log.info("#{`rvm gemset export`}")
+	#Chef::Log.info("#{`rvm ruby-1.9.2-p290@fog`}")
   end
   action :create
 end
