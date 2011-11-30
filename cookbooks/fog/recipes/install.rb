@@ -15,8 +15,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# system dependencies
-package "libxml2"
+# system dependencies (ruby dev packages, nokogiri etc.)
+sys_deps = ['libxml2', 'ruby1.8-dev', 'ruby1.8' 'ri1.8' 'rdoc1.8' 'irb1.8' 'libreadline-ruby1.8' 'libruby1.8' 'libopenssl-ruby', 'libxslt-dev' 'libxml2-dev']
+sys_deps.each { |package|
+    package package
+}
 
 # fog rubygem
 gem_package "fog"
