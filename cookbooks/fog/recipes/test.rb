@@ -17,7 +17,7 @@
 include_recipe "fog"
 
 script "test_fog" do
-  interpreter "ruby"
+  interpreter "/usr/bin/ruby"
   code <<-EOH
 puts "Ruby Version: "+RUBY_VERSION
 
