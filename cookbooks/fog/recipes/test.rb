@@ -16,17 +16,35 @@
 
 include_recipe "fog"
 
-script "test_fog" do
-  interpreter "/usr/bin/ruby"
-  code <<-EOH
-puts "Ruby Version: "+RUBY_VERSION
+directory "/root/bin"
 
-require 'rubygems'
-require 'fog'
-
-storage = Fog::Storage.new(
-  :provider => 'AWS',
-  :aws_access_key_id => node['aws']['access_key_id'],
-  :aws_secret_access_key => node['aws']['secret_access_key'])
-  EOH
+file "/root/bin/fog-test-storage.rb" do
+  owner "root"
+  group "root"
+  mode "0700"
+  action :create
 end
+
+template "/root/bin/fog-test-storage.rb" do
+  source "fog-test-storage.erb"
+end
+
+execute "fog_test_storage" do
+  command "ruby /root/bin/fog-test-storage.rb"
+  action :run
+end
+
+#script "test_fog" do
+#  interpreter "/usr/bin/ruby"
+#  code <<-EOH
+#puts "Ruby Version: "+RUBY_VERSION
+
+#require 'rubygems'
+#require 'fog'
+
+#storage = Fog::Storage.new(
+#  :provider => 'AWS',
+#  :aws_access_key_id => node['aws']['access_key_id'],
+#  :aws_secret_access_key => node['aws']['secret_access_key'])
+#  EOH
+#end
