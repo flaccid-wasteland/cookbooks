@@ -51,7 +51,7 @@
   },
   "recipes": {
     "fog::default": "Installs and configures Fog",
-    "fog::install": "Installs Fog",
+    "fog::install": "Test fog by creating an S3 connection.",
     "fog::install_delayed": "Installs Fog delayed (for using the rvm cookbook on RightScale)."
   },
   "version": "0.0.1"

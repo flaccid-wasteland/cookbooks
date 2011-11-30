@@ -8,6 +8,7 @@ version          "0.0.1"
 recipe "fog::default", "Installs and configures Fog"
 recipe "fog::install", "Installs Fog"
 recipe "fog::install_delayed", "Installs Fog delayed (for using the rvm cookbook on RightScale)."
+recipe "fog::test", "Test fog by creating an S3 connection."
 
 attribute "aws/access_key_id",
   :display_name => "AWS Access Key ID",
