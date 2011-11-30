@@ -131,6 +131,7 @@
           "version": "0.9.2"
         }
       ],
+      "type": "array",
       "recipes": [
         "rvm::system"
       ],
@@ -138,7 +139,6 @@
 
       ],
       "calculated": false,
-      "type": "string",
       "required": "optional"
     },
     "rvm/user_global_gems": {
@@ -153,6 +153,7 @@
           "version": "0.9.2"
         }
       ],
+      "type": "array",
       "recipes": [
         "rvm::system"
       ],
@@ -160,7 +161,6 @@
 
       ],
       "calculated": false,
-      "type": "string",
       "required": "optional"
     },
     "rvm/installer_url": {

@@ -5,13 +5,13 @@ description      "Manages system-wide and per-user RVMs and manages installed Ru
 long_description "Please refer to README.md (it's long)."
 version          "0.8.7"
 
-recipe "rvm",					"Installs the RVM gem and initializes Chef to use the Lightweight Resources and Providers (LWRPs). Use this recipe explicitly if you only want access to the LWRPs provided."
+recipe "rvm",			"Installs the RVM gem and initializes Chef to use the Lightweight Resources and Providers (LWRPs). Use this recipe explicitly if you only want access to the LWRPs provided."
 recipe "rvm::system_install",	"Installs the RVM codebase system-wide (that is, into /usr/local/rvm). This recipe includes *default*. Use this recipe by itself if you want RVM installed system-wide but want to handle installing Rubies, invoking LWRPs, etc.."
-recipe "rvm::system",			"Installs the RVM codebase system-wide (that is, into /usr/local/rvm) and installs Rubies, global gems, and specific gems driven off attribute metadata. This recipe includes *default* and *system_install*. Use this recipe by itself if you want RVM system-wide with Rubies installed, etc."
-recipe "rvm::user_install",		"Installs the RVM codebase for a list of users (selected from the node['rvm']['user_installs'] hash). This recipe includes *default*. Use this recipe by itself if you want RVM installed for specific users in isolation but want each user to handle installing Rubies, invoking LWRPs, etc."
-recipe "rvm::user",				"Installs the RVM codebase for a list of users (selected from the node['rvm']['user_installs'] hash) and installs Rubies, global gems, and specific gems driven off attribute metadata. This recipe includes *default* and *user_install*. Use this recipe by itself if you want RVM installed for specific users in isolation with Rubies installed, etc."
-recipe "rvm::vagrant",			"An optional recipe to help if running in a Vagrant virtual machine"
-recipe "rvm::gem_package",		"An experimental recipe that patches the gem_package resource"
+recipe "rvm::system",		"Installs the RVM codebase system-wide (that is, into /usr/local/rvm) and installs Rubies, global gems, and specific gems driven off attribute metadata. This recipe includes *default* and *system_install*. Use this recipe by itself if you want RVM system-wide with Rubies installed, etc."
+recipe "rvm::user_install",	"Installs the RVM codebase for a list of users (selected from the node['rvm']['user_installs'] hash). This recipe includes *default*. Use this recipe by itself if you want RVM installed for specific users in isolation but want each user to handle installing Rubies, invoking LWRPs, etc."
+recipe "rvm::user",		"Installs the RVM codebase for a list of users (selected from the node['rvm']['user_installs'] hash) and installs Rubies, global gems, and specific gems driven off attribute metadata. This recipe includes *default* and *user_install*. Use this recipe by itself if you want RVM installed for specific users in isolation with Rubies installed, etc."
+recipe "rvm::vagrant",		"An optional recipe to help if running in a Vagrant virtual machine"
+recipe "rvm::gem_package",	"An experimental recipe that patches the gem_package resource"
 
 %w{ debian ubuntu suse centos amazon redhat fedora mac_os_x }.each do |os|
   supports os
@@ -63,12 +63,14 @@ attribute "rvm/global_gems",
   :display_name => "RVM System Global RubyGems",
   :description => "A list of gem hashes to be installed into the global gemset in each installed RVM Ruby sytem-wide.",
   :default => [ { 'name'    => 'bundler' }, { 'name'    => 'rake', 'version' => '0.9.2' } ],
+  :type => "array",
   :recipes => [ "rvm::system" ]
   
 attribute "rvm/user_global_gems",
   :display_name => "RVM User Global RubyGems",
   :description => "A list of gem hashes to be installed into the global gemset in each installed RVM Ruby for each user when not explicitly set.",
   :default => [ { 'name'    => 'bundler' }, { 'name'    => 'rake', 'version' => '0.9.2' } ],
+  :type => "array",
   :recipes => [ "rvm::system" ]
 
 attribute "rvm/installer_url",
