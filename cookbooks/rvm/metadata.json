@@ -60,6 +60,7 @@
     "rvm/rubies": {
       "display_name": "RVM Additional Rubies",
       "description": "List of additional rubies that will be installed.",
+      "type": "array",
       "default": [
 
       ],
@@ -70,12 +71,12 @@
 
       ],
       "calculated": false,
-      "type": "string",
       "required": "optional"
     },
     "rvm/user_rubies": {
       "display_name": "RVM User Additional Rubies",
       "description": "List of additional user rubies that will be installed.",
+      "type": "array",
       "default": [
 
       ],
@@ -86,7 +87,6 @@
 
       ],
       "calculated": false,
-      "type": "string",
       "required": "optional"
     },
     "rvm/installer_url": {

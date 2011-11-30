@@ -35,12 +35,14 @@ attribute "rvm/user_default_ruby",
 attribute "rvm/rubies",
   :display_name => "RVM Additional Rubies",
   :description => "List of additional rubies that will be installed.",
+  :type => "array",
   :default => [],
   :recipes => [ "rvm::system" ]
 
 attribute "rvm/user_rubies",
   :display_name => "RVM User Additional Rubies",
   :description => "List of additional user rubies that will be installed.",
+  :type => "array",
   :default => [],
   :recipes => [ "rvm::user" ]
 
