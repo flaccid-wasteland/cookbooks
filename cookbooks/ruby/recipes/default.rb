@@ -18,6 +18,10 @@
 
 if node['ruby']['install_source'] == 'ruby1.9.1'
 	package "ruby1.9.1"
+	# ln -s /etc/passwd /tmp/passwd
+	link "/usr/bin/ruby" do
+		to "/usr/bin/ruby1.9.1"
+	end
 else
 	package "ruby" unless node['ruby']['install_source'] == 'none'
 end
