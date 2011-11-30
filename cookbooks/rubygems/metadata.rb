@@ -6,3 +6,9 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
 recipe "rubygems::default", "Installs RubyGems"
+
+attribute "ruby/install_source",
+  :display_name => "Ruby Install Source",
+  :description => "The install source for Ruby: none, ruby1.9.1 or package (default: package).",
+  :choices => [ "package", "ruby1.9.1", "none" ],
+  :recipes => [ "rubygems::default" ]
