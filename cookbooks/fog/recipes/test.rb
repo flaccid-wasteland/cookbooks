@@ -17,8 +17,10 @@
 include_recipe "fog"
 
 script "test_fog" do
-  interpreter "/usr/bin/ruby"
+  interpreter "ruby"
   code <<-EOH
+puts "Ruby Version: "+RUBY_VERSION
+
 require 'fog'
 
 storage = Fog::Storage.new(
@@ -27,4 +29,3 @@ storage = Fog::Storage.new(
   :aws_secret_access_key => node['aws']['secret_access_key'])
   EOH
 end
-
