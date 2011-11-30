@@ -60,7 +60,7 @@ attribute "rvm/gems",
   :recipes => [ "rvm::system" ]
 
 attribute "rvm/global_gems",
-  :display_name => "RVM System Global RubyGems",
+  :display_name => "RVM System RubyGems",
   :description => "A list of gem hashes to be installed into the global gemset in each installed RVM Ruby sytem-wide.",
   :required => "optional",
   :type => "array",
