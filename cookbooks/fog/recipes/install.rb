@@ -16,10 +16,10 @@
 # limitations under the License.
 
 # system dependencies (ruby dev packages, nokogiri etc.)
-sys_deps = ['libxml2', 'ruby1.8-dev', 'ruby1.8' 'ri1.8' 'rdoc1.8' 'irb1.8' 'libreadline-ruby1.8' 'libruby1.8' 'libopenssl-ruby', 'libxslt-dev' 'libxml2-dev']
-sys_deps.each { |package|
+sys_deps = ['libxml2', 'ruby1.8-dev', 'ruby1.8', 'ri1.8', 'rdoc1.8', 'irb1.8', 'libreadline-ruby1.8', 'libruby1.8', 'libopenssl-ruby', 'libxslt-dev', 'libxml2-dev']
+sys_deps.each do |package|
     package package
-}
+end
 
 # fog rubygem
 gem_package "fog"
