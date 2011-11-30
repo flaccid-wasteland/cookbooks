@@ -20,10 +20,10 @@ script "rvm_ruby1.9.2_fog" do
   code <<-EOH
 grep fog /usr/local/rvm/gemsets/default.gems > /dev/null 2>&1 || echo "fog" >> /usr/local/rvm/gemsets/default.gems
 grep fog /usr/local/rvm/gemsets/global.gems > /dev/null 2>&1 || echo "fog" >> /usr/local/rvm/gemsets/global.gems
-rvm use system
-rvm uninstall 1.9.2
-rvm install 1.9.2
-rvm use 1.9.2
+/usr/local/bin/rvm use system
+/usr/local/bin/rvm uninstall 1.9.2
+/usr/local/bin/rvm install 1.9.2
+/usr/local/bin/rvm use 1.9.2
 ruby -v
 gem list
   EOH
