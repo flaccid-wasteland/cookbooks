@@ -27,6 +27,10 @@ end
 
 template "/root/bin/fog-test-storage.rb" do
   source "fog-test-storage.erb"
+  variables(
+	:aws_access_key_id => node['aws']['aws_access_key_id'],
+	:aws_secret_access_key => node['aws']['aws_secret_access_key']
+  )
 end
 
 execute "fog_test_storage" do
