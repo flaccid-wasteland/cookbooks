@@ -98,7 +98,7 @@ attribute "rvm/upgrade",
   :recipes => [ "rvm::system_install" ]
 
 attribute "rvm/rvm_gem_options",
-  :display_name => "RVM RubyGem install options",
+  :display_name => "RVM RubyGem Install Options",
   :description => "RVM gem install CLI options, default: --no-rdoc --no-ri.",
   :default =>  "--no-rdoc --no-ri",
   :recipes => [ "rvm::system_install" ]
