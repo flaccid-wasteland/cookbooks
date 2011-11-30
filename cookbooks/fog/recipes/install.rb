@@ -15,4 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# system dependencies
+package "libxml2"
+
+# fog rubygem
 gem_package "fog"
