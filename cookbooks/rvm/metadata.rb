@@ -62,15 +62,15 @@ attribute "rvm/gems",
 attribute "rvm/global_gems",
   :display_name => "RVM System Global RubyGems",
   :description => "A list of gem hashes to be installed into the global gemset in each installed RVM Ruby sytem-wide.",
-  :default => [ { 'name'    => 'bundler' }, { 'name'    => 'rake', 'version' => '0.9.2' } ],
+  :required => "optional",
   :type => "array",
   :recipes => [ "rvm::system" ]
   
 attribute "rvm/user_global_gems",
   :display_name => "RVM User Global RubyGems",
   :description => "A list of gem hashes to be installed into the global gemset in each installed RVM Ruby for each user when not explicitly set.",
-  :default => [ { 'name'    => 'bundler' }, { 'name'    => 'rake', 'version' => '0.9.2' } ],
   :type => "array",
+  :required => "optional",
   :recipes => [ "rvm::system" ]
 
 attribute "rvm/installer_url",
