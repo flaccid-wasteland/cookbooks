@@ -23,7 +23,7 @@ grep fog /usr/local/rvm/gemsets/global.gems > /dev/null 2>&1 || echo "fog" >> /u
 /usr/local/bin/rvm use system
 /usr/local/bin/rvm uninstall 1.9.2
 /usr/local/bin/rvm install 1.9.2
-/usr/local/bin/rvm use 1.9.2
+/usr/local/bin/rvm use 1.9.2 --default
 ruby -v
 gem list
   EOH
