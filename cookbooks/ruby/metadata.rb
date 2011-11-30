@@ -9,7 +9,7 @@ recipe "ruby::default", "Installs ruby"
 
 attribute "ruby/install_source",
   :display_name => "Ruby Install Source",
-  :description => "The install source for Ruby: none or package (default: package).",
+  :description => "The install source for Ruby: none, ruby1.9.1 or package (default: package).",
   :required => "required",
-  :choices => [ "package", "none" ],
+  :choices => [ "package", "ruby1.9.1", "none" ],
   :recipes => [ "ruby::default" ]

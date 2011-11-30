@@ -16,4 +16,8 @@
 # limitations under the License.
 #
 
-package "ruby" unless node['ruby']['install_source'] == 'none'
+if node['ruby']['install_source'] == 'ruby1.9.1'
+	package "ruby1.9.1"
+else
+	package "ruby" unless node['ruby']['install_source'] == 'none'
+end
