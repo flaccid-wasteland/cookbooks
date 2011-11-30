@@ -25,7 +25,8 @@
   },
   "recipes": {
     "fog::default": "Installs and configures Fog",
-    "fog::install": "Installs Fog"
+    "fog::install": "Installs Fog",
+    "fog::install_delayed": "Installs Fog delayed (for using the rvm cookbook on RightScale)."
   },
   "version": "0.0.1"
 }
