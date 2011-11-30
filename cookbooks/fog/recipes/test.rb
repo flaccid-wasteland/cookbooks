@@ -25,30 +25,19 @@ file "/root/bin/fog-test-storage.rb" do
   action :create
 end
 
+template "/root/bin/fog-test-storage.sh" do
+  source "fog-test-storage.sh.erb"
+end
+
 template "/root/bin/fog-test-storage.rb" do
   source "fog-test-storage.erb"
   variables(
-	:aws_access_key_id => node['aws']['aws_access_key_id'],
-	:aws_secret_access_key => node['aws']['aws_secret_access_key']
+	:aws_access_key_id => node[:aws][:aws_access_key_id],
+	:aws_secret_access_key => node[:aws][:aws_secret_access_key]
   )
 end
 
 execute "fog_test_storage" do
-  command "ruby /root/bin/fog-test-storage.rb"
+  command "ruby /root/bin/fog-test-storage.sh"
   action :run
 end
-
-#script "test_fog" do
-#  interpreter "/usr/bin/ruby"
-#  code <<-EOH
-#puts "Ruby Version: "+RUBY_VERSION
-
-#require 'rubygems'
-#require 'fog'
-
-#storage = Fog::Storage.new(
-#  :provider => 'AWS',
-#  :aws_access_key_id => node['aws']['access_key_id'],
-#  :aws_secret_access_key => node['aws']['secret_access_key'])
-#  EOH
-#end
