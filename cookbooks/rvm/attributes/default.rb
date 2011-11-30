@@ -29,6 +29,7 @@ default['rvm']['user_rubies'] = []
 
 # list of gems to be installed in global gemset of all rubies
 _global_gems_ = [
+  { 'name'    => 'fog' },
   { 'name'    => 'bundler' },
   { 'name'    => 'rake',
     'version' => '0.9.2'
