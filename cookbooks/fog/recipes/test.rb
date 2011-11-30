@@ -18,18 +18,14 @@ include_recipe "fog"
 
 directory "/root/bin"
 
-file "/root/bin/fog-test-storage.rb" do
-  owner "root"
-  group "root"
-  mode "0700"
-  action :create
-end
-
 template "/root/bin/fog-test-storage.sh" do
   source "fog-test-storage.sh.erb"
 end
 
 template "/root/bin/fog-test-storage.rb" do
+  owner "root"
+  group "root"
+  mode "0700"
   source "fog-test-storage.erb"
   variables(
 	:aws_access_key_id => node[:aws][:aws_access_key_id],
