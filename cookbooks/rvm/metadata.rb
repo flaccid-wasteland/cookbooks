@@ -52,6 +52,25 @@ attribute "rvm/user_rubies",
   :default => [],
   :recipes => [ "rvm::user" ]
 
+attribute "rvm/gems",
+  :display_name => "RVM System Global RubyGems",
+  :description => "A list of gem hashes to be installed into arbitrary RVM Rubies and gemsets system-wide.",
+  :type => "array",
+  :default => {},
+  :recipes => [ "rvm::system" ]
+
+attribute "rvm/global_gems",
+  :display_name => "RVM System Global RubyGems",
+  :description => "A list of gem hashes to be installed into the global gemset in each installed RVM Ruby sytem-wide.",
+  :default => [ { 'name'    => 'bundler' }, { 'name'    => 'rake', 'version' => '0.9.2' } ],
+  :recipes => [ "rvm::system" ]
+  
+attribute "rvm/user_global_gems",
+  :display_name => "RVM User Global RubyGems",
+  :description => "A list of gem hashes to be installed into the global gemset in each installed RVM Ruby for each user when not explicitly set.",
+  :default => [ { 'name'    => 'bundler' }, { 'name'    => 'rake', 'version' => '0.9.2' } ],
+  :recipes => [ "rvm::system" ]
+
 attribute "rvm/installer_url",
   :display_name => "RVM Installer URL",
   :description => "The URL to the RVM Installer to use.",
@@ -64,8 +83,31 @@ attribute "rvm/root_path",
   :default => "/usr/local/rvm",
   :recipes => [ "rvm::system_install" ]
 
+attribute "rvm/branch",
+  :display_name => "RVM Install Branch",
+  :description => "A specific git branch to use when installing system-wide.",
+  :default => nil,
+  :recipes => [ "rvm::system_install" ]
+
+attribute "rvm/upgrade",
+  :display_name => "RVM Upgade",
+  :description => "Determines how to handle installing updates to the RVM framework system-wide. There are currently 3 valid values: none, latest or head.",
+  :default => "none",
+  :recipes => [ "rvm::system_install" ]
+
 attribute "rvm/rvm_gem_options",
-  :display_name => "RVM RugyGem Install Options",
+  :display_name => "RVM RubyGem install options",
   :description => "RVM gem install CLI options, default: --no-rdoc --no-ri.",
   :default =>  "--no-rdoc --no-ri",
   :recipes => [ "rvm::system_install" ]
+
+attribute "vagrant/system_chef_solo",
+  :display_name => "Vagrant Chef-Solo Path",
+  :description => "When using the vagrant recipe, this sets the path to the package-installed chef-solo binary.",
+  :default =>  "/opt/ruby/bin/chef-solo",
+  :recipes => [ "rvm::vagrant" ]
+
+attribute "gem_package/rvm_string",
+  :display_name => "RVM String",
+  :description => "When using the gem_package recipe, this determines which Ruby or Rubies will be used by the gem_package resource in other cookbooks.",
+  :recipes => [ "rvm::gem_package" ]
