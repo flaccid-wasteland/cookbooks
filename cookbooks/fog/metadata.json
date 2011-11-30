@@ -24,7 +24,7 @@
       "display_name": "AWS Access Key ID",
       "description": "The AWS Access Key ID.",
       "recipes": [
-        "rvm::test"
+        "fog::test"
       ],
       "choice": [
 
@@ -37,7 +37,7 @@
       "display_name": "AWS Secret Access Key",
       "description": "The AWS Secret Access Key.",
       "recipes": [
-        "rvm::test"
+        "fog::test"
       ],
       "choice": [
 
@@ -51,8 +51,9 @@
   },
   "recipes": {
     "fog::default": "Installs and configures Fog",
-    "fog::install": "Test fog by creating an S3 connection.",
-    "fog::install_delayed": "Installs Fog delayed (for using the rvm cookbook on RightScale)."
+    "fog::install": "Installs Fog",
+    "fog::install_delayed": "Installs Fog delayed (for using the rvm cookbook on RightScale).",
+    "fog::test": "Test fog by creating an S3 connection."
   },
   "version": "0.0.1"
 }

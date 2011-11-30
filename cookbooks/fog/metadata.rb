@@ -13,9 +13,9 @@ recipe "fog::test", "Test fog by creating an S3 connection."
 attribute "aws/access_key_id",
   :display_name => "AWS Access Key ID",
   :description => "The AWS Access Key ID.",
-  :recipes => [ "rvm::test" ]
+  :recipes => [ "fog::test" ]
 
 attribute "aws/secret_access_key",
   :display_name => "AWS Secret Access Key",
   :description => "The AWS Secret Access Key.",
-  :recipes => [ "rvm::test" ]
+  :recipes => [ "fog::test" ]
