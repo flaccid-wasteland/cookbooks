@@ -38,6 +38,6 @@ template "/root/bin/fog-test-storage.rb" do
 end
 
 execute "fog_test_storage" do
-  command "ruby /root/bin/fog-test-storage.sh"
+  command "bash -ex /root/bin/fog-test-storage.sh"
   action :run
 end
