@@ -15,8 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# system dependencies (ruby dev packages, nokogiri etc.)
-sys_deps = ['libxml2', 'ruby1.8-dev', 'ruby1.8', 'ri1.8', 'rdoc1.8', 'irb1.8', 'libreadline-ruby1.8', 'libruby1.8', 'libopenssl-ruby', 'libxslt-dev', 'libxml2-dev']
+# system dependencies (ruby dev packages etc.)
+sys_deps = ['libxslt1-dev', 'libxslt1.1', 'libxml2-dev', 'libxml2', 'ruby1.8-dev', 'ruby1.8', 'ri1.8', 'libruby1.8']
 sys_deps.each do |package|
     package package
 end
