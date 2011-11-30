@@ -24,13 +24,19 @@ attribute "rvm/default_ruby",
   :display_name => "RVM Default Ruby Version",
   :description => "The Ruby that will get installed and set to `rvm use default`.",
   :default => "ruby-1.9.2-p290",
-  :recipes => [ "rvm::user" ]
+  :recipes => [ "rvm::system" ]
 
 attribute "rvm/user_default_ruby",
   :display_name => "RVM User Default Ruby Version",
   :description => "The Ruby that will get installed and set to for user installs.",
   :default => "ruby-1.9.2-p290",
   :recipes => [ "rvm::user" ]
+
+attribute "rvm/install_rubies",
+  :display_name => "RVM Install Rubies",
+  :description => "Install Rubies, true or false.",
+  :default => 'true',
+  :recipes => [ "rvm::system", "rvm::user" ]
 
 attribute "rvm/rubies",
   :display_name => "RVM Additional Rubies",

@@ -34,7 +34,7 @@
       "description": "The Ruby that will get installed and set to `rvm use default`.",
       "default": "ruby-1.9.2-p290",
       "recipes": [
-        "rvm::user"
+        "rvm::system"
       ],
       "choice": [
 
@@ -48,6 +48,21 @@
       "description": "The Ruby that will get installed and set to for user installs.",
       "default": "ruby-1.9.2-p290",
       "recipes": [
+        "rvm::user"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string",
+      "required": "optional"
+    },
+    "rvm/install_rubies": {
+      "display_name": "RVM Install Rubies",
+      "description": "Install Rubies, true or false.",
+      "default": "true",
+      "recipes": [
+        "rvm::system",
         "rvm::user"
       ],
       "choice": [
