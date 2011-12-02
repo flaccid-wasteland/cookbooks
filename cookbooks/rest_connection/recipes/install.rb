@@ -1,4 +1,3 @@
-#
 # Cookbook Name:: rest_connection
 # Recipe:: install
 #
@@ -15,14 +14,8 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
-gem_package "rest_connection" do
-  action :install
-end
 
-gem_package "rest_connection" do
-  gem_binary "/opt/rightscale/sandbox/bin/gem"
+package "rest_connection" do
   action :install
+  provider Chef::Provider::Package::Rubygems
 end
-
-Gem.clear_paths
