@@ -15,7 +15,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-package "rest_connection" do
-  action :install
-  provider Chef::Provider::Package::Rubygems
-end
+gem_package "rest_connection"
