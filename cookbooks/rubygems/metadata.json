@@ -55,7 +55,9 @@
   "groupings": {
   },
   "recipes": {
-    "rubygems::default": "Installs RubyGems"
+    "rubygems::default": "Installs RubyGems",
+    "rubygems::install_gems": "Installs a list of RubyGems into system.",
+    "rubygems::update_gems": "Updates installed RubyGems."
   },
   "version": "0.0.1"
 }
