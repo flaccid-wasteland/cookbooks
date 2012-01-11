@@ -37,6 +37,19 @@
       "calculated": false,
       "type": "string",
       "required": "optional"
+    },
+    "rubygems/gems_install": {
+      "display_name": "RubyGems Install",
+      "description": "An array or string of RubyGems to install system wide.",
+      "recipes": [
+        "rubygems::gems_install"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string",
+      "required": "optional"
     }
   },
   "groupings": {

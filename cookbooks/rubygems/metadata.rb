@@ -12,3 +12,8 @@ attribute "ruby/install_source",
   :description => "The install source for Ruby: none, ruby1.9.1 or package (default: package).",
   :choices => [ "package", "ruby1.9.1", "none" ],
   :recipes => [ "rubygems::default" ]
+
+ attribute "rubygems/gems_install",
+  :display_name => "RubyGems Install",
+  :description => "An array or string of RubyGems to install system wide.",
+  :recipes => [ "rubygems::gems_install" ]
