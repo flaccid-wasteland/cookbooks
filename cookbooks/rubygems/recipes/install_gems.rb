@@ -28,9 +28,6 @@ else
 	gems = node[:rubygems][:gems_install].split(/ /)
 end
 
-gems.each do |g|
-  gem_package g do
-    gem_binary "/usr/bin/gem"
-    only_if { File.exists?('/opt/rightscale/sandbox/bin') }
-  end
+gems.each do |rubygem|
+  gem_package rubygem
 end
