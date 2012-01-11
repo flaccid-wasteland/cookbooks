@@ -42,7 +42,7 @@
       "display_name": "RubyGems Install",
       "description": "An array or string of RubyGems to install system wide.",
       "recipes": [
-        "rubygems::gems_install"
+        "rubygems::install_gems"
       ],
       "choice": [
 

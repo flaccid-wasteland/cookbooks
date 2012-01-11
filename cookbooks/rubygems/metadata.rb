@@ -18,4 +18,4 @@ attribute "ruby/install_source",
  attribute "rubygems/gems_install",
   :display_name => "RubyGems Install",
   :description => "An array or string of RubyGems to install system wide.",
-  :recipes => [ "rubygems::gems_install" ]
+  :recipes => [ "rubygems::install_gems" ]
