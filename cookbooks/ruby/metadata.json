@@ -42,7 +42,9 @@
   "groupings": {
   },
   "recipes": {
-    "ruby::default": "Installs ruby"
+    "ruby::default": "Installs Ruby.",
+    "ruby::install_gems": "Installs a list of RubyGems into system.",
+    "ruby::update_gems": "Updates installed RubyGems."
   },
   "version": "0.0.1"
 }
