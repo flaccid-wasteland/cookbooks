@@ -19,6 +19,8 @@
 include_recipe "ruby::default"
 include_recipe "rubygems::default"
 
+( log "No rubygems to install, skipping." and return ) unless node['rubygems']['gems_install']
+
 # split the gems string into an array when an array is not provided
 if node[:rubygems][:gems_install].kind_of?(Array)
 	gems = node[:rubygems][:gems_install]
