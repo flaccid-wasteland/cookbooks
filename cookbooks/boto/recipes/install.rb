@@ -30,6 +30,6 @@ end
 bash "install_boto_#{node[:boto][:src_version]}" do
   cwd Chef::Config[:file_cache_path]
   code <<-EOH
-  chmod +x ./boto-installed.py; ./boto-installed.py || ( tar -zxf #{node['boto']['pkg_filename']} && cd boto-#{node['boto']['src_version']} && python setup.py install )
+  ./boto-installed.py || ( tar -zxf #{node['boto']['pkg_filename']} && cd boto-#{node['boto']['src_version']} && python setup.py install )
   EOH
 end
