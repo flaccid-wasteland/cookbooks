@@ -1,0 +1,31 @@
+{
+  "name": "boto",
+  "description": "Installs/Configures boto",
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
+  "maintainer": "Chris Fordham",
+  "maintainer_email": "chris@xhost.com.au",
+  "license": "Apache 2.0",
+  "platforms": {
+  },
+  "dependencies": {
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "boto::default": "Installs & configures boto.",
+    "boto::install": "Installs boto."
+  },
+  "version": "0.0.1"
+}
