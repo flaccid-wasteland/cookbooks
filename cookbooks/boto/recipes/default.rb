@@ -16,3 +16,4 @@
 # limitations under the License.
 
 include_recipe "boto::install"
+include_recipe "boto::configure"
