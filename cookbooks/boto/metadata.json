@@ -1,13 +1,14 @@
 {
   "name": "boto",
   "description": "Installs/Configures boto",
-  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
+  "long_description": "Description\n===========\n\nInstalls and configures boto.\n\nUsage\n=====\n\nExample node.json to install & configure boto, plus fetch a file from S3:\n\n\t{\n\t  \"boto\": {\n\t    \"install_method\":\"pip\",\n\t    \"aws_access_key_id\":\"foo\",\n\t    \"aws_secret_access_key\":\"bar\",\n\t    \"s3_fetch_bucket\":\"foo_bucket\",\n\t    \"s3_fetch_file\":\"foo_file.txt\",\n\t    \"s3_fetch_file_destination\":\"/tmp/foo_file.txt\",\n\t  },\n\t  \"run_list\": [ \"recipe[boto::default]\", \"recipe[boto::s3_fetch_file]\" ]\n\t}\n\nSame, but fetch and extract a zip file from S3 instead:\n\n\t{\n\t  \"boto\": {\n\t    \"install_method\":\"pip\",\n\t    \"aws_access_key_id\":\"foo\",\n\t    \"aws_secret_access_key\":\"bar\",\n\t    \"s3_fetch_bucket\":\"foo_bucket\",\n\t    \"s3_fetch_file\":\"foo_file.zip\",\n\t    \"s3_fetch_file_destination\":\"/tmp/foo_file.zip\",\n\t    \"s3_file_extract_destination\":\"/root\"\n\t  },\n\t  \"run_list\": [ \"recipe[boto::default]\", \"recipe[boto::s3_fetch_and_extract_file]\" ]\n\t}\n\nLicense and Author\n==================\n\nAuthor:: Chris Fordham (<chris.fordham@rightscale.com>)\n\nCopyright 2012, RightScale, Inc.\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.",
   "maintainer": "Chris Fordham",
   "maintainer_email": "chris@xhost.com.au",
   "license": "Apache 2.0",
   "platforms": {
   },
   "dependencies": {
+    "python": ">= 0.0.0"
   },
   "recommendations": {
   },
