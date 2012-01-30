@@ -1,7 +1,14 @@
 Description
 ===========
 
-Installs and configures boto.
+A Chef cookbook for installing and configuring boto.
+
+Dependencies
+============
+
+Cookbooks:
+* python
+* build-essential
 
 Usage
 =====
