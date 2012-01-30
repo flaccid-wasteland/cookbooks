@@ -20,12 +20,30 @@
   "replacing": {
   },
   "attributes": {
+    "boto/install_method": {
+      "display_name": "boto Install Method",
+      "description": "The method used to install the boto library.",
+      "default": "package",
+      "recipes": [
+        "boto::install"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string",
+      "required": "optional"
+    }
   },
   "groupings": {
   },
   "recipes": {
     "boto::default": "Installs & configures boto.",
-    "boto::install": "Installs boto."
+    "boto::install": "Installs boto.",
+    "boto::configure": "Configures boto.",
+    "boto::install_from_package": "Installs boto by package.",
+    "boto::install_from_pip": "Installs boto using PIP.",
+    "boto::install_from_source": "Installs boto from source."
   },
   "version": "0.0.1"
 }
