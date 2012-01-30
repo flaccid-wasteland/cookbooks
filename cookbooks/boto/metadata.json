@@ -96,8 +96,7 @@
       "description": "The bucket to use when fetching a file with s3_fetch_file.",
       "required": "optional",
       "recipes": [
-        "boto::s3_fetch_file",
-        "boto::s3_fetch_and_extract_file"
+        "boto::s3_fetch_file"
       ],
       "choice": [
 
@@ -110,8 +109,7 @@
       "description": "The S3 key/file to fetch with s3_fetch_file.",
       "required": "optional",
       "recipes": [
-        "boto::s3_fetch_file",
-        "boto::s3_fetch_and_extract_file"
+        "boto::s3_fetch_file"
       ],
       "choice": [
 
@@ -124,8 +122,7 @@
       "description": "The destination file/folder to store the fetched file with s3_fetch_file",
       "required": "optional",
       "recipes": [
-        "boto::s3_fetch_file",
-        "boto::s3_fetch_and_extract_file"
+        "boto::s3_fetch_file"
       ],
       "choice": [
 
