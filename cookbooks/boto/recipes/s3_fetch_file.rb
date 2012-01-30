@@ -20,7 +20,7 @@ include_recipe "boto"
 interpreter = 'python'
 interpreter = '/usr/bin/python2' unless ! platform?('arch')
 
-script "fetch_#{node['boto']['s3_fetch_file']}_from_#{node['boto']['s3_fetch_bucket']}}" do
+script "fetch_#{node['boto']['s3_fetch_file']}_from_#{node['boto']['s3_fetch_bucket']}" do
   interpreter "#{interpreter}"
   user "root"
   cwd "/tmp"
