@@ -20,7 +20,7 @@
 
 python_pkgs = value_for_platform(
   ["debian","ubuntu"] => {
-    "default" => ["python","python-dev"]
+    "default" => ["python","python-dev","python-setuptools"]
   },
   ["centos","redhat","fedora"] => {
     "default" => ["python26","python26-devel"]
@@ -31,7 +31,7 @@ python_pkgs = value_for_platform(
   ["arch"] => {
     "default" => ["python"]
   },
-  "default" => ["python","python-dev"]
+  "default" => ["python"]
 )
 
 python_pkgs.each do |pkg|
@@ -39,4 +39,3 @@ python_pkgs.each do |pkg|
     action :install
   end
 end
-
