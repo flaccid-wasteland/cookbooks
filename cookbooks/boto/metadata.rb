@@ -12,6 +12,7 @@ recipe "boto::install_from_package", "Installs boto by package."
 recipe "boto::install_from_pip", "Installs boto using PIP."
 recipe "boto::install_from_source", "Installs boto from source."
 recipe "boto::s3_fetch_file", "Fetches and stores a file locally from S3."
+recipe "boto::s3_fetch_and_extract_file", "Fetches and extracts a file from S3."
 
 attribute "boto/install_method",
   :display_name => "boto Install Method",

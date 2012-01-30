@@ -152,7 +152,8 @@
     "boto::install_from_package": "Installs boto by package.",
     "boto::install_from_pip": "Installs boto using PIP.",
     "boto::install_from_source": "Installs boto from source.",
-    "boto::s3_fetch_file": "Fetches and stores a file locally from S3."
+    "boto::s3_fetch_file": "Fetches and stores a file locally from S3.",
+    "boto::s3_fetch_and_extract_file": "Fetches and extracts a file from S3."
   },
   "version": "0.0.1"
 }
