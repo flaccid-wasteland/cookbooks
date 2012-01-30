@@ -1,26 +1,41 @@
-DESCRIPTION
+Description
 ===========
 
 Installs and configures boto.
 
-USAGE
+Usage
 =====
 
 Example node.json to install & configure boto, plus fetch a file from S3:
 
-		{
-		  "boto": {
-		    "install_method":"pip",
-		    "aws_access_key_id":"foo",
-		    "aws_secret_access_key":"bar",
-		    "s3_fetch_bucket":"foo_bucket",
-		    "s3_fetch_file":"foo_file.txt",
-		    "s3_fetch_file_destination":"/tmp/foo_file.txt",
-		  },
-		  "run_list": [ "recipe[boto::default]", "recipe[boto::s3_fetch_file]" ]
-		}
+	{
+	  "boto": {
+	    "install_method":"pip",
+	    "aws_access_key_id":"foo",
+	    "aws_secret_access_key":"bar",
+	    "s3_fetch_bucket":"foo_bucket",
+	    "s3_fetch_file":"foo_file.txt",
+	    "s3_fetch_file_destination":"/tmp/foo_file.txt",
+	  },
+	  "run_list": [ "recipe[boto::default]", "recipe[boto::s3_fetch_file]" ]
+	}
 
-LICENSE AND AUTHOR
+Same, but fetch and extract a zip file from S3 instead:
+
+	{
+	  "boto": {
+	    "install_method":"pip",
+	    "aws_access_key_id":"foo",
+	    "aws_secret_access_key":"bar",
+	    "s3_fetch_bucket":"foo_bucket",
+	    "s3_fetch_file":"foo_file.zip",
+	    "s3_fetch_file_destination":"/tmp/foo_file.zip",
+	    "s3_file_extract_destination":"/root"
+	  },
+	  "run_list": [ "recipe[boto::default]", "recipe[boto::s3_fetch_and_extract_file]" ]
+	}
+
+License and Author
 ==================
 
 Author:: Chris Fordham (<chris.fordham@rightscale.com>)
