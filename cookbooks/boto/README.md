@@ -3,10 +3,8 @@ Description
 
 A Chef cookbook for installing and configuring boto.
 
-Dependencies
-============
+# Cookbook Dependencies
 
-Cookbooks:
 * python
 * build-essential
 
