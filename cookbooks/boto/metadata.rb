@@ -16,6 +16,7 @@ attribute "boto/install_method",
   :display_name => "boto Install Method",
   :description => "The method used to install the boto library.",
   :default => "package",
+  :choice => [ 'package', 'pip', 'source' ],
   :recipes => [ "boto::install" ]
 
  attribute "boto/aws_access_key_id",
@@ -24,7 +25,7 @@ attribute "boto/install_method",
   :recipes => [ "boto::configure" ]
 
  attribute "boto/aws_secret_access_key",
-  :display_name => "boto AWS Secrete Access Key",
+  :display_name => "boto AWS Secret Access Key",
   :description => "AWS Secrete Access Key for boto.",
   :recipes => [ "boto::configure" ]
 

@@ -24,11 +24,13 @@
       "display_name": "boto Install Method",
       "description": "The method used to install the boto library.",
       "default": "package",
+      "choice": [
+        "package",
+        "pip",
+        "source"
+      ],
       "recipes": [
         "boto::install"
-      ],
-      "choice": [
-
       ],
       "calculated": false,
       "type": "string",
@@ -48,7 +50,7 @@
       "required": "optional"
     },
     "boto/aws_secret_access_key": {
-      "display_name": "boto AWS Secrete Access Key",
+      "display_name": "boto AWS Secret Access Key",
       "description": "AWS Secrete Access Key for boto.",
       "recipes": [
         "boto::configure"
