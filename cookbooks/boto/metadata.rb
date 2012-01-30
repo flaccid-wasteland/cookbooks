@@ -11,6 +11,7 @@ recipe "boto::configure", "Configures boto."
 recipe "boto::install_from_package", "Installs boto by package."
 recipe "boto::install_from_pip", "Installs boto using PIP."
 recipe "boto::install_from_source", "Installs boto from source."
+recipe "boto::s3_fetch_file", "Fetches and stores a file locally from S3."
 
 attribute "boto/install_method",
   :display_name => "boto Install Method",
@@ -40,3 +41,24 @@ attribute "boto/debug",
   :description => "The debug level for boto.",
   :default => '0',
   :recipes => [ "boto::configure" ]
+
+attribute "boto/debug",
+  :display_name => "boto Debug Level",
+  :description => "The debug level for boto.",
+  :default => '0',
+  :recipes => [ "boto::configure" ]
+
+attribute "boto/s3_fetch_bucket",
+  :display_name => "boto S3 Fetch Bucket",
+  :description => "The bucket to use when fetching a file with s3_fetch_file.",
+  :recipes => [ "boto::s3_fetch_file" ]
+
+attribute "boto/s3_fetch_file",
+  :display_name => "boto S3 Fetch File",
+  :description => "The S3 key/file to fetch with s3_fetch_file.",
+  :recipes => [ "boto::s3_fetch_file" ]
+
+attribute "boto/s3_fetch_file_destination",
+  :display_name => "boto S3 Fetch File Dest",
+  :description => "The destination file/folder to store the fetched file with s3_fetch_file",
+  :recipes => [ "boto::s3_fetch_file" ]

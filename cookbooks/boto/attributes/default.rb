@@ -13,3 +13,7 @@ default['boto']['aws_secret_access_key'] = nil
 
 default['boto']['pkg_filename'] = "#{node['boto']['package_prefix']}#{node['boto']['src_version']}#{node['boto']['package_extension']}"
 default['boto']['pkg_url'] = "#{node['boto']['mirror_url_prefix']}#{node['boto']['pkg_filename']}"
+
+default['boto']['s3_fetch_bucket'] = nil
+default['boto']['s3_fetch_file'] = nil
+default['boto']['s3_fetch_file_destination'] = nil
