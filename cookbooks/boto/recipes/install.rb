@@ -15,21 +15,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-remote_file "#{Chef::Config[:file_cache_path]}/#{node['boto']['pkg_filename']}" do
-  source node['boto']['pkg_url']
-  checksum node['boto']['src_checksum']
-  mode "0644"
-end
-
-cookbook_file "#{Chef::Config[:file_cache_path]}/boto-installed.py" do
-  content "boto-installed.py"
-  owner "root"
-  mode "00755"
-end
-
-bash "install_boto_#{node[:boto][:src_version]}" do
-  cwd Chef::Config[:file_cache_path]
-  code <<-EOH
-  ./boto-installed.py || ( tar -zxf #{node['boto']['pkg_filename']} && cd boto-#{node['boto']['src_version']} && python setup.py install )
-  EOH
-end
+include_recipe "boto::install_from_#{node['boto']['install_method']}"
