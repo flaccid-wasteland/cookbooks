@@ -1,0 +1,12 @@
+[Credentials]
+aws_access_key_id = <%= node[:boto][:aws_access_key_id] %>
+aws_secret_access_key = <%= node[:boto][:aws_secret_access_key] %>
+
+[Boto]
+debug = 0
+num_retries = 10
+
+#proxy = myproxy.com
+#proxy_port = 8080
+#proxy_user = foo
+#proxy_pass = bar
