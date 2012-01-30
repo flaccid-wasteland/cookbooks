@@ -17,3 +17,25 @@ attribute "boto/install_method",
   :description => "The method used to install the boto library.",
   :default => "package",
   :recipes => [ "boto::install" ]
+
+ attribute "boto/aws_access_key_id",
+  :display_name => "boto AWS Access Key ID",
+  :description => "AWS Access Key ID for boto.",
+  :recipes => [ "boto::configure" ]
+
+ attribute "boto/aws_secret_access_key",
+  :display_name => "boto AWS Secrete Access Key",
+  :description => "AWS Secrete Access Key for boto.",
+  :recipes => [ "boto::configure" ]
+
+ attribute "boto/num_retries",
+  :display_name => "boto Number Retries",
+  :description => "The number of times boto retries an action.",
+  :default => '10',
+  :recipes => [ "boto::configure" ]
+
+attribute "boto/debug",
+  :display_name => "boto Debug Level",
+  :description => "The debug level for boto.",
+  :default => '0',
+  :recipes => [ "boto::configure" ]
