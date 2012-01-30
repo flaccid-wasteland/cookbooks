@@ -20,7 +20,7 @@
 
 python_pkgs = value_for_platform(
   ["debian","ubuntu"] => {
-    "default" => ["python","python-dev","python-setuptools"]
+    "default" => ["python","python-dev","python-setuptools","python-pip"]
   },
   ["centos","redhat","fedora"] => {
     "default" => ["python26","python26-devel"]
