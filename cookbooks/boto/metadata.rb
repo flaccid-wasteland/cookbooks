@@ -61,19 +61,19 @@ attribute "boto/s3_fetch_bucket",
   :display_name => "boto S3 Fetch Bucket",
   :description => "The bucket to use when fetching a file with s3_fetch_file.",
   :required => "optional",
-  :recipes => [ "boto::s3_fetch_file" ]
+  :recipes => [ "boto::s3_fetch_file", "boto::s3_fetch_and_extract_file" ]
 
 attribute "boto/s3_fetch_file",
   :display_name => "boto S3 Fetch File",
   :description => "The S3 key/file to fetch with s3_fetch_file.",
   :required => "optional",
-  :recipes => [ "boto::s3_fetch_file" ]
+  :recipes => [ "boto::s3_fetch_file", "boto::s3_fetch_and_extract_file" ]
 
 attribute "boto/s3_fetch_file_destination",
   :display_name => "boto S3 Fetch File Dest",
   :description => "The destination file/folder to store the fetched file with s3_fetch_file",
   :required => "optional",
-  :recipes => [ "boto::s3_fetch_file" ]
+  :recipes => [ "boto::s3_fetch_file", "boto::s3_fetch_and_extract_file" ]
 
 attribute "boto/s3_file_extract_destination",
   :display_name => "boto S3 File Extract Dest",
