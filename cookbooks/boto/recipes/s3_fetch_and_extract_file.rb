@@ -26,8 +26,9 @@ bash "extract_#{node['boto']['s3_fetch_file_destination']}" do
   user "root"
   cwd 
   code <<-EOH
-unzip #{node['boto']['s3_fetch_file_destination']} #{node['boto']['s3_file_extract_destination']
+mkdir -p #{node['boto']['s3_file_extract_destination']} || mkdir -p `basename #{node['boto']['s3_file_extract_destination']}`
+unzip -u #{node['boto']['s3_fetch_file_destination']} -d #{node['boto']['s3_file_extract_destination']}
   EOH
 end
 
-log "Successfully extracted #{node['boto']['s3_fetch_file} to #{node['boto']['s3_file_extract_destination']."
+log "Successfully extracted #{node['boto']['s3_fetch_file']} to #{node['boto']['s3_file_extract_destination']}."
