@@ -26,7 +26,7 @@ bash "extract_#{node['boto']['s3_fetch_file_destination']}" do
   user "root"
   cwd 
   code <<-EOH
-mkdir -p #{node['boto']['s3_file_extract_destination']} || mkdir -p `basename #{node['boto']['s3_file_extract_destination']}`
+mkdir -p #{node['boto']['s3_file_extract_destination']} || mkdir -p `dirname #{node['boto']['s3_file_extract_destination']}`
 unzip -u #{node['boto']['s3_fetch_file_destination']} -d #{node['boto']['s3_file_extract_destination']}
   EOH
 end
