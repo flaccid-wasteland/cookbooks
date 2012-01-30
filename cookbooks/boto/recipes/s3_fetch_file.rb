@@ -17,7 +17,11 @@
 
 include_recipe "boto"
 
-python "get_#{node['boto']['s3_fetch_file']}_from_#{node['boto']['s3_fetch_bucket']}" do
+interpreter = 'python'
+interpreter = '/usr/bin/python2' unless ! platform?('arch')
+
+script "fetch_#{node['boto']['s3_fetch_file']}_from_#{node['boto']['s3_fetch_bucket']}}" do
+  interpreter "/usr/bin/python2"
   user "root"
   cwd "/tmp"
   code <<-EOH
@@ -31,3 +35,5 @@ fp = open ("#{node['boto']['s3_fetch_file_destination']}", "w")
 key.get_file (fp)
   EOH
 end
+
+log "Successfully saved #{node['boto']['s3_fetch_file']} to #{node['boto']['s3_fetch_file_destination']}"
