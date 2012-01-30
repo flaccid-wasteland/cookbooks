@@ -128,6 +128,19 @@
       ],
       "calculated": false,
       "type": "string"
+    },
+    "boto/s3_file_extract_destination": {
+      "display_name": "boto S3 File Extract Dest",
+      "description": "The destination folder to extract the fetched file with s3_fetch_file",
+      "required": "optional",
+      "recipes": [
+        "boto::s3_fetch_and_extract_file"
+      ],
+      "choice": [
+
+      ],
+      "calculated": false,
+      "type": "string"
     }
   },
   "groupings": {

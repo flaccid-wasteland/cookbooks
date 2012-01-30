@@ -71,3 +71,9 @@ attribute "boto/s3_fetch_file_destination",
   :description => "The destination file/folder to store the fetched file with s3_fetch_file",
   :required => "optional",
   :recipes => [ "boto::s3_fetch_file" ]
+
+attribute "boto/s3_file_extract_destination",
+  :display_name => "boto S3 File Extract Dest",
+  :description => "The destination folder to extract the fetched file with s3_fetch_file",
+  :required => "optional",
+  :recipes => [ "boto::s3_fetch_and_extract_file" ]
