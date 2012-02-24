@@ -76,7 +76,7 @@
   },
   "recipes": {
     "resolver": "Configures /etc/resolv.conf via attributes.",
-    "resolver::rs_run_resolver": "runs resolver recipe with rs_run_recipe."
+    "resolver::rs_run_resolver": "Runs the rs_run_resolver recipe with rs_run_recipe (for RightScale servers only)."
   },
   "version": "0.8.2"
 }
