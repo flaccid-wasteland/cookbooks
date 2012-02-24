@@ -25,5 +25,7 @@ if node['ruby']['install_source'] == 'ruby1.9.1'
   end
 else
   package "ruby" unless node['ruby']['install_source'] == 'none'
-  package "ruby-dev" unless node['ruby']['install_source'] == 'none'
+  if ( platform?('debian') or platform?('ubuntu') )
+    package "ruby-dev" unless node['ruby']['install_source'] == 'none'
+  end
 end
