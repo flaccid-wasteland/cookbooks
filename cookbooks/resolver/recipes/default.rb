@@ -19,6 +19,8 @@
 # = Requires
 # * node[:resolver][:nameservers]
 
+gem_package "rubydns"
+
 template "/etc/resolv.conf" do
   source "resolv.conf.erb"
   owner "root"
