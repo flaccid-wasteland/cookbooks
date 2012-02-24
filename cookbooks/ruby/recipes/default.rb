@@ -17,11 +17,13 @@
 #
 
 if node['ruby']['install_source'] == 'ruby1.9.1'
-	package "ruby1.9.1" unless platform?('arch')
-	# ln -s /usr/bin/ruby1.9.1 /usr/bin/ruby
-	link "/usr/bin/ruby" do
-		to "/usr/bin/ruby1.9.1"
-	end
+  package "ruby1.9.1" unless platform?('arch')
+  package "ruby1.9.1-dev" unless platform?('arch')
+  # ln -s /usr/bin/ruby1.9.1 /usr/bin/ruby
+  link "/usr/bin/ruby" do
+  	to "/usr/bin/ruby1.9.1"
+  end
 else
-	package "ruby" unless node['ruby']['install_source'] == 'none'
+  package "ruby" unless node['ruby']['install_source'] == 'none'
+  package "ruby-dev" unless node['ruby']['install_source'] == 'none'
 end
