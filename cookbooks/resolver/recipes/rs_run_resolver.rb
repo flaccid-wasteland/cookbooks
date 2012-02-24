@@ -15,10 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-script "rs_run_recipe_resolver" do
-  interpreter "bash"
-  user "root"
-  code <<-EOH
- if type -P rs_run_recipe &>/dev/null; then rs_run_recipe --name "resolver::default" > /dev/null 2>&1″; fi
-  EOH
+execute "rs_run_recipe_resolver" do
+  command "rs_run_recipe --name 'resolver::default'"
 end
