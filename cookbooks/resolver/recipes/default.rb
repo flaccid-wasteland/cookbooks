@@ -16,10 +16,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-# = Requires
-# * node[:resolver][:nameservers]
-
-include_recipe "rubygems::install_gems"
 
 if node['resolver']['nameservers'].nil?
   log "No nameservers specified, using existing nameservers in resolv.conf."
