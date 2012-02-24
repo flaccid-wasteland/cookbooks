@@ -16,18 +16,19 @@
 # limitations under the License.
 #
 
-include_recipe "ruby::default"
-include_recipe "rubygems::default"
+include_recipe "ruby"
+include_recipe "rubygems"
 
 ( log "No rubygems to install, skipping." and return ) unless node['rubygems']['gems_install']
 
 # split the gems string into an array when an array is not provided
-if node[:rubygems][:gems_install].kind_of?(Array)
-	gems = node[:rubygems][:gems_install]
+if node['rubygems']['gems_install'].kind_of?(Array)
+	gems = node['rubygems']['gems_install']
 else
-	gems = node[:rubygems][:gems_install].split(/ /)
+	gems = node['rubygems']['gems_install'].split(/ /)
 end
 
 gems.each do |rubygem|
   gem_package rubygem
+  gem_binary "/usr/bin/gem" # rightscale workaround due to sandbox
 end
