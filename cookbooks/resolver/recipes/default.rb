@@ -37,3 +37,13 @@ template "/etc/resolv.conf" do
     :nameservers => nameservers
   )
 end
+
+nameservers.each { | ns |
+  script "set_resolver_tag_for_#{ns}" do
+    interpreter "bash"
+    user "root"
+    code <<-EOH
+( if type -P rs_tag &>/dev/null; then rs_tag --add 'node:resolver=#{ns}'; fi ) || true
+    EOH
+  end
+}
