@@ -5,9 +5,7 @@ description       "Configures /etc/resolv.conf"
 long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version           "0.8.2"
 
-depends "rubygems::install_gems"
-
-recipe "resolver", "Configures /etc/resolv.conf via attributes"
+recipe "resolver", "Configures /etc/resolv.conf via attributes."
 
 %w{ ubuntu debian fedora centos redhat freebsd openbsd macosx }.each do |os|
   supports os

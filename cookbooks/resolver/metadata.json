@@ -16,7 +16,6 @@
     "macosx": ">= 0.0.0"
   },
   "dependencies": {
-    "rubygems::install_gems": ">= 0.0.0"
   },
   "recommendations": {
   },
@@ -76,7 +75,7 @@
   "groupings": {
   },
   "recipes": {
-    "resolver": "Configures /etc/resolv.conf via attributes"
+    "resolver": "Configures /etc/resolv.conf via attributes."
   },
   "version": "0.8.2"
 }
