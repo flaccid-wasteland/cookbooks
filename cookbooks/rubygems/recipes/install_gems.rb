@@ -30,6 +30,11 @@ end
 
 gems.each do |rubygem|
   gem_package rubygem do
+  end
+end
+
+gems.each do |rubygem|
+  gem_package rubygem do
     gem_binary "/usr/bin/gem" # rightscale workaround due to sandbox
   end
 end
