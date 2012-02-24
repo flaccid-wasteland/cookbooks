@@ -21,9 +21,23 @@
 
 gem_package "rubydns"
 
+require 'dnsruby'
+
+if node['resolver']['nameservers'].nil?
+  log "No nameservers specified, using existing nameservers in resolv.conf."
+  nameservers = Dnsruby::Config::new::nameserver()   # assumes current nameservers
+else
+  nameservers = node['resolver']['nameservers']
+end
+
+log "Setting nameservers => #{nameservers}"
+
 template "/etc/resolv.conf" do
   source "resolv.conf.erb"
   owner "root"
   group "root"
   mode 0644
+  variables(
+    :nameservers => nameservers
+  )
 end
