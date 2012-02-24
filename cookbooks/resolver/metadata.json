@@ -16,6 +16,7 @@
     "macosx": ">= 0.0.0"
   },
   "dependencies": {
+    "rubygems::install_gems": ">= 0.0.0"
   },
   "recommendations": {
   },
