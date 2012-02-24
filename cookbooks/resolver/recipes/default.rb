@@ -23,6 +23,9 @@ include_recipe "rubygems::install_gems"
 
 if node['resolver']['nameservers'].nil?
   log "No nameservers specified, using existing nameservers in resolv.conf."
+  require 'rubygems'
+  require 'dnsruby'
+  nameservers = Dnsruby::Config::new::nameserver()
 else
   nameservers = node['resolver']['nameservers']
 end
