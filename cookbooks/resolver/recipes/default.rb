@@ -19,15 +19,10 @@
 # = Requires
 # * node[:resolver][:nameservers]
 
-gem_package "dnsruby" do
-  gem_binary "/usr/bin/gem"
-end
+include_recipe "rubygems::install_gems"
 
 if node['resolver']['nameservers'].nil?
-  require 'rubygems'
-  require 'dnsruby'
   log "No nameservers specified, using existing nameservers in resolv.conf."
-  nameservers = Dnsruby::Config::new::nameserver()   # assumes current nameservers
 else
   nameservers = node['resolver']['nameservers']
 end
