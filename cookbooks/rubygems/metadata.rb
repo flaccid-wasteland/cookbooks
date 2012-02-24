@@ -5,6 +5,8 @@ description      "Installs/Configures rubygems"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
+depends "ruby"
+
 recipe "rubygems::default", "Installs RubyGems"
 recipe "rubygems::install_gems", "Installs a list of RubyGems into system."
 recipe "rubygems::update_gems", "Updates installed RubyGems."

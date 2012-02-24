@@ -8,6 +8,7 @@
   "platforms": {
   },
   "dependencies": {
+    "ruby": ">= 0.0.0"
   },
   "recommendations": {
   },
