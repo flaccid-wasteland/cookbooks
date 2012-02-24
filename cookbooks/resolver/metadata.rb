@@ -6,7 +6,7 @@ long_description  IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version           "0.8.2"
 
 recipe "resolver", "Configures /etc/resolv.conf via attributes."
-recipe "rs_run_resolver", "runs resolver recipe with rs_run_recipe."
+recipe "resolver::rs_run_resolver", "runs resolver recipe with rs_run_recipe."
 
 %w{ ubuntu debian fedora centos redhat freebsd openbsd macosx }.each do |os|
   supports os
