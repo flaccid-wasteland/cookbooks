@@ -16,6 +16,11 @@
 # limitations under the License.
 #
 
+if system('file /opt/rightscale/sandbox/bin/gem && /opt/rightscale/sandbox/bin/gem list | grep chef | grep 0.8.')
+  log "Recipe not compatiable with RightScale Chef 0.8.x (see https://github.com/fnichol/chef-rvm/issues/50), skipping."
+  return
+end
+
 if node['ruby']['install_source'] == 'ruby1.9.1'
   package "ruby1.9.1" unless platform?('arch')
   package "ruby1.9.1-dev" unless platform?('arch')
