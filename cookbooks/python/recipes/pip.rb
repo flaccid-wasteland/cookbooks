@@ -18,6 +18,8 @@
 # limitations under the License.
 #
 
+# this recipe needs updating to support all platforms and gracefully address pkg bugs
+
 # Ubuntu's python-setuptools, python-pip and python-virtualenv packages 
 # are broken...this feels like Rubygems!
 # http://stackoverflow.com/questions/4324558/whats-the-proper-way-to-install-pip-virtualenv-and-distribute-for-python
@@ -25,7 +27,7 @@
 remote_file "#{Chef::Config[:file_cache_path]}/distribute_setup.py" do
   source "http://python-distribute.org/distribute_setup.py"
   mode "0644"
-  not_if "which pip"
+  not_if "which pip > /dev/null 2>&1"
 end
 
 use_version = node['python']['distribute_install_py_version']
@@ -36,5 +38,5 @@ bash "install-pip" do
   python#{use_version} distribute_setup.py
   easy_install pip
   EOF
-  not_if "which pip"
+  not_if "which pip > /dev/null 2>&1"
 end
