@@ -34,6 +34,10 @@ python_pkgs = value_for_platform(
   "default" => ["python"]
 )
 
+if platform?('centos') and node['platform_version'] == '6.2'
+  python_pkgs = [ "python", "python-devel" ]
+end
+
 python_pkgs.each do |pkg|
   package pkg do
     action :install
