@@ -82,12 +82,6 @@ attribute "boto/s3_file_extract_destination",
   :required => "optional",
   :recipes => [ "boto::s3_fetch_and_extract_file" ]
   
-attribute "boto/s3_fetch_bucket",
-  :display_name => "boto S3 Store Bucket",
-  :description => "The bucket to use when storing a file with s3_store_file.",
-  :required => "optional",
-  :recipes => [ "boto::s3_store_file" ]
-  
 attribute "boto/s3_store_bucket",
   :display_name => "boto S3 Store Bucket",
   :description => "The bucket to use when storing a file with s3_store_file.",
