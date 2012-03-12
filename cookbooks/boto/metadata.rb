@@ -15,6 +15,7 @@ recipe "boto::install_from_pip", "Installs boto using PIP."
 recipe "boto::install_from_source", "Installs boto from source."
 recipe "boto::s3_fetch_file", "Fetches and stores a file locally from S3."
 recipe "boto::s3_fetch_and_extract_file", "Fetches and extracts a file from S3."
+recipe "boto::s3_store_file", "Stores a local file to an S3 bucket."
 
 attribute "boto/install_method",
   :display_name => "boto Install Method",
@@ -80,3 +81,21 @@ attribute "boto/s3_file_extract_destination",
   :description => "The destination folder to extract the fetched file with s3_fetch_file",
   :required => "optional",
   :recipes => [ "boto::s3_fetch_and_extract_file" ]
+  
+attribute "boto/s3_fetch_bucket",
+  :display_name => "boto S3 Store Bucket",
+  :description => "The bucket to use when storing a file with s3_store_file.",
+  :required => "optional",
+  :recipes => [ "boto::s3_store_file" ]
+  
+attribute "boto/s3_store_bucket",
+  :display_name => "boto S3 Store Bucket",
+  :description => "The bucket to use when storing a file with s3_store_file.",
+  :required => "optional",
+  :recipes => [ "boto::s3_store_file" ]
+  
+attribute "boto/s3_store_file",
+  :display_name => "boto S3 Store File",
+  :description => "The local file to store with in S3 with s3_store_file.",
+  :required => "optional",
+  :recipes => [ "boto::s3_store_file" ]
