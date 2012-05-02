@@ -1,50 +1,50 @@
 {
-    "conflicting": {
-    },
-    "providing": {
-    },
-    "version": "0.0.1",
-    "maintainer": "Chris Fordham",
-    "attributes": {
-    },
-    "replacing": {
-    },
-    "license": "Apache 2.0",
-    "maintainer_email": "chris@xhost.com.au",
-    "groupings": {
-    },
-    "recommendations": {
-    },
-    "dependencies": {
-    },
-    "name": "postgresql",
-    "recipes": {
-      "postgresql::server": "Installs postgresql server",
-      "postgresql::client": "Installs postgresql client package(s)",
-      "postgresql::default": "Installs PostgreSQL server and client"
-    },
-    "platforms": {
-      "rhel": [
+  "recipes": {
+    "postgresql::server": "Installs postgresql server",
+    "postgresql::client": "Installs postgresql client package(s)",
+    "postgresql::default": "Installs PostgreSQL server and client"
+  },
+  "suggestions": {
+  },
+  "platforms": {
+    "rhel": [
 
-      ],
-      "debian": [
+    ],
+    "debian": [
 
-      ],
-      "fedora": [
+    ],
+    "fedora": [
 
-      ],
-      "centos": [
+    ],
+    "centos": [
 
-      ],
-      "suse": [
+    ],
+    "suse": [
 
-      ],
-      "ubuntu": [
+    ],
+    "ubuntu": [
 
-      ]
-    },
-    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
-    "suggestions": {
-    },
-    "description": "Installs/Configures postgresql"
-  }
+    ]
+  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "conflicting": {
+  },
+  "description": "Installs/Configures postgresql",
+  "providing": {
+  },
+  "dependencies": {
+  },
+  "maintainer": "Chris Fordham",
+  "version": "0.0.1",
+  "attributes": {
+  },
+  "replacing": {
+  },
+  "maintainer_email": "chris@xhost.com.au",
+  "groupings": {
+  },
+  "name": "postgresql",
+  "recommendations": {
+  },
+  "license": "Apache 2.0"
+}

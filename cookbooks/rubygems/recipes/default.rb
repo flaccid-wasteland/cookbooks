@@ -1,4 +1,3 @@
-#
 # Cookbook Name:: rubygems
 # Recipe:: default
 #
@@ -16,6 +15,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-package "rubygems" do
-  action :install
+
+include_recipe "ruby"
+
+if node['ruby']['install_source'] == 'ruby1.9.1'
+	package "rubygems1.9"
+else
+	package "rubygems" unless platform?('arch')
 end

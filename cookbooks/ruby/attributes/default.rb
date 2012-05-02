@@ -1,0 +1,1 @@
+default['ruby']['install_source'] = 'package'

@@ -1,31 +1,31 @@
 {
-    "conflicting": {
-    },
-    "providing": {
-    },
-    "version": "0.0.1",
-    "maintainer": "Chris Fordham",
-    "attributes": {
-    },
-    "replacing": {
-    },
-    "license": "Apache 2.0",
-    "maintainer_email": "chris@xhost.com.au",
-    "groupings": {
-    },
-    "recommendations": {
-    },
-    "dependencies": {
-    },
-    "name": "links",
-    "recipes": {
-      "links::install": "Installs Links www text browser",
-      "links::default": "Installs Links www text browser"
-    },
-    "platforms": {
-    },
-    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
-    "suggestions": {
-    },
-    "description": "Installs/Configures links"
-  }
+  "recipes": {
+    "links::install": "Installs Links www text browser",
+    "links::default": "Installs Links www text browser"
+  },
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "conflicting": {
+  },
+  "description": "Installs/Configures links",
+  "providing": {
+  },
+  "dependencies": {
+  },
+  "maintainer": "Chris Fordham",
+  "version": "0.0.1",
+  "attributes": {
+  },
+  "replacing": {
+  },
+  "maintainer_email": "chris@xhost.com.au",
+  "groupings": {
+  },
+  "name": "links",
+  "recommendations": {
+  },
+  "license": "Apache 2.0"
+}

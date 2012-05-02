@@ -1,8 +1,9 @@
 #
+# Author:: Seth Chisamore <schisamo@opscode.com>
 # Cookbook Name:: python
 # Recipe:: default
 #
-# Copyright 2010, Chris Fordham
+# Copyright 2011, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,18 +18,6 @@
 # limitations under the License.
 #
 
-package "python" do
-  action :install
-end
-
-# -dev package not availble in el*/centos etc. (python-devel)
-# todo: add logic on platform?
-# (additional debian-specific packages removed)
-
-%w{ 
-  imaging setuptools
-}.each do |pkg|
-  package "python-#{pkg}" do
-    action :install
-  end
-end
+include_recipe "python::#{node['python']['install_method']}"
+include_recipe "python::pip"
+include_recipe "python::virtualenv"

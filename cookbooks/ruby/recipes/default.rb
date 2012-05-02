@@ -1,4 +1,3 @@
-#
 # Cookbook Name:: ruby
 # Recipe:: default
 #
@@ -16,6 +15,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-package "ruby" do
-  action :install
+
+if system('file /opt/rightscale/sandbox/bin/gem && /opt/rightscale/sandbox/bin/gem list | grep chef | grep 0.8.')
+  log "Recipe not compatiable with RightScale Chef 0.8.x (see https://github.com/fnichol/chef-rvm/issues/50), skipping."
+  return
+end
+
+if node['ruby']['install_source'] == 'ruby1.9.1'
+  package "ruby1.9.1" unless platform?('arch')
+  package "ruby1.9.1-dev" unless platform?('arch')
+  # ln -s /usr/bin/ruby1.9.1 /usr/bin/ruby
+  link "/usr/bin/ruby" do
+  	to "/usr/bin/ruby1.9.1"
+  end
+else
+  package "ruby" unless node['ruby']['install_source'] == 'none'
+  if ( platform?('debian') or platform?('ubuntu') )
+    package "ruby-dev" unless node['ruby']['install_source'] == 'none'
+  end
 end

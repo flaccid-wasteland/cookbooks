@@ -1,31 +1,31 @@
 {
-    "license": "Apache 2.0",
-    "conflicting": {
-    },
-    "dependencies": {
-    },
-    "providing": {
-    },
-    "maintainer": "Chris Fordham",
-    "description": "Installs/Configures privoxy",
-    "replacing": {
-    },
-    "platforms": {
-    },
-    "version": "0.0.1",
-    "maintainer_email": "chris@xhost.com.au",
-    "groupings": {
-    },
-    "recommendations": {
-    },
-    "name": "privoxy",
-    "recipes": {
-      "privoxy::default": "Installs Privoxy via ::install",
-      "privoxy::install": "Installs Privoxy"
-    },
-    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
-    "attributes": {
-    },
-    "suggestions": {
-    }
-  }
+  "recipes": {
+    "privoxy::default": "Installs Privoxy via ::install",
+    "privoxy::install": "Installs Privoxy"
+  },
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "conflicting": {
+  },
+  "description": "Installs/Configures privoxy",
+  "providing": {
+  },
+  "dependencies": {
+  },
+  "maintainer": "Chris Fordham",
+  "version": "0.0.1",
+  "attributes": {
+  },
+  "replacing": {
+  },
+  "maintainer_email": "chris@xhost.com.au",
+  "groupings": {
+  },
+  "name": "privoxy",
+  "recommendations": {
+  },
+  "license": "Apache 2.0"
+}

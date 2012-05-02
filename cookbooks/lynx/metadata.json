@@ -1,31 +1,31 @@
 {
-    "license": "Apache 2.0",
-    "conflicting": {
-    },
-    "dependencies": {
-    },
-    "providing": {
-    },
-    "maintainer": "Chris Fordham",
-    "description": "Installs/Configures the Lynx www text browser",
-    "replacing": {
-    },
-    "platforms": {
-    },
-    "version": "0.0.1",
-    "maintainer_email": "chris@xhost.com.au",
-    "groupings": {
-    },
-    "recommendations": {
-    },
-    "name": "lynx",
-    "recipes": {
-      "lynx::default": "Installs Lynx via ::install",
-      "lynx::install": "Installs Lynx"
-    },
-    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
-    "attributes": {
-    },
-    "suggestions": {
-    }
-  }
+  "recipes": {
+    "lynx::default": "Installs Lynx via ::install",
+    "lynx::install": "Installs Lynx"
+  },
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "conflicting": {
+  },
+  "description": "Installs/Configures the Lynx www text browser",
+  "providing": {
+  },
+  "dependencies": {
+  },
+  "maintainer": "Chris Fordham",
+  "version": "0.0.1",
+  "attributes": {
+  },
+  "replacing": {
+  },
+  "maintainer_email": "chris@xhost.com.au",
+  "groupings": {
+  },
+  "name": "lynx",
+  "recommendations": {
+  },
+  "license": "Apache 2.0"
+}
