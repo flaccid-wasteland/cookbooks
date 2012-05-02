@@ -16,7 +16,7 @@
 # limitations under the License.
 
 # install rest_connection build/install deps
-pkg_deps = value_for_platform([ "centos", "redhat", "suse", "fedora" ] => {"default" => [ "libxml2", "libxml2-devel libxslt-devel"]}, [ "ubuntu", "debian" ] => {"default" => [ "libxml2", "libxml2-dev", "libxslt-dev"]}, "archlinux" => {"default" => [ "libxml2", "libxslt"]})
+pkg_deps = value_for_platform([ "centos", "redhat", "suse", "fedora" ] => {"default" => [ "libxml2", "libxml2-devel libxslt-devel"]}, [ "ubuntu", "debian" ] => {"default" => [ "libxml2", "libxml2-dev", "libxslt1-dev"]}, "archlinux" => {"default" => [ "libxml2", "libxslt"]})
 
 pkg_deps.each { |pkg|
   package pkg
