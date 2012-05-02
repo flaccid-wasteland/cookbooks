@@ -14,7 +14,6 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-<<<<<<< HEAD
 
 # install rest_connection build/install deps
 pkg_deps = value_for_platform([ "centos", "redhat", "suse", "fedora" ] => {"default" => [ "libxml2", "libxml2-devel libxslt-devel"]}, [ "ubuntu", "debian" ] => {"default" => [ "libxml2", "libxml2-dev", "libxslt-dev"]}, "archlinux" => {"default" => [ "libxml2", "libxslt"]})
@@ -35,7 +34,5 @@ if defined?(RightScale)
     gem_binary "/usr/bin/gem"
   end
 end
-=======
->>>>>>> 2070871c5dcf4a1f71ec6fd84956d2ada409881c
 
 gem_package "rest_connection"
