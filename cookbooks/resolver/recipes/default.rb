@@ -17,7 +17,7 @@
 # limitations under the License.
 #
 
-if node['resolver']['nameservers'].nil?
+if ( node['resolver']['nameservers'].nil? or node['resolver']['nameservers'] == "" )
   log "No nameservers specified, using existing nameservers in resolv.conf."
   require 'rubygems'
   require 'dnsruby'
