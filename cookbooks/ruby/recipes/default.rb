@@ -16,6 +16,8 @@
 # limitations under the License.
 #
 
+( log "archlinux not currently supported due to bug" and return ) if platform?('archlinux')
+
 if system('file /opt/rightscale/sandbox/bin/gem && /opt/rightscale/sandbox/bin/gem list | grep chef | grep 0.8.')
   log "Recipe not compatiable with RightScale Chef 0.8.x (see https://github.com/fnichol/chef-rvm/issues/50), skipping."
   return
