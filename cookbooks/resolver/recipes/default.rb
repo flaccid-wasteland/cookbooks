@@ -18,14 +18,19 @@
 #
 
 if ( node['resolver']['nameservers'].nil? or node['resolver']['nameservers'] == "" )
+  
   log "No nameservers specified, using existing nameservers in resolv.conf"
+
   g = gem_package "dnsruby" do
     action :nothing
   end
+  
   g.run_action(:install)
   Gem.clear_paths
+
   require 'dnsruby'
   nameservers = Dnsruby::Config::new::nameserver()
+
 else
   nameservers = node['resolver']['nameservers']
 end
