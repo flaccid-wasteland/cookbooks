@@ -30,6 +30,7 @@ if ( node['resolver']['nameservers'].nil? or node['resolver']['nameservers'] == 
 else
   nameservers = node['resolver']['nameservers']
 end
+
 log "Using nameservers => #{nameservers}"
 
 search = false
@@ -37,7 +38,7 @@ if node['resolver']['search'].length > 0
   search = node['resolver']['search']
 else
   log('Checking for existing domain search suffix') { level :debug }
-  search = Dnsruby::Config::new::search().map {|element| "#{element}" }.join(' ')
+  search = Dnsruby::Config::new::search().map {|element| "#{element}" }.join(' ').strip
 end
 
 if ( search and search.length > 0 )
