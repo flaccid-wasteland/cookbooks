@@ -25,12 +25,14 @@ script "store_#{node['boto']['s3_store_file']}_from_#{node['boto']['s3_store_buc
   user "root"
   cwd "/tmp"
   code <<-EOH
+import os
 from boto.s3.connection import S3Connection
 from boto.s3.key import Key
 
 connection = S3Connection()
 bucket = connection.create_bucket("#{node['boto']['s3_store_bucket']}")
 k = Key(bucket)
+k.key = os.path.basename("#{node['boto']['s3_store_file']}")
 k.set_contents_from_filename("#{node['boto']['s3_store_file']}")
   EOH
 end
