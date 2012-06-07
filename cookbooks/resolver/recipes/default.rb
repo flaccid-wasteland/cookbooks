@@ -36,10 +36,12 @@ search = false
 if node['resolver']['search']
   search = node['resolver']['search']
 else
-  search = Dnsruby::Config::new::search()
+  search = Dnsruby::Config::new::search().map {|element| "#{element}" }.join(' ')
 end
 
-log "Setting search => #{search}" if search
+if ( search and search.length > 0 )
+  log "Setting search => #{search}" 
+end
 
 template "/etc/resolv.conf" do
   source "resolv.conf.erb"
