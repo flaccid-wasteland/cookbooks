@@ -33,14 +33,17 @@ end
 log "Using nameservers => #{nameservers}"
 
 search = false
-if node['resolver']['search']
+if node['resolver']['search'].length > 0
   search = node['resolver']['search']
 else
+  log('Checking for existing domain search suffix') { level :debug }
   search = Dnsruby::Config::new::search().map {|element| "#{element}" }.join(' ')
 end
 
 if ( search and search.length > 0 )
-  log "Setting search => #{search}" 
+  log "Using search suffix => #{search}" 
+else
+  log('No domain search suffix specified, not setting') { level :debug }
 end
 
 template "/etc/resolv.conf" do
