@@ -1,4 +1,3 @@
-#
 # Cookbook Name:: resolver
 # Recipe:: default
 #
@@ -15,27 +14,32 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
+
+g = gem_package "dnsruby" do
+  action :nothing
+end
+ 
+g.run_action(:install)
+Gem.clear_paths
+
+require 'dnsruby'
 
 if ( node['resolver']['nameservers'].nil? or node['resolver']['nameservers'] == "" )
-  
   log "No nameservers specified, using existing nameservers in resolv.conf"
-
-  g = gem_package "dnsruby" do
-    action :nothing
-  end
-  
-  g.run_action(:install)
-  Gem.clear_paths
-
-  require 'dnsruby'
   nameservers = Dnsruby::Config::new::nameserver()
-
 else
   nameservers = node['resolver']['nameservers']
 end
+log "Using nameservers => #{nameservers}"
 
-log "Setting nameservers => #{nameservers}"
+search = false
+if node['resolver']['search']
+  search = node['resolver']['search']
+else
+  search = Dnsruby::Config::new::search()
+end
+
+log "Setting search => #{search}" if search
 
 template "/etc/resolv.conf" do
   source "resolv.conf.erb"
@@ -44,6 +48,7 @@ template "/etc/resolv.conf" do
   mode 0644
   variables(
     :nameservers => nameservers
+    :search => search
   )
 end
 
