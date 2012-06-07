@@ -47,7 +47,7 @@ template "/etc/resolv.conf" do
   group "root"
   mode 0644
   variables(
-    :nameservers => nameservers
+    :nameservers => nameservers,
     :search => search
   )
 end
