@@ -35,4 +35,4 @@ k.set_contents_from_filename("#{node['boto']['s3_store_file']}")
   EOH
 end
 
-log "Successfully saved #{node['boto']['s3_fetch_file']} to #{node['boto']['s3_fetch_file_destination']}"
+log "Successfully saved #{node['boto']['s3_store_file']} to #{node['boto']['s3_store_bucket']}"
