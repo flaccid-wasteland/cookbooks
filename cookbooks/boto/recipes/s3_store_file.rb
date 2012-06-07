@@ -31,9 +31,13 @@ from boto.s3.key import Key
 
 connection = S3Connection()
 bucket = connection.create_bucket("#{node['boto']['s3_store_bucket']}")
+
+def upload_progress(so_far, total):
+  print '%d bytes transferred out of %d' % (so_far, total)
+
 k = Key(bucket)
 k.key = os.path.basename("#{node['boto']['s3_store_file']}")
-k.set_contents_from_filename("#{node['boto']['s3_store_file']}")
+k.set_contents_from_filename("#{node['boto']['s3_store_file']}", cb=upload_progress, num_cb=10)
   EOH
 end
 
