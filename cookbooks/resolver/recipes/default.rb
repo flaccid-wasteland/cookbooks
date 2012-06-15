@@ -1,4 +1,3 @@
-#
 # Cookbook Name:: resolver
 # Recipe:: default
 #
@@ -15,18 +14,39 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
-if node['resolver']['nameservers'].nil?
-  log "No nameservers specified, using existing nameservers in resolv.conf."
-  require 'rubygems'
-  require 'dnsruby'
+g = gem_package "dnsruby" do
+  action :nothing
+end
+ 
+g.run_action(:install)
+Gem.clear_paths
+
+require 'dnsruby'
+
+if ( node['resolver']['nameservers'].nil? or node['resolver']['nameservers'] == "" )
+  log "No nameservers specified, using existing nameservers in resolv.conf"
   nameservers = Dnsruby::Config::new::nameserver()
 else
   nameservers = node['resolver']['nameservers']
 end
 
-log "Setting nameservers => #{nameservers}"
+log "Using nameservers => #{nameservers}"
+
+search = false
+if node['resolver']['search'].length > 0
+  search = node['resolver']['search']
+else
+  log('Checking for existing domain search suffix') { level :debug }
+  search = Dnsruby::Config::new::search().map {|element| "#{element}" }.join(' ')
+end
+
+if ( search and search.length > 0 )
+  search.strip!
+  log "Using search suffix => #{search}"
+else
+  log('No domain search suffix specified, not setting') { level :debug }
+end
 
 template "/etc/resolv.conf" do
   source "resolv.conf.erb"
@@ -34,7 +54,8 @@ template "/etc/resolv.conf" do
   group "root"
   mode 0644
   variables(
-    :nameservers => nameservers
+    :nameservers => nameservers,
+    :search => search
   )
 end
 

@@ -1,31 +1,31 @@
 {
-    "conflicting": {
-    },
-    "providing": {
-    },
-    "version": "0.0.1",
-    "maintainer": "Chris Fordham",
-    "attributes": {
-    },
-    "replacing": {
-    },
-    "license": "Apache 2.0",
-    "maintainer_email": "chris@xhost.com.au",
-    "groupings": {
-    },
-    "recommendations": {
-    },
-    "dependencies": {
-    },
-    "name": "bind",
-    "recipes": {
-      "bind::install": "Installs BIND",
-      "bind::default": "Installs BIND"
-    },
-    "platforms": {
-    },
-    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
-    "suggestions": {
-    },
-    "description": "Installs/Configures bind"
-  }
+  "recipes": {
+    "bind::install": "Installs BIND9",
+    "bind::default": "Installs BIND9"
+  },
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "conflicting": {
+  },
+  "description": "Installs/Configures BIND9 DNS Server",
+  "providing": {
+  },
+  "dependencies": {
+  },
+  "maintainer": "Chris Fordham",
+  "version": "0.0.1",
+  "attributes": {
+  },
+  "replacing": {
+  },
+  "maintainer_email": "chris@xhost.com.au",
+  "groupings": {
+  },
+  "name": "bind",
+  "recommendations": {
+  },
+  "license": "Apache 2.0"
+}

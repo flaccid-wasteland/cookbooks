@@ -1,7 +1,5 @@
 {
   "recipes": {
-    "links::install": "Installs Links www text browser",
-    "links::default": "Installs Links www text browser"
   },
   "suggestions": {
   },
@@ -10,7 +8,7 @@
   "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
   "conflicting": {
   },
-  "description": "Installs/Configures links",
+  "description": "Installs/Configures node_cm",
   "providing": {
   },
   "dependencies": {
@@ -24,7 +22,7 @@
   "maintainer_email": "chris@xhost.com.au",
   "groupings": {
   },
-  "name": "links",
+  "name": "node_cm",
   "recommendations": {
   },
   "license": "Apache 2.0"

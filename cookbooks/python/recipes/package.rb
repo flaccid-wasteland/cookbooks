@@ -18,6 +18,8 @@
 # limitations under the License.
 #
 
+( log "archlinux not currently supported due to bug" and return ) if platform?('archlinux')
+
 python_pkgs = value_for_platform(
   ["debian","ubuntu"] => {
     "default" => ["python","python-dev","python-setuptools","python-pip"]

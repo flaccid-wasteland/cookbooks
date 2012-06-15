@@ -41,14 +41,14 @@ ruby_block "update_dme_record" do
     res = `curl -S -s -o - -f https://www.dnsmadeeasy.com/servlet/updateip?username=#{node.dns.dme_user}\&password=#{node.dns.dme_password}\&id=#{node.dns.dme_dnsid}\&ip=#{ipaddr}`
 
     # Both success and same ip are considered successful actions
-    ok = `echo $res | egrep "success|error-record-ip-same"`
-    if [ -n "$ok" ]; then
-       echo "Change successful"
-       exit 0
-    else
-       echo "Failure to set IP: $res"
-       exit -1
-    fi
+#    ok = false
+#    ok = `echo $res | egrep "success|error-record-ip-same"`
+#   echo "Change successful"
+#       exit 0
+#    else
+#       echo "Failure to set IP: $res"
+#       exit -1
+#    fi
   end
   action :create
 end

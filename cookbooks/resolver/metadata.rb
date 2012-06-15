@@ -12,19 +12,14 @@ recipe "resolver::rs_run_resolver", "Runs the rs_run_resolver recipe with rs_run
   supports os
 end
 
-attribute "resolver",
-  :display_name => "Resolver",
-  :description => "Hash of Resolver attributes",
-  :type => "hash"
-
 attribute "resolver/search",
   :display_name => "Resolver Search",
   :description => "Default domain to search",
-  :default => "domain"
-
+  :recipes => [ "resolver::default" ]
+  
 attribute "resolver/nameservers",
   :display_name => "Resolver Nameservers",
   :description => "Default nameservers",
   :type => "array",
-  :default => [""]
+  :recipes => [ "resolver::default" ]
 

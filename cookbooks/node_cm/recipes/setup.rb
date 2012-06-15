@@ -1,5 +1,6 @@
-# Cookbook Name:: hello_world
-# Recipe:: default
+#
+# Cookbook Name:: node_cm
+# Recipe:: setup
 #
 # Copyright 2011, Chris Fordham
 #
@@ -14,5 +15,4 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-
-log "Hello, world!"
+#

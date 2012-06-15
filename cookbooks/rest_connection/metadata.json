@@ -1,24 +1,24 @@
 {
-  "suggestions": {
-  },
-  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
-  "attributes": {
-  },
-  "conflicting": {
-  },
-  "dependencies": {
-  },
   "recipes": {
     "rest_connection::default": "Installs and configures RestConnection for use with the RightScale API.",
     "rest_connection::install": "Installs the rest_connection RubyGem only."
   },
-  "providing": {
+  "suggestions": {
   },
   "platforms": {
   },
-  "license": "Apache 2.0",
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "conflicting": {
+  },
+  "description": "Installs/Configures rest_connection",
+  "providing": {
+  },
+  "dependencies": {
+  },
   "maintainer": "Chris Fordham",
   "version": "0.0.1",
+  "attributes": {
+  },
   "replacing": {
   },
   "maintainer_email": "chris@xhost.com.au",
@@ -27,5 +27,5 @@
   "name": "rest_connection",
   "recommendations": {
   },
-  "description": "Installs/Configures rest_connection"
+  "license": "Apache 2.0"
 }

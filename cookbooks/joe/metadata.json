@@ -1,31 +1,31 @@
 {
-    "conflicting": {
-    },
-    "providing": {
-    },
-    "version": "0.0.1",
-    "maintainer": "Chris Fordham",
-    "attributes": {
-    },
-    "replacing": {
-    },
-    "license": "Apache 2.0",
-    "maintainer_email": "chris@xhost.com.au",
-    "groupings": {
-    },
-    "recommendations": {
-    },
-    "dependencies": {
-    },
-    "name": "joe",
-    "recipes": {
-      "joe::default": "Installs JOE",
-      "joe::install": "Installs JOE"
-    },
-    "platforms": {
-    },
-    "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
-    "suggestions": {
-    },
-    "description": "Installs/Configures joe"
-  }
+  "recipes": {
+    "joe::default": "Installs JOE",
+    "joe::install": "Installs JOE"
+  },
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "conflicting": {
+  },
+  "description": "Installs/Configures joe",
+  "providing": {
+  },
+  "dependencies": {
+  },
+  "maintainer": "Chris Fordham",
+  "version": "0.0.1",
+  "attributes": {
+  },
+  "replacing": {
+  },
+  "maintainer_email": "chris@xhost.com.au",
+  "groupings": {
+  },
+  "name": "joe",
+  "recommendations": {
+  },
+  "license": "Apache 2.0"
+}
