@@ -28,7 +28,7 @@ when /.zip/
 when /.tar.gz/
   extract_cmd="tar zxvf #{node['boto']['s3_fetch_file_destination']} #{node['boto']['s3_file_extract_destination']}"
 else
-  raise "File extension/archive format #{archive_ext} not supported!"
+  raise "File extension/archive format for '#{node['boto']['s3_fetch_file']}' not supported!"
 end
 
 execute "extract_#{node['boto']['s3_fetch_file_destination']}_to_#{node['boto']['s3_file_extract_destination']}" do
