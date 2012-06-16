@@ -25,9 +25,9 @@ include_recipe "boto::s3_fetch_file"
 directory node['boto']['s3_file_extract_destination']
 
 case File.extname(node['boto']['s3_fetch_file'])
-when 'zip'
+when '.zip'
   extract_cmd="unzip -u #{node['boto']['s3_fetch_file_destination']} -d #{node['boto']['s3_file_extract_destination']}"
-when 'tar.gz'
+when '.tar.gz'
   extract_cmd="tar zxvf #{node['boto']['s3_fetch_file_destination']} #{node['boto']['s3_file_extract_destination']}"
 else
   raise "File extension/archive format not supported!"
