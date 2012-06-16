@@ -18,16 +18,14 @@
 include_recipe "boto"
 include_recipe "boto::s3_fetch_file"
 
-archive_ext = File.extname(node['boto']['s3_fetch_file'].to_s.strip)
-
 directory node['boto']['s3_file_extract_destination']
 
 log "Archive file extension: #{archive_ext}"
 
-case archive_ext
-when '.zip'
+case node['boto']['s3_fetch_file'].to_s.strip
+when /.zip/ 
   extract_cmd="unzip -u #{node['boto']['s3_fetch_file_destination']} -d #{node['boto']['s3_file_extract_destination']}"
-when '.tar.gz'
+when /.tar.gz/
   extract_cmd="tar zxvf #{node['boto']['s3_fetch_file_destination']} #{node['boto']['s3_file_extract_destination']}"
 else
   raise "File extension/archive format #{archive_ext} not supported!"
