@@ -29,6 +29,8 @@ else
   raise "File extension/archive format for '#{node['boto']['s3_fetch_file']}' not supported!"
 end
 
+log "Extracting #{node['boto']['s3_fetch_file']} to #{node['boto']['s3_file_extract_destination']}..."
+
 execute "extract_#{node['boto']['s3_fetch_file_destination']}_to_#{node['boto']['s3_file_extract_destination']}" do
   cwd node['boto']['s3_file_extract_destination']
   command extract_cmd
