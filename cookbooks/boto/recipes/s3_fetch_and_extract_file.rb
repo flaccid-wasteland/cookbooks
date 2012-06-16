@@ -20,7 +20,11 @@ include_recipe "boto::s3_fetch_file"
 
 directory node['boto']['s3_file_extract_destination']
 
-case File.extname(node['boto']['s3_fetch_file'].to_s.strip)
+archive_ext = File.extname(node['boto']['s3_fetch_file'].to_s.strip
+
+log "Archive file extension: #{archive_ext}"
+
+case archive_ext
 when '.zip'
   extract_cmd="unzip -u #{node['boto']['s3_fetch_file_destination']} -d #{node['boto']['s3_file_extract_destination']}"
 when '.tar.gz'
