@@ -24,7 +24,7 @@ case node['boto']['s3_fetch_file'].to_s.strip
 when /.zip/ 
   extract_cmd="unzip -u #{node['boto']['s3_fetch_file_destination']} -d #{node['boto']['s3_file_extract_destination']}"
 when /.tar.gz/
-  extract_cmd="tar zxvf #{node['boto']['s3_fetch_file_destination']} #{node['boto']['s3_file_extract_destination']}"
+  extract_cmd="tar zxvf #{node['boto']['s3_fetch_file_destination']} -C #{node['boto']['s3_file_extract_destination']}"
 else
   raise "File extension/archive format for '#{node['boto']['s3_fetch_file']}' not supported!"
 end
@@ -34,4 +34,4 @@ execute "extract_#{node['boto']['s3_fetch_file_destination']}_to_#{node['boto'][
   command extract_cmd
 end
 
-log "Successfully extracted #{node['boto']['s3_fetch_file']} to #{node['boto']['s3_file_extract_destination']}."
+log "Successfully extracted #{node['boto']['s3_fetch_file']} to #{node['boto']['s3_file_extract_destination']}"
