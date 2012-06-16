@@ -20,8 +20,6 @@ include_recipe "boto::s3_fetch_file"
 
 directory node['boto']['s3_file_extract_destination']
 
-log "Archive file extension: #{archive_ext}"
-
 case node['boto']['s3_fetch_file'].to_s.strip
 when /.zip/ 
   extract_cmd="unzip -u #{node['boto']['s3_fetch_file_destination']} -d #{node['boto']['s3_file_extract_destination']}"
