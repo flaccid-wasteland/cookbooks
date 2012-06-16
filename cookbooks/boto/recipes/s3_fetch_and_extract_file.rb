@@ -22,13 +22,20 @@ interpreter = '/usr/bin/python2' unless ! platform?('arch')
 
 include_recipe "boto::s3_fetch_file"
 
-bash "extract_#{node['boto']['s3_fetch_file_destination']}" do
-  user "root"
-  cwd 
-  code <<-EOH
-mkdir -p #{node['boto']['s3_file_extract_destination']} || mkdir -p `dirname #{node['boto']['s3_file_extract_destination']}`
-unzip -u #{node['boto']['s3_fetch_file_destination']} -d #{node['boto']['s3_file_extract_destination']}
-  EOH
+directory node['boto']['s3_file_extract_destination']
+
+case File.extname(node['boto']['s3_fetch_file'])
+when 'zip'
+  extract_cmd="unzip -u #{node['boto']['s3_fetch_file_destination']} -d #{node['boto']['s3_file_extract_destination']}"
+when 'tar.gz'
+  extract_cmd="tar zxvf #{node['boto']['s3_fetch_file_destination']} #{node['boto']['s3_file_extract_destination']}"
+else
+  raise "File extension/archive format not supported!"
+end
+
+execute "extract_#{node['boto']['s3_fetch_file_destination']}_to_#{node['boto']['s3_file_extract_destination']}" do
+  cwd node['boto']['s3_file_extract_destination']
+  command extract_cmd
 end
 
 log "Successfully extracted #{node['boto']['s3_fetch_file']} to #{node['boto']['s3_file_extract_destination']}."
