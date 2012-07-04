@@ -16,7 +16,9 @@
   "recommendations": {
   },
   "recipes": {
-    "ohai::reload_all_plugins": "Reloads all ohai plugins in a Chef run."
+    "ohai::reload_all_plugins": "Reloads all ohai plugins in a Chef run.",
+    "ohai::default": "Includes the ohai::print_node_attributes recipe only.",
+    "ohai::print_node_attributes": "Prints the node[] object using a log resource."
   },
   "groupings": {
   },
