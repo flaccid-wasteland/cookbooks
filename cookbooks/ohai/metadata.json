@@ -1,0 +1,30 @@
+{
+  "dependencies": {
+  },
+  "name": "ohai",
+  "maintainer_email": "chris@xhost.com.au",
+  "attributes": {
+  },
+  "license": "Apache 2.0",
+  "suggestions": {
+  },
+  "platforms": {
+  },
+  "maintainer": "Chris Fordham",
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
+  "version": "0.0.1",
+  "recommendations": {
+  },
+  "recipes": {
+    "ohai::reload_all_plugins": "Reloads all ohai plugins in a Chef run."
+  },
+  "groupings": {
+  },
+  "conflicting": {
+  },
+  "replacing": {
+  },
+  "description": "Installs/Configures ohai",
+  "providing": {
+  }
+}
