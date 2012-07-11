@@ -27,7 +27,7 @@ attribute "mediawiki_application/path",
   :display_name => "MediaWiki Install Path",
   :description => "The path to install MediaWiki to, e.g. /var/www",
   :default => "/usr/local/www",
-  :required => "required",
+  :required => "optional",
   :choice => [ '/usr/local/www', '/var/www' ],
   :recipes => [ "mediawiki_application::application" ]
     
@@ -35,7 +35,7 @@ attribute "mediawiki_application/system_user",
   :display_name => "MediaWiki System User",
   :description => "The system user (owner) for the application.",
   :default => "www-data",
-  :required => "required",
+  :required => "optional",
   :choice => [ 'www-data', 'httpd', 'http', 'www', 'root' ],
   :recipes => [ "mediawiki_application::application" ]
       
@@ -43,7 +43,7 @@ attribute "mediawiki_application/system_group",
   :display_name => "MediaWiki System Group",
   :description => "The system group for the application.",
   :default => "www-data",
-  :required => "required",
+  :required => "optional",
   :choice => [ 'www-data', 'httpd', 'http', 'www', 'root', 'users' ],
   :recipes => [ "mediawiki_application::application" ]
   
