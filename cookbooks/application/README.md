@@ -78,7 +78,7 @@ Configuration of framework-specific aspects of the application are performed by 
 - scm_provider: the provider class to use for the deployment. It defaults to `Chef::Provider::Git`, you can set it to `Chef::Provider::Subversion` to deploy from an SVN repository
 - repository: the URL of the repository the application should be checked out from
 - revision: an identifier pointing to the revision that should be checkout out
-- deploy_key: the private key to use to access the repository via SSH
+- deploy_key: the public key to use to access the repository via SSH
 - rollback\_on\_error: if true, exceptions during a deployment will be caught and a clean rollback to the previous version will be attempted; the exception will then be re-raised. Defaults to true; change it only if you know what you are doing
 - environment: a Hash of environment variables to set while running migrations
 - purge\_before\_symlink: an Array of paths (relative to the checkout) to remove before creating symlinks
@@ -171,24 +171,6 @@ Attributes from the application and from sub-resources are merged together:
     #
     # restart_command #=> kill -1 `cat /var/run/one.pid` && touch /tmp/something
     # environment #=> LC_ALL=en_US FOO=baz
-
-Most databases have the concept of migrations (or you can just use your own):
-
-    application "my_app" do
-      path "/deploy/to/dir"
-      owner "app-user"
-      group "app-group"
-
-      repository "http://git.example.com/my-app.git"
-      revision "production"
-
-      php do
-        migrate true
-        migration_command "your-applications-migrate-command"
-      end
-    end
-
-This will run `your-applications-migrate-command`, with the current directory set to the directory of the current checkout.
 
 To use the application cookbook, we recommend creating a role named after the application, e.g. `my_app`. Create a Ruby DSL role in your chef-repo, or create the role directly with knife.
 
