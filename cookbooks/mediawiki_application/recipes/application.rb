@@ -15,6 +15,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe "application"
+include_recipe "application_php"
+
 application node['mediawiki_application']['name'] do
   path node['mediawiki_application']['path']
   owner node['mediawiki_application']['system_user']
