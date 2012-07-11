@@ -1,0 +1,130 @@
+{
+  "replacing": {
+  },
+  "platforms": {
+  },
+  "license": "Apache 2.0",
+  "conflicting": {
+  },
+  "attributes": {
+    "mediawiki_application/revision": {
+      "description": "The revision of the application to use (tag/branch/commit).",
+      "type": "string",
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "choice": [
+
+      ],
+      "required": "required",
+      "display_name": "MediaWiki Application Revision",
+      "calculated": false
+    },
+    "mediawiki_application/repository_url": {
+      "description": "The URL to the application for checkout/download.",
+      "type": "string",
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "choice": [
+
+      ],
+      "required": "required",
+      "display_name": "MediaWiki Repository URL",
+      "calculated": false
+    },
+    "mediawiki_application/name": {
+      "description": "The name of the MediaWiki application.",
+      "type": "string",
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "choice": [
+
+      ],
+      "required": "required",
+      "display_name": "MediaWiki Application Name",
+      "calculated": false
+    },
+    "mediawiki_application/path": {
+      "description": "The path to install MediaWiki to, e.g. /var/www",
+      "type": "string",
+      "choice": [
+        "/usr/local/www",
+        "/var/www"
+      ],
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "required": "required",
+      "display_name": "MediaWiki Install Path",
+      "default": "/usr/local/www",
+      "calculated": false
+    },
+    "mediawiki_application/system_group": {
+      "description": "The system group for the application.",
+      "type": "string",
+      "choice": [
+        "www-data",
+        "httpd",
+        "http",
+        "www",
+        "root",
+        "users"
+      ],
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "required": "required",
+      "display_name": "MediaWiki System Group",
+      "default": "www-data",
+      "calculated": false
+    },
+    "mediawiki_application/system_user": {
+      "description": "The system user (owner) for the application.",
+      "type": "string",
+      "choice": [
+        "www-data",
+        "httpd",
+        "http",
+        "www",
+        "root"
+      ],
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "required": "required",
+      "display_name": "MediaWiki System User",
+      "default": "www-data",
+      "calculated": false
+    }
+  },
+  "providing": {
+  },
+  "suggestions": {
+  },
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
+  "description": "Installs/Configures mediawiki_application",
+  "recipes": {
+    "mediawiki_application::applications": "Installs & configures Mediawiki.",
+    "mediawiki_application::default": "Installs & configures Mediawiki."
+  },
+  "dependencies": {
+    "runit": ">= 0.0.0",
+    "tomcat": ">= 0.0.0",
+    "gunicorn": ">= 0.0.0",
+    "passenger_apache2": ">= 0.0.0",
+    "unicorn": ">= 0.0.0",
+    "apache2": ">= 0.0.0",
+    "php": ">= 0.0.0",
+    "python": ">= 0.0.0"
+  },
+  "maintainer_email": "chris@xhost.com.au",
+  "maintainer": "Chris Fordham",
+  "recommendations": {
+  },
+  "name": "mediawiki_application",
+  "version": "0.0.1",
+  "groupings": {
+  }
+}
