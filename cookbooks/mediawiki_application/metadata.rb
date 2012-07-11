@@ -50,11 +50,13 @@ attribute "mediawiki_application/system_group",
 attribute "mediawiki_application/repository_url",
   :display_name => "MediaWiki Repository URL",
   :description => "The URL to the application for checkout/download.",
-  :required => "required",
+  :required => "recommended",
+  :default => "https://gerrit.wikimedia.org/r/p/mediawiki/core.git",
   :recipes => [ "mediawiki_application::application" ]
     
 attribute "mediawiki_application/revision",
   :display_name => "MediaWiki Application Revision",
   :description => "The revision of the application to use (tag/branch/commit).",
-  :required => "required",
+  :required => "recommended",
+  :default => "master",
   :recipes => [ "mediawiki_application::application" ]
