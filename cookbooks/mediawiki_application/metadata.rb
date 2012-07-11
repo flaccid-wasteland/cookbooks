@@ -15,7 +15,7 @@ depends          "apache2"
 depends          "php"
 
 recipe "mediawiki_application::default", "Installs & configures Mediawiki."
-recipe "mediawiki_application::applications", "Installs & configures Mediawiki."
+recipe "mediawiki_application::application", "Installs & configures Mediawiki."
 
 attribute "mediawiki_application/name",
   :display_name => "MediaWiki Application Name",
