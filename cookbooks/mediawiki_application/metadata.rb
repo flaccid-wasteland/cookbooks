@@ -5,6 +5,8 @@ description      "Installs/Configures mediawiki_application"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.0.1"
 
+depends "git"
+depends "subversion"
 depends "python"
 depends "runit"
 depends "unicorn"

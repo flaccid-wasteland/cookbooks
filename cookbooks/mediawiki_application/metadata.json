@@ -1,70 +1,119 @@
 {
-  "name": "mediawiki_application",
   "suggestions": {
   },
-  "license": "Apache 2.0",
-  "maintainer_email": "chris@xhost.com.au",
+  "providing": {
+  },
+  "recipes": {
+    "mediawiki_application::application": "Installs & configures Mediawiki.",
+    "mediawiki_application::default": "Installs & configures Mediawiki."
+  },
   "replacing": {
   },
-  "recommendations": {
-  },
   "dependencies": {
-    "gunicorn": ">= 0.0.0",
-    "unicorn": ">= 0.0.0",
-    "runit": ">= 0.0.0",
     "passenger_apache2": ">= 0.0.0",
-    "application_php": ">= 0.0.0",
+    "gunicorn": ">= 0.0.0",
+    "php": ">= 0.0.0",
+    "subversion": ">= 0.0.0",
+    "unicorn": ">= 0.0.0",
+    "tomcat": ">= 0.0.0",
     "application": ">= 0.0.0",
     "apache2": ">= 0.0.0",
-    "php": ">= 0.0.0",
-    "tomcat": ">= 0.0.0",
-    "python": ">= 0.0.0"
+    "runit": ">= 0.0.0",
+    "python": ">= 0.0.0",
+    "git": ">= 0.0.0",
+    "application_php": ">= 0.0.0"
+  },
+  "groupings": {
+  },
+  "conflicting": {
   },
   "maintainer": "Chris Fordham",
+  "name": "mediawiki_application",
+  "recommendations": {
+  },
+  "license": "Apache 2.0",
   "attributes": {
     "mediawiki_application/name": {
       "display_name": "MediaWiki Application Name",
-      "choice": [
-
-      ],
       "type": "string",
+      "recipes": [
+        "mediawiki_application::application"
+      ],
       "required": "required",
-      "calculated": false,
-      "description": "The name of the MediaWiki application.",
-      "recipes": [
-        "mediawiki_application::application"
-      ]
-    },
-    "mediawiki_application/revision": {
-      "display_name": "MediaWiki Application Revision",
       "choice": [
 
       ],
-      "type": "string",
-      "required": "recommended",
       "calculated": false,
-      "description": "The revision of the application to use (tag/branch/commit).",
-      "recipes": [
-        "mediawiki_application::application"
-      ],
-      "default": "master"
+      "description": "The name of the MediaWiki application."
     },
     "mediawiki_application/repository_url": {
       "display_name": "MediaWiki Repository URL",
-      "choice": [
-
-      ],
       "type": "string",
-      "required": "recommended",
-      "calculated": false,
-      "description": "The URL to the application for checkout/download.",
       "recipes": [
         "mediawiki_application::application"
       ],
-      "default": "https://gerrit.wikimedia.org/r/p/mediawiki/core.git"
+      "required": "recommended",
+      "choice": [
+
+      ],
+      "default": "https://gerrit.wikimedia.org/r/p/mediawiki/core.git",
+      "calculated": false,
+      "description": "The URL to the application for checkout/download."
+    },
+    "mediawiki_application/path": {
+      "display_name": "MediaWiki Install Path",
+      "type": "string",
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "required": "optional",
+      "choice": [
+        "/usr/local/www",
+        "/var/www"
+      ],
+      "default": "/usr/local/www",
+      "calculated": false,
+      "description": "The path to install MediaWiki to, e.g. /var/www"
+    },
+    "mediawiki_application/system_user": {
+      "display_name": "MediaWiki System User",
+      "type": "string",
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "required": "optional",
+      "choice": [
+        "www-data",
+        "httpd",
+        "http",
+        "www",
+        "root"
+      ],
+      "default": "www-data",
+      "calculated": false,
+      "description": "The system user (owner) for the application."
+    },
+    "mediawiki_application/revision": {
+      "display_name": "MediaWiki Application Revision",
+      "type": "string",
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "required": "recommended",
+      "choice": [
+
+      ],
+      "default": "master",
+      "calculated": false,
+      "description": "The revision of the application to use (tag/branch/commit)."
     },
     "mediawiki_application/system_group": {
       "display_name": "MediaWiki System Group",
+      "type": "string",
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "required": "optional",
       "choice": [
         "www-data",
         "httpd",
@@ -73,62 +122,15 @@
         "root",
         "users"
       ],
-      "type": "string",
-      "required": "optional",
+      "default": "www-data",
       "calculated": false,
-      "description": "The system group for the application.",
-      "recipes": [
-        "mediawiki_application::application"
-      ],
-      "default": "www-data"
-    },
-    "mediawiki_application/path": {
-      "display_name": "MediaWiki Install Path",
-      "choice": [
-        "/usr/local/www",
-        "/var/www"
-      ],
-      "type": "string",
-      "required": "optional",
-      "calculated": false,
-      "description": "The path to install MediaWiki to, e.g. /var/www",
-      "recipes": [
-        "mediawiki_application::application"
-      ],
-      "default": "/usr/local/www"
-    },
-    "mediawiki_application/system_user": {
-      "display_name": "MediaWiki System User",
-      "choice": [
-        "www-data",
-        "httpd",
-        "http",
-        "www",
-        "root"
-      ],
-      "type": "string",
-      "required": "optional",
-      "calculated": false,
-      "description": "The system user (owner) for the application.",
-      "recipes": [
-        "mediawiki_application::application"
-      ],
-      "default": "www-data"
+      "description": "The system group for the application."
     }
-  },
-  "version": "0.0.1",
-  "groupings": {
-  },
-  "description": "Installs/Configures mediawiki_application",
-  "conflicting": {
   },
   "platforms": {
   },
-  "providing": {
-  },
-  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
-  "recipes": {
-    "mediawiki_application::application": "Installs & configures Mediawiki.",
-    "mediawiki_application::default": "Installs & configures Mediawiki."
-  }
+  "maintainer_email": "chris@xhost.com.au",
+  "description": "Installs/Configures mediawiki_application",
+  "version": "0.0.1",
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n"
 }
