@@ -17,6 +17,7 @@
 
 include_recipe "git"
 include_recipe "subversion"
+include_recipe "apache2"
 
 application node['mediawiki_application']['name'] do
   path node['mediawiki_application']['path']
