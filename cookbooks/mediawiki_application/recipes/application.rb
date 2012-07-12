@@ -29,4 +29,6 @@ application node['mediawiki_application']['name'] do
   php do
     # php-specific configuration
   end
+  
+  mod_php_apache2
 end
