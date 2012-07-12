@@ -32,3 +32,10 @@ application node['mediawiki_application']['name'] do
   
   mod_php_apache2
 end
+
+web_app node['mediawiki_application']['name'] do
+  docroot "#{node['mediawiki_application']['path']}/current"
+  #template "mediawiki_http_vhost.conf.erb"
+  server_name node['fqdn']
+  server_aliases [node['hostname'], node['mediawiki_application']['path']]
+end
