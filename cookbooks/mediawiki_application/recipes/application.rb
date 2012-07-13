@@ -40,9 +40,9 @@ web_app node['mediawiki_application']['name'] do
   server_aliases [node['hostname'], node['mediawiki_application']['name']]
   #template "web_app.conf.erb"   # default template is suffice in most cases
   variables (
-      :database['adapter'] => node['mediawiki_application']['database']['adaptor']
-      :database['database'] => node['mediawiki_application']['database']['database']
-      :database['username'] => node['mediawiki_application']['database']['username']
+      :database['adapter'] => node['mediawiki_application']['database']['adaptor'],
+      :database['database'] => node['mediawiki_application']['database']['database'],
+      :database['username'] => node['mediawiki_application']['database']['username'],
       :database['password'] => node['mediawiki_application']['database']['password']
   )
 end
