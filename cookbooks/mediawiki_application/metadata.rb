@@ -65,3 +65,31 @@ attribute "mediawiki_application/revision",
   :required => "recommended",
   :default => "master",
   :recipes => [ "mediawiki_application::application" ]
+  
+attribute "mediawiki_application/database/adaptor",
+  :display_name => "MediaWiki Database Adaptor",
+  :description => "The database adaptor to use with PHP.",
+  :required => "recommended",
+  :default => "mysql",
+  :choice => [ "mysql", "postgres", "sqlite" ],
+  :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
+
+attribute "mediawiki_application/database/schema",
+  :display_name => "MediaWiki Database Schema",
+  :description => "The database schema or name for MediaWiki.",
+  :required => "recommended",
+  :default => "mediawiki",
+  :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
+
+attribute "mediawiki_application/database/username",
+  :display_name => "MediaWiki Database User",
+  :description => "The database username for MediaWiki.",
+  :required => "recommended",
+  :default => "mediawiki",
+  :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
+
+attribute "mediawiki_application/database/password",
+  :display_name => "MediaWiki Database Password",
+  :description => "The database password for MediaWiki.",
+  :required => "required",
+  :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
