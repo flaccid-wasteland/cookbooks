@@ -4,6 +4,7 @@ default['mediawiki_application']['system_user'] = 'root'
 default['mediawiki_application']['system_group'] = 'root'
 default['mediawiki_application']['repository_url'] = "https://gerrit.wikimedia.org/r/p/mediawiki/core.git"
 default['mediawiki_application']['revision'] = 'master'
+default['mediawiki_application']['deploy_action'] = 'deploy'
 
 default['mediawiki_application']['database']['adapter'] = 'mysql'
 default['mediawiki_application']['database']['name'] = 'mediawiki'
