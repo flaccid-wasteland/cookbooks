@@ -16,7 +16,9 @@
 # limitations under the License.
 
 include_recipe "mysql::server"
-include_recipe "database::master"
+include_recipe "build-essential"
+
+chef_gem "mysql"      # remove once http://tickets.opscode.com/browse/COOK-1009 is solved
 
 mysql_database 'mediawiki' do
   connection ({:host => "localhost", :username => 'root', :password => node['mysql']['server_root_password']})
