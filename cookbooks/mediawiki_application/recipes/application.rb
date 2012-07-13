@@ -31,6 +31,8 @@ application node['mediawiki_application']['name'] do
     # php-specific configuration
   end
   
+  action node['mediawiki_application']['deploy_action']
+  
   mod_php_apache2
 end
 
