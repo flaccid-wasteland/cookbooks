@@ -66,9 +66,9 @@ attribute "mediawiki_application/revision",
   :default => "master",
   :recipes => [ "mediawiki_application::application" ]
   
-attribute "mediawiki_application/database/adaptor",
-  :display_name => "MediaWiki Database Adaptor",
-  :description => "The database adaptor to use with PHP.",
+attribute "mediawiki_application/database/adapter",
+  :display_name => "MediaWiki Database Adapter",
+  :description => "The database adapter to use with PHP.",
   :required => "recommended",
   :default => "mysql",
   :choice => [ "mysql", "postgres", "sqlite" ],
