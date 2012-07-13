@@ -22,6 +22,14 @@ depends "application_php"
 recipe "mediawiki_application::default", "Installs & configures Mediawiki."
 recipe "mediawiki_application::application", "Installs & configures Mediawiki."
 
+attribute "mediawiki_application/deploy_action",
+  :display_name => "MediaWiki Deploy Action",
+  :description => "Deploy or force deploy the MediaWiki application.",
+  :required => "optional",
+  :option => [ 'deploy', 'force_deploy' ],
+  :default => "deploy",
+  :recipes => [ "mediawiki_application::application" ]
+
 attribute "mediawiki_application/name",
   :display_name => "MediaWiki Application Name",
   :description => "The name of the MediaWiki application.",
