@@ -16,7 +16,12 @@
 # limitations under the License.
 
 include_recipe "mysql::server"
-include_recipe "build-essential"
+
+m = package "make" do
+  action :nothing
+end
+
+m.run_action(:install)
 
 chef_gem "mysql"      # remove once http://tickets.opscode.com/browse/COOK-1009 is solved
 
