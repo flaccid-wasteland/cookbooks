@@ -15,7 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "database"
+include_recipe "mysql::server"
+include_recipe "database::master"
 
 mysql_database 'mediawiki' do
   connection ({:host => "localhost", :username => 'root', :password => node['mysql']['server_root_password']})
