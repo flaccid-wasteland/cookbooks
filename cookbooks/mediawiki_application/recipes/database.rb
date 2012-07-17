@@ -17,13 +17,15 @@
 
 include_recipe "mysql::server"
 
-m = package "make" do
-  action :nothing
-end
-
-m.run_action(:install)
-
-chef_gem "mysql"      # remove once http://tickets.opscode.com/browse/COOK-1009 is solved
+# remove once http://tickets.opscode.com/browse/COOK-1009 is solved
+strap_packages = ['libmysql-ruby', 'libmysqlclient-dev', 'make']
+strap_packages.each { |pkg|
+  p = package pkg do
+    action :nothing
+  end
+  p.run_action(:install)
+} 
+chef_gem "mysql"
 
 mysql_database 'mediawiki' do
   connection ({:host => "localhost", :username => 'root', :password => node['mysql']['server_root_password']})
