@@ -1,0 +1,21 @@
+{
+  "mediawiki_application": {
+    "name":"mediawiki_demo",
+    "path":"/var/www",
+    "system_user":"www-data",
+    "system_group":"www-data",
+    "repository_url":"https://gerrit.wikimedia.org/r/p/mediawiki/core.git",
+    "revision":"master",
+    "deploy_action":"force_deploy"
+  },
+  "mysql": {
+    "tunable": {
+      "innodb_flush_method":"O_DSYNC",
+      "innodb_adaptive_flushing":"false"
+    },
+    "server_root_password": "donotusethisinproduction,changeme",
+    "server_repl_password": "donotusethisinproduction,changeme",
+    "server_debian_password": "donotusethisinproduction,changeme"
+  },  
+  "run_list": [ "recipe[mediawiki_application::default]" ]
+}
