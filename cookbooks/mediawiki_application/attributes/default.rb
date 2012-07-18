@@ -7,6 +7,6 @@ default['mediawiki_application']['revision'] = 'master'
 default['mediawiki_application']['deploy_action'] = 'deploy'
 
 default['mediawiki_application']['database']['adapter'] = 'mysql'
-default['mediawiki_application']['database']['name'] = 'mediawiki'
+default['mediawiki_application']['database']['schema'] = 'mediawiki'
 default['mediawiki_application']['database']['username'] = 'mediawiki'
 default['mediawiki_application']['database']['password'] = nil
