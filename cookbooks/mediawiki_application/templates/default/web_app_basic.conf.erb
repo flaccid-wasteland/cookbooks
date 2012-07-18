@@ -10,7 +10,4 @@
     Allow from all
   </Directory>
 
-  LogLevel info
-  ErrorLog <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>-error.log
-  CustomLog <%= @node[:apache][:log_dir] %>/<%= @params[:name] %>-access.log combined
 </VirtualHost>
