@@ -1,0 +1,8 @@
+Vagrant::Config.run do |config|
+  config.vm.box = "mediawiki"
+  config.vm.provision :shell, :inline => "gem install chef --no-rdoc --no-ri; apt-get -y update"
+  config.vm.provision :chef_solo do |chef|
+	chef.json.merge!(JSON.parse(File.read(File.join(Dir.pwd, 'node.json'))))
+    chef.add_recipe("mediawiki_application")
+  end
+end
