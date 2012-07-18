@@ -6,7 +6,13 @@
     "system_group":"www-data",
     "repository_url":"https://gerrit.wikimedia.org/r/p/mediawiki/core.git",
     "revision":"master",
-    "deploy_action":"force_deploy"
+    "deploy_action":"force_deploy",
+    "database" : {
+      "schema":"mediawiki_demo",
+      "adapter":"mysql",
+      "username":"mediawiki",
+      "password":"donotusethisinproduction,changeme"
+    }
   },
   "mysql": {
     "tunable": {
