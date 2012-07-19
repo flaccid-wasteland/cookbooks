@@ -14,11 +14,10 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-#
 
 include_recipe "ruby"
 
-if node['ruby']['install_source'] == 'ruby1.9.1'
+if node['ruby']['install_source'].include? 'ruby1.9.'
 	package "rubygems1.9"
 else
 	package "rubygems" unless platform?('arch')
