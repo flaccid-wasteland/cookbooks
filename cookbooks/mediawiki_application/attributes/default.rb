@@ -6,6 +6,7 @@ default['mediawiki_application']['repository_url'] = "https://gerrit.wikimedia.o
 default['mediawiki_application']['revision'] = 'master'
 default['mediawiki_application']['deploy_action'] = 'deploy'
 
+default['mediawiki_application']['database']['host'] = 'localhost'      # localhost for a LAMP AIO
 default['mediawiki_application']['database']['adapter'] = 'mysql'
 default['mediawiki_application']['database']['schema'] = 'mediawiki'
 default['mediawiki_application']['database']['username'] = 'mediawiki'
