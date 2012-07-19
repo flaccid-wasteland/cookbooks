@@ -18,6 +18,7 @@ depends "php"
 
 depends "application"
 depends "application_php"
+depends "database"
 
 recipe "mediawiki_application::default", "Installs & configures Mediawiki."
 recipe "mediawiki_application::application", "Installs & configures Mediawiki."
@@ -73,7 +74,14 @@ attribute "mediawiki_application/revision",
   :required => "recommended",
   :default => "master",
   :recipes => [ "mediawiki_application::application" ]
-  
+
+attribute "mediawiki_application/database/host",
+  :display_name => "MediaWiki Database Host",
+  :description => "The database host name to use with MediaWiki.",
+  :required => "recommended",
+  :default => "localhost",
+  :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
+    
 attribute "mediawiki_application/database/adapter",
   :display_name => "MediaWiki Database Adapter",
   :description => "The database adapter to use with PHP.",
