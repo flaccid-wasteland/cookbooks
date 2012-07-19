@@ -18,7 +18,7 @@
 include_recipe "ruby"
 
 if node['ruby']['install_source'].include? 'ruby1.9.'
-	package "rubygems1.9"
+	package "rubygems1.9.1"
 else
 	package "rubygems" unless platform?('arch')
 end
