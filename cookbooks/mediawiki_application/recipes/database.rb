@@ -28,6 +28,6 @@ strap_packages.each { |pkg|
 chef_gem "mysql"
 
 mysql_database 'mediawiki' do
-  connection ({:host => "localhost", :username => 'root', :password => node['mysql']['server_root_password']})
+  connection ({:host => node['mediawiki_application']['database']['host'], :username => node['mediawiki_application']['database']['username'], :password => node['mediawiki_application']['database']['password']})
   action :create
 end
