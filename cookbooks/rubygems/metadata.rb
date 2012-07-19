@@ -14,7 +14,7 @@ recipe "rubygems::update_gems", "Updates installed RubyGems."
 attribute "ruby/install_source",
   :display_name => "Ruby Install Source",
   :description => "The install source for Ruby: none, ruby1.9.1, ruby1.9.3 or package (default: package).",
-  :choices => [ "package", "ruby1.9.1", "ruby1.9.3", "none" ],
+  :choice => [ "package", "ruby1.9.1", "ruby1.9.3", "none" ],
   :recipes => [ "rubygems::default" ]
 
  attribute "rubygems/gems_install",
