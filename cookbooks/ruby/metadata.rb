@@ -11,5 +11,5 @@ attribute "ruby/install_source",
   :display_name => "Ruby Install Source",
   :description => "The install source for Ruby: none, ruby1.9.1 or package (default: package).",
   :required => "required",
-  :choices => [ "package", "ruby1.9.1", "none" ],
+  :choices => [ "package", "ruby1.9.1", "ruby1.9.3", "none" ],
   :recipes => [ "ruby::default" ]
