@@ -11,3 +11,7 @@ default['mediawiki_application']['database']['adapter'] = 'mysql'
 default['mediawiki_application']['database']['schema'] = 'mediawiki'
 default['mediawiki_application']['database']['username'] = 'mediawiki'
 default['mediawiki_application']['database']['password'] = nil
+
+default['mediawiki_application']['php']['pear_packages'] = [ "mysql" ]
+default['mediawiki_application']['php']['local_settings_file'] = 'LocalSettings.php'
+default['mediawiki_application']['php']['settings_template'] = 'LocalSettings.php.erb'
