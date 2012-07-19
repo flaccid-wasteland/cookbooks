@@ -25,7 +25,6 @@ end
 
 if node['ruby']['install_source'].include? 'ruby1.9.'
   package node['ruby']['install_source'] unless platform?('arch')
-  package "#{node['ruby']['install_source']}-dev" unless platform?('arch')
   # ln -s /usr/bin/ruby1.9.[1|3] /usr/bin/ruby
   link "/usr/bin/ruby" do
   	to "/usr/bin/#{node['ruby']['install_source']}"
