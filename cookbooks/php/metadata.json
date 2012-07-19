@@ -1,30 +1,50 @@
 {
-  "version": "0.0.1",
+  "license": "Apache 2.0",
+  "version": "1.0.2",
   "conflicting": {
+  },
+  "maintainer_email": "cookbooks@opscode.com",
+  "recommendations": {
+  },
+  "platforms": {
+    "fedora": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0",
+    "redhat": ">= 0.0.0",
+    "debian": ">= 0.0.0"
+  },
+  "maintainer": "Opscode, Inc.",
+  "recipes": {
+    "php::module_sqlite3": "Install the php5-sqlite3 package",
+    "php::module_mysql": "Install the php5-mysql package",
+    "php::module_apc": "Install the php5-apc package",
+    "php::module_gd": "Install the php5-gd package",
+    "php::module_fpdf": "Install the php-fpdf package",
+    "php::module_pgsql": "Install the php5-pgsql packag",
+    "php::module_memcache": "Install the php5-memcache package",
+    "php::package": "Installs php using packages.",
+    "php::source": "Installs php from source.",
+    "php::module_ldap": "Install the php5-ldap package",
+    "php::module_fileinfo": "Install the php5-fileinfo package",
+    "php::module_curl": "Install the php5-curl package",
+    "php": "Installs php"
   },
   "attributes": {
   },
   "providing": {
   },
   "dependencies": {
+    "mysql": ">= 0.0.0",
+    "build-essential": ">= 0.0.0",
+    "xml": ">= 0.0.0"
   },
-  "maintainer_email": "chris@xhost.com.au",
-  "replacing": {
-  },
-  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
-  "description": "Installs/Configures php",
-  "name": "php",
   "groupings": {
   },
-  "recommendations": {
+  "replacing": {
   },
+  "name": "php",
   "suggestions": {
   },
-  "recipes": {
-    "php::php5_install": "Installs PHP 5."
-  },
-  "platforms": {
-  },
-  "license": "Apache 2.0",
-  "maintainer": "Chris Fordham"
+  "long_description": "",
+  "description": "Installs and maintains php and php modules"
 }

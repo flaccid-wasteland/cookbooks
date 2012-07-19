@@ -1,10 +1,9 @@
 #
-# Author::  Joshua Timberman (<joshua@opscode.com>)
-# Author::  Seth Chisamore (<schisamo@opscode.com>)
+# Author:: Seth Chisamore <schisamo@opscode.com>
 # Cookbook Name:: php
-# Recipe:: default
+# Resource:: pear_channel
 #
-# Copyright 2009-2011, Opscode, Inc.
+# Copyright:: 2011, Opscode, Inc <legal@opscode.com>
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,13 +18,11 @@
 # limitations under the License.
 #
 
-include_recipe "php::#{node['php']['install_method']}"
+actions :discover, :add, :update, :remove
 
-# update the main channels
-php_pear_channel 'pear.php.net' do
-  action :update
-end
+attribute :channel_name, :kind_of => String, :name_attribute => true
+attribute :channel_xml, :kind_of => String
 
-php_pear_channel 'pecl.php.net' do
-  action :update
-end
+# TODO add authenticated channel support!
+# attribute :username, :kind_of => String
+# attribute :password, :kind_of => String

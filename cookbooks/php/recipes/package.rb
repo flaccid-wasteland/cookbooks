@@ -1,10 +1,9 @@
 #
-# Author::  Joshua Timberman (<joshua@opscode.com>)
 # Author::  Seth Chisamore (<schisamo@opscode.com>)
 # Cookbook Name:: php
-# Recipe:: default
+# Recipe:: package
 #
-# Copyright 2009-2011, Opscode, Inc.
+# Copyright 2011, Opscode, Inc.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -19,13 +18,26 @@
 # limitations under the License.
 #
 
-include_recipe "php::#{node['php']['install_method']}"
+pkgs = value_for_platform(
+  %w(centos redhat scientific fedora) => {
+    %w(5.0 5.1 5.2 5.3 5.4 5.5 5.6 5.7 5.8) => %w(php53 php53-devel php53-cli php-pear),
+    'default' => %w(php php-devel php-cli php-pear)
+  },
+  [ "debian", "ubuntu" ] => {
+    "default" => %w{ php5-cgi php5 php5-dev php5-cli php-pear }
+  },
+  "default" => %w{ php5-cgi php5 php5-dev php5-cli php-pear }
+)
 
-# update the main channels
-php_pear_channel 'pear.php.net' do
-  action :update
+pkgs.each do |pkg|
+  package pkg do
+    action :install
+  end
 end
 
-php_pear_channel 'pecl.php.net' do
-  action :update
+template "#{node['php']['conf_dir']}/php.ini" do
+  source "php.ini.erb"
+  owner "root"
+  group "root"
+  mode "0644"
 end

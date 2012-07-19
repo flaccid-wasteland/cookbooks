@@ -2,7 +2,7 @@
 # Author::  Joshua Timberman (<joshua@opscode.com>)
 # Author::  Seth Chisamore (<schisamo@opscode.com>)
 # Cookbook Name:: php
-# Recipe:: default
+# Recipe:: module_sqlite3
 #
 # Copyright 2009-2011, Opscode, Inc.
 #
@@ -19,13 +19,12 @@
 # limitations under the License.
 #
 
-include_recipe "php::#{node['php']['install_method']}"
-
-# update the main channels
-php_pear_channel 'pear.php.net' do
-  action :update
+case node['platform']
+when "centos", "redhat", "fedora", "scientific"
+  #already there in centos, --with-pdo-sqlite=shared
+when "debian", "ubuntu"
+  package "php5-sqlite" do
+    action :install
+  end
 end
 
-php_pear_channel 'pecl.php.net' do
-  action :update
-end
