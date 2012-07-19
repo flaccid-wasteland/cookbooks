@@ -16,8 +16,7 @@
 # limitations under the License.
 
 include_recipe "git"
-include_recipe "subversion"
-include_recipe "apache2"
+include_recipe "subversion" unless node['mediawiki_application']['repository_url'].include? '.git'
 
 application node['mediawiki_application']['name'] do
   path node['mediawiki_application']['path']
@@ -26,27 +25,21 @@ application node['mediawiki_application']['name'] do
 
   repository node['mediawiki_application']['repository_url']
   revision node['mediawiki_application']['revision']
+  action node['mediawiki_application']['deploy_action']
 
   php do
-    # php-specific configuration
+    database do
+      adapter "mysql"
+      database "mediawiki"
+      username "media_wiki"
+      password "donotuse"
+    end
+    #local_settings_file "LocalSettings.php"  # default
+    #settings_template "LocalSettings.php.erb"  # default
+    #packages ""  # an Array of PEAR packages to install
   end
-  
-  action node['mediawiki_application']['deploy_action']
-  
-  mod_php_apache2
-end
-
-web_app node['mediawiki_application']['name'] do
-  docroot "#{node['mediawiki_application']['path']}/current"
-  server_name node['fqdn']
-  server_aliases [node['hostname'], node['mediawiki_application']['name']]
-  #template "web_app.conf.erb"   # default template is suffice in most cases
-  variables(
-    'database' => {
-      'adapter' => node['mediawiki_application']['database']['adapter'],
-      'database' => node['mediawiki_application']['database']['database'],
-      'username' => node['mediawiki_application']['database']['username'],
-      'password' => node['mediawiki_application']['database']['password'],
-    }
-  )
+  mod_php_apache2 node['mediawiki_application']['name'] do
+    server_aliases [ node['fqdn'], node['mediawiki_application']['name'] ]
+    webapp_template "web_app_basic.conf.erb"
+  end
 end
