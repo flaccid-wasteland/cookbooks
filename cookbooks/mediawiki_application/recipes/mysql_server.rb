@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+log "Installing MySQL Server"
+
 # remove once http://tickets.opscode.com/browse/COOK-1009 is solved
 strap_packages = ['libmysql-ruby', 'libmysqlclient-dev', 'make']
 strap_packages.each { |pkg|
@@ -23,8 +25,8 @@ strap_packages.each { |pkg|
   end
   p.run_action(:install)
 } 
+
 chef_gem "mysql"
 
-log "Installing MySQL Server"
 include_recipe "mysql::server"
 include_recipe "mysql::server_ec2" if ( node.has_key?('cloud') and node['cloud']['provider'] == 'ec2' )
