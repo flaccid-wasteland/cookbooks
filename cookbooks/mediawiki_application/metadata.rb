@@ -75,14 +75,21 @@ attribute "mediawiki_application/revision",
   :default => "master",
   :recipes => [ "mediawiki_application::application" ]
 
-attribute "mediawiki_application/database/host",
+attribute "mediawiki_application/php/packages",
+  :display_name => "MediaWiki PHP/PEAR Packages",
+  :description => "An array of php/pear packages to install.",
+  :required => "optional",
+  :default => [ "mysql" ],
+  :recipes => [ "mediawiki_application::application" ]
+
+attribute "mediawiki_application/db/host",
   :display_name => "MediaWiki Database Host",
   :description => "The database host name to use with MediaWiki.",
   :required => "recommended",
   :default => "localhost",
   :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
     
-attribute "mediawiki_application/database/adapter",
+attribute "mediawiki_application/db/adapter",
   :display_name => "MediaWiki Database Adapter",
   :description => "The database adapter to use with PHP.",
   :required => "recommended",
@@ -90,21 +97,21 @@ attribute "mediawiki_application/database/adapter",
   :choice => [ "mysql", "postgres", "sqlite" ],
   :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
 
-attribute "mediawiki_application/database/schema",
+attribute "mediawiki_application/db/schema",
   :display_name => "MediaWiki Database Schema",
   :description => "The database schema or name for MediaWiki.",
   :required => "recommended",
   :default => "mediawiki",
   :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
 
-attribute "mediawiki_application/database/username",
+attribute "mediawiki_application/db/username",
   :display_name => "MediaWiki Database User",
   :description => "The database username for MediaWiki.",
   :required => "recommended",
   :default => "mediawiki",
   :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
 
-attribute "mediawiki_application/database/password",
+attribute "mediawiki_application/db/password",
   :display_name => "MediaWiki Database Password",
   :description => "The database password for MediaWiki.",
   :required => "required",

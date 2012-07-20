@@ -1,57 +1,35 @@
 {
-  "recommendations": {
-  },
-  "version": "0.0.1",
-  "dependencies": {
-    "gunicorn": ">= 0.0.0",
-    "git": ">= 0.0.0",
-    "runit": ">= 0.0.0",
-    "database": ">= 0.0.0",
-    "application_php": ">= 0.0.0",
-    "unicorn": ">= 0.0.0",
-    "application": ">= 0.0.0",
-    "passenger_apache2": ">= 0.0.0",
-    "subversion": ">= 0.0.0",
-    "php": ">= 0.0.0",
-    "apache2": ">= 0.0.0",
-    "python": ">= 0.0.0",
-    "tomcat": ">= 0.0.0"
-  },
-  "maintainer_email": "chris@xhost.com.au",
-  "maintainer": "Chris Fordham",
-  "recipes": {
-    "mediawiki_application::application": "Installs & configures Mediawiki.",
-    "mediawiki_application::default": "Installs & configures Mediawiki."
-  },
-  "description": "Installs/Configures mediawiki_application",
-  "platforms": {
-  },
-  "replacing": {
-  },
-  "name": "mediawiki_application",
-  "suggestions": {
-  },
-  "conflicting": {
-  },
-  "groupings": {
-  },
   "attributes": {
-    "mediawiki_application/database/password": {
-      "required": "required",
+    "mediawiki_application/db/password": {
       "choice": [
 
       ],
+      "type": "string",
+      "display_name": "MediaWiki Database Password",
       "description": "The database password for MediaWiki.",
       "recipes": [
         "mediawiki_application::application",
         "mediawiki_application::database"
       ],
-      "calculated": false,
-      "display_name": "MediaWiki Database Password",
-      "type": "string"
+      "required": "required",
+      "calculated": false
+    },
+    "mediawiki_application/db/username": {
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "mediawiki",
+      "display_name": "MediaWiki Database User",
+      "description": "The database username for MediaWiki.",
+      "recipes": [
+        "mediawiki_application::application",
+        "mediawiki_application::database"
+      ],
+      "required": "recommended",
+      "calculated": false
     },
     "mediawiki_application/system_user": {
-      "required": "optional",
       "choice": [
         "www-data",
         "httpd",
@@ -59,59 +37,92 @@
         "www",
         "root"
       ],
+      "type": "string",
+      "default": "www-data",
+      "display_name": "MediaWiki System User",
       "description": "The system user (owner) for the application.",
       "recipes": [
         "mediawiki_application::application"
       ],
-      "calculated": false,
-      "default": "www-data",
-      "display_name": "MediaWiki System User",
-      "type": "string"
+      "required": "optional",
+      "calculated": false
     },
-    "mediawiki_application/name": {
-      "required": "required",
+    "mediawiki_application/db/schema": {
       "choice": [
 
       ],
-      "description": "The name of the MediaWiki application.",
-      "recipes": [
-        "mediawiki_application::application"
-      ],
-      "calculated": false,
-      "display_name": "MediaWiki Application Name",
-      "type": "string"
-    },
-    "mediawiki_application/database/schema": {
-      "required": "recommended",
-      "choice": [
-
-      ],
+      "type": "string",
+      "default": "mediawiki",
+      "display_name": "MediaWiki Database Schema",
       "description": "The database schema or name for MediaWiki.",
       "recipes": [
         "mediawiki_application::application",
         "mediawiki_application::database"
       ],
-      "calculated": false,
-      "default": "mediawiki",
-      "display_name": "MediaWiki Database Schema",
-      "type": "string"
-    },
-    "mediawiki_application/repository_url": {
       "required": "recommended",
+      "calculated": false
+    },
+    "mediawiki_application/db/host": {
       "choice": [
 
       ],
+      "type": "string",
+      "default": "localhost",
+      "display_name": "MediaWiki Database Host",
+      "description": "The database host name to use with MediaWiki.",
+      "recipes": [
+        "mediawiki_application::application",
+        "mediawiki_application::database"
+      ],
+      "required": "recommended",
+      "calculated": false
+    },
+    "mediawiki_application/path": {
+      "choice": [
+        "/usr/local/www",
+        "/var/www"
+      ],
+      "type": "string",
+      "default": "/usr/local/www",
+      "display_name": "MediaWiki Install Path",
+      "description": "The path to install MediaWiki to, e.g. /var/www",
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "required": "optional",
+      "calculated": false
+    },
+    "mediawiki_application/php/packages": {
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": [
+        "mysql"
+      ],
+      "display_name": "MediaWiki PHP/PEAR Packages",
+      "description": "An array of php/pear packages to install.",
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "required": "optional",
+      "calculated": false
+    },
+    "mediawiki_application/repository_url": {
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "https://gerrit.wikimedia.org/r/p/mediawiki/core.git",
+      "display_name": "MediaWiki Repository URL",
       "description": "The URL to the application for checkout/download.",
       "recipes": [
         "mediawiki_application::application"
       ],
-      "calculated": false,
-      "default": "https://gerrit.wikimedia.org/r/p/mediawiki/core.git",
-      "display_name": "MediaWiki Repository URL",
-      "type": "string"
+      "required": "recommended",
+      "calculated": false
     },
     "mediawiki_application/system_group": {
-      "required": "optional",
       "choice": [
         "www-data",
         "httpd",
@@ -120,112 +131,117 @@
         "root",
         "users"
       ],
+      "type": "string",
+      "default": "www-data",
+      "display_name": "MediaWiki System Group",
       "description": "The system group for the application.",
       "recipes": [
         "mediawiki_application::application"
       ],
-      "calculated": false,
-      "default": "www-data",
-      "display_name": "MediaWiki System Group",
-      "type": "string"
+      "required": "optional",
+      "calculated": false
     },
-    "mediawiki_application/database/username": {
-      "required": "recommended",
+    "mediawiki_application/name": {
       "choice": [
 
       ],
-      "description": "The database username for MediaWiki.",
+      "type": "string",
+      "display_name": "MediaWiki Application Name",
+      "description": "The name of the MediaWiki application.",
       "recipes": [
-        "mediawiki_application::application",
-        "mediawiki_application::database"
+        "mediawiki_application::application"
       ],
-      "calculated": false,
-      "default": "mediawiki",
-      "display_name": "MediaWiki Database User",
-      "type": "string"
+      "required": "required",
+      "calculated": false
     },
-    "mediawiki_application/database/adapter": {
-      "required": "recommended",
+    "mediawiki_application/db/adapter": {
       "choice": [
         "mysql",
         "postgres",
         "sqlite"
       ],
+      "type": "string",
+      "default": "mysql",
+      "display_name": "MediaWiki Database Adapter",
       "description": "The database adapter to use with PHP.",
       "recipes": [
         "mediawiki_application::application",
         "mediawiki_application::database"
       ],
-      "calculated": false,
-      "default": "mysql",
-      "display_name": "MediaWiki Database Adapter",
-      "type": "string"
-    },
-    "mediawiki_application/database/host": {
       "required": "recommended",
-      "choice": [
-
-      ],
-      "description": "The database host name to use with MediaWiki.",
-      "recipes": [
-        "mediawiki_application::application",
-        "mediawiki_application::database"
-      ],
-      "calculated": false,
-      "default": "localhost",
-      "display_name": "MediaWiki Database Host",
-      "type": "string"
-    },
-    "mediawiki_application/path": {
-      "required": "optional",
-      "choice": [
-        "/usr/local/www",
-        "/var/www"
-      ],
-      "description": "The path to install MediaWiki to, e.g. /var/www",
-      "recipes": [
-        "mediawiki_application::application"
-      ],
-      "calculated": false,
-      "default": "/usr/local/www",
-      "display_name": "MediaWiki Install Path",
-      "type": "string"
-    },
-    "mediawiki_application/deploy_action": {
-      "required": "optional",
-      "choice": [
-
-      ],
-      "description": "Deploy or force deploy the MediaWiki application.",
-      "recipes": [
-        "mediawiki_application::application"
-      ],
-      "calculated": false,
-      "default": "deploy",
-      "display_name": "MediaWiki Deploy Action",
-      "option": [
-        "deploy",
-        "force_deploy"
-      ],
-      "type": "string"
+      "calculated": false
     },
     "mediawiki_application/revision": {
-      "required": "recommended",
       "choice": [
 
       ],
+      "type": "string",
+      "default": "master",
+      "display_name": "MediaWiki Application Revision",
       "description": "The revision of the application to use (tag/branch/commit).",
       "recipes": [
         "mediawiki_application::application"
       ],
-      "calculated": false,
-      "default": "master",
-      "display_name": "MediaWiki Application Revision",
-      "type": "string"
+      "required": "recommended",
+      "calculated": false
+    },
+    "mediawiki_application/deploy_action": {
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "deploy",
+      "display_name": "MediaWiki Deploy Action",
+      "description": "Deploy or force deploy the MediaWiki application.",
+      "recipes": [
+        "mediawiki_application::application"
+      ],
+      "required": "optional",
+      "option": [
+        "deploy",
+        "force_deploy"
+      ],
+      "calculated": false
     }
   },
-  "providing": {
+  "replacing": {
   },
   "license": "Apache 2.0",
-  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n"
+  "version": "0.0.1",
+  "name": "mediawiki_application",
+  "conflicting": {
+  },
+  "recommendations": {
+  },
+  "platforms": {
+  },
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
+  "recipes": {
+    "mediawiki_application::default": "Installs & configures Mediawiki.",
+    "mediawiki_application::application": "Installs & configures Mediawiki."
+  },
+  "description": "Installs/Configures mediawiki_application",
+  "groupings": {
+  },
+  "dependencies": {
+    "database": ">= 0.0.0",
+    "application": ">= 0.0.0",
+    "python": ">= 0.0.0",
+    "git": ">= 0.0.0",
+    "php": ">= 0.0.0",
+    "apache2": ">= 0.0.0",
+    "tomcat": ">= 0.0.0",
+    "unicorn": ">= 0.0.0",
+    "application_php": ">= 0.0.0",
+    "gunicorn": ">= 0.0.0",
+    "passenger_apache2": ">= 0.0.0",
+    "runit": ">= 0.0.0",
+    "subversion": ">= 0.0.0"
+  },
+  "suggestions": {
+  },
+  "maintainer": "Chris Fordham",
+  "providing": {
+  },
+  "maintainer_email": "chris@xhost.com.au"
 }
