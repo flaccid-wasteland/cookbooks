@@ -32,8 +32,8 @@ else
   include_recipe "mysql::server"
 end
 
-log "Creating database, #{node['mediawiki_application']['database']['schema']}"
-mysql_database node['mediawiki_application']['database']['schema'] do
-  connection ({:host => node['mediawiki_application']['database']['host'], :username => 'root', :password => node['mysql']['server_root_password']})
+log "Creating database, #{node['mediawiki_application']['db']['schema']}"
+mysql_database node['mediawiki_application']['db']['schema'] do
+  connection ({:host => node['mediawiki_application']['db']['host'], :username => 'root', :password => node['mysql']['server_root_password']})
   action :create
 end
