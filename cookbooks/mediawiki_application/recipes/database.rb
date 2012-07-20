@@ -15,8 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "mysql::server"
-
 # remove once http://tickets.opscode.com/browse/COOK-1009 is solved
 strap_packages = ['libmysql-ruby', 'libmysqlclient-dev', 'make']
 strap_packages.each { |pkg|
@@ -27,7 +25,15 @@ strap_packages.each { |pkg|
 } 
 chef_gem "mysql"
 
-mysql_database 'mediawiki' do
-  connection ({:host => node['mediawiki_application']['database']['host'], :username => node['mediawiki_application']['database']['username'], :password => node['mediawiki_application']['database']['password']})
+log "Installing MySQL Server"
+if ( node.has_key?("cloud") and node['cloud']['provider'] == 'ec2' )
+  include_recipe "mysql::server_ec2"
+else
+  include_recipe "mysql::server"
+end
+
+log "Creating database, #{node['mediawiki_application']['database']['schema']}"
+mysql_database node['mediawiki_application']['database']['schema'] do
+  connection ({:host => node['mediawiki_application']['database']['host'], :username => 'root', :password => node['mysql']['server_root_password']})
   action :create
 end
