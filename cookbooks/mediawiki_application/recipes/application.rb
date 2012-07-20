@@ -44,6 +44,6 @@ application node['mediawiki_application']['name'] do
   end
   mod_php_apache2 "mod_php_apache2_#{node['mediawiki_application']['name']}" do
     server_aliases [ node['fqdn'], node['mediawiki_application']['name'] ]
-    webapp_template "web_app_basic.conf.erb"
+    webapp_template node['mediawiki_application']['webapp_template']
   end
 end
