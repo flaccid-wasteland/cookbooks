@@ -32,11 +32,11 @@ $wgStylePath        = "$wgScriptPath/skins";
 $wgLogo         ="http://chef-quick-starts.s3.amazonaws.com/mediawiki_opscode.png";
 
 ## Database settings
-$wgDBtype       = "<%= @db['adapter'] %>";
-$wgDBserver     = "<%= @db['host'] %>";
-$wgDBname       = "<%= @db['database'] %>";
-$wgDBuser       = "<%= @db['username'] %>";
-$wgDBpassword   = "<%= @db['password'] %>";
+$wgDBtype       = "<%= @database['adapter'] %>";
+$wgDBserver     = "<%= @database['host'] %>";
+$wgDBname       = "<%= @database['schema'] %>";
+$wgDBuser       = "<%= @database['username'] %>";
+$wgDBpassword   = "<%= @database['password'] %>";
 
 ## Shared memory settings
 $wgMainCacheType    = CACHE_NONE;
