@@ -17,15 +17,17 @@
 
 include_recipe "git"
 include_recipe "subversion" unless node['mediawiki_application']['repository_url'].include? '.git'
+
 include_recipe "mediawiki_application::php_mysql"
 
+log "Setting up application, node['mediawiki_application']['name']"
+
+# for some reason these worker variables are needed as using the node attributes directly in the database block returns nilClass
 schema   = node['mediawiki_application']['db']['schema']
 adapter  = node['mediawiki_application']['db']['adapter']
 username = node['mediawiki_application']['db']['username']
 password = node['mediawiki_application']['db']['password']
 host     = node['mediawiki_application']['db']['host']
-
-log "Setting up application, node['mediawiki_application']['name']"
 
 application node['mediawiki_application']['name'] do
   path node['mediawiki_application']['path']
