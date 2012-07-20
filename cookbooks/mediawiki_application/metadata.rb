@@ -117,3 +117,21 @@ attribute "mediawiki_application/db/password",
   :description => "The database password for MediaWiki.",
   :required => "required",
   :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
+  
+attribute "mysql/server_root_password",
+  :display_name => "MySQL Server Root Password",
+  :description => "The root password for the MySQL server.",
+  :required => "required",
+  :recipes => [ "mediawiki_application::database" ]
+
+attribute "mysql/server_repl_password",
+  :display_name => "MySQL Replication Password",
+  :description => "The replication password for the MySQL server.",
+  :required => "optional",
+  :recipes => [ "mediawiki_application::database" ]
+
+attribute "mysql/server_debian_password",
+  :display_name => "MySQL Debian Password",
+  :description => "The debian admin user password for the MySQL server.",
+  :required => "optional",
+  :recipes => [ "mediawiki_application::database" ]
