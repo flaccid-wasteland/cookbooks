@@ -129,15 +129,3 @@ attribute "mysql/server_root_password",
   :description => "The root password for the MySQL server.",
   :required => "required",
   :recipes => [ "mediawiki_application::import_initial_tables", "mediawiki_application::drop_database_user", "mediawiki_application::drop_database", "mediawiki_application::create_database_user", "mediawiki_application::create_database" ]
-
-attribute "mysql/server_repl_password",
-  :display_name => "MySQL Replication Password",
-  :description => "The replication password for the MySQL server.",
-  :required => "optional",
-  :recipes => [ "mediawiki_application::database" ]
-
-attribute "mysql/server_debian_password",
-  :display_name => "MySQL Debian Password",
-  :description => "The debian admin user password for the MySQL server.",
-  :required => "optional",
-  :recipes => [ "mediawiki_application::database" ]
