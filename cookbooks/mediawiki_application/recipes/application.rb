@@ -32,10 +32,11 @@ application node['mediawiki_application']['name'] do
 
   php do
     database do
-      adapter node['mediawiki_application']['database']['adapter']
-      database node['mediawiki_application']['database']['schema']
-      username node['mediawiki_application']['database']['username']
-      password node['mediawiki_application']['database']['password']
+      database node['mediawiki_application']['db']['schema']
+      adapter node['mediawiki_application']['db']['adapter']
+      username node['mediawiki_application']['db']['username']
+      password node['mediawiki_application']['db']['password']
+      host node['mediawiki_application']['db']['host']
     end
     local_settings_file node['mediawiki_application']['php']['local_settings_file']
     settings_template node['mediawiki_application']['php']['settings_template']
