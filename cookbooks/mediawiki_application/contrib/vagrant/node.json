@@ -24,5 +24,5 @@
     "server_repl_password": "donotusethisinproduction,changeme",
     "server_debian_password": "donotusethisinproduction,changeme"
   },  
-  "run_list": [ "recipe[mediawiki_application::default]" ]
+  "run_list": [ "recipe[mediawiki_application]" ]
 }
