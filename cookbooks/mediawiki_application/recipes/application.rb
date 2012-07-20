@@ -21,6 +21,12 @@ include_recipe "subversion" unless node['mediawiki_application']['repository_url
 package "libapache2-mod-auth-mysql"
 package "php5-mysql"
 
+schema = node['mediawiki_application']['db']['schema']
+adapter = node['mediawiki_application']['db']['adapter']
+username = node['mediawiki_application']['db']['username']
+password = node['mediawiki_application']['db']['password']
+host = node['mediawiki_application']['db']['host']
+
 application node['mediawiki_application']['name'] do
   path node['mediawiki_application']['path']
   owner node['mediawiki_application']['system_user']
@@ -32,11 +38,11 @@ application node['mediawiki_application']['name'] do
 
   php do
     database do
-      schema node['mediawiki_application']['db']['schema']
-      adapter node['mediawiki_application']['db']['adapter']
-      username node['mediawiki_application']['db']['username']
-      password node['mediawiki_application']['db']['password']
-      host node['mediawiki_application']['db']['host']
+      schema schema
+      adapter adapter
+      username username
+      password password
+      host host
     end
     local_settings_file node['mediawiki_application']['php']['local_settings_file']
     settings_template node['mediawiki_application']['php']['settings_template']
