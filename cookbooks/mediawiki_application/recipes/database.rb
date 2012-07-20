@@ -15,25 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# remove once http://tickets.opscode.com/browse/COOK-1009 is solved
-strap_packages = ['libmysql-ruby', 'libmysqlclient-dev', 'make']
-strap_packages.each { |pkg|
-  p = package pkg do
-    action :nothing
-  end
-  p.run_action(:install)
-} 
-chef_gem "mysql"
-
-log "Installing MySQL Server"
-if ( node.has_key?("cloud") and node['cloud']['provider'] == 'ec2' )
-  include_recipe "mysql::server_ec2"
-else
-  include_recipe "mysql::server"
-end
-
-log "Creating database, #{node['mediawiki_application']['db']['schema']}"
-mysql_database node['mediawiki_application']['db']['schema'] do
-  connection ({:host => node['mediawiki_application']['db']['host'], :username => 'root', :password => node['mysql']['server_root_password']})
-  action :create
-end
+include_recipe "mediawiki_application::mysql_server"
+include_recipe "mediawiki_application::create_database_user"
+include_recipe "mediawiki_application::create_database"
+include_recipe "mediawiki_application::import_initial_tables"
