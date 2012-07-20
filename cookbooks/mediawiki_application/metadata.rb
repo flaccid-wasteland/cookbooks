@@ -21,7 +21,13 @@ depends "application_php"
 depends "database"
 
 recipe "mediawiki_application::default", "Installs & configures Mediawiki."
-recipe "mediawiki_application::application", "Installs & configures Mediawiki."
+recipe "mediawiki_application::application", "Installs & configures the Mediawiki application including HTTP virtual host."
+recipe "mediawiki_application::create_database", "Creates the Mediawiki database in MySQL."
+recipe "mediawiki_application::create_database_user", "Creates the Mediawiki database user in MySQL."
+recipe "mediawiki_application::database", "Installs & configures the database components for MediaWiki."
+recipe "mediawiki_application::drop_database", "Drops (deletes) the MediaWiki database in MySQL."
+recipe "mediawiki_application::import_initial_tables", "Imports the initial tables into the MediaWiki database."
+recipe "mediawiki_application::mysql_server", "Installs & configures a MySQL Server."
 
 attribute "mediawiki_application/deploy_action",
   :display_name => "MediaWiki Deploy Action",
@@ -43,7 +49,7 @@ attribute "mediawiki_application/path",
   :default => "/usr/local/www",
   :required => "optional",
   :choice => [ '/usr/local/www', '/var/www' ],
-  :recipes => [ "mediawiki_application::application" ]
+  :recipes => [ "mediawiki_application::application", "mediawiki_application::import_initial_tables" ]
     
 attribute "mediawiki_application/system_user",
   :display_name => "MediaWiki System User",
@@ -88,7 +94,7 @@ attribute "mediawiki_application/db/host",
   :description => "The database host name to use with MediaWiki.",
   :required => "recommended",
   :default => "localhost",
-  :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
+  :recipes => [ "mediawiki_application::application", "mediawiki_application::drop_database_user", "mediawiki_application::drop_database", "mediawiki_application::create_database_user", "mediawiki_application::create_database" ]
     
 attribute "mediawiki_application/db/adapter",
   :display_name => "MediaWiki Database Adapter",
@@ -103,26 +109,26 @@ attribute "mediawiki_application/db/schema",
   :description => "The database schema or name for MediaWiki.",
   :required => "recommended",
   :default => "mediawiki",
-  :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
+  :recipes => [ "mediawiki_application::application", "mediawiki_application::import_initial_tables", "mediawiki_application::drop_database", "mediawiki_application::create_database_user", "mediawiki_application::create_database" ]
 
 attribute "mediawiki_application/db/username",
   :display_name => "MediaWiki Database User",
   :description => "The database username for MediaWiki.",
   :required => "recommended",
   :default => "mediawiki",
-  :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
+  :recipes => [ "mediawiki_application::drop_database_user", "mediawiki_application::create_database_user" ]
 
 attribute "mediawiki_application/db/password",
   :display_name => "MediaWiki Database Password",
   :description => "The database password for MediaWiki.",
   :required => "required",
-  :recipes => [ "mediawiki_application::application", "mediawiki_application::database" ]
+  :recipes => [ "mediawiki_application::application", "mediawiki_application::database", "mediawiki_application::create_database_user" ]
   
 attribute "mysql/server_root_password",
   :display_name => "MySQL Server Root Password",
   :description => "The root password for the MySQL server.",
   :required => "required",
-  :recipes => [ "mediawiki_application::database" ]
+  :recipes => [ "mediawiki_application::import_initial_tables", "mediawiki_application::drop_database_user", "mediawiki_application::drop_database", "mediawiki_application::create_database_user", "mediawiki_application::create_database" ]
 
 attribute "mysql/server_repl_password",
   :display_name => "MySQL Replication Password",
