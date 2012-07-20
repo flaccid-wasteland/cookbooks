@@ -32,7 +32,7 @@ application node['mediawiki_application']['name'] do
 
   php do
     database do
-      database node['mediawiki_application']['db']['schema']
+      schema node['mediawiki_application']['db']['schema']
       adapter node['mediawiki_application']['db']['adapter']
       username node['mediawiki_application']['db']['username']
       password node['mediawiki_application']['db']['password']
