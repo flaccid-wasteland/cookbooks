@@ -7,7 +7,8 @@
     "repository_url":"https://gerrit.wikimedia.org/r/p/mediawiki/core.git",
     "revision":"master",
     "deploy_action":"force_deploy",
-    "database" : {
+    "db": {
+      "host":"localhost",
       "schema":"mediawiki_demo",
       "adapter":"mysql",
       "username":"mediawiki",
