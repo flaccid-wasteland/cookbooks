@@ -80,6 +80,7 @@ attribute "mediawiki_application/php/packages",
   :description => "An array of php/pear packages to install.",
   :required => "optional",
   :default => [ "mysql" ],
+  :type => 'array',
   :recipes => [ "mediawiki_application::application" ]
 
 attribute "mediawiki_application/db/host",
