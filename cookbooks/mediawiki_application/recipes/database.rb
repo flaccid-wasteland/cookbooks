@@ -18,4 +18,3 @@
 include_recipe "mediawiki_application::mysql_server"
 include_recipe "mediawiki_application::create_database_user"
 include_recipe "mediawiki_application::create_database"
-include_recipe "mediawiki_application::import_initial_tables"
