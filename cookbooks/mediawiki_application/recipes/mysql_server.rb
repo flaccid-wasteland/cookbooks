@@ -26,8 +26,5 @@ strap_packages.each { |pkg|
 chef_gem "mysql"
 
 log "Installing MySQL Server"
-if ( node.has_key?('cloud') and node['cloud']['provider'] == 'ec2' )
-  include_recipe "mysql::server_ec2"
-else
-  include_recipe "mysql::server"
-end
+include_recipe "mysql::server"
+include_recipe "mysql::server_ec2" if ( node.has_key?('cloud') and node['cloud']['provider'] == 'ec2' )
