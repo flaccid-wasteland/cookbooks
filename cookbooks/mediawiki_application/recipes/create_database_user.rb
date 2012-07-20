@@ -18,6 +18,7 @@
 mysql_connection_info = {:host => node['mediawiki_application']['db']['host'], :username => 'root', :password => node['mysql']['server_root_password']}
 
 log "Creating database user, #{node['mediawiki_application']['db']['username']}"
+
 mysql_database_user node['mediawiki_application']['db']['username'] do
   connection mysql_connection_info
   password node['mediawiki_application']['db']['password']
@@ -25,6 +26,7 @@ mysql_database_user node['mediawiki_application']['db']['username'] do
 end
 
 log "Granting database privileges for user, #{node['mediawiki_application']['db']['username']}"
+
 mysql_database_user node['mediawiki_application']['db']['username'] do
   connection mysql_connection_info
   password node['mediawiki_application']['db']['password']
@@ -34,6 +36,7 @@ mysql_database_user node['mediawiki_application']['db']['username'] do
 end
 
 log "Flushing database privileges"
+
 mysql_database "mysql_flush_privs" do
   connection mysql_connection_info
   sql "FLUSH PRVILEGES;"
