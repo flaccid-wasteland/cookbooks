@@ -28,6 +28,7 @@ recipe "mediawiki_application::database", "Installs & configures the database co
 recipe "mediawiki_application::drop_database", "Drops (deletes) the MediaWiki database in MySQL."
 recipe "mediawiki_application::import_initial_tables", "Imports the initial tables into the MediaWiki database."
 recipe "mediawiki_application::mysql_server", "Installs & configures a MySQL Server."
+recipe "mediawiki_application::php_mysql", "Installs & configures a php-mysql support."
 
 attribute "mediawiki_application/deploy_action",
   :display_name => "MediaWiki Deploy Action",
