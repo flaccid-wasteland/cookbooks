@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+log "Dropping database user, #{node['mediawiki_application']['db']['username']}"
+
 mysql_database_user node['mediawiki_application']['db']['username'] do
   connection ( {:host => node['mediawiki_application']['db']['host'], :username => 'root', :password => node['mysql']['server_root_password']} )
   action :drop
