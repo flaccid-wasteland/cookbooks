@@ -18,4 +18,4 @@
 log "Setting up php/mysql"
 
 package "libapache2-mod-auth-mysql"
-package "php5-mysql
+package "php5-mysql"
