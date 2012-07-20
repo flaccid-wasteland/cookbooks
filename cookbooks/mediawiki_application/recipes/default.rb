@@ -15,5 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe "mediawiki_application::application"		# application recipe first to provide tables.sql for initial setup
 include_recipe "mediawiki_application::database"
-include_recipe "mediawiki_application::application"
+include_recipe "mediawiki_application::import_initial_tables"
