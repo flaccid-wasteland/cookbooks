@@ -16,6 +16,7 @@
 # limitations under the License.
 
 log "Dropping database, #{node['mediawiki_application']['db']['schema']}!!"
+
 mysql_database node['mediawiki_application']['db']['schema'] do
   connection ( {:host => node['mediawiki_application']['db']['host'], :username => 'root', :password => node['mysql']['server_root_password']} )
   action :drop
