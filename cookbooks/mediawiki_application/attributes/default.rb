@@ -5,12 +5,13 @@ default['mediawiki_application']['system_group'] = 'root'
 default['mediawiki_application']['repository_url'] = "https://gerrit.wikimedia.org/r/p/mediawiki/core.git"
 default['mediawiki_application']['revision'] = 'master'
 default['mediawiki_application']['deploy_action'] = 'deploy'
+default['mediawiki_application']['webapp_template'] = "web_app_basic.conf.erb"
 
-default['mediawiki_application']['database']['host'] = 'localhost'      # localhost for a LAMP AIO
-default['mediawiki_application']['database']['adapter'] = 'mysql'
-default['mediawiki_application']['database']['schema'] = 'mediawiki'
-default['mediawiki_application']['database']['username'] = 'mediawiki'
-default['mediawiki_application']['database']['password'] = nil
+default['mediawiki_application']['db']['host'] = 'localhost'      # localhost for a LAMP AIO
+default['mediawiki_application']['db']['adapter'] = 'mysql'
+default['mediawiki_application']['db']['schema'] = 'mediawiki'
+default['mediawiki_application']['db']['username'] = 'mediawiki'
+default['mediawiki_application']['db']['password'] = nil
 
 default['mediawiki_application']['php']['pear_packages'] = [ "mysql" ]
 default['mediawiki_application']['php']['local_settings_file'] = 'LocalSettings.php'
