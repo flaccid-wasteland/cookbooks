@@ -90,6 +90,10 @@ attribute "mysql/tunable/max_binlog_size",
   :display_name => "MySQL Max Binlog Size",
   :default => "100M"
 
+attribute "mysql/tunable/innodb_flush_method",
+  :display_name => "MySQL Innodb Flush Method",
+  :default => "O_DSYNC"
+
 attribute "mysql/client",
   :display_name => "MySQL Connector/C Client",
   :description => "Hash of MySQL client attributes",
