@@ -49,7 +49,7 @@ The host machine needs to be a Linux/*nix with VirtualBox and Ruby/RubyGems inst
 	cd "$vagrant_proj_dir/mediawiki/"
 
 	# add new box (from downloaded box, not remote)
-	vagrant box add mediawiki "$HOME/Binaries/vagrant/boxes/$vagrant_box"
+	vagrant box add mediawiki "$vagrant_box_dir/$vagrant_box"
 
 	# already up'd a mediawiki box?
 	#vagrant status					# check vm status
