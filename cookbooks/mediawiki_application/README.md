@@ -23,7 +23,7 @@ The host machine needs to be a Linux/*nix with VirtualBox and Ruby/RubyGems inst
 	vagrant_box_dir="$HOME/Binaries/vagrant/boxes"		# local folder for base boxes
 	vagrant_proj_dir="$HOME/Vagrant"					# Vagrant project folder
 	github_local_src_dir="$HOME/src/github"				# local source folder for github checkouts
-	
+
 	# fetch base box
 	mkdir -p "$vagrant_box_dir"
 	cd "$vagrant_box_dir"
@@ -36,10 +36,14 @@ The host machine needs to be a Linux/*nix with VirtualBox and Ruby/RubyGems inst
 	cd "$github_local_src_dir/flaccid"
 	[ ! -e ./cookbooks ] && git clone git://github.com/flaccid/cookbooks.git
 
+	# node.json and Vagrantfile to use
+	node_json="$github_local_src_dir/flaccid/cookbooks/cookbooks/mediawiki_application/contrib/vagrant/node.json"
+	vagrantfile="$github_local_src_dir/flaccid/cookbooks/cookbooks/mediawiki_application/contrib/vagrant/precise64/Vagrantfile"
+
 	# setup the Vagrant/mediawiki folder (node.json, cookbooks, Vagrantfile)
-	ln -svf "$github_local_src_dir/flaccid/cookbooks/cookbooks" "$vagrant_proj_dir/mediawiki/"																# link cookbooks/ to flaccid's cookbooks
-	cp -v "$github_local_src_dir/flaccid/cookbooks/cookbooks/mediawiki_application/contrib/vagrant/node.json" "$vagrant_proj_dir/mediawiki/"				# copy the example node.json
-	cp -v "$github_local_src_dir/flaccid/cookbooks/cookbooks/mediawiki_application/contrib/vagrant/precise64/Vagrantfile" "$vagrant_proj_dir/mediawiki/"	# copy the Vagrantfile for precise64
+	ln -svf "$github_local_src_dir/flaccid/cookbooks/cookbooks" "$vagrant_proj_dir/mediawiki/"		# link cookbooks/ to flaccid's cookbooks
+	cp -v "$node_json" "$vagrant_proj_dir/mediawiki/"												# copy the example node.json
+	cp -v "$vagrantfile" "$vagrant_proj_dir/mediawiki/"												# copy the Vagrantfile for precise64
 
 	# change to the Vagrant/mediawiki folder
 	cd "$vagrant_proj_dir/mediawiki/"
@@ -48,12 +52,11 @@ The host machine needs to be a Linux/*nix with VirtualBox and Ruby/RubyGems inst
 	vagrant box add mediawiki "$HOME/Binaries/vagrant/boxes/$vagrant_box"
 
 	# already up'd a mediawiki box?
-	#vagrant status      # check vm status
-	#vagrant reload      # reload the vm
-	#vagrant halt        # power down the vm
-	#vagrant suspend     # suspend the vm
-	#vagrant reload      # reload the vm
-	#vagrant destroy     # destroy the vm
+	#vagrant status					# check vm status
+	#vagrant reload					# reload the vm
+	#vagrant suspend				# suspend the vm
+	#vagrant halt					# power down the vm
+	#vagrant destroy				# destroy the vm
 	#vagrant box remove mediawiki	# remove the box
 
 	# if debug mode is desired
