@@ -64,3 +64,5 @@ The host machine needs to be a Linux/*nix with VirtualBox and Ruby/RubyGems inst
 
 	# vagrant up!
 	vagrant up
+
+Then on the host computer, browse to http://localhost:8888/ to check your MediaWiki installation.
