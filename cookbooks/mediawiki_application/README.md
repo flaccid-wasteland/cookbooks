@@ -19,28 +19,30 @@ The host machine needs to be a Linux/*nix with VirtualBox and Ruby/RubyGems inst
 	# install vagrant rubygem
 	sudo gem install vagrant --no-rdoc --no-ri
 
-	# use Ubuntu 12.04 precise64 base box
-	vagrant_box=precise64.box
+	vagrant_box=precise64.box							# use Ubuntu 12.04 precise64 base box
+	vagrant_box_dir="$HOME/Binaries/vagrant/boxes"		# local folder for base boxes
+	vagrant_proj_dir="$HOME/Vagrant"					# Vagrant project folder
+	github_local_src_dir="$HOME/src/github"				# local source folder for github checkouts
 	
 	# fetch base box
-	mkdir -p "$HOME/Binaries/vagrant/boxes"
-	cd "$HOME/Binaries/vagrant/boxes"
+	mkdir -p "$vagrant_box_dir"
+	cd "$vagrant_box_dir"
 	wget "http://files.vagrantup.com/$vagrant_box"
 
 	# create vagrant and cookbooks source directories
-	mkdir -p "$HOME/Vagrant/mediawiki" "$HOME/src/github/flaccid"
+	mkdir -p "$vagrant_proj_dir/mediawiki" "$github_local_src_dir/flaccid"
 
 	# checkout flaccid's cookbooks
-	cd "$HOME/src/github/flaccid"
+	cd "$github_local_src_dir/flaccid"
 	[ ! -e ./cookbooks ] && git clone git://github.com/flaccid/cookbooks.git
 
 	# setup the Vagrant/mediawiki folder (node.json, cookbooks, Vagrantfile)
-	ln -svf "$HOME/src/github/flaccid/cookbooks/cookbooks" "$HOME/Vagrant/mediawiki/"																# link cookbooks/ to flaccid's cookbooks
-	cp -v "$HOME/src/github/flaccid/cookbooks/cookbooks/mediawiki_application/contrib/vagrant/node.json" "$HOME/Vagrant/mediawiki/"					# copy the example node.json
-	cp -v "$HOME/src/github/flaccid/cookbooks/cookbooks/mediawiki_application/contrib/vagrant/precise64/Vagrantfile" "$HOME/Vagrant/mediawiki/"		# copy the Vagrantfile for precise64
+	ln -svf "$github_local_src_dir/flaccid/cookbooks/cookbooks" "$vagrant_proj_dir/mediawiki/"																# link cookbooks/ to flaccid's cookbooks
+	cp -v "$github_local_src_dir/flaccid/cookbooks/cookbooks/mediawiki_application/contrib/vagrant/node.json" "$vagrant_proj_dir/mediawiki/"				# copy the example node.json
+	cp -v "$github_local_src_dir/flaccid/cookbooks/cookbooks/mediawiki_application/contrib/vagrant/precise64/Vagrantfile" "$vagrant_proj_dir/mediawiki/"	# copy the Vagrantfile for precise64
 
 	# change to the Vagrant/mediawiki folder
-	cd "$HOME/Vagrant/mediawiki"
+	cd "$vagrant_proj_dir/mediawiki/"
 
 	# add new box (from downloaded box, not remote)
 	vagrant box add mediawiki "$HOME/Binaries/vagrant/boxes/$vagrant_box"
