@@ -26,20 +26,20 @@ when "redhat","centos","scientific","fedora","suse","amazon"
 	package "mysql-devel"
 when "debian","ubuntu"
 	[ 'libmysql-ruby', 'libmysqlclient-dev' ].each { |pkg|
-	  p = package pkg do
-	    action :nothing
-	  end
-	  p.run_action(:install)
+		p = package pkg do
+			action :nothing
+		end
+		p.run_action(:install)
 	}
 end
 
 if puts node['chef_packages']['chef']['version'] >= '0.10.10'
 	chef_gem "mysql"
 else
-  g = gem_package "mysql" do
-    action :nothing
-  end
-  g.run_action(:install)
+ 	g = gem_package "mysql" do
+		action :nothing
+	end
+	g.run_action(:install)
 end
 
 # server_ec2 needs testing first before uncommenting
