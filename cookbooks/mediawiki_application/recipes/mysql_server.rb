@@ -36,7 +36,7 @@ when "debian","ubuntu"
   }
 end
 
-if puts node['chef_packages']['chef']['version'] >= '0.10.10'
+if node['chef_packages']['chef']['version'] >= '0.10.10'
   chef_gem "mysql"
 else
   g = gem_package "mysql" do
