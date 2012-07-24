@@ -25,8 +25,7 @@ case node['platform']
 when "redhat","centos","scientific","fedora","suse","amazon"
 	package "mysql-devel"
 when "debian","ubuntu"
-	strap_packages = [ 'libmysql-ruby', 'libmysqlclient-dev' ]
-	strap_packages.each { |pkg|
+	[ 'libmysql-ruby', 'libmysqlclient-dev' ].each { |pkg|
 	  p = package pkg do
 	    action :nothing
 	  end
