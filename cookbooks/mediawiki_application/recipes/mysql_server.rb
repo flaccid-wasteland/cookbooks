@@ -23,18 +23,17 @@ package 'make'
 
 case node['platform']
 when "redhat","centos","scientific","fedora","suse","amazon"
-  p = package "mysql-devel" do
+  packages = [ 'mysql-devel', 'make' ]
+when "debian","ubuntu"
+  packages = [ 'libmysql-ruby', 'libmysqlclient-dev', 'make' ]
+end
+
+packages.each { |pkg|
+  p = package pkg do
     action :nothing
   end
   p.run_action(:install)
-when "debian","ubuntu"
-  [ 'libmysql-ruby', 'libmysqlclient-dev' ].each { |pkg|
-    p = package pkg do
-      action :nothing
-    end
-    p.run_action(:install)
-  }
-end
+}
 
 if node['chef_packages']['chef']['version'] >= '0.10.10'
   chef_gem "mysql"
