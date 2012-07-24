@@ -14,7 +14,7 @@ Vagrant
 -------
 
 The following example installs Vagrant, downloads flaccid's cookbooks and launches a Vagrant box with Ubuntu 12.04 (precise) x86_64 on a compatible host machine with VirtualBox.
-The host machine needs to be a Linux/*nix with VirtualBox and Ruby/RubyGems installed.
+The host machine should be a Linux/*nix with VirtualBox and Ruby/RubyGems installed.
 
 	# install vagrant rubygem
 	sudo gem install vagrant --no-rdoc --no-ri
