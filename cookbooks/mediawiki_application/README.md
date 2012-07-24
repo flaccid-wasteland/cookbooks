@@ -10,6 +10,36 @@ Attributes
 Usage
 =====
 
+Example node.json
+-----------------
+
+Suitable for Chef Solo/Vagrant:
+
+	{
+	  "mediawiki_application": {
+	    "name":"mediawiki_demo",
+	    "repository_url":"https://gerrit.wikimedia.org/r/p/mediawiki/core.git",
+	    "revision":"master",
+	    "initialize_database":"yes",
+	    "db": {
+	      "host":"localhost",
+	      "schema":"mediawiki_demo",
+	      "adapter":"mysql",
+	      "username":"mediawiki",
+	      "password":"donotusethisinproduction,changeme"
+	    }
+	  },
+	  "mysql": {
+	    "tunable": {
+	      "innodb_flush_method":"O_DSYNC"
+	    },
+	    "server_root_password": "donotusethisinproduction,changeme",
+	    "server_repl_password": "donotusethisinproduction,changeme",
+	    "server_debian_password": "donotusethisinproduction,changeme"
+	  },  
+	  "run_list": [ "recipe[mediawiki_application]" ]
+	}
+
 Vagrant
 -------
 
