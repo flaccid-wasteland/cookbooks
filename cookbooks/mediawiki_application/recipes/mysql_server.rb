@@ -23,7 +23,10 @@ package 'make'
 
 case node['platform']
 when "redhat","centos","scientific","fedora","suse","amazon"
-  package "mysql-devel"
+  p = package "mysql-devel" do
+    action :nothing
+  end
+  p.run_action(:install)
 when "debian","ubuntu"
   [ 'libmysql-ruby', 'libmysqlclient-dev' ].each { |pkg|
     p = package pkg do
