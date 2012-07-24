@@ -15,9 +15,14 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# version control helpers
 include_recipe "git"
 include_recipe "subversion" unless node['mediawiki_application']['repository_url'].include? '.git'
-include_recipe "apache2::mod_log_config"
+
+# apache2 modules
+apache_module "log_config"
+
+# php/mysql support
 include_recipe "mediawiki_application::php_mysql"
 
 log "Setting up application, node['mediawiki_application']['name']"
