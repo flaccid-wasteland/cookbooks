@@ -17,4 +17,4 @@
 
 include_recipe "mediawiki_application::application"		# application recipe first to provide tables.sql for initial setup
 include_recipe "mediawiki_application::database"
-include_recipe "mediawiki_application::import_initial_tables"
+include_recipe "mediawiki_application::import_initial_tables" if node['mediawiki_application']['initialize_database'] == 'yes'
