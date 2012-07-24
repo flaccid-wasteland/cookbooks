@@ -109,7 +109,7 @@ attribute "mediawiki_application/initialize_database",
   :description => "(re)Initialize database 'yes' or 'no' (default: no).",
   :default => "no",
   :choice => [ "no", "yes" ],
-  :recipes => [ "mediawiki_application::default" ]
+  :recipes => [ "mediawiki_rightscale::default" ]
     
 attribute "mysql/server_root_password",
   :display_name => "MySQL Server Root Password",
