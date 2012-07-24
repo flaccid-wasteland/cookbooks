@@ -1,12 +1,9 @@
 {
   "mediawiki_application": {
     "name":"mediawiki_demo",
-    "path":"/var/www",
-    "system_user":"www-data",
-    "system_group":"www-data",
     "repository_url":"https://gerrit.wikimedia.org/r/p/mediawiki/core.git",
     "revision":"master",
-    "deploy_action":"force_deploy",
+    "initialize_database":"yes",
     "db": {
       "host":"localhost",
       "schema":"mediawiki_demo",
