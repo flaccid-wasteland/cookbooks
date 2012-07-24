@@ -24,7 +24,7 @@ attribute "mysql/server_root_password",
 attribute "mysql/bind_address",
   :display_name => "MySQL Bind Address",
   :description => "Address that mysqld should listen on",
-  :default => "ipaddress"
+  :default => "0.0.0.0"
 
 attribute "mysql/data_dir",
   :display_name => "MySQL Data Directory",
