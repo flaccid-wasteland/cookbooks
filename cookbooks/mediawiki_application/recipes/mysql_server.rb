@@ -17,17 +17,21 @@
 
 log "Installing MySQL Server"
 
+# remove once http://tickets.opscode.com/browse/COOK-1009 is solved
+
 package 'make'
 
-if node['platform'] == ('ubuntu' or 'debian')
-	# remove once http://tickets.opscode.com/browse/COOK-1009 is solved
+case node['platform']
+when "redhat","centos","scientific","fedora","suse","amazon"
+	package "mysql-devel"
+when "debian","ubuntu"
 	strap_packages = [ 'libmysql-ruby', 'libmysqlclient-dev' ]
 	strap_packages.each { |pkg|
 	  p = package pkg do
 	    action :nothing
 	  end
 	  p.run_action(:install)
-	} 
+	}
 end
 
 if puts node['chef_packages']['chef']['version'] >= '0.10.10'
