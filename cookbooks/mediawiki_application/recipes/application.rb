@@ -20,7 +20,7 @@ include_recipe "git"
 include_recipe "subversion" unless node['mediawiki_application']['repository_url'].include? '.git'
 
 # apache2 modules
-apache_module "log_config"
+include_recipe "apache2::mod_log_config"
 
 # php/mysql support
 include_recipe "mediawiki_application::php_mysql"
