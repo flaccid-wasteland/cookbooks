@@ -103,7 +103,14 @@ attribute "mediawiki_application/db/password",
   :description => "The database password for MediaWiki.",
   :required => "required",
   :recipes => [ "mediawiki_rightscale::default" ]
-  
+
+attribute "mediawiki_application/initialize_database",
+  :display_name => "MediaWiki Initialize Database",
+  :description => "(re)Initialize database 'yes' or 'no' (default: no).",
+  :default => "no",
+  :choice => [ "no", "yes" ],
+  :recipes => [ "mediawiki_application::default" ]
+    
 attribute "mysql/server_root_password",
   :display_name => "MySQL Server Root Password",
   :description => "The root password for the MySQL server.",
