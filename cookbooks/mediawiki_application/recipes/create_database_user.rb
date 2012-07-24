@@ -19,6 +19,10 @@ mysql_connection_info = {:host => node['mediawiki_application']['db']['host'], :
 
 log "Creating database user, #{node['mediawiki_application']['db']['username']}"
 
+execute "sleep_ec2" do
+	command "sleep 30"
+end if ( node.has_key?('cloud') and node['cloud']['provider'] == 'ec2' )
+
 mysql_database_user node['mediawiki_application']['db']['username'] do
   connection mysql_connection_info
   password node['mediawiki_application']['db']['password']
