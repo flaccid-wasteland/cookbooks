@@ -19,8 +19,6 @@ log "Installing MySQL Server"
 
 # remove once http://tickets.opscode.com/browse/COOK-1009 is solved
 
-package 'make'
-
 case node['platform']
 when "redhat","centos","scientific","fedora","suse","amazon"
   packages = [ 'mysql-devel', 'make' ]
