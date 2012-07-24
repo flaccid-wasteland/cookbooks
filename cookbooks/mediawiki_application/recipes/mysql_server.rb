@@ -26,7 +26,14 @@ strap_packages.each { |pkg|
   p.run_action(:install)
 } 
 
-chef_gem "mysql"
+if puts node['chef_packages']['chef']['version'] >= '0.10.10'
+	chef_gem "mysql"
+else
+  g = gem_package "mysql" do
+    action :nothing
+  end
+  g.run_action(:install)
+end
 
 include_recipe "mysql::server"
 include_recipe "mysql::server_ec2" if ( node.has_key?('cloud') and node['cloud']['provider'] == 'ec2' )
