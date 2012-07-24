@@ -19,7 +19,7 @@ log "Setting up php/mysql"
 
 case node['platform']
 when "redhat","centos","scientific","fedora","suse","amazon"
-  package "php-mysql"  
+  package "php-mysql"
 when "debian","ubuntu"
   package "php5-mysql"
   package "libapache2-mod-auth-mysql"
