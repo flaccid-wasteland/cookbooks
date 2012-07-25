@@ -18,8 +18,8 @@ suggests "windows"
 
 attribute "mysql/server_root_password",
   :display_name => "MySQL Server Root Password",
-  :description => "Randomly generated password for the mysqld root user",
-  :default => "randomly generated"
+  :description => "Password for the mysqld root user.",
+  :required => "required"
 
 attribute "mysql/bind_address",
   :display_name => "MySQL Bind Address",

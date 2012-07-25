@@ -1,415 +1,414 @@
 {
-  "name": "mysql",
-  "description": "Installs and configures mysql for client or server",
-  "long_description": "Description\n===========\n\nInstalls and configures MySQL client or server.\n\nRequirements\n============\n\nPlatform\n--------\n\n* Debian, Ubuntu\n* CentOS, Red Hat, Fedora\n* Mac OS X (Using homebrew)\n\nTested on:\n\n* Debian 5.0\n* Ubuntu 10.04\n* CentOS 5.5\n* Mac OS X 10.7.2\n\nCookbooks\n---------\n\nRequires Opscode's openssl cookbook for secure password generation. See _Attributes_ and _Usage_ for more information.\n\nRequires a C compiler and Ruby development package in order to build mysql gem with native extensions. On Debian and Ubuntu systems this is satisfied by installing the \"build-essential\" and \"ruby-dev\" packages before running Chef. See USAGE below for information on how to handle this during a Chef run.\n\nRequires homebrew cookbook on Mac OS X.\n\nResources and Providers\n=======================\n\nThe LWRP that used to ship as part of this cookbook has been refactored into the [database](https://github.com/opscode/cookbooks/tree/master/database) cookbook.  Please see the README for details on updated usage.\n\nAttributes\n==========\n\n* `mysql['server_root_password']` - Set the server's root password with this, default is a randomly generated password with `OpenSSL::Random.random_bytes`.\n* `mysql['server_repl_password']` - Set the replication user 'repl' password with this, default is a randomly generated password with `OpenSSL::Random.random_bytes`.\n* `mysql['server_debian_password']` - Set the debian-sys-maint user password with this, default is a randomly generated password with `OpenSSL::Random.random_bytes`.\n* `mysql['bind_address']` - Listen address for MySQLd, default is node's ipaddress.\n* `mysql['data_dir']` - Location for mysql data directory, default is \"/var/lib/mysql\"\n* `mysql['conf_dir']` - Location for mysql conf directory, default is \"/etc/mysql\"\n* `mysql['ec2_path']` - location of mysql data_dir on EC2 nodes, default \"/mnt/mysql\"\n\nPerformance tuning attributes, each corresponds to the same-named parameter in my.cnf; default values listed\n\n* `mysql['tunable']['key_buffer']`          = \"250M\"\n* `mysql['tunable']['max_connections']`     = \"800\"\n* `mysql['tunable']['wait_timeout']`        = \"180\"\n* `mysql['tunable']['net_write_timeout']`   = \"30\"\n* `mysql['tunable']['net_write_timeout']`   = \"30\"\n* `mysql['tunable']['back_log']`            = \"128\"\n* `mysql['tunable']['table_cache']`         = \"128\"\n* `mysql['tunable']['max_heap_table_size']` = \"32M\"\n* `mysql['tunable']['expire_logs_days']`    = \"10\"\n* `mysql['tunable']['max_binlog_size']`     = \"100M\"\n\nUsage\n=====\n\nOn client nodes, use the client (or default) recipe:\n\n    include_recipe \"mysql::client\"\n\nThis will install the MySQL client libraries and development headers on the system. It will also install the Ruby Gem `mysql`, so that the cookbook's LWRP (above) can be used. This is done during the compile-phase of the Chef run. On platforms that are known to have a native package (currently Debian, Ubuntu, Red hat, Centos, Fedora and SUSE), the package will be installed. Other platforms will use the RubyGem.\n\nThis creates a resource object for the package and does the installation before other recipes are parsed. You'll need to have the C compiler and such (ie, build-essential on Ubuntu) before running the recipes, but we already do that when installing Chef :-).\n\nOn server nodes, use the server recipe:\n\n    include_recipe \"mysql::server\"\n\nOn Debian and Ubuntu, this will preseed the mysql-server package with the randomly generated root password in the recipe file. On other platforms, it simply installs the required packages. It will also create an SQL file, /etc/mysql/grants.sql, that will be used to set up grants for the root, repl and debian-sys-maint users.\n\nThe recipe will perform a `node.save` unless it is run under `chef-solo` after the password attributes are used to ensure that in the event of a failed run, the saved attributes would be used.\n\n**Chef Solo Note**: These node attributes are stored on the Chef server when using `chef-client`. Because `chef-solo` does not connect to a server or save the node object at all, to have the same passwords persist across `chef-solo` runs, you must specify them in the `json_attribs` file used. For example:\n\n    {\n      \"mysql\": {\n        \"server_root_password\": \"iloverandompasswordsbutthiswilldo\",\n        \"server_repl_password\": \"iloverandompasswordsbutthiswilldo\",\n        \"server_debian_password\": \"iloverandompasswordsbutthiswilldo\"\n      },\n      \"run_list\":[\"recipe[mysql::server]\"]\n    }\n\nOn EC2 nodes, use the `server_ec2` recipe and the mysql data dir will be set up in the ephmeral storage.\n\n    include_recipe \"mysql::server_ec2\"\n\nWhen the `ec2_path` doesn't exist we look for a mounted filesystem (eg, EBS) and move the data_dir there.\n\nThe client recipe is already included by server and 'default' recipes.\n\nFor more infromation on the compile vs execution phase of a Chef run:\n\n* http://wiki.opscode.com/display/chef/Anatomy+of+a+Chef+Run\n\nLicense and Author\n==================\n\nAuthor:: Joshua Timberman (<joshua@opscode.com>)\nAuthor:: AJ Christensen (<aj@opscode.com>)\nAuthor:: Seth Chisamore (<schisamo@opscode.com>)\nAuthor:: Brian Bianco (<brian.bianco@gmail.com>)\n\nCopyright:: 2009-2011 Opscode, Inc\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
-  "maintainer": "Opscode, Inc.",
-  "maintainer_email": "cookbooks@opscode.com",
+  "replacing": {
+  },
   "license": "Apache 2.0",
-  "platforms": {
-    "debian": ">= 0.0.0",
-    "ubuntu": ">= 0.0.0",
-    "centos": ">= 0.0.0",
-    "suse": ">= 0.0.0",
-    "fedora": ">= 0.0.0",
-    "redhat": ">= 0.0.0",
-    "scientific": ">= 0.0.0",
-    "amazon": ">= 0.0.0",
-    "freebsd": ">= 0.0.0",
-    "windows": ">= 0.0.0",
-    "mac_os_x": ">= 0.0.0"
-  },
-  "dependencies": {
-    "openssl": ">= 0.0.0"
-  },
+  "maintainer": "Opscode, Inc.",
+  "name": "mysql",
   "recommendations": {
+  },
+  "maintainer_email": "cookbooks@opscode.com",
+  "long_description": "Description\n===========\n\nInstalls and configures MySQL client or server.\n\nRequirements\n============\n\nPlatform\n--------\n\n* Debian, Ubuntu\n* CentOS, Red Hat, Fedora\n* Mac OS X (Using homebrew)\n\nTested on:\n\n* Debian 5.0\n* Ubuntu 10.04\n* CentOS 5.5\n* Mac OS X 10.7.2\n\nCookbooks\n---------\n\nRequires Opscode's openssl cookbook for secure password generation. See _Attributes_ and _Usage_ for more information.\n\nRequires a C compiler and Ruby development package in order to build mysql gem with native extensions. On Debian and Ubuntu systems this is satisfied by installing the \"build-essential\" and \"ruby-dev\" packages before running Chef. See USAGE below for information on how to handle this during a Chef run.\n\nRequires homebrew cookbook on Mac OS X.\n\nResources and Providers\n=======================\n\nThe LWRP that used to ship as part of this cookbook has been refactored into the [database](https://github.com/opscode/cookbooks/tree/master/database) cookbook.  Please see the README for details on updated usage.\n\nAttributes\n==========\n\n* `mysql['server_root_password']` - Set the server's root password with this, default is a randomly generated password with `OpenSSL::Random.random_bytes`.\n* `mysql['server_repl_password']` - Set the replication user 'repl' password with this, default is a randomly generated password with `OpenSSL::Random.random_bytes`.\n* `mysql['server_debian_password']` - Set the debian-sys-maint user password with this, default is a randomly generated password with `OpenSSL::Random.random_bytes`.\n* `mysql['bind_address']` - Listen address for MySQLd, default is node's ipaddress.\n* `mysql['data_dir']` - Location for mysql data directory, default is \"/var/lib/mysql\"\n* `mysql['conf_dir']` - Location for mysql conf directory, default is \"/etc/mysql\"\n* `mysql['ec2_path']` - location of mysql data_dir on EC2 nodes, default \"/mnt/mysql\"\n\nPerformance tuning attributes, each corresponds to the same-named parameter in my.cnf; default values listed\n\n* `mysql['tunable']['key_buffer']`          = \"250M\"\n* `mysql['tunable']['max_connections']`     = \"800\"\n* `mysql['tunable']['wait_timeout']`        = \"180\"\n* `mysql['tunable']['net_write_timeout']`   = \"30\"\n* `mysql['tunable']['net_write_timeout']`   = \"30\"\n* `mysql['tunable']['back_log']`            = \"128\"\n* `mysql['tunable']['table_cache']`         = \"128\"\n* `mysql['tunable']['max_heap_table_size']` = \"32M\"\n* `mysql['tunable']['expire_logs_days']`    = \"10\"\n* `mysql['tunable']['max_binlog_size']`     = \"100M\"\n\nUsage\n=====\n\nOn client nodes, use the client (or default) recipe:\n\n    include_recipe \"mysql::client\"\n\nThis will install the MySQL client libraries and development headers on the system. It will also install the Ruby Gem `mysql`, so that the cookbook's LWRP (above) can be used. This is done during the compile-phase of the Chef run. On platforms that are known to have a native package (currently Debian, Ubuntu, Red hat, Centos, Fedora and SUSE), the package will be installed. Other platforms will use the RubyGem.\n\nThis creates a resource object for the package and does the installation before other recipes are parsed. You'll need to have the C compiler and such (ie, build-essential on Ubuntu) before running the recipes, but we already do that when installing Chef :-).\n\nOn server nodes, use the server recipe:\n\n    include_recipe \"mysql::server\"\n\nOn Debian and Ubuntu, this will preseed the mysql-server package with the randomly generated root password in the recipe file. On other platforms, it simply installs the required packages. It will also create an SQL file, /etc/mysql/grants.sql, that will be used to set up grants for the root, repl and debian-sys-maint users.\n\nThe recipe will perform a `node.save` unless it is run under `chef-solo` after the password attributes are used to ensure that in the event of a failed run, the saved attributes would be used.\n\n**Chef Solo Note**: These node attributes are stored on the Chef server when using `chef-client`. Because `chef-solo` does not connect to a server or save the node object at all, to have the same passwords persist across `chef-solo` runs, you must specify them in the `json_attribs` file used. For example:\n\n    {\n      \"mysql\": {\n        \"server_root_password\": \"iloverandompasswordsbutthiswilldo\",\n        \"server_repl_password\": \"iloverandompasswordsbutthiswilldo\",\n        \"server_debian_password\": \"iloverandompasswordsbutthiswilldo\"\n      },\n      \"run_list\":[\"recipe[mysql::server]\"]\n    }\n\nOn EC2 nodes, use the `server_ec2` recipe and the mysql data dir will be set up in the ephmeral storage.\n\n    include_recipe \"mysql::server_ec2\"\n\nWhen the `ec2_path` doesn't exist we look for a mounted filesystem (eg, EBS) and move the data_dir there.\n\nThe client recipe is already included by server and 'default' recipes.\n\nFor more infromation on the compile vs execution phase of a Chef run:\n\n* http://wiki.opscode.com/display/chef/Anatomy+of+a+Chef+Run\n\nLicense and Author\n==================\n\nAuthor:: Joshua Timberman (<joshua@opscode.com>)\nAuthor:: AJ Christensen (<aj@opscode.com>)\nAuthor:: Seth Chisamore (<schisamo@opscode.com>)\nAuthor:: Brian Bianco (<brian.bianco@gmail.com>)\n\nCopyright:: 2009-2011 Opscode, Inc\n\nLicensed under the Apache License, Version 2.0 (the \"License\");\nyou may not use this file except in compliance with the License.\nYou may obtain a copy of the License at\n\n    http://www.apache.org/licenses/LICENSE-2.0\n\nUnless required by applicable law or agreed to in writing, software\ndistributed under the License is distributed on an \"AS IS\" BASIS,\nWITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\nSee the License for the specific language governing permissions and\nlimitations under the License.\n",
+  "recipes": {
+    "mysql::server_ec2": "Performs EC2-specific mountpoint manipulation",
+    "mysql": "Includes the client recipe to configure a client",
+    "mysql::server": "Installs packages required for mysql servers w/o manual intervention",
+    "mysql::client": "Installs packages required for mysql clients using run_action magic"
+  },
+  "providing": {
+  },
+  "groupings": {
+  },
+  "conflicting": {
   },
   "suggestions": {
     "windows": ">= 0.0.0"
   },
-  "conflicting": {
+  "dependencies": {
+    "openssl": ">= 0.0.0"
   },
-  "providing": {
+  "platforms": {
+    "scientific": ">= 0.0.0",
+    "redhat": ">= 0.0.0",
+    "amazon": ">= 0.0.0",
+    "ubuntu": ">= 0.0.0",
+    "suse": ">= 0.0.0",
+    "freebsd": ">= 0.0.0",
+    "fedora": ">= 0.0.0",
+    "mac_os_x": ">= 0.0.0",
+    "debian": ">= 0.0.0",
+    "windows": ">= 0.0.0",
+    "centos": ">= 0.0.0"
   },
-  "replacing": {
-  },
+  "description": "Installs and configures mysql for client or server",
+  "version": "1.2.7",
   "attributes": {
-    "mysql/server_root_password": {
-      "display_name": "MySQL Server Root Password",
-      "description": "Randomly generated password for the mysqld root user",
-      "default": "randomly generated",
-      "choice": [
-
-      ],
-      "calculated": false,
+    "mysql/client/package_name": {
       "type": "string",
-      "required": "optional",
+      "default": "MySQL Connector C 6.0.2",
+      "calculated": false,
+      "display_name": "MySQL Connector/C Registry DisplayName",
       "recipes": [
 
-      ]
-    },
-    "mysql/bind_address": {
-      "display_name": "MySQL Bind Address",
-      "description": "Address that mysqld should listen on",
-      "default": "0.0.0.0",
+      ],
       "choice": [
 
       ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/data_dir": {
-      "display_name": "MySQL Data Directory",
-      "description": "Location of mysql databases",
-      "default": "/var/lib/mysql",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/conf_dir": {
-      "display_name": "MySQL Conf Directory",
-      "description": "Location of mysql conf files",
-      "default": "/etc/mysql",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/ec2_path": {
-      "display_name": "MySQL EC2 Path",
-      "description": "Location of mysql directory on EC2 instance EBS volumes",
-      "default": "/mnt/mysql",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable": {
-      "display_name": "MySQL Tunables",
-      "description": "Hash of MySQL tunable attributes",
-      "type": "hash",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable/key_buffer": {
-      "display_name": "MySQL Tuntable Key Buffer",
-      "default": "250M",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable/max_connections": {
-      "display_name": "MySQL Tunable Max Connections",
-      "default": "800",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable/wait_timeout": {
-      "display_name": "MySQL Tunable Wait Timeout",
-      "default": "180",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable/net_read_timeout": {
-      "display_name": "MySQL Tunable Net Read Timeout",
-      "default": "30",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable/net_write_timeout": {
-      "display_name": "MySQL Tunable Net Write Timeout",
-      "default": "30",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable/back_log": {
-      "display_name": "MySQL Tunable Back Log",
-      "default": "128",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable/table_cache": {
-      "display_name": "MySQL Tunable Table Cache for MySQL < 5.1.3",
-      "default": "128",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable/table_open_cache": {
-      "display_name": "MySQL Tunable Table Cache for MySQL >= 5.1.3",
-      "default": "128",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable/max_heap_table_size": {
-      "display_name": "MySQL Tunable Max Heap Table Size",
-      "default": "32M",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable/expire_logs_days": {
-      "display_name": "MySQL Exipre Log Days",
-      "default": "10",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable/max_binlog_size": {
-      "display_name": "MySQL Max Binlog Size",
-      "default": "100M",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/tunable/innodb_flush_method": {
-      "display_name": "MySQL Innodb Flush Method",
-      "default": "O_DSYNC",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/client": {
-      "display_name": "MySQL Connector/C Client",
-      "description": "Hash of MySQL client attributes",
-      "type": "hash",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/client/version": {
-      "display_name": "MySQL Connector/C Version",
-      "default": "6.0.2",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
-    },
-    "mysql/client/arch": {
-      "display_name": "MySQL Connector/C Architecture",
-      "default": "win32",
-      "choice": [
-
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
+      "required": "optional"
     },
     "mysql/client/package_file": {
-      "display_name": "MySQL Connector/C Package File Name",
+      "type": "string",
       "default": "mysql-connector-c-6.0.2-win32.msi",
+      "calculated": false,
+      "display_name": "MySQL Connector/C Package File Name",
+      "recipes": [
+
+      ],
       "choice": [
 
       ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
+      "required": "optional"
     },
-    "mysql/client/url": {
-      "display_name": "MySQL Connector/C Download URL",
-      "default": "http://www.mysql.com/get/Downloads/Connector-C/mysql-connector-c-6.0.2-win32.msi/from/http://mysql.mirrors.pair.com/",
+    "mysql/client/arch": {
+      "type": "string",
+      "default": "win32",
+      "calculated": false,
+      "display_name": "MySQL Connector/C Architecture",
+      "recipes": [
+
+      ],
       "choice": [
 
       ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
+      "required": "optional"
     },
-    "mysql/client/package_name": {
-      "display_name": "MySQL Connector/C Registry DisplayName",
-      "default": "MySQL Connector C 6.0.2",
+    "mysql/tunable/wait_timeout": {
+      "type": "string",
+      "default": "180",
+      "calculated": false,
+      "display_name": "MySQL Tunable Wait Timeout",
+      "recipes": [
+
+      ],
       "choice": [
 
       ],
-      "calculated": false,
+      "required": "optional"
+    },
+    "mysql/tunable/max_connections": {
       "type": "string",
-      "required": "optional",
+      "default": "800",
+      "calculated": false,
+      "display_name": "MySQL Tunable Max Connections",
       "recipes": [
 
-      ]
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
+    },
+    "mysql/tunable": {
+      "type": "hash",
+      "calculated": false,
+      "display_name": "MySQL Tunables",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional",
+      "description": "Hash of MySQL tunable attributes"
+    },
+    "mysql/server_root_password": {
+      "type": "string",
+      "calculated": false,
+      "display_name": "MySQL Server Root Password",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "required",
+      "description": "Password for the mysqld root user."
+    },
+    "mysql/tunable/net_write_timeout": {
+      "type": "string",
+      "default": "30",
+      "calculated": false,
+      "display_name": "MySQL Tunable Net Write Timeout",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
     },
     "mysql/client/basedir": {
-      "display_name": "MySQL Connector/C Base Install Directory",
+      "type": "string",
       "default": "C:\\Program Files (x86)\\MySQL\\Connector C 6.0.2",
+      "calculated": false,
+      "display_name": "MySQL Connector/C Base Install Directory",
+      "recipes": [
+
+      ],
       "choice": [
 
       ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
+      "required": "optional"
     },
-    "mysql/client/lib_dir": {
-      "display_name": "MySQL Connector/C Library Directory (containing libmysql.dll)",
-      "default": "C:\\Program Files (x86)\\MySQL\\Connector C 6.0.2\\lib\\opt",
+    "mysql/tunable/max_binlog_size": {
+      "type": "string",
+      "default": "100M",
+      "calculated": false,
+      "display_name": "MySQL Max Binlog Size",
+      "recipes": [
+
+      ],
       "choice": [
 
       ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "recipes": [
-
-      ]
+      "required": "optional"
     },
-    "mysql/client/bin_dir": {
-      "display_name": "MySQL Connector/C Executable Directory",
-      "default": "C:\\Program Files (x86)\\MySQL\\Connector C 6.0.2\\bin",
+    "mysql/tunable/max_heap_table_size": {
+      "type": "string",
+      "default": "32M",
+      "calculated": false,
+      "display_name": "MySQL Tunable Max Heap Table Size",
+      "recipes": [
+
+      ],
       "choice": [
 
       ],
-      "calculated": false,
+      "required": "optional"
+    },
+    "mysql/tunable/table_cache": {
       "type": "string",
-      "required": "optional",
+      "default": "128",
+      "calculated": false,
+      "display_name": "MySQL Tunable Table Cache for MySQL < 5.1.3",
       "recipes": [
 
-      ]
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
+    },
+    "mysql/tunable/key_buffer": {
+      "type": "string",
+      "default": "250M",
+      "calculated": false,
+      "display_name": "MySQL Tuntable Key Buffer",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
+    },
+    "mysql/ec2_path": {
+      "type": "string",
+      "default": "/mnt/mysql",
+      "calculated": false,
+      "display_name": "MySQL EC2 Path",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional",
+      "description": "Location of mysql directory on EC2 instance EBS volumes"
+    },
+    "mysql/client/url": {
+      "type": "string",
+      "default": "http://www.mysql.com/get/Downloads/Connector-C/mysql-connector-c-6.0.2-win32.msi/from/http://mysql.mirrors.pair.com/",
+      "calculated": false,
+      "display_name": "MySQL Connector/C Download URL",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
+    },
+    "mysql/bind_address": {
+      "type": "string",
+      "default": "0.0.0.0",
+      "calculated": false,
+      "display_name": "MySQL Bind Address",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional",
+      "description": "Address that mysqld should listen on"
     },
     "mysql/client/ruby_dir": {
-      "display_name": "Ruby Executable Directory which should gain MySQL support",
+      "type": "string",
       "default": "system ruby",
+      "calculated": false,
+      "display_name": "Ruby Executable Directory which should gain MySQL support",
+      "recipes": [
+
+      ],
       "choice": [
 
       ],
-      "calculated": false,
+      "required": "optional"
+    },
+    "mysql/tunable/innodb_flush_method": {
       "type": "string",
-      "required": "optional",
+      "default": "O_DSYNC",
+      "calculated": false,
+      "display_name": "MySQL Innodb Flush Method",
       "recipes": [
 
-      ]
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
+    },
+    "mysql/tunable/expire_logs_days": {
+      "type": "string",
+      "default": "10",
+      "calculated": false,
+      "display_name": "MySQL Exipre Log Days",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
+    },
+    "mysql/tunable/table_open_cache": {
+      "type": "string",
+      "default": "128",
+      "calculated": false,
+      "display_name": "MySQL Tunable Table Cache for MySQL >= 5.1.3",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
+    },
+    "mysql/tunable/back_log": {
+      "type": "string",
+      "default": "128",
+      "calculated": false,
+      "display_name": "MySQL Tunable Back Log",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
+    },
+    "mysql/tunable/net_read_timeout": {
+      "type": "string",
+      "default": "30",
+      "calculated": false,
+      "display_name": "MySQL Tunable Net Read Timeout",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
+    },
+    "mysql/client/bin_dir": {
+      "type": "string",
+      "default": "C:\\Program Files (x86)\\MySQL\\Connector C 6.0.2\\bin",
+      "calculated": false,
+      "display_name": "MySQL Connector/C Executable Directory",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
+    },
+    "mysql/client/lib_dir": {
+      "type": "string",
+      "default": "C:\\Program Files (x86)\\MySQL\\Connector C 6.0.2\\lib\\opt",
+      "calculated": false,
+      "display_name": "MySQL Connector/C Library Directory (containing libmysql.dll)",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
+    },
+    "mysql/client": {
+      "type": "hash",
+      "calculated": false,
+      "display_name": "MySQL Connector/C Client",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional",
+      "description": "Hash of MySQL client attributes"
+    },
+    "mysql/conf_dir": {
+      "type": "string",
+      "default": "/etc/mysql",
+      "calculated": false,
+      "display_name": "MySQL Conf Directory",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional",
+      "description": "Location of mysql conf files"
+    },
+    "mysql/data_dir": {
+      "type": "string",
+      "default": "/var/lib/mysql",
+      "calculated": false,
+      "display_name": "MySQL Data Directory",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional",
+      "description": "Location of mysql databases"
+    },
+    "mysql/client/version": {
+      "type": "string",
+      "default": "6.0.2",
+      "calculated": false,
+      "display_name": "MySQL Connector/C Version",
+      "recipes": [
+
+      ],
+      "choice": [
+
+      ],
+      "required": "optional"
     }
-  },
-  "groupings": {
-  },
-  "recipes": {
-    "mysql": "Includes the client recipe to configure a client",
-    "mysql::client": "Installs packages required for mysql clients using run_action magic",
-    "mysql::server": "Installs packages required for mysql servers w/o manual intervention",
-    "mysql::server_ec2": "Performs EC2-specific mountpoint manipulation"
-  },
-  "version": "1.2.7"
+  }
 }
