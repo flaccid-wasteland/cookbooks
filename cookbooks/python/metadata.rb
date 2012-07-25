@@ -21,4 +21,5 @@ attribute "install_method",
   :description => "The method to install Python into the system.",
   :type => "string",
   :choice => [ "package", "pip", "source" ],
-  :recipes => [ "python::default" ]
+  :recipes => [ "python::default" ],
+  :default => "package"
