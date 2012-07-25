@@ -16,7 +16,7 @@ recipe "python::virtualenv", "Installs virtualenv using the python_pip resource.
   supports os
 end
 
-attribute "install_method",
+attribute "python/install_method",
   :display_name => "Python Install Method",
   :description => "The method to install Python into the system.",
   :type => "string",
