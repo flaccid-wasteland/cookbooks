@@ -127,8 +127,8 @@ attribute "mediawiki_application/db/password",
 
 attribute "mediawiki_application/initialize_database",
   :display_name => "MediaWiki Initialize Database",
-  :description => "(re)Initialize database 'yes' or 'no' (default: no).",
-  :default => "no",
+  :description => "(re)Initialize database 'yes' or 'no' (default: yes). Note: that once your database has been initialized, change this attribute to 'no' to prevent re-initialization on future converges.",
+  :default => "yes",
   :choice => [ "no", "yes" ],
   :recipes => [ "mediawiki_application::default" ]
   
