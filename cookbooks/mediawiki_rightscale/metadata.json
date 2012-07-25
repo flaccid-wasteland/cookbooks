@@ -1,221 +1,24 @@
 {
-  "groupings": {
-  },
-  "maintainer": "Chris Fordham",
-  "platforms": {
-  },
-  "license": "Apache 2.0",
-  "description": "Installs/Configures mediawiki_application on RightScale.",
-  "version": "0.0.1",
-  "providing": {
-  },
+  "maintainer_email": "chris@xhost.com.au",
+  "name": "mediawiki_rightscale",
   "recommendations": {
   },
-  "maintainer_email": "chris@xhost.com.au",
-  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
-  "replacing": {
-  },
+  "version": "0.0.1",
   "conflicting": {
   },
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
   "suggestions": {
   },
+  "providing": {
+  },
+  "license": "Apache 2.0",
+  "platforms": {
+  },
+  "groupings": {
+  },
   "attributes": {
-    "mysql/client/package_name": {
-      "default": "MySQL Connector C 6.0.2",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Connector/C Registry DisplayName",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/prefork/startservers": {
-      "default": "16",
-      "calculated": false,
-      "description": "Number of MPM servers to start",
-      "type": "string",
-      "display_name": "Apache Prefork MPM StartServers",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/log_dir": {
-      "default": "/etc/apache2",
-      "calculated": false,
-      "description": "Location for Apache logs",
-      "type": "string",
-      "display_name": "Apache Log Directory",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/traceenable": {
-      "default": "On",
-      "calculated": false,
-      "description": "Determine behavior of TRACE requests",
-      "type": "string",
-      "display_name": "Apache Trace Enable",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/tunable/max_heap_table_size": {
-      "default": "32M",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Tunable Max Heap Table Size",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/conf_dir": {
-      "default": "/etc/mysql",
-      "calculated": false,
-      "description": "Location of mysql conf files",
-      "type": "string",
-      "display_name": "MySQL Conf Directory",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/tunable/net_read_timeout": {
-      "default": "30",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Tunable Net Read Timeout",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/client/basedir": {
-      "default": "C:\\Program Files (x86)\\MySQL\\Connector C 6.0.2",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Connector/C Base Install Directory",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mediawiki_application/name": {
-      "calculated": false,
-      "description": "The name of the MediaWiki application.",
-      "type": "string",
-      "display_name": "MediaWiki Application Name",
-      "required": "required",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mediawiki_application/php/packages": {
-      "default": [
-        "mysql"
-      ],
-      "calculated": false,
-      "description": "An array of php/pear packages to install.",
-      "type": "array",
-      "display_name": "MediaWiki PHP/PEAR Packages",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/tunable/max_connections": {
-      "default": "800",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Tunable Max Connections",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/client/package_file": {
-      "default": "mysql-connector-c-6.0.2-win32.msi",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Connector/C Package File Name",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/tunable/back_log": {
-      "default": "128",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Tunable Back Log",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/prefork": {
-      "calculated": false,
-      "description": "Hash of Apache prefork tuning attributes.",
-      "type": "hash",
-      "display_name": "Apache Prefork",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
     "mediawiki_application/system_user": {
-      "default": "www-data",
-      "calculated": false,
-      "description": "The system user (owner) for the application.",
-      "type": "string",
       "display_name": "MediaWiki System User",
-      "required": "optional",
       "choice": [
         "www-data",
         "httpd",
@@ -223,669 +26,99 @@
         "www",
         "root"
       ],
+      "type": "string",
+      "description": "The system user (owner) for the application.",
+      "default": "www-data",
+      "required": "optional",
       "recipes": [
         "mediawiki_rightscale::default"
-      ]
+      ],
+      "calculated": false
     },
-    "mysql/server_repl_password": {
-      "calculated": false,
-      "description": "The replication password for the MySQL server.",
-      "type": "string",
-      "display_name": "MySQL Replication Password",
-      "required": "required",
+    "mysql/client/ruby_dir": {
+      "display_name": "Ruby Executable Directory which should gain MySQL support",
       "choice": [
 
       ],
+      "type": "string",
+      "default": "system ruby",
+      "required": "optional",
       "recipes": [
         "mediawiki_rightscale::default"
-      ]
+      ],
+      "calculated": false
+    },
+    "mysql/client/lib_dir": {
+      "display_name": "MySQL Connector/C Library Directory (containing libmysql.dll)",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "C:\\Program Files (x86)\\MySQL\\Connector C 6.0.2\\lib\\opt",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/client/url": {
+      "display_name": "MySQL Connector/C Download URL",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "http://www.mysql.com/get/Downloads/Connector-C/mysql-connector-c-6.0.2-win32.msi/from/http://mysql.mirrors.pair.com/",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/tunable/table_open_cache": {
+      "display_name": "MySQL Tunable Table Cache for MySQL >= 5.1.3",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "128",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
     },
     "mediawiki_application/db/adapter": {
-      "default": "mysql",
-      "calculated": false,
-      "description": "The database adapter to use with PHP.",
-      "type": "string",
       "display_name": "MediaWiki Database Adapter",
-      "required": "recommended",
       "choice": [
         "mysql",
         "postgres",
         "sqlite"
       ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/tunable/net_write_timeout": {
-      "default": "30",
-      "calculated": false,
       "type": "string",
-      "display_name": "MySQL Tunable Net Write Timeout",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/keepalivetimeout": {
-      "default": "5",
-      "calculated": false,
-      "description": "Time to wait for requests on persistent connection",
-      "type": "string",
-      "display_name": "Apache Keepalive Timeout",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/dir": {
-      "default": "/etc/apache2",
-      "calculated": false,
-      "description": "Location for Apache configuration",
-      "type": "string",
-      "display_name": "Apache Directory",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/client/version": {
-      "default": "6.0.2",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Connector/C Version",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/worker/maxsparethreads": {
-      "default": "192",
-      "calculated": false,
-      "description": "Maximum number of spare worker threads",
-      "type": "string",
-      "display_name": "Apache Worker MPM MaxSpareThreads",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/worker/threadsperchild": {
-      "default": "64",
-      "calculated": false,
-      "description": "Constant number of worker threads in each server process",
-      "type": "string",
-      "display_name": "Apache Worker MPM ThreadsPerChild",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/worker/maxrequestsperchild": {
-      "default": "0",
-      "calculated": false,
-      "description": "Maximum number of request a child process will handle",
-      "type": "string",
-      "display_name": "Apache Worker MPM MaxRequestsPerChild",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/allowed_openids": {
-      "default": "",
-      "calculated": false,
-      "description": "Array of OpenIDs allowed to authenticate",
-      "type": "string",
-      "display_name": "Apache Allowed OpenIDs",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/prefork/serverlimit": {
-      "default": "400",
-      "calculated": false,
-      "description": "Upper limit on configurable server processes",
-      "type": "string",
-      "display_name": "Apache Prefork MPM ServerLimit",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/client/url": {
-      "default": "http://www.mysql.com/get/Downloads/Connector-C/mysql-connector-c-6.0.2-win32.msi/from/http://mysql.mirrors.pair.com/",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Connector/C Download URL",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/worker/startservers": {
-      "default": "4",
-      "calculated": false,
-      "description": "Initial number of server processes to start",
-      "type": "string",
-      "display_name": "Apache Worker MPM StartServers",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/tunable/innodb_flush_method": {
-      "default": "O_DSYNC",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Innodb Flush Method",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/worker/maxclients": {
-      "default": "1024",
-      "calculated": false,
-      "description": "Maximum number of simultaneous connections",
-      "type": "string",
-      "display_name": "Apache Worker MPM MaxClients",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/client": {
-      "calculated": false,
-      "description": "Hash of MySQL client attributes",
-      "type": "hash",
-      "display_name": "MySQL Connector/C Client",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/keepalive": {
-      "default": "On",
-      "calculated": false,
-      "description": "HTTP persistent connections",
-      "type": "string",
-      "display_name": "Apache Keepalive",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/server_root_password": {
-      "default": "randomly generated",
-      "calculated": false,
-      "description": "Randomly generated password for the mysqld root user",
-      "type": "string",
-      "display_name": "MySQL Server Root Password",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/prefork/minspareservers": {
-      "default": "16",
-      "calculated": false,
-      "description": "Minimum number of spare server processes",
-      "type": "string",
-      "display_name": "Apache Prefork MPM MinSpareServers",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/serversignature": {
-      "default": "On",
-      "calculated": false,
-      "description": "Configure footer on server-generated documents",
-      "type": "string",
-      "display_name": "Apache Server Signature",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/worker/minsparethreads": {
-      "default": "64",
-      "calculated": false,
-      "description": "Minimum number of spare worker threads",
-      "type": "string",
-      "display_name": "Apache Worker MPM MinSpareThreads",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mediawiki_application/deploy_action": {
-      "default": "deploy",
-      "calculated": false,
-      "description": "Deploy or force deploy the MediaWiki application.",
-      "type": "string",
-      "option": [
-        "deploy",
-        "force_deploy"
-      ],
-      "display_name": "MediaWiki Deploy Action",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/tunable/key_buffer": {
-      "default": "250M",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Tuntable Key Buffer",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/servertokens": {
-      "default": "Prod",
-      "calculated": false,
-      "description": "Server response header",
-      "type": "string",
-      "display_name": "Apache Server Tokens",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/bind_address": {
-      "default": "0.0.0.0",
-      "calculated": false,
-      "description": "Address that mysqld should listen on",
-      "type": "string",
-      "display_name": "MySQL Bind Address",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mediawiki_application/db/schema": {
-      "default": "mediawiki",
-      "calculated": false,
-      "description": "The database schema or name for MediaWiki.",
-      "type": "string",
-      "display_name": "MediaWiki Database Schema",
+      "description": "The database adapter to use with PHP.",
+      "default": "mysql",
       "required": "recommended",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/user": {
+      "display_name": "Apache User",
       "choice": [
 
       ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/client/lib_dir": {
-      "default": "C:\\Program Files (x86)\\MySQL\\Connector C 6.0.2\\lib\\opt",
-      "calculated": false,
       "type": "string",
-      "display_name": "MySQL Connector/C Library Directory (containing libmysql.dll)",
+      "description": "User Apache runs as",
+      "default": "www-data",
       "required": "optional",
-      "choice": [
-
-      ],
       "recipes": [
         "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/binary": {
-      "default": "/usr/sbin/apache2",
-      "calculated": false,
-      "description": "Apache server daemon program",
-      "type": "string",
-      "display_name": "Apache Binary",
-      "required": "optional",
-      "choice": [
-
       ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mediawiki_application/initialize_database": {
-      "default": "no",
-      "calculated": false,
-      "description": "(re)Initialize database 'yes' or 'no' (default: no).",
-      "type": "string",
-      "display_name": "MediaWiki Initialize Database",
-      "required": "optional",
-      "choice": [
-        "no",
-        "yes"
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/client/arch": {
-      "default": "win32",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Connector/C Architecture",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/prefork/maxclients": {
-      "default": "400",
-      "calculated": false,
-      "description": "Maximum number of simultaneous connections",
-      "type": "string",
-      "display_name": "Apache Prefork MPM MaxClients",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mediawiki_application/revision": {
-      "default": "master",
-      "calculated": false,
-      "description": "The revision of the application to use (tag/branch/commit).",
-      "type": "string",
-      "display_name": "MediaWiki Application Revision",
-      "required": "recommended",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/tunable": {
-      "calculated": false,
-      "description": "Hash of MySQL tunable attributes",
-      "type": "hash",
-      "display_name": "MySQL Tunables",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mediawiki_application/path": {
-      "default": "/usr/local/www",
-      "calculated": false,
-      "description": "The path to install MediaWiki to, e.g. /var/www",
-      "type": "string",
-      "display_name": "MediaWiki Install Path",
-      "required": "optional",
-      "choice": [
-        "/usr/local/www",
-        "/var/www"
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/prefork/maxspareservers": {
-      "default": "32",
-      "calculated": false,
-      "description": "Maximum number of spare server processes",
-      "type": "string",
-      "display_name": "Apache Prefork MPM MaxSpareServers",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/data_dir": {
-      "default": "/var/lib/mysql",
-      "calculated": false,
-      "description": "Location of mysql databases",
-      "type": "string",
-      "display_name": "MySQL Data Directory",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/client/ruby_dir": {
-      "default": "system ruby",
-      "calculated": false,
-      "type": "string",
-      "display_name": "Ruby Executable Directory which should gain MySQL support",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/client/bin_dir": {
-      "default": "C:\\Program Files (x86)\\MySQL\\Connector C 6.0.2\\bin",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Connector/C Executable Directory",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/listen_ports": {
-      "default": [
-        "80",
-        "443"
-      ],
-      "calculated": false,
-      "description": "Ports that Apache should listen on",
-      "type": "array",
-      "display_name": "Apache Listen Ports",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache": {
-      "calculated": false,
-      "description": "Hash of Apache attributes",
-      "type": "hash",
-      "display_name": "Apache Hash",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/tunable/max_binlog_size": {
-      "default": "100M",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Max Binlog Size",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/icondir": {
-      "default": "/usr/share/apache2/icons",
-      "calculated": false,
-      "description": "Directory location for icons",
-      "type": "string",
-      "display_name": "Apache Icondir",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/server_debian_password": {
-      "calculated": false,
-      "description": "The debian admin user password for the MySQL server.",
-      "type": "string",
-      "display_name": "MySQL Debian Password",
-      "required": "required",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/keepaliverequests": {
-      "default": "100",
-      "calculated": false,
-      "description": "Number of requests allowed on a persistent connection",
-      "type": "string",
-      "display_name": "Apache Keepalive Requests",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/tunable/table_open_cache": {
-      "default": "128",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Tunable Table Cache for MySQL >= 5.1.3",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/tunable/wait_timeout": {
-      "default": "180",
-      "calculated": false,
-      "type": "string",
-      "display_name": "MySQL Tunable Wait Timeout",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mediawiki_application/db/username": {
-      "default": "mediawiki",
-      "calculated": false,
-      "description": "The database username for MediaWiki.",
-      "type": "string",
-      "display_name": "MediaWiki Database User",
-      "required": "recommended",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
+      "calculated": false
     },
     "mediawiki_application/system_group": {
-      "default": "www-data",
-      "calculated": false,
-      "description": "The system group for the application.",
-      "type": "string",
       "display_name": "MediaWiki System Group",
-      "required": "optional",
       "choice": [
         "www-data",
         "httpd",
@@ -894,134 +127,363 @@
         "root",
         "users"
       ],
+      "type": "string",
+      "description": "The system group for the application.",
+      "default": "www-data",
+      "required": "optional",
       "recipes": [
         "mediawiki_rightscale::default"
-      ]
+      ],
+      "calculated": false
     },
-    "apache/worker": {
-      "calculated": false,
-      "description": "Hash of Apache prefork tuning attributes.",
+    "mysql/tunable": {
+      "display_name": "MySQL Tunables",
+      "choice": [
+
+      ],
       "type": "hash",
-      "display_name": "Apache Worker",
+      "description": "Hash of MySQL tunable attributes",
       "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/servertokens": {
+      "display_name": "Apache Server Tokens",
       "choice": [
 
       ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/ec2_path": {
-      "default": "/mnt/mysql",
-      "calculated": false,
-      "description": "Location of mysql directory on EC2 instance EBS volumes",
       "type": "string",
-      "display_name": "MySQL EC2 Path",
+      "description": "Server response header",
+      "default": "Prod",
       "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/allowed_openids": {
+      "display_name": "Apache Allowed OpenIDs",
       "choice": [
 
       ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mediawiki_application/db/host": {
-      "default": "localhost",
-      "calculated": false,
-      "description": "The database host name to use with MediaWiki.",
       "type": "string",
-      "display_name": "MediaWiki Database Host",
-      "required": "recommended",
-      "choice": [
-
-      ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "apache/prefork/maxrequestsperchild": {
-      "default": "10000",
-      "calculated": false,
-      "description": "Maximum number of request a child process will handle",
-      "type": "string",
-      "display_name": "Apache Prefork MPM MaxRequestsPerChild",
+      "description": "Array of OpenIDs allowed to authenticate",
+      "default": "",
       "required": "optional",
-      "choice": [
-
-      ],
       "recipes": [
         "mediawiki_rightscale::default"
-      ]
+      ],
+      "calculated": false
     },
-    "mediawiki_application/repository_url": {
-      "default": "https://gerrit.wikimedia.org/r/p/mediawiki/core.git",
-      "calculated": false,
-      "description": "The URL to the application for checkout/download.",
-      "type": "string",
-      "display_name": "MediaWiki Repository URL",
-      "required": "recommended",
+    "apache/worker/startservers": {
+      "display_name": "Apache Worker MPM StartServers",
       "choice": [
 
       ],
+      "type": "string",
+      "description": "Initial number of server processes to start",
+      "default": "4",
+      "required": "optional",
       "recipes": [
         "mediawiki_rightscale::default"
-      ]
+      ],
+      "calculated": false
+    },
+    "mysql/server_debian_password": {
+      "display_name": "MySQL Debian Password",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "The debian admin user password for the MySQL server.",
+      "required": "required",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache": {
+      "display_name": "Apache Hash",
+      "choice": [
+
+      ],
+      "type": "hash",
+      "description": "Hash of Apache attributes",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/contact": {
+      "display_name": "Apache Contact",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Email address of webmaster",
+      "default": "ops@example.com",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/prefork/startservers": {
+      "display_name": "Apache Prefork MPM StartServers",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Number of MPM servers to start",
+      "default": "16",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
     },
     "mediawiki_application/db/password": {
-      "calculated": false,
-      "description": "The database password for MediaWiki.",
-      "type": "string",
       "display_name": "MediaWiki Database Password",
-      "required": "required",
       "choice": [
 
       ],
+      "type": "string",
+      "description": "The database password for MediaWiki.",
+      "required": "required",
       "recipes": [
         "mediawiki_rightscale::default"
-      ]
+      ],
+      "calculated": false
+    },
+    "mysql/tunable/key_buffer": {
+      "display_name": "MySQL Tuntable Key Buffer",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "250M",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mediawiki_application/revision": {
+      "display_name": "MediaWiki Application Revision",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "The revision of the application to use (tag/branch/commit).",
+      "default": "master",
+      "required": "recommended",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/tunable/max_heap_table_size": {
+      "display_name": "MySQL Tunable Max Heap Table Size",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "32M",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/binary": {
+      "display_name": "Apache Binary",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Apache server daemon program",
+      "default": "/usr/sbin/apache2",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
     },
     "apache/timeout": {
-      "default": "300",
-      "calculated": false,
-      "description": "Connection timeout value",
-      "type": "string",
       "display_name": "Apache Timeout",
-      "required": "optional",
       "choice": [
 
       ],
-      "recipes": [
-        "mediawiki_rightscale::default"
-      ]
-    },
-    "mysql/tunable/expire_logs_days": {
-      "default": "10",
-      "calculated": false,
       "type": "string",
-      "display_name": "MySQL Exipre Log Days",
+      "description": "Connection timeout value",
+      "default": "300",
       "required": "optional",
-      "choice": [
-
-      ],
       "recipes": [
         "mediawiki_rightscale::default"
-      ]
+      ],
+      "calculated": false
     },
-    "apache/user": {
-      "default": "www-data",
-      "calculated": false,
-      "description": "User Apache runs as",
-      "type": "string",
-      "display_name": "Apache User",
-      "required": "optional",
+    "apache/prefork/maxclients": {
+      "display_name": "Apache Prefork MPM MaxClients",
       "choice": [
 
       ],
+      "type": "string",
+      "description": "Maximum number of simultaneous connections",
+      "default": "400",
+      "required": "optional",
       "recipes": [
         "mediawiki_rightscale::default"
-      ]
+      ],
+      "calculated": false
+    },
+    "mysql/client/arch": {
+      "display_name": "MySQL Connector/C Architecture",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "win32",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mediawiki_application/path": {
+      "display_name": "MediaWiki Install Path",
+      "choice": [
+        "/usr/local/www",
+        "/var/www"
+      ],
+      "type": "string",
+      "description": "The path to install MediaWiki to, e.g. /var/www",
+      "default": "/usr/local/www",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mediawiki_application/name": {
+      "display_name": "MediaWiki Application Name",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "The name of the MediaWiki application.",
+      "required": "required",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/worker/maxclients": {
+      "display_name": "Apache Worker MPM MaxClients",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Maximum number of simultaneous connections",
+      "default": "1024",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/tunable/max_connections": {
+      "display_name": "MySQL Tunable Max Connections",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "800",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/prefork/minspareservers": {
+      "display_name": "Apache Prefork MPM MinSpareServers",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Minimum number of spare server processes",
+      "default": "16",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/conf_dir": {
+      "display_name": "MySQL Conf Directory",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Location of mysql conf files",
+      "default": "/etc/mysql",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/prefork/serverlimit": {
+      "display_name": "Apache Prefork MPM ServerLimit",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Upper limit on configurable server processes",
+      "default": "400",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/client/bin_dir": {
+      "display_name": "MySQL Connector/C Executable Directory",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "C:\\Program Files (x86)\\MySQL\\Connector C 6.0.2\\bin",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/worker/threadsperchild": {
+      "display_name": "Apache Worker MPM ThreadsPerChild",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Constant number of worker threads in each server process",
+      "default": "64",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
     },
     "apache/default_modules": {
+      "display_name": "Apache Default Modules",
+      "choice": [
+
+      ],
+      "type": "array",
+      "description": "Default modules to enable via recipes",
       "default": [
         "status",
         "alias",
@@ -1038,51 +500,588 @@
         "negotiation",
         "setenvif"
       ],
-      "calculated": false,
-      "description": "Default modules to enable via recipes",
-      "type": "array",
-      "display_name": "Apache Default Modules",
       "required": "optional",
-      "choice": [
-
-      ],
       "recipes": [
         "mediawiki_rightscale::default"
-      ]
+      ],
+      "calculated": false
     },
-    "apache/contact": {
-      "default": "ops@example.com",
-      "calculated": false,
-      "description": "Email address of webmaster",
-      "type": "string",
-      "display_name": "Apache Contact",
-      "required": "optional",
+    "mediawiki_application/repository_url": {
+      "display_name": "MediaWiki Repository URL",
       "choice": [
 
       ],
+      "type": "string",
+      "description": "The URL to the application for checkout/download.",
+      "default": "https://gerrit.wikimedia.org/r/p/mediawiki/core.git",
+      "required": "recommended",
       "recipes": [
         "mediawiki_rightscale::default"
-      ]
+      ],
+      "calculated": false
+    },
+    "mysql/tunable/innodb_flush_method": {
+      "display_name": "MySQL Innodb Flush Method",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "O_DSYNC",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/dir": {
+      "display_name": "Apache Directory",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Location for Apache configuration",
+      "default": "/etc/apache2",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/log_dir": {
+      "display_name": "Apache Log Directory",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Location for Apache logs",
+      "default": "/etc/apache2",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mediawiki_application/db/host": {
+      "display_name": "MediaWiki Database Host",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "The database host name to use with MediaWiki.",
+      "default": "localhost",
+      "required": "recommended",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/worker/maxrequestsperchild": {
+      "display_name": "Apache Worker MPM MaxRequestsPerChild",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Maximum number of request a child process will handle",
+      "default": "0",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/tunable/wait_timeout": {
+      "display_name": "MySQL Tunable Wait Timeout",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "180",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/bind_address": {
+      "display_name": "MySQL Bind Address",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Address that mysqld should listen on",
+      "default": "0.0.0.0",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/worker/minsparethreads": {
+      "display_name": "Apache Worker MPM MinSpareThreads",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Minimum number of spare worker threads",
+      "default": "64",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/client/package_file": {
+      "display_name": "MySQL Connector/C Package File Name",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "mysql-connector-c-6.0.2-win32.msi",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/keepaliverequests": {
+      "display_name": "Apache Keepalive Requests",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Number of requests allowed on a persistent connection",
+      "default": "100",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mediawiki_application/php/packages": {
+      "display_name": "MediaWiki PHP/PEAR Packages",
+      "choice": [
+
+      ],
+      "type": "array",
+      "description": "An array of php/pear packages to install.",
+      "default": [
+        "mysql"
+      ],
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mediawiki_application/deploy_action": {
+      "display_name": "MediaWiki Deploy Action",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Deploy or force deploy the MediaWiki application.",
+      "default": "deploy",
+      "option": [
+        "deploy",
+        "force_deploy"
+      ],
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/prefork": {
+      "display_name": "Apache Prefork",
+      "choice": [
+
+      ],
+      "type": "hash",
+      "description": "Hash of Apache prefork tuning attributes.",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/client": {
+      "display_name": "MySQL Connector/C Client",
+      "choice": [
+
+      ],
+      "type": "hash",
+      "description": "Hash of MySQL client attributes",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/tunable/expire_logs_days": {
+      "display_name": "MySQL Exipre Log Days",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "10",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/prefork/maxrequestsperchild": {
+      "display_name": "Apache Prefork MPM MaxRequestsPerChild",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Maximum number of request a child process will handle",
+      "default": "10000",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/tunable/back_log": {
+      "display_name": "MySQL Tunable Back Log",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "128",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/server_repl_password": {
+      "display_name": "MySQL Replication Password",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "The replication password for the MySQL server.",
+      "required": "required",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/data_dir": {
+      "display_name": "MySQL Data Directory",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Location of mysql databases",
+      "default": "/var/lib/mysql",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
     },
     "mysql/tunable/table_cache": {
-      "default": "128",
-      "calculated": false,
-      "type": "string",
       "display_name": "MySQL Tunable Table Cache for MySQL < 5.1.3",
-      "required": "optional",
       "choice": [
 
       ],
+      "type": "string",
+      "default": "128",
+      "required": "optional",
       "recipes": [
         "mediawiki_rightscale::default"
-      ]
+      ],
+      "calculated": false
+    },
+    "mysql/ec2_path": {
+      "display_name": "MySQL EC2 Path",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Location of mysql directory on EC2 instance EBS volumes",
+      "default": "/mnt/mysql",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/client/package_name": {
+      "display_name": "MySQL Connector/C Registry DisplayName",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "MySQL Connector C 6.0.2",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/server_root_password": {
+      "display_name": "MySQL Server Root Password",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Password for the mysqld root user.",
+      "required": "required",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/prefork/maxspareservers": {
+      "display_name": "Apache Prefork MPM MaxSpareServers",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Maximum number of spare server processes",
+      "default": "32",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mediawiki_application/db/username": {
+      "display_name": "MediaWiki Database User",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "The database username for MediaWiki.",
+      "default": "mediawiki",
+      "required": "recommended",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/worker/maxsparethreads": {
+      "display_name": "Apache Worker MPM MaxSpareThreads",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Maximum number of spare worker threads",
+      "default": "192",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/traceenable": {
+      "display_name": "Apache Trace Enable",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Determine behavior of TRACE requests",
+      "default": "On",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/client/basedir": {
+      "display_name": "MySQL Connector/C Base Install Directory",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "C:\\Program Files (x86)\\MySQL\\Connector C 6.0.2",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mediawiki_application/db/schema": {
+      "display_name": "MediaWiki Database Schema",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "The database schema or name for MediaWiki.",
+      "default": "mediawiki",
+      "required": "recommended",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/tunable/net_write_timeout": {
+      "display_name": "MySQL Tunable Net Write Timeout",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "30",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/keepalivetimeout": {
+      "display_name": "Apache Keepalive Timeout",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Time to wait for requests on persistent connection",
+      "default": "5",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/worker": {
+      "display_name": "Apache Worker",
+      "choice": [
+
+      ],
+      "type": "hash",
+      "description": "Hash of Apache prefork tuning attributes.",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/icondir": {
+      "display_name": "Apache Icondir",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Directory location for icons",
+      "default": "/usr/share/apache2/icons",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/tunable/max_binlog_size": {
+      "display_name": "MySQL Max Binlog Size",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "100M",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/client/version": {
+      "display_name": "MySQL Connector/C Version",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "6.0.2",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mediawiki_application/initialize_database": {
+      "display_name": "MediaWiki Initialize Database",
+      "choice": [
+        "no",
+        "yes"
+      ],
+      "type": "string",
+      "description": "(re)Initialize database 'yes' or 'no' (default: no).",
+      "default": "no",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/listen_ports": {
+      "display_name": "Apache Listen Ports",
+      "choice": [
+
+      ],
+      "type": "array",
+      "description": "Ports that Apache should listen on",
+      "default": [
+        "80",
+        "443"
+      ],
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "mysql/tunable/net_read_timeout": {
+      "display_name": "MySQL Tunable Net Read Timeout",
+      "choice": [
+
+      ],
+      "type": "string",
+      "default": "30",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/keepalive": {
+      "display_name": "Apache Keepalive",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "HTTP persistent connections",
+      "default": "On",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
+    },
+    "apache/serversignature": {
+      "display_name": "Apache Server Signature",
+      "choice": [
+
+      ],
+      "type": "string",
+      "description": "Configure footer on server-generated documents",
+      "default": "On",
+      "required": "optional",
+      "recipes": [
+        "mediawiki_rightscale::default"
+      ],
+      "calculated": false
     }
   },
-  "dependencies": {
-    "mediawiki_application": ">= 0.0.0"
+  "description": "Installs/Configures mediawiki_application on RightScale.",
+  "replacing": {
   },
-  "name": "mediawiki_rightscale",
   "recipes": {
     "mediawiki_rightscale::default": "Installs & configures Mediawiki."
+  },
+  "maintainer": "Chris Fordham",
+  "dependencies": {
+    "mediawiki_application": ">= 0.0.0"
   }
 }

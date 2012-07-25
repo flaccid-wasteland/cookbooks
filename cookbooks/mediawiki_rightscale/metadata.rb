@@ -110,10 +110,10 @@ attribute "mediawiki_application/initialize_database",
   :default => "no",
   :choice => [ "no", "yes" ],
   :recipes => [ "mediawiki_rightscale::default" ]
-    
+
 attribute "mysql/server_root_password",
   :display_name => "MySQL Server Root Password",
-  :description => "The root password for the MySQL server.",
+  :description => "Password for the mysqld root user.",
   :required => "required",
   :recipes => [ "mediawiki_rightscale::default" ]
 
@@ -315,12 +315,6 @@ attribute "apache/default_modules",
   :description => "Default modules to enable via recipes",
   :default => [ "status", "alias", "auth_basic", "authn_file", "authz_default", "authz_groupfile", "authz_host", "authz_user", "autoindex", "dir", "env", "mime", "negotiation", "setenvif" ],
   :type => "array",
-  :recipes => [ "mediawiki_rightscale::default" ]
-	
-attribute "mysql/server_root_password",
-  :display_name => "MySQL Server Root Password",
-  :description => "Randomly generated password for the mysqld root user",
-  :default => "randomly generated",
   :recipes => [ "mediawiki_rightscale::default" ]
 
 attribute "mysql/bind_address",
