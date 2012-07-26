@@ -17,21 +17,21 @@
 # limitations under the License.
 #
  
-application "packaginator" do
-  path "/srv/packaginator"
+application "django-blank" do
+  path "/srv/django-blank"
   owner "nobody"
   group "nogroup"
-  repository "https://github.com/coderanger/packaginator.git"
+  repository "https://github.com/flaccid/django-blank.git"
   revision "master"
   #migrate true
   packages ["libpq-dev", "git-core", "mercurial"]
 
   django do 
-    packages ["redis"]
-    requirements "requirements/mkii.txt"
+    #packages ["redis"]
+    #requirements "requirements/mkii.txt"
     #settings_template "settings.py.erb"
     debug true
-    collectstatic "build_static --noinput"
+    #collectstatic "build_static --noinput"
     database do
       database "packaginator"
       engine "postgresql_psycopg2"
@@ -39,5 +39,9 @@ application "packaginator" do
       password "awesome_password"
     end
     #database_master_role "packaginator_database_master"
+  end
+  gunicorn do
+    app_module :gunicorn
+    # gunicorn settings
   end
 end
