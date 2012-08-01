@@ -15,6 +15,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+rightscale_tag "server:fqdn=#{`hostname --fqdn`.strip}"
+rightscale_tag "server:domain=#{`hostname --domain`.strip}"
+
 rightscale_tag "server:uuid=#{node['rightscale']['instance_uuid']}" do
   only_if { node['rightscale']['instance_uuid'] }
 end
