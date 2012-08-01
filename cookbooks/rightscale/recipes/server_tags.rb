@@ -1,5 +1,5 @@
 # Cookbook Name:: rightscale
-# Recipe:: default
+# Recipe:: server_tags
 #
 # Copyright 2012, Chris Fordham
 #
@@ -15,4 +15,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "rightscale::server_tags"
+rightscale_tag "server:uuid=#{node['rightscale']['instance_uuid']}" do
+  only_if { node['rightscale']['instance_uuid'] }
+end
+
+if node['cloud']
+  node['cloud']['private_ips'].each_with_index.map {|ip, index|
+    rightscale_tag "server:private_ip_#{index}=#{ip}"
+  }
+  node['cloud']['public_ips'].each_with_index.map {|ip, index|
+    rightscale_tag "server:public_ip_#{index}=#{ip}"
+  }
+end

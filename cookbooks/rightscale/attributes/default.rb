@@ -1,0 +1,1 @@
+default['rightscale']['instance_uuid'] = false
