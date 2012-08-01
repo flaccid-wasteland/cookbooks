@@ -20,7 +20,7 @@ log("Node IP: #{node_ip}") { level :debug }
 new_resource.short_hostname.downcase!
 
 # set hostname from short or long (when domain_name set)
-unless node['rs_utils']['domain_name'].nil? || node['rs_utils.domain_name'] == ''
+unless new_resource.domain_name.nil? || new_resource.domain_name == ''
   hostname = "#{new_resource.short_hostname}.#{new_resource.domain_name}"
   hosts_list = "#{new_resource.short_hostname}.#{new_resource.domain_name} #{new_resource.short_hostname}"
 else
@@ -72,7 +72,7 @@ if node['platform'] != 'archlinux' and ( !new_resource.domain_name.nil? || new_r
   log('Running domainname') { level :debug }
   bash "set_domainname" do
     code <<-EOH
-    domainname #{node['rs_utils']['domain_name']}
+    domainname #{new_resource.domain_name}
     EOH
   end
 end
