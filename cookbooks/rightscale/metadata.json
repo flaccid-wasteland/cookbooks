@@ -1,0 +1,29 @@
+{
+  "suggestions": {
+  },
+  "license": "Apache 2.0",
+  "providing": {
+  },
+  "recommendations": {
+  },
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "maintainer_email": "chris@xhost.com.au",
+  "version": "0.0.1",
+  "conflicting": {
+  },
+  "dependencies": {
+  },
+  "maintainer": "Chris Fordham",
+  "replacing": {
+  },
+  "platforms": {
+  },
+  "description": "Installs/Configures rightscale",
+  "name": "rightscale",
+  "recipes": {
+  }
+}
