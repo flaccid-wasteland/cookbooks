@@ -1,33 +1,34 @@
 {
-  "recipes": {
-    "rightscale::tools": "Installs RightScale tools.",
-    "rightscale::server_tags": "Sets RightScale Server tags.",
-    "rightscale::default": "Sets up server tags.",
-    "rightscale::monitoring": "Sets up and configures RightScale Monitoring."
+  "conflicting": {
   },
-  "suggestions": {
+  "description": "Installs/Configures a Rightscale Server node.",
+  "license": "Apache 2.0",
+  "groupings": {
   },
-  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
-  "name": "rightscale",
   "attributes": {
+  },
+  "replacing": {
+  },
+  "version": "0.0.1",
+  "name": "rightscale",
+  "maintainer_email": "chris@xhost.com.au",
+  "providing": {
+  },
+  "platforms": {
+  },
+  "maintainer": "Chris Fordham",
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
+  "suggestions": {
   },
   "recommendations": {
   },
-  "license": "Apache 2.0",
-  "description": "Installs/Configures a Rightscale Server node.",
-  "providing": {
-  },
   "dependencies": {
+    "collectd": ">= 0.0.0"
   },
-  "version": "0.0.1",
-  "replacing": {
-  },
-  "groupings": {
-  },
-  "conflicting": {
-  },
-  "maintainer_email": "chris@xhost.com.au",
-  "maintainer": "Chris Fordham",
-  "platforms": {
+  "recipes": {
+    "rightscale::server_tags": "Sets RightScale Server tags.",
+    "rightscale::monitoring": "Sets up and configures RightScale Monitoring.",
+    "rightscale::default": "Sets up server tags.",
+    "rightscale::tools": "Installs RightScale tools."
   }
 }
