@@ -1,29 +1,33 @@
 {
+  "recipes": {
+    "rightscale::tools": "Installs RightScale tools.",
+    "rightscale::server_tags": "Sets RightScale Server tags.",
+    "rightscale::default": "Sets up server tags.",
+    "rightscale::monitoring": "Sets up and configures RightScale Monitoring."
+  },
   "suggestions": {
   },
-  "license": "Apache 2.0",
-  "providing": {
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
+  "name": "rightscale",
+  "attributes": {
   },
   "recommendations": {
   },
-  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
-  "attributes": {
-  },
-  "groupings": {
-  },
-  "maintainer_email": "chris@xhost.com.au",
-  "version": "0.0.1",
-  "conflicting": {
+  "license": "Apache 2.0",
+  "description": "Installs/Configures a Rightscale Server node.",
+  "providing": {
   },
   "dependencies": {
   },
-  "maintainer": "Chris Fordham",
+  "version": "0.0.1",
   "replacing": {
   },
-  "platforms": {
+  "groupings": {
   },
-  "description": "Installs/Configures rightscale",
-  "name": "rightscale",
-  "recipes": {
+  "conflicting": {
+  },
+  "maintainer_email": "chris@xhost.com.au",
+  "maintainer": "Chris Fordham",
+  "platforms": {
   }
 }
