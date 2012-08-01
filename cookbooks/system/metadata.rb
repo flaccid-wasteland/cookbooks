@@ -11,12 +11,12 @@ end
 
 depends "cron"
 
-recipe "system::default", "Set system hostname and timezone."
-recipe "system::timezone", "Sets system timezone."
-recipe "system::hostname", "Sets system hostname."
+recipe "system::default", "Set the system hostname and timezone."
+recipe "system::timezone", "Sets the system timezone."
+recipe "system::hostname", "Sets the system hostname."
 
 attribute "system/timezone",
-  :display_name => "System Timezone",
+  :display_name => "Timezone",
   :description => "Sets the system time to the timezone of the specified input, which must be a valid zoneinfo/tz database entry.  If the input is 'unset' the timezone will use the 'localtime' that's defined in your RightScale account under Settings -> User -> Preferences tab.  You can find a list of valid examples from the timezone pulldown bar in the Preferences tab. The server will not be updated for daylight savings time.  Ex: US/Pacific, US/Eastern",
   :required => "optional",
   :choice => [ "Africa/Casablanca",
@@ -56,6 +56,7 @@ attribute "system/timezone",
   "Australia/Adelaide",
   "Australia/Darwin",
   "Australia/Perth",
+  "Australia/Sydney",
   "Brazil/Acre",
   "Brazil/DeNoronha",
   "Brazil/East",
