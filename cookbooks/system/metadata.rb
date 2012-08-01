@@ -86,17 +86,19 @@ attribute "system/timezone",
   "GMT",
   "UTC",
   "localtime" ],
+  :default => "UTC",
   :recipes => [ "system::timezone", "system::default" ]
 
 attribute "system/short_hostname",
   :display_name => "Short Hostname",
   :description => "The short hostname that you would like this node to have, e.g. kryten",
-  :required => "required",
-  :default => nil,
+  :required => "recommended",
+  :default => "localhost",
   :recipes => [ "system::hostname", "system::default" ]
 
 attribute "system/domain_name",
   :display_name => "Domain Name",
   :description => "The domain name that you would like this node to have, e.g. domain.suf. Note: Only set a valid domain name to satisfy the resolution of a FQDN; use ignore:ignore for no domain name.",
-  :required => "optional",
+  :required => "recommended",
+  :default => "localdomain",
   :recipes => [ "system::hostname", "system::default" ]
