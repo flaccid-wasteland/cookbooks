@@ -1,81 +1,148 @@
 {
-  "license": "Apache 2.0",
-  "description": "Installs/Configures system elements such as the hostname and timezone.",
-  "recommendations": {
-  },
+  "maintainer_email": "chris@xhost.com.au",
   "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "redhat": ">= 0.0.0",
+    "debian": ">= 0.0.0",
+    "fedora": ">= 0.0.0",
+    "centos": ">= 0.0.0",
+    "archlinux": ">= 0.0.0"
   },
-  "version": "0.0.1",
-  "suggestions": {
-  },
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
+  "maintainer": "Chris Fordham",
+  "description": "Installs/Configures system elements such as the hostname and timezone.",
   "attributes": {
-    "system/domain_name": {
-      "description": "The domain name that you would like this node to have, e.g. domain.suf. Note: Only set a valid domain name to satisfy the resolution of a FQDN; use ignore:ignore for no domain name.",
-      "recipes": [
-        "system::hostname",
-        "system::default"
-      ],
-      "calculated": false,
-      "type": "string",
-      "required": "optional",
-      "choice": [
-
-      ],
-      "display_name": "Domain Name"
-    },
     "system/timezone": {
+      "required": "optional",
+      "calculated": false,
       "description": "Sets the system time to the timezone of the specified input, which must be a valid zoneinfo/tz database entry.  If the input is 'unset' the timezone will use the 'localtime' that's defined in your RightScale account under Settings -> User -> Preferences tab.  You can find a list of valid examples from the timezone pulldown bar in the Preferences tab. The server will not be updated for daylight savings time.  Ex: US/Pacific, US/Eastern",
+      "choice": [
+        "Africa/Casablanca",
+        "America/Bogota",
+        "America/Buenos_Aires",
+        "America/Caracas",
+        "America/La_Paz",
+        "America/Lima",
+        "America/Mexico_City",
+        "Asia/Almaty",
+        "Asia/Baghdad",
+        "Asia/Baku",
+        "Asia/Bangkok",
+        "Asia/Calcutta",
+        "Asia/Colombo",
+        "Asia/Dhaka",
+        "Asia/Hong_Kong",
+        "Asia/Jakarta",
+        "Asia/Kabul",
+        "Asia/Kamchatka",
+        "Asia/Karachi",
+        "Asia/Kathmandu",
+        "Asia/Magadan",
+        "Asia/Muscat",
+        "Asia/Riyadh",
+        "Asia/Seoul",
+        "Asia/Singapore",
+        "Asia/Tashkent",
+        "Asia/Tbilisi",
+        "Asia/Tehran",
+        "Asia/Tokyo",
+        "Asia/Vladivostok",
+        "Asia/Yakutsk",
+        "Asia/Yekaterinburg",
+        "Atlantic/Azores",
+        "Atlantic/Cape_Verde",
+        "Australia/Adelaide",
+        "Australia/Darwin",
+        "Australia/Perth",
+        "Brazil/Acre",
+        "Brazil/DeNoronha",
+        "Brazil/East",
+        "Brazil/West",
+        "Canada/Atlantic",
+        "Canada/Newfoundland",
+        "Europe/Brussels",
+        "Europe/Copenhagen",
+        "Europe/Kaliningrad",
+        "Europe/Lisbon",
+        "Europe/London",
+        "Europe/Helsinki",
+        "Europe/Madrid",
+        "Europe/Moscow",
+        "Europe/Paris",
+        "Pacific/Auckland",
+        "Pacific/Fiji",
+        "Pacific/Guam",
+        "Pacific/Kwajalein",
+        "Pacific/Midway",
+        "US/Alaska",
+        "US/Central",
+        "US/Eastern",
+        "US/Hawaii",
+        "US/Mountain",
+        "US/Pacific",
+        "US/Samoa",
+        "GMT",
+        "UTC",
+        "localtime"
+      ],
       "recipes": [
         "system::timezone",
         "system::default"
       ],
+      "display_name": "System Timezone",
+      "type": "string"
+    },
+    "system/short_hostname": {
+      "required": "required",
       "calculated": false,
-      "type": "string",
-      "required": "optional",
+      "description": "The short hostname that you would like this node to have, e.g. kryten",
       "choice": [
 
       ],
-      "display_name": "System Timezone",
-      "choices": [
-        "US/Pacific",
-        "US/Eastern",
-        "Asia/Tokyo",
-        "Australia/Sydney"
-      ]
-    },
-    "system/short_hostname": {
-      "description": "The short hostname that you would like this node to have, e.g. kryten",
+      "default": null,
       "recipes": [
         "system::hostname",
         "system::default"
       ],
+      "display_name": "Short Hostname",
+      "type": "string"
+    },
+    "system/domain_name": {
+      "required": "optional",
       "calculated": false,
-      "type": "string",
-      "required": "required",
-      "default": null,
+      "description": "The domain name that you would like this node to have, e.g. domain.suf. Note: Only set a valid domain name to satisfy the resolution of a FQDN; use ignore:ignore for no domain name.",
       "choice": [
 
       ],
-      "display_name": "Short Hostname"
+      "recipes": [
+        "system::hostname",
+        "system::default"
+      ],
+      "display_name": "Domain Name",
+      "type": "string"
     }
   },
-  "providing": {
+  "replacing": {
   },
+  "groupings": {
+  },
+  "conflicting": {
+  },
+  "name": "system",
   "recipes": {
     "system::hostname": "Sets system hostname.",
     "system::default": "Set system hostname and timezone.",
     "system::timezone": "Sets system timezone."
   },
   "dependencies": {
+    "cron": ">= 0.0.0"
   },
-  "maintainer": "Chris Fordham",
-  "groupings": {
+  "version": "0.0.1",
+  "license": "Apache 2.0",
+  "suggestions": {
   },
-  "replacing": {
+  "providing": {
   },
-  "maintainer_email": "chris@xhost.com.au",
-  "name": "system",
-  "conflicting": {
-  },
-  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n"
+  "recommendations": {
+  }
 }
