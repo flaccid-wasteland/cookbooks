@@ -17,15 +17,15 @@ node_ip = "#{local_ip}"
 log("Node IP: #{node_ip}") { level :debug }
 
 # ensure the required short hostname is lower case
-node['rs_utils']['short_hostname'].downcase!
+new_resource.short_hostname.downcase!
 
 # set hostname from short or long (when domain_name set)
 unless node['rs_utils']['domain_name'].nil? || node['rs_utils.domain_name'] == ''
-  hostname = "#{node['rs_utils']['short_hostname']}.#{node['rs_utils']['domain_name']}"
-  hosts_list = "#{node['rs_utils']['short_hostname']}.#{node['rs_utils']['domain_name']} #{node.rs_utils['short_hostname']}"
+  hostname = "#{new_resource.short_hostname}.#{new_resource.domain_name}"
+  hosts_list = "#{new_resource.short_hostname}.#{new_resource.domain_name} #{new_resource.short_hostname}"
 else
-  hostname = "#{node['rs_utils']['short_hostname']}"
-  hosts_list = "#{node['rs_utils']['short_hostname']}"
+  hostname = "#{new_resource.short_hostname}"
+  hosts_list = "#{new_resource.short_hostname}"
 end
 log("Setting hostname for '#{hostname}'.") { level :debug }
 
@@ -46,7 +46,7 @@ file "/etc/hostname" do
   owner "root"
   group "root"
   mode "0755"
-  content "#{node['rs_utils']['short_hostname']}"
+  content "#{new_resource.short_hostname}"
   action :create
 end
 
@@ -68,7 +68,7 @@ else
 end
 
 # Call domainname command
-if node['platform'] != 'archlinux' and ( !node['rs_utils']['domain_name'].nil? || node['rs_utils']['domain_name'] != "" )
+if node['platform'] != 'archlinux' and ( !new_resource.domain_name.nil? || new_resource.domain_name != "" )
   log('Running domainname') { level :debug }
   bash "set_domainname" do
     code <<-EOH
