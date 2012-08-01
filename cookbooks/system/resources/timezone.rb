@@ -22,11 +22,12 @@
 # OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
 # WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
-attribute :timezone, :kind_of => String, :default => false
+attribute :timezone, :kind_of => String, :default => 'UTC'
 
 actions :set
 
 def initialize(*args)
   super
   @action = :set
+  @run_context.include_recipe "cron"
 end
