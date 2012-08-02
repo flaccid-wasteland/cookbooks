@@ -16,3 +16,18 @@
 # limitations under the License.
 
 include_recipe "collectd"
+include_recipe "collectd::client"
+
+collectd_plugin "processes" do
+  options :process=>"collectd"
+end
+
+collectd_plugin "interface" do
+  options :interface=>"eth0"
+end
+
+collectd_plugin "syslog" do
+  options :log_level=>"info"
+end
+
+node['rightscale']['monitoring']['collectd_plugins'].each { |name| collectd_plugin name }
