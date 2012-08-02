@@ -7,7 +7,14 @@ version          "0.0.1"
 
 depends "collectd"
 
-recipe "rightscale::default", "Sets up server tags."
-recipe "rightscale::tools", "Installs RightScale tools."
-recipe "rightscale::monitoring", "Sets up and configures RightScale Monitoring."
+recipe "rightscale::default", "Sets up RightScale Monitoring, installs RightScale Tools and adds RightScale Server tags."
+recipe "rightscale::tools", "Installs RightScale Tools (RubyGem)."
+recipe "rightscale::monitoring", "Sets up and configures RightScale Monitoring (collectd)."
 recipe "rightscale::server_tags", "Sets RightScale Server tags."
+
+attribute "rightscale/monitoring/collectd_plugins",
+  :display_name => "RightScale Monitoring Plugins",
+  :description => "An array of collectd plugins to enable.",
+  :required => "recommended",
+  :default => [ "cpu", "df", "disk", "load", "memory", "processes", "swap", "users" ],
+  :recipes => [ "rightscale::monitoring" ]
