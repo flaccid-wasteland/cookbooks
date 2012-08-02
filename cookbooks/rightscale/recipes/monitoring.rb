@@ -30,6 +30,11 @@ collectd_plugin "syslog" do
   options :log_level=>"info"
 end
 
+# re-configure network for client to specify port with RS_SKETCHY
+collectd_plugin "network" do
+  options :server=>[ "#{node['collectd']['servers']}\" \"3011" ]
+end
+
 node['rightscale']['monitoring']['collectd_plugins'].each { |name| collectd_plugin name }
 
 rightscale_tag "rs_monitoring:state=active"
