@@ -31,3 +31,5 @@ collectd_plugin "syslog" do
 end
 
 node['rightscale']['monitoring']['collectd_plugins'].each { |name| collectd_plugin name }
+
+rightscale_tag "rs_monitoring:state=active"
