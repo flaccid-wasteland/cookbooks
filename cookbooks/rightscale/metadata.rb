@@ -19,3 +19,53 @@ attribute "rightscale/monitoring/collectd_plugins",
   :type => "array",
   :default => [ "cpu", "df", "disk", "load", "memory", "processes", "swap", "users" ],
   :recipes => [ "rightscale::monitoring" ]
+
+attribute "collectd/interval",
+  :display_name => "collectd Polling Interval",
+  :description => "The collectd interval setting value.",
+  :required => "optional",
+  :default => "20",
+  :recipes => [ "collectd::default" ]
+
+attribute "collectd/read_threads",
+  :display_name => "collectd Read Threads",
+  :description => "The collectd read threads setting value.",
+  :required => "optional",
+  :default => "5",
+  :recipes => [ "collectd::default" ]
+
+attribute "collectd/servers",
+  :display_name => "collectd Servers",
+  :description => "The collectd servers to send to as a client.",
+  :required => "optional",
+  :default => nil,
+  :type => "array",
+  :recipes => [ "collectd::client" ]
+
+attribute "collectd/hostname",
+  :display_name => "collectd Hostname",
+  :description => "The collectd Hostname setting value.",
+  :required => "optional",
+  :recipes => [ "collectd::default" ]
+
+attribute "collectd/fqdn_lookup",
+  :display_name => "collectd FQDNLookup",
+  :description => "The collectd FQDNLookup setting value.",
+  :required => "optional",
+  :recipes => [ "collectd::default" ],
+  :choice => [ "true", "false" ],
+  :default => "true"
+
+attribute "collectd/collectd_web/path",
+  :display_name => "collectd_web path",
+  :description => "The collectd_web install path.",
+  :required => "optional",
+  :default => "/srv/collectd_web",
+  :recipes => [ "collectd::collectd_web" ]
+
+attribute "collectd/collectd_web/hostname",
+  :display_name => "collectd_web hostname",
+  :description => "The collectd_web hostname.",
+  :required => "optional",
+  :default => "collectd",
+  :recipes => [ "collectd::collectd_web" ]
