@@ -1,34 +1,57 @@
 {
-  "conflicting": {
-  },
-  "description": "Installs/Configures a Rightscale Server node.",
-  "license": "Apache 2.0",
-  "groupings": {
-  },
-  "attributes": {
-  },
+  "version": "0.0.1",
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
   "replacing": {
   },
-  "version": "0.0.1",
-  "name": "rightscale",
-  "maintainer_email": "chris@xhost.com.au",
   "providing": {
-  },
-  "platforms": {
-  },
-  "maintainer": "Chris Fordham",
-  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
-  "suggestions": {
-  },
-  "recommendations": {
   },
   "dependencies": {
     "collectd": ">= 0.0.0"
   },
+  "maintainer_email": "chris@xhost.com.au",
+  "conflicting": {
+  },
+  "suggestions": {
+  },
+  "platforms": {
+  },
   "recipes": {
+    "rightscale::monitoring": "Sets up and configures RightScale Monitoring (collectd).",
+    "rightscale::tools": "Installs RightScale Tools (RubyGem).",
     "rightscale::server_tags": "Sets RightScale Server tags.",
-    "rightscale::monitoring": "Sets up and configures RightScale Monitoring.",
-    "rightscale::default": "Sets up server tags.",
-    "rightscale::tools": "Installs RightScale tools."
+    "rightscale::default": "Sets up RightScale Monitoring, installs RightScale Tools and adds RightScale Server tags."
+  },
+  "description": "Installs/Configures a Rightscale Server node.",
+  "license": "Apache 2.0",
+  "maintainer": "Chris Fordham",
+  "groupings": {
+  },
+  "name": "rightscale",
+  "recommendations": {
+  },
+  "attributes": {
+    "rightscale/monitoring/collectd_plugins": {
+      "calculated": false,
+      "choice": [
+
+      ],
+      "type": "string",
+      "display_name": "RightScale Monitoring Plugins",
+      "recipes": [
+        "rightscale::monitoring"
+      ],
+      "description": "An array of collectd plugins to enable.",
+      "required": "recommended",
+      "default": [
+        "cpu",
+        "df",
+        "disk",
+        "load",
+        "memory",
+        "processes",
+        "swap",
+        "users"
+      ]
+    }
   }
 }
