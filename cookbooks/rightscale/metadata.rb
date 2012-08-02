@@ -40,19 +40,19 @@ attribute "collectd/servers",
   :required => "optional",
   :default => nil,
   :type => "array",
-  :recipes => [ "collectd::client" ]
+  :recipes => [ "collectd::client", "rightscale::default" ]
 
 attribute "collectd/hostname",
   :display_name => "collectd Hostname",
   :description => "The collectd Hostname setting value.",
   :required => "optional",
-  :recipes => [ "collectd::default" ]
+  :recipes => [ "collectd::default", "rightscale::default" ]
 
 attribute "collectd/fqdn_lookup",
   :display_name => "collectd FQDNLookup",
   :description => "The collectd FQDNLookup setting value.",
   :required => "optional",
-  :recipes => [ "collectd::default" ],
+  :recipes => [ "collectd::default", "rightscale::default" ],
   :choice => [ "true", "false" ],
   :default => "true"
 
