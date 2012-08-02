@@ -37,10 +37,9 @@ attribute "collectd/read_threads",
 attribute "collectd/servers",
   :display_name => "collectd Servers",
   :description => "The collectd servers to send to as a client.",
-  :required => "optional",
-  :default => nil,
-  :type => "array",
-  :recipes => [ "collectd::client", "rightscale::default" ]
+  :required => "required",
+  :type => "string",
+  :recipes => [ "rightscale::default" ]
 
 attribute "collectd/hostname",
   :display_name => "collectd Hostname",
