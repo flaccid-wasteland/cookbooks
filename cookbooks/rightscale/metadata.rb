@@ -16,5 +16,6 @@ attribute "rightscale/monitoring/collectd_plugins",
   :display_name => "RightScale Monitoring Plugins",
   :description => "An array of collectd plugins to enable.",
   :required => "recommended",
+  :type => "array",
   :default => [ "cpu", "df", "disk", "load", "memory", "processes", "swap", "users" ],
   :recipes => [ "rightscale::monitoring" ]

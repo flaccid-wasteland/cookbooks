@@ -1,46 +1,35 @@
 {
-  "version": "0.0.1",
-  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
-  "replacing": {
+  "recipes": {
+    "rightscale::server_tags": "Sets RightScale Server tags.",
+    "rightscale::tools": "Installs RightScale Tools (RubyGem).",
+    "rightscale::monitoring": "Sets up and configures RightScale Monitoring (collectd).",
+    "rightscale::default": "Sets up RightScale Monitoring, installs RightScale Tools and adds RightScale Server tags."
   },
+  "version": "0.0.1",
   "providing": {
   },
-  "dependencies": {
-    "collectd": ">= 0.0.0"
-  },
-  "maintainer_email": "chris@xhost.com.au",
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
   "conflicting": {
   },
   "suggestions": {
   },
-  "platforms": {
+  "dependencies": {
+    "collectd": ">= 0.0.0"
   },
-  "recipes": {
-    "rightscale::monitoring": "Sets up and configures RightScale Monitoring (collectd).",
-    "rightscale::tools": "Installs RightScale Tools (RubyGem).",
-    "rightscale::server_tags": "Sets RightScale Server tags.",
-    "rightscale::default": "Sets up RightScale Monitoring, installs RightScale Tools and adds RightScale Server tags."
+  "replacing": {
   },
-  "description": "Installs/Configures a Rightscale Server node.",
   "license": "Apache 2.0",
+  "name": "rightscale",
+  "maintainer_email": "chris@xhost.com.au",
   "maintainer": "Chris Fordham",
   "groupings": {
   },
-  "name": "rightscale",
   "recommendations": {
   },
+  "description": "Installs/Configures a Rightscale Server node.",
   "attributes": {
     "rightscale/monitoring/collectd_plugins": {
-      "calculated": false,
-      "choice": [
-
-      ],
-      "type": "string",
       "display_name": "RightScale Monitoring Plugins",
-      "recipes": [
-        "rightscale::monitoring"
-      ],
-      "description": "An array of collectd plugins to enable.",
       "required": "recommended",
       "default": [
         "cpu",
@@ -51,7 +40,18 @@
         "processes",
         "swap",
         "users"
-      ]
+      ],
+      "recipes": [
+        "rightscale::monitoring"
+      ],
+      "calculated": false,
+      "choice": [
+
+      ],
+      "description": "An array of collectd plugins to enable.",
+      "type": "array"
     }
+  },
+  "platforms": {
   }
 }
