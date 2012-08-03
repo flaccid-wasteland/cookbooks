@@ -1,4 +1,3 @@
-#
 # Cookbook Name:: phpmyadmin_application
 # Recipe:: default
 #
@@ -16,3 +15,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
+include_recipe "phpmyadmin_application::application"	
