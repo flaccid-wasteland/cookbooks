@@ -28,10 +28,6 @@ include_recipe "phpmyadmin_application::php_mysql"
 log "Setting up application, phpmyadmin"
 
 # for some reason these worker variables are needed as using the node attributes directly in the database block returns nilClass
-schema   = node['phpmyadmin_application']['db']['schema']
-adapter  = node['phpmyadmin_application']['db']['adapter']
-username = node['phpmyadmin_application']['db']['username']
-password = node['phpmyadmin_application']['db']['password']
 host     = node['phpmyadmin_application']['db']['host']
 
 application "phpmyadmin" do
@@ -45,10 +41,6 @@ application "phpmyadmin" do
 
   php do
     database do
-      schema schema
-      adapter adapter
-      username username
-      password password
       host host
     end
     local_settings_file node['phpmyadmin_application']['php']['local_settings_file']
