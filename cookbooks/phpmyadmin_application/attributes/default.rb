@@ -7,11 +7,7 @@ default['phpmyadmin_application']['deploy_action'] = 'deploy'
 default['phpmyadmin_application']['webapp_template'] = "phpmyadmin_apache_vhost.conf.erb"
 
 default['phpmyadmin_application']['db']['host'] = 'localhost'      # localhost for a LAMP AIO
-default['phpmyadmin_application']['db']['adapter'] = 'mysql'
-default['phpmyadmin_application']['db']['schema'] = 'phpmyadmin'
-default['phpmyadmin_application']['db']['username'] = 'phpmyadmin'
-default['phpmyadmin_application']['db']['password'] = nil
 
 default['phpmyadmin_application']['php']['pear_packages'] = [ "mysql" ]
 default['phpmyadmin_application']['php']['local_settings_file'] = 'config.inc.php'
-default['phpmyadmin_application']['php']['settings_template'] = 'config.sample.inc.php.erb'
+default['phpmyadmin_application']['php']['settings_template'] = 'config.inc.php.erb'
