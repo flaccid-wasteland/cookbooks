@@ -14,3 +14,7 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
+
+# This recipe will be developed once rightscale-tools is available on RubyGems.org or a remote file location
+# https://github.com/rightscale/rightscale_tools
+log "rightscale-tools is not available on rubygems.org, skipping"
