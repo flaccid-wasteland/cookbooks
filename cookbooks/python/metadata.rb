@@ -15,3 +15,11 @@ recipe "python::virtualenv", "Installs virtualenv using the python_pip resource.
 %w{ debian ubuntu centos redhat fedora freebsd }.each do |os|
   supports os
 end
+
+attribute "python/install_method",
+  :display_name => "Python Install Method",
+  :description => "The method to install Python into the system.",
+  :type => "string",
+  :choice => [ "package", "pip", "source" ],
+  :recipes => [ "python::default" ],
+  :default => "package"
