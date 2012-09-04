@@ -1,5 +1,7 @@
-default['rightscale']['monitoring']['collectd_plugins'] = [ "cpu", "df", "disk", "load", "memory", "processes", "swap", "users" ]
+default['rightscale']['package']['install_method'] = 'auto'
 
-# these are injected into the right_link run; defaults set for non rightscale nodes
-default['rightscale']['instance_uuid'] = false
-default['rightscale']['servers']['sketchy']['hostname'] = nil
+default['rightscale']['package']['url']['ubuntu'] = "http://mirror.rightscale.com/rightlink/5.7.16/ubuntu/rightscale_5.7.16-ubuntu_10.04-amd64.deb"
+default['rightscale']['package']['url']['debian'] = "http://mirror.rightscale.com/rightlink/5.7.16/ubuntu/rightscale_5.7.16-ubuntu_10.04-amd64.deb"
+default['rightscale']['package']['url']['redhat'] = "http://mirror.rightscale.com/rightlink/5.7.17/redhatenterpriseserver/rightscale_5.7.17-rhel_5.6-x86_64.rpm"
+default['rightscale']['package']['url']['centos'] = "http://mirror.rightscale.com/rightlink/5.7.14/centos/rightscale_5.7.14-centos_5.6-x86_64.rpm"
+default['rightscale']['package']['url']['windows'] = "http://mirror.rightscale.com/rightlink/5.7.20/windows/Rightscale_Windows_x64_5.7.20.msi"
