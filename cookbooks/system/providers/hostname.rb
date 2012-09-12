@@ -105,9 +105,18 @@ script "set_node_hostname_tag" do
   EOH
 end
 
-# manually update node automatic attributes
+# reload ohai hostname plugin for subsequent recipes in the run_list, or not (http://tickets.opscode.com/browse/OHAI-389?focusedCommentId=26255&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-26255)
+#ohai "reload_hostname_info_from_ohai" do
+#  plugin "hostname"
+#end
+
+# manually update node & automatic attributes
 node.automatic_attrs['hostname'] = `hostname -f`.strip
 node.automatic_attrs['fqdn'] = `hostname -f`.strip
+node['fqdn'] = `hostname -f`.strip
+node['hostname'] = `hostname -f`.strip
+
+#node.save
 
 # Show the new host/node information (after ohai reload from provider)
 ruby_block "show_host_info" do
@@ -123,11 +132,6 @@ ruby_block "show_host_info" do
     Chef::Log.info("IP addresses for the hostname: #{`hostname -i`.strip == '' ? '<none>' : `hostname -i`.strip}")
     Chef::Log.info("Current Chef FQDN loaded from Ohai: #{node['fqdn']}")
   end
-end
-
-# reload ohai hostname plugin for subsequent recipes in the run_list, or not (http://tickets.opscode.com/browse/OHAI-389?focusedCommentId=26255&page=com.atlassian.jira.plugin.system.issuetabpanels:comment-tabpanel#comment-26255)
-ohai "reload_hostname_info_from_ohai" do
-  plugin "hostname"
 end
 
 new_resource.updated_by_last_action(true)
