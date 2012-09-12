@@ -110,6 +110,10 @@ ohai "reload_hostname_info_from_ohai" do
   plugin "hostname"
 end
 
+# manually update node automatic attributes
+node.automatic_attrs['hostname'] = `hostname -f`.strip
+node.automatic_attrs['fqdn'] = `hostname -f`.strip
+
 # Show the new host/node information (after ohai reload from provider)
 ruby_block "show_host_info" do
   block do
