@@ -15,8 +15,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# http://tickets.opscode.com/browse/OHAI-389 prevents referencing node['fqdn']
 rightscale_tag "server:fqdn=#{`hostname --fqdn`.strip}"
-rightscale_tag "server:domain=#{`hostname --domain`.strip}"
+
+rightscale_tag "server:domain=#{`domainname`.strip}" do
+  only_if { `domainname`.strip.length > 0 }
+end
 
 rightscale_tag "server:uuid=#{node['rightscale']['instance_uuid']}" do
   only_if { node['rightscale']['instance_uuid'] }
