@@ -20,6 +20,7 @@ rightscale_tag "server:fqdn=#{`hostname --fqdn`.strip}"
 
 rightscale_tag "server:domain=#{`domainname`.strip}" do
   only_if { `domainname`.strip.length > 0 }
+  not_if { `domainname` =~ /(none)/  }
 end
 
 rightscale_tag "server:uuid=#{node['rightscale']['instance_uuid']}" do
