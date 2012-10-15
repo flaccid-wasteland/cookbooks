@@ -1,0 +1,8 @@
+#!/bin/sh -e
+
+dd if=/dev/zero of=rightimage_centos_6.2_x86_64.master.img bs=1M conv=notrunc count=1 seek=102400
+sudo losetup /dev/loop0 rightimage_centos_6.2_x86_64.master.img
+sudo e2fsck -y -f /dev/loop0
+sudo resize2fs /dev/loop0
+sudo e2fsck -f /dev/loop0		# once again without assume of 'yes'
+sudo losetup -d /dev/loop0
