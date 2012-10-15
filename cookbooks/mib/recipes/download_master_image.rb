@@ -19,7 +19,7 @@ directory "#{node['mib']['work_dir']}/images/master" do
   recursive true
 end
 
-remote_file "#{node['mib']['work_dir']}/images/master/#{node['mib']['images']['master']['filename']}" do
+remote_file "#{node['mib']['work_dir']}/images/master/#{File.basename(node['mib']['images']['master']['remote_url'])}" do
   source node['mib']['images']['master']['remote_url']
   action :nothing
 end
@@ -29,7 +29,7 @@ http_request "HEAD #{node['mib']['images']['master']['remote_url']}" do
   url node['mib']['images']['master']['remote_url']
   action :head
   if File.exists?("#{node['mib']['work_dir']}/images/master/#{node['mib']['images']['master']['filename']}")
-    headers "If-Modified-Since" => File.mtime("#{node['mib']['work_dir']}/images/master/#{node['mib']['images']['master']['filename']}").httpdate
+    headers "If-Modified-Since" => File.mtime("#{node['mib']['work_dir']}/images/master/#{File.basename(node['mib']['images']['master']['remote_url'])}").httpdate
   end
-  notifies :create, resources(:remote_file => "#{node['mib']['work_dir']}/images/master/#{node['mib']['images']['master']['filename']}"), :immediately
+  notifies :create, resources(:remote_file => "#{node['mib']['work_dir']}/images/master/#{File.basename(node['mib']['images']['master']['remote_url'])}"), :immediately
 end
