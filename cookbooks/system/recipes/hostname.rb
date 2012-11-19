@@ -20,4 +20,5 @@
 system_hostname node['system']['short_hostname'] do
   short_hostname node['system']['short_hostname']
   domain_name node['system']['domain_name']
+  static_hosts node['system']['static_hosts']
 end

@@ -2,6 +2,11 @@
 127.0.1.1			localdomain localdomain4
 
 <%= @node_ip %>			<%= @hosts_list %>
+<% if not @static_hosts.empty? %>
+  <% @static_hosts.each_pair do |ip, hosts| %>
+<%= ip %>                       <%= hosts %>
+  <% end %>
+<% end %>
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost6.localdomain6 localhost6 ip6-localhost ip6-loopback

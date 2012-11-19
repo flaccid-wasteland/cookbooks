@@ -24,6 +24,7 @@
 
 attribute :short_hostname, :kind_of => String
 attribute :domain_name, :kind_of => String
+attribute :static_hosts, :kind_of => Hash
 
 actions :set
 
