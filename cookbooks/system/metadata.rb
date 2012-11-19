@@ -14,6 +14,7 @@ depends "cron"
 recipe "system::default", "Set the system hostname and timezone."
 recipe "system::timezone", "Sets the system timezone."
 recipe "system::hostname", "Sets the system hostname."
+recipe "system::upgrade_packages", "Upgrades the system's installed packages."
 
 attribute "system/timezone",
   :display_name => "Timezone",
