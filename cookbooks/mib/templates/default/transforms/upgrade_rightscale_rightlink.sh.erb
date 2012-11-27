@@ -1,0 +1,50 @@
+#!/bin/sh -e
+
+# backwards compat
+ln -svf /var/spool/cloud /var/spool/ec2
+
+# create rightscale.d folder
+mkdir -p /etc/rightscale.d
+touch /etc/rightscale.d/cloud
+
+# set intial release
+echo -n 5.8.8 > /etc/rightscale.d/rightscale-release
+
+<% case platform %>
+<% when 'centos' %>
+
+echo 'Removing RightScale on CentOS.'
+rpm -e rightscale
+
+echo 'Installing RightScale RightLink 5.8.'
+cd /tmp
+wget http://mirror.rightscale.com/rightlink/5.8.8/centos/rightscale_5.8.8-centos_6.2-x86_64.rpm
+rpm -i rightscale_5.8.8-centos_6.2-x86_64.rpm && rm -f /tmp/rightscale*.rpm
+
+<% when ubuntu %>
+
+echo 'Removing RightScale on Ubuntu.'
+dpkg --purge rightscale
+
+# ensure no user interaction with package installs
+export DEBIAN_FRONTEND=noninteractive
+
+# update apt sources
+apt-get -y update
+
+# install rightscale/rightlink deps
+apt-get -y install libc6 debconf curl git-core
+
+# install rightimage service
+wget -q -O /etc/init.d/rightimage https://raw.github.com/rightscale/rightimage/master/cookbooks/rightimage/files/default/rightimage
+chmod +x /etc/init.d/rightimage
+update-rc.d rightimage defaults
+
+# install rightscale/rightlink
+cd /tmp
+wget http://mirror.rightscale.com/rightlink/5.8.8/ubuntu/rightscale_5.8.8-ubuntu_12.04-amd64.deb
+dpkg -i rightscale_5.8.8-ubuntu_12.04-amd64.deb
+
+<%   else %>
+  echo 'Platform not supported for this transform'; exit 1
+<% end %>
