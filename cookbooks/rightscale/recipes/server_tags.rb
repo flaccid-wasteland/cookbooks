@@ -15,18 +15,22 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# server hostname tag
 # http://tickets.opscode.com/browse/OHAI-389 prevents referencing node['fqdn']
 rightscale_tag "server:fqdn=#{`hostname --fqdn`.strip}"
 
+# server domain tag
 rightscale_tag "server:domain=#{`domainname`.strip}" do
   only_if { `domainname`.strip.length > 0 }
   not_if { `domainname` =~ /(none)/  }
 end
 
+# server UUID tag
 rightscale_tag "server:uuid=#{node['rightscale']['instance_uuid']}" do
   only_if { node['rightscale']['instance_uuid'] }
 end
 
+# server IP tags
 if node['cloud']
   node['cloud']['private_ips'].each_with_index.map {|ip, index|
     rightscale_tag "server:private_ip_#{index}=#{ip}"
@@ -34,4 +38,9 @@ if node['cloud']
   node['cloud']['public_ips'].each_with_index.map {|ip, index|
     rightscale_tag "server:public_ip_#{index}=#{ip}"
   }
+end
+
+# instance id tag
+rightscale_tag "server:instance_id=#{File.read('/var/spool/cloud/meta-data/instance-id').chomp}" do
+  only_if { File.exists?('/var/spool/cloud/meta-data/instance-id') }
 end
