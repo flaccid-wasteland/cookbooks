@@ -15,8 +15,5 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-node.pecl.dep_sys_packages.each do |package|
-  package package
-end
-
+include_recipe "pecl::install"
 include_recipe "pecl::install_packages"
