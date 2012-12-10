@@ -15,20 +15,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if node.pecl.packages_remove.nil?
+include_recipe "pecl"
+
+if node['pecl']['packages_remove'].nil?
   log "No pecl packages specified for removal, skipping."
   return
 end
 
-if node.pecl.packages_remove.kind_of?(Array)
-  package_list = node.pecl.packages_remove.join(' ')
-else
-  package_list = node.pecl.packages_remove
-end
-
-execute "uninstall_pecl_packages" do
-  command "pecl uninstall #{package_list}"
-  action :run
+node['pecl']['packages'].each |package| do
+  php_pear package do
+    action :remove
+  end
 end
 
 ruby_block "show_installed_pecl_packages" do

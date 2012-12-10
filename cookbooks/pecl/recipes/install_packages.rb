@@ -15,20 +15,17 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if node.pecl.packages.nil?
+include_recipe "pecl"
+
+if node['pecl']['packages'].nil?
   log "No pecl packages specified for install, skipping."
   return
 end
 
-if node.pecl.packages.kind_of?(Array)
-  package_list = node.pecl.packages.join(' ')
-else
-  package_list = node.pecl.packages
-end
-
-execute "install_pecl_packages" do
-  command "pecl install --nobuild #{package_list}"
-  action :run
+node['pecl']['packages'].each |package| do
+  php_pear package do
+    action :install
+  end
 end
 
 ruby_block "show_installed_pecl_packages" do
