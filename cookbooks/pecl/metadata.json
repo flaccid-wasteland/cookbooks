@@ -1,0 +1,61 @@
+{
+  "groupings": {
+  },
+  "suggestions": {
+  },
+  "license": "Apache 2.0",
+  "description": "Installs/Configures pecl",
+  "name": "pecl",
+  "conflicting": {
+  },
+  "version": "0.0.1",
+  "attributes": {
+    "pecl/packages_remove": {
+      "choice": [
+
+      ],
+      "description": "The PECL packages to uninstall, e.g. w{Xdebug memcache}",
+      "display_name": "PECL remove packages",
+      "default": null,
+      "required": "optional",
+      "calculated": false,
+      "recipes": [
+        "pecl::uninstall_packages"
+      ],
+      "type": "array"
+    },
+    "pecl/packages": {
+      "choice": [
+
+      ],
+      "description": "The PECL packages to install, e.g. w{mongo apc}",
+      "display_name": "PECL packages",
+      "default": null,
+      "required": "optional",
+      "calculated": false,
+      "recipes": [
+        "pecl::install_packages"
+      ],
+      "type": "array"
+    }
+  },
+  "replacing": {
+  },
+  "maintainer": "Chris Fordham",
+  "platforms": {
+  },
+  "maintainer_email": "chris@xhost.com.au",
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n",
+  "recipes": {
+    "pecl::uninstall_packages": "Uninstalls PECL packages.",
+    "pecl::install_packages": "Installs PECL packages.",
+    "pecl::default": "Ensures PECL is installed so packages can be installed."
+  },
+  "providing": {
+  },
+  "dependencies": {
+    "php": ">= 0.0.0"
+  },
+  "recommendations": {
+  }
+}
