@@ -20,13 +20,13 @@ include_recipe "pecl"
 if node['pecl']['packages_remove'].nil?
   log "No pecl packages specified for removal, skipping."
   return
+else
+  node['pecl']['packages_remove'].each { |package|
+    php_pear package do
+      action :remove
+    end
+  }
 end
-
-node['pecl']['packages'].each { |package|
-  php_pear package do
-    action :remove
-  end
-}
 
 ruby_block "show_installed_pecl_packages" do
   block do
