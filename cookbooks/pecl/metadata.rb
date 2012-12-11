@@ -16,7 +16,7 @@ attribute "pecl/packages",
   :description => "The PECL packages to install, e.g. %w{mongo apc}",
   :default => nil,
   :type => "array",
-  :recipes => [ "pecl::install_packages" ]
+  :recipes => [ "pecl", "pecl::install_packages" ]
   
 attribute "pecl/packages_remove",
   :display_name => "PECL remove packages",
