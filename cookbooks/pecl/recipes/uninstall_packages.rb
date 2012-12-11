@@ -24,6 +24,7 @@ else
   node['pecl']['packages_remove'].each { |package|
     php_pear package do
       action :remove
+      only_if "pecl info #{package}"
     end
   }
 end
