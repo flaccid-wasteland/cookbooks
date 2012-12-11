@@ -22,11 +22,11 @@ if node['pecl']['packages_remove'].nil?
   return
 end
 
-node['pecl']['packages'].each |package| do
+node['pecl']['packages'].each { |package|
   php_pear package do
     action :remove
   end
-end
+}
 
 ruby_block "show_installed_pecl_packages" do
   block do

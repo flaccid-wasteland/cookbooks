@@ -22,11 +22,9 @@ if node['pecl']['packages'].nil?
   return
 end
 
-node['pecl']['packages'].each |package| do
-  php_pear package do
-    action :install
-  end
-end
+node['pecl']['packages'].each { |package|
+  php_pear package
+}
 
 ruby_block "show_installed_pecl_packages" do
   block do
