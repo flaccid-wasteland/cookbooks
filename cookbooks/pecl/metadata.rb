@@ -13,14 +13,14 @@ recipe "pecl::uninstall_packages", "Uninstalls PECL packages."
 
 attribute "pecl/packages",
   :display_name => "PECL packages",
-  :description => "The PECL packages to install, e.g. w{mongo apc}",
+  :description => "The PECL packages to install, e.g. %w{mongo apc}",
   :default => nil,
   :type => "array",
   :recipes => [ "pecl::install_packages" ]
   
 attribute "pecl/packages_remove",
   :display_name => "PECL remove packages",
-  :description => "The PECL packages to uninstall, e.g. w{Xdebug memcache}",
+  :description => "The PECL packages to uninstall, e.g. %w{Xdebug memcache}",
   :default => nil,
   :type => "array",
   :recipes => [ "pecl::uninstall_packages" ]
