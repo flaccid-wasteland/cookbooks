@@ -24,3 +24,10 @@ attribute "pecl/packages_remove",
   :default => nil,
   :type => "array",
   :recipes => [ "pecl::uninstall_packages" ]
+
+attribute "pecl/system_packages",
+  :display_name => "PECL system packages",
+  :description => "Any array of arbitrary system packages to install that any PECL packages require for build/install, e.g. %w{libmagickwand-dev libgraphicsmagick1-dev}",
+  :default => nil,
+  :type => "array",
+  :recipes => [ "pecl::uninstall_packages" ]
