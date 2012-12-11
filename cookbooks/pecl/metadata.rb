@@ -30,4 +30,4 @@ attribute "pecl/system_packages",
   :description => "Any array of arbitrary system packages to install that any PECL packages require for build/install, e.g. %w{libmagickwand-dev libgraphicsmagick1-dev}",
   :default => nil,
   :type => "array",
-  :recipes => [ "pecl::uninstall_packages" ]
+  :recipes => [ "pecl::install_packages" ]
