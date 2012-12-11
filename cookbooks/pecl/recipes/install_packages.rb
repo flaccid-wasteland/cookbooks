@@ -22,6 +22,12 @@ if node['pecl']['packages'].nil?
   return
 end
 
+if ! node['pecl']['system_packages'].nil?
+  node['pecl']['system_packages'].each { |package|
+    package package
+  }
+end
+
 node['pecl']['packages'].each { |package|
   php_pear package
 }
