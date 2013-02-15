@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "pecl"
+include_recipe "pecl::install"
 
 if node['pecl']['packages_remove'].nil?
   log "No pecl packages specified for removal, skipping."
