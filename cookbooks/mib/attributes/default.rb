@@ -4,8 +4,8 @@ default['mib']['images']['master']['remote_url'] = "http://cloud-images.ubuntu.c
 #default['mib']['images']['master']['remote_url'] = "http://cloud-images.ubuntu.com/releases/precise/release/ubuntu-12.04-server-cloudimg-amd64.tar.gz"
 #default['mib']['images']['master']['remote_url'] = nil
 
+#default['mib']['images']['master']['file'] = nil
 default['mib']['images']['master']['file'] = "precise-server-cloudimg-amd64.img"
-default['mib']['images']['master']['file'] = nil
 
 default['mib']['images']['master']['mount_point'] = "/mnt/mib-master"
 
