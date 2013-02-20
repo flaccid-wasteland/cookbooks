@@ -16,6 +16,30 @@ recipe "boto::install_from_source", "Installs boto from source."
 recipe "boto::s3_fetch_file", "Fetches and stores a file locally from S3."
 recipe "boto::s3_fetch_and_extract_file", "Fetches and extracts a file from S3."
 recipe "boto::s3_store_file", "Stores a local file to an S3 bucket."
+recipe "boto::ebs_create_snapshot", "Creates an EBS snapshot from a given EBS volume ID."
+
+attribute "boto/ebs/volume/id",
+  :display_name => "boto EBS volume ID",
+  :description => "The EBS volume ID to use for operations such as backup and restore.",
+  :default => nil,
+  :required => "required",
+  :recipes => [ "boto::ebs_create_snapshot" ]
+
+attribute "boto/ec2/region/endpoint",
+  :display_name => "boto EC2 region endpoint",
+  :description => "The EC2 region endpoint used for operations.",
+  :default => "us-east-1.ec2.amazonaws.com",
+  :required => "recommended",
+  :choice => [ 'us-east-1.ec2.amazonaws.com', 'us-west-1.ec2.amazonaws.com', 'eu-west-1.ec2.amazonaws.com', 'ap-southeast-1.ec2.amazonaws.com' ],
+  :recipes => [ "boto::default", "boto::ebs_create_snapshot" ]
+
+attribute "boto/ec2/region/name",
+  :display_name => "boto EC2 region name",
+  :description => "The EC2 region used for operations.",
+  :default => "us-east-1",
+  :required => "recommended",
+  :choice => [ 'us-east-1', 'us-west-1', 'eu-west-1', 'ap-southeast-1' ],
+  :recipes => [ "boto::default", "boto::ebs_create_snapshot" ]
 
 attribute "boto/install_method",
   :display_name => "boto Install Method",
