@@ -17,6 +17,7 @@ recipe "boto::s3_fetch_file", "Fetches and stores a file locally from S3."
 recipe "boto::s3_fetch_and_extract_file", "Fetches and extracts a file from S3."
 recipe "boto::s3_store_file", "Stores a local file to an S3 bucket."
 recipe "boto::ebs_create_snapshot", "Creates an EBS snapshot from a given EBS volume ID."
+recipe "boto::ebs_restore_snapshot", "Restores an EBS snapshot from a given EBS volume ID."
 
 attribute "boto/ebs/volume/id",
   :display_name => "boto EBS volume ID",
@@ -24,6 +25,20 @@ attribute "boto/ebs/volume/id",
   :default => nil,
   :required => "required",
   :recipes => [ "boto::ebs_create_snapshot" ]
+
+attribute "boto/ebs/volume/size",
+  :display_name => "boto EBS volume size",
+  :description => "The EBS volume size to use for operations such as backup and restore.",
+  :default => 1,
+  :required => "required",
+  :recipes => [ "boto::ebs_create_snapshot" ]
+  
+attribute "boto/ebs/snapshot/id",
+  :display_name => "boto EBS snapshot ID",
+  :description => "The EBS snapshot ID to use for operations such as backup and restore.",
+  :default => nil,
+  :required => "required",
+  :recipes => [ "boto::ebs_restore_snapshot" ]
 
 attribute "boto/ec2/region/endpoint",
   :display_name => "boto EC2 region endpoint",
