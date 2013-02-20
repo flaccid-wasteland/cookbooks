@@ -26,6 +26,9 @@ import sys
 
 from boto.ec2.connection import EC2Connection
 from boto.ec2.regioninfo import RegionInfo
+from boto.ec2.snapshot import Snapshot
+from boto.ec2.snapshot import SnapshotAttribute
+
 from datetime import datetime
 
 region = RegionInfo(endpoint='#{node['boto']['ec2']['region']['endpoint']}', name='#{node['boto']['ec2']['region']['name']}')
