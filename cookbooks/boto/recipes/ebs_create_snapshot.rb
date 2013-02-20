@@ -50,6 +50,6 @@ snapshot.add_tag('date', datetime.today().isoformat(' '))
 #snapshot.add_tag('order', count)
 #snapshot.add_tag('kind', kind)
 #log.info('Snapshot of %s on %s at %s' % (volume.attach_data.device, hostname, timestamp))
-print 'EBS snapshot created: ' + snapshot + '.'
+#print 'EBS snapshot created: ' + snapshot + '.'
   EOH
 end
