@@ -37,7 +37,7 @@ print 'Creating EBS snapshot from ' + "%s" % repr(volume)
 """
 Take an EBS snapshot of the specified volume by vol-id
 """
-snapshot_description = 'Created on ' + datetime.today().isoformat(' ') + 'by boto Toolbox.'
+snapshot_description = 'Created on ' + datetime.today().isoformat(' ') + ' by boto Toolbox.'
 snapshot = connection.create_snapshot("#{node['boto']['ebs']['volume']['id']}", snapshot_description)
 
 snapshot.add_tag('date', datetime.today().isoformat(' '))
