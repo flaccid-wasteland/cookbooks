@@ -17,31 +17,39 @@
 
 include_recipe "boto"
 
-interpreter = 'python'
-interpreter = '/usr/bin/python2' unless ! platform?('arch')
-
 script "create_ebs_snapshot" do
-  interpreter "#{interpreter}"
+  interpreter node['boto']['python']['interpreter']
   user "root"
   cwd "/tmp"
   code <<-EOH
-connection = EC2Connection()
-timestamp = get_timestamp()
+import sys
 
-#volume = get_all_volumes(#{node['boto']['ebs']['volume']['id']})
+from boto.ec2.connection import EC2Connection
+from boto.ec2.regioninfo import RegionInfo
+from datetime import datetime
+
+region = RegionInfo(endpoint='#{node['boto']['ec2']['region']['endpoint']}', name='#{node['boto']['ec2']['region']['name']}')
+connection = EC2Connection(region=region)
+
+volume = connection.get_all_volumes('#{node['boto']['ebs']['volume']['id']}')
+print 'Creating EBS snapshot from ' + "%s" % repr(volume) 
 
 """
 Take an EBS snapshot of the specified volume by vol-id
 """
-snapshot = connection.create_snapshot("#{node['boto']['ebs']['volume']['id']}", desc)
-#snapshot.add_tag('date', timestamp)
+snapshot_description = 'Created on ' + datetime.today().isoformat(' ') + 'by boto Toolbox.'
+snapshot = connection.create_snapshot("#{node['boto']['ebs']['volume']['id']}", snapshot_description)
+
+snapshot.add_tag('date', datetime.today().isoformat(' '))
+
+# TODO tags
 #snapshot.add_tag('device', volume.attach_data.device)
 #snapshot.add_tag('instance_id', m['instance-id'])
 #snapshot.add_tag('application', application)
 #snapshot.add_tag('Name', name)
 #snapshot.add_tag('order', count)
 #snapshot.add_tag('kind', kind)
-
 #log.info('Snapshot of %s on %s at %s' % (volume.attach_data.device, hostname, timestamp))
+print 'EBS snapshot created: ' + snapshot + '.'
   EOH
 end
