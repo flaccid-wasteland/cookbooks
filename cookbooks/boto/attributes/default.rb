@@ -29,7 +29,10 @@ default['boto']['s3_fetch_file_destination'] = nil
 
 # ebs specific operational attributes
 default['boto']['ebs']['volume']['id'] = nil
+default['boto']['ebs']['volume']['size'] = 1
+default['boto']['ebs']['snapshot']['id'] = nil
 
 # aws region defaults
 default['boto']['ec2']['region']['endpoint'] = 'us-east-1.ec2.amazonaws.com'
 default['boto']['ec2']['region']['name'] = 'us-east-1'
+default['boto']['ec2']['availability_zone'] = 'us-east-1a'
