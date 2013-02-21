@@ -22,21 +22,19 @@ recipe "boto::ebs_restore_snapshot", "Restores an EBS snapshot from a given EBS 
 attribute "boto/ebs/volume/id",
   :display_name => "boto EBS volume ID",
   :description => "The EBS volume ID to use for operations such as backup and restore.",
-  :default => nil,
   :required => "required",
   :recipes => [ "boto::ebs_create_snapshot" ]
 
 attribute "boto/ebs/volume/size",
   :display_name => "boto EBS volume size",
   :description => "The EBS volume size to use for operations such as backup and restore.",
-  :default => 1,
+  :default => "1",
   :required => "required",
   :recipes => [ "boto::ebs_create_snapshot" ]
   
 attribute "boto/ebs/snapshot/id",
   :display_name => "boto EBS snapshot ID",
   :description => "The EBS snapshot ID to use for operations such as backup and restore.",
-  :default => nil,
   :required => "required",
   :recipes => [ "boto::ebs_restore_snapshot" ]
 
