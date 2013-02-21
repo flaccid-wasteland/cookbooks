@@ -29,7 +29,7 @@ attribute "boto/ebs/volume/size",
   :display_name => "boto EBS volume size",
   :description => "The EBS volume size to use for operations such as backup and restore.",
   :default => "1",
-  :required => "required",
+  :required => "recommended",
   :recipes => [ "boto::ebs_create_snapshot" ]
   
 attribute "boto/ebs/snapshot/id",
