@@ -30,7 +30,7 @@ attribute "boto/ebs/volume/size",
   :description => "The EBS volume size to use for operations such as backup and restore.",
   :default => "1",
   :required => "recommended",
-  :recipes => [ "boto::ebs_create_snapshot" ]
+  :recipes => [ "boto::ebs_create_snapshot", "boto::ebs_restore_snapshot" ]
   
 attribute "boto/ebs/snapshot/id",
   :display_name => "boto EBS snapshot ID",
@@ -44,7 +44,7 @@ attribute "boto/ec2/region/endpoint",
   :default => "us-east-1.ec2.amazonaws.com",
   :required => "recommended",
   :choice => [ 'us-east-1.ec2.amazonaws.com', 'us-west-1.ec2.amazonaws.com', 'eu-west-1.ec2.amazonaws.com', 'ap-southeast-1.ec2.amazonaws.com' ],
-  :recipes => [ "boto::default", "boto::ebs_create_snapshot" ]
+  :recipes => [ "boto::default", "boto::ebs_create_snapshot", "boto::ebs_restore_snapshot" ]
 
 attribute "boto/ec2/region/name",
   :display_name => "boto EC2 region name",
@@ -52,7 +52,15 @@ attribute "boto/ec2/region/name",
   :default => "us-east-1",
   :required => "recommended",
   :choice => [ 'us-east-1', 'us-west-1', 'eu-west-1', 'ap-southeast-1' ],
-  :recipes => [ "boto::default", "boto::ebs_create_snapshot" ]
+  :recipes => [ "boto::default", "boto::ebs_create_snapshot", "boto::ebs_restore_snapshot" ]
+
+attribute "boto/ec2/availability_zone",
+  :display_name => "boto EC2 availability zone",
+  :description => "The EC2 availability zone used for operations.",
+  :default => "us-east-1a",
+  :required => "recommended",
+  :choice => [ 'us-east-1a', 'us-west-1a', 'eu-west-1a', 'ap-southeast-1a' ],
+  :recipes => [ "boto::default", "boto::ebs_restore_snapshot" ]
 
 attribute "boto/install_method",
   :display_name => "boto Install Method",
