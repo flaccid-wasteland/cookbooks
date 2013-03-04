@@ -37,6 +37,6 @@ volume = connection.create_volume(#{node['boto']['ebs']['volume']['size']}, '#{n
 
 # attach the volume
 print 'Attaching volume, '+volume.id+'.'
-volume.attach('#{node['boto']['ec2']['instance']['id']}', '#{node['boto']['ec2']['ebs']['block_device']}')
+volume.attach('#{node['boto']['ec2']['instance']['id']}', '#{node['boto']['ebs']['volume']['block_device']}')
   EOH
 end
