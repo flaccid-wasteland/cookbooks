@@ -11,6 +11,7 @@ recipe "boto::configure", "Configures boto."
 recipe "boto::default", "Installs & configures boto."
 recipe "boto::ebs_attach_volume", "Attaches a given EBS volume to an instance."
 recipe "boto::ebs_create_snapshot", "Creates an EBS snapshot from a given EBS volume ID."
+recipe "boto::ebs_detach_volume", "Detaches a given EBS volume from an instance."
 recipe "boto::ebs_mount_volume", "Mounts an EBS volume attached to an instance."
 recipe "boto::ebs_print_attached_volumes", "Prints all EBS volumes attached to an instance."
 recipe "boto::ebs_restore_snapshot", "Restores an EBS snapshot from a given EBS snapshot ID."
@@ -28,7 +29,7 @@ attribute "boto/ec2/instance/id",
   :display_name => "boto EC2 instance ID",
   :description => "The EC2 instance ID to use for operations such as backup and restore (default is the instance ID of the host running the recipe).",
   :required => "optional",
-  :recipes => [ "boto::ebs_create_snapshot", "boto::ebs_attach_volume", "boto::ebs_detach_volume" ]
+  :recipes => [ "boto::ebs_create_snapshot", "boto::ebs_restore_snapshot", "boto::ebs_attach_volume", "boto::ebs_detach_volume" ]
 
 attribute "boto/ebs/volume/id",
   :display_name => "boto EBS volume ID",
@@ -63,7 +64,7 @@ attribute "boto/ec2/region/endpoint",
   :default => "us-east-1.ec2.amazonaws.com",
   :required => "recommended",
   :choice => [ 'us-east-1.ec2.amazonaws.com', 'us-west-1.ec2.amazonaws.com', 'eu-west-1.ec2.amazonaws.com', 'ap-southeast-1.ec2.amazonaws.com' ],
-  :recipes => [ "boto::default", "boto::ebs_create_snapshot", "boto::ebs_restore_snapshot", "boto::ebs_attach_volume", "boto::ebs_detach_volume" ]
+  :recipes => [ "boto::default", "boto::ebs_create_snapshot", "boto::ebs_restore_snapshot", "boto::ebs_attach_volume", "boto::ebs_detach_volume", "boto::ebs_print_attached_volumes" ]
 
 attribute "boto/ec2/region/name",
   :display_name => "boto EC2 region name",
@@ -71,7 +72,7 @@ attribute "boto/ec2/region/name",
   :default => "us-east-1",
   :required => "recommended",
   :choice => [ 'us-east-1', 'us-west-1', 'eu-west-1', 'ap-southeast-1' ],
-  :recipes => [ "boto::default", "boto::ebs_create_snapshot", "boto::ebs_restore_snapshot", "boto::ebs_attach_volume", "boto::ebs_detach_volume" ]
+  :recipes => [ "boto::default", "boto::ebs_create_snapshot", "boto::ebs_restore_snapshot", "boto::ebs_attach_volume", "boto::ebs_detach_volume", "boto::ebs_print_attached_volumes" ]
 
 attribute "boto/ec2/availability_zone",
   :display_name => "boto EC2 availability zone",
