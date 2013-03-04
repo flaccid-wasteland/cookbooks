@@ -59,7 +59,7 @@ attribute "boto/ebs/mount_point",
   :default => "/mnt/ebs",
   :choice => [ "/mnt", "/mnt/ebs", "/media/ebs", "/mnt/ebs-temp" ],
   :required => "recommended",
-  :recipes => [ "boto::ebs_attach_volume", "boto::ebs_detach_volume", "boto::ebs_mount_volume", "boto::ebs_umount_volume" ]   
+  :recipes => [ "boto::ebs_attach_volume", "boto::ebs_detach_volume", "boto::ebs_mount_volume", "boto::ebs_unmount_volume" ]   
 
 attribute "boto/ebs/volume/block_device",
   :display_name => "boto EBS volume block device",
