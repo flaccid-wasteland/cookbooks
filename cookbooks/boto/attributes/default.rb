@@ -1,3 +1,4 @@
+# boto core defaults
 default['boto']['mirror_url_prefix'] = "http://boto.googlecode.com/files/"
 default['boto']['package_extension'] = ".tar.gz"
 default['boto']['package_prefix'] = "boto-"
@@ -22,15 +23,20 @@ default['boto']['aws_secret_access_key'] = nil
 default['boto']['pkg_filename'] = "#{node['boto']['package_prefix']}#{node['boto']['src_version']}#{node['boto']['package_extension']}"
 default['boto']['pkg_url'] = "#{node['boto']['mirror_url_prefix']}#{node['boto']['pkg_filename']}"
 
-# s3 specific   operational attributes
+# s3 specific operational attributes
 default['boto']['s3_fetch_bucket'] = nil
 default['boto']['s3_fetch_file'] = nil
 default['boto']['s3_fetch_file_destination'] = nil
+
+# e2 default attributes
+default['boto']['ec2']['instance']['id'] = nil
 
 # ebs specific operational attributes
 default['boto']['ebs']['volume']['id'] = nil
 default['boto']['ebs']['volume']['size'] = 1
 default['boto']['ebs']['snapshot']['id'] = nil
+default['boto']['ebs']['block_device'] = '/dev/sde'
+default['boto']['ebs']['mount_point'] = '/mnt/ebs'
 
 # aws region defaults
 default['boto']['ec2']['region']['endpoint'] = 'us-east-1.ec2.amazonaws.com'
