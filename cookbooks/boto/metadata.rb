@@ -16,6 +16,7 @@ recipe "boto::ebs_mount_volume", "Mounts an EBS volume attached to an instance."
 recipe "boto::ebs_print_attached_volumes", "Prints all EBS volumes attached to an instance."
 recipe "boto::ebs_restore_snapshot", "Restores an EBS snapshot from a given EBS snapshot ID."
 recipe "boto::ec2_print_instance_id", "Prints the instance ID of the host instance."
+recipe "boto::ebs_unmount_volume", "Un-mounts an EBS volume attached to an instance (only requires the block device)."
 recipe "boto::ec2_print_instance_metadata", "Prints the instance metadata of the host instance in JSON format."
 recipe "boto::install", "Installs boto."
 recipe "boto::install_from_package", "Installs boto by package."
@@ -66,7 +67,7 @@ attribute "boto/ebs/volume/block_device",
   :default => "/dev/sdh",
   :required => "recommended",
   :choice => [ '/dev/sde', '/dev/sdf', '/dev/sdg', '/dev/sdh', '/dev/sdi', '/dev/sdj', '/dev/sdk', '/dev/sdl', '/dev/sdm', '/dev/sdn', '/dev/sdo', '/dev/sdp', '/dev/sdq', '/dev/sdr', '/dev/sds', '/dev/sdt', '/dev/sdu', '/dev/sdv', '/dev/sdw', '/dev/sdx', '/dev/sdy', '/dev/sdz' ],
-  :recipes => [ "boto::ebs_restore_snapshot", "boto::ebs_attach_volume" ]
+  :recipes => [ "boto::ebs_restore_snapshot", "boto::ebs_attach_volume", "boto::mount_volume" ]
   
 attribute "boto/ebs/snapshot/id",
   :display_name => "boto EBS snapshot ID",
