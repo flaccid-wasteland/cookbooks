@@ -116,13 +116,6 @@ attribute "boto/debug",
   :required => "optional",
   :recipes => [ "boto::configure" ]
 
-attribute "boto/debug",
-  :display_name => "boto Debug Level",
-  :description => "The debug level for boto.",
-  :default => '0',
-  :required => "optional",
-  :recipes => [ "boto::configure" ]
-
 attribute "boto/s3_fetch_bucket",
   :display_name => "boto S3 Fetch Bucket",
   :description => "The bucket to use when fetching a file with s3_fetch_file.",
