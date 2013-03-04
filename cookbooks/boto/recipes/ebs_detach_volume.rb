@@ -28,8 +28,8 @@ from boto.ec2.regioninfo import RegionInfo
 region = RegionInfo(endpoint='#{node['boto']['ec2']['region']['endpoint']}', name='#{node['boto']['ec2']['region']['name']}')
 connection = EC2Connection(region=region)
 
-volume = connection.get_all_volumes('#{node['boto']['ec2']['ebs']['volume']['id']}')[0]
+volume = connection.get_all_volumes('#{node['boto']['ebs']['volume']['id']}')[0]
 
-volume.detach('#{node['boto']['ec2']['instance']['id']}', '#{node['boto']['ec2']['ebs']['block_device']}')
+volume.detach('#{node['boto']['ec2']['instance']['id']}', '#{node['boto']['ebs']['block_device']}')
   EOH
 end
