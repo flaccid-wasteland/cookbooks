@@ -1,0 +1,1 @@
+default['chef']['install_method'] = 'omnibus'
