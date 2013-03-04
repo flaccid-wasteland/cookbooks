@@ -17,7 +17,7 @@
 
 include_recipe "boto"
 
-script "detach_ebs_volume" do
+script "detach_ebs_volume_#{node['boto']['ebs']['volume']['id']}" do
   interpreter node['boto']['python']['interpreter']
   user "root"
   cwd "/tmp"
@@ -30,6 +30,7 @@ connection = EC2Connection(region=region)
 
 volume = connection.get_all_volumes('#{node['boto']['ebs']['volume']['id']}')[0]
 
+print 'Detaching volume, #{node['boto']['ebs']['volume']['id']} in region, #{node['boto']['ec2']['region']['name']}.'
 volume.detach(#{node['boto']['ebs']['force_detach']})
   EOH
 end
