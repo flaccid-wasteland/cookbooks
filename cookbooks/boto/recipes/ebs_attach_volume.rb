@@ -17,7 +17,7 @@
 
 include_recipe "boto"
 
-script "attach_ebs_volume" do
+script "attach_ebs_volume_#{node['boto']['ebs']['volume']['id']}" do
   interpreter node['boto']['python']['interpreter']
   user "root"
   cwd "/tmp"
@@ -30,6 +30,7 @@ connection = EC2Connection(region=region)
 
 volume = connection.get_all_volumes('#{node['boto']['ebs']['volume']['id']}')[0]
 
+print 'Attaching volume, #{node['boto']['ebs']['volume']['id']} to #{node['boto']['ec2']['instance']['id']} on #{node['boto']['ebs']['block_device']} in region, #{node['boto']['ec2']['region']['name']}.'
 volume.attach('#{node['boto']['ec2']['instance']['id']}', '#{node['boto']['ebs']['block_device']}')
   EOH
 end
