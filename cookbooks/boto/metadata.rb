@@ -52,6 +52,14 @@ attribute "boto/ebs/volume/force_detach",
   :required => "optional",
   :recipes => [ "boto::ebs_detach_volume" ]  
 
+attribute "boto/ebs/mount_point",
+  :display_name => "boto EBS mount point",
+  :description => "The mount point used when attaching or detaching an EBS volume.",
+  :default => "/mnt/ebs",
+  :choice => [ "/mnt", "/mnt/ebs", "/media/ebs", "/mnt/ebs-temp" ],
+  :required => "recommended",
+  :recipes => [ "boto::ebs_attach_volume", "boto::ebs_detach_volume" ]   
+
 attribute "boto/ebs/volume/block_device",
   :display_name => "boto EBS volume block device",
   :description => "The EBS volume block device to use for operations such as backup and restore.",
