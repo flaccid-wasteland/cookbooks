@@ -30,6 +30,6 @@ connection = EC2Connection(region=region)
 
 volume = connection.get_all_volumes('#{node['boto']['ebs']['volume']['id']}')[0]
 
-volume.detach('#{node['boto']['ec2']['instance']['id']}', '#{node['boto']['ebs']['block_device']}')
+volume.detach(#{node['boto']['ebs']['force_detach']})
   EOH
 end
