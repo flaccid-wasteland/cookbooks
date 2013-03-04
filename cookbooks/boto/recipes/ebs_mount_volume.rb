@@ -18,5 +18,5 @@
 directory "#{node['boto']['ebs']['mount_point']}"
 
 execute "mount_ebs_volume" do
- command "mount #{node['boto']['ebs']['block_device']} #{node['boto']['ebs']['mount_point']}"
+ command "mount #{node['boto']['ebs']['volume']['block_device']} #{node['boto']['ebs']['volume']['mount_point']}"
 end
