@@ -44,6 +44,14 @@ attribute "boto/ebs/volume/size",
   :required => "recommended",
   :recipes => [ "boto::ebs_create_snapshot", "boto::ebs_restore_snapshot" ]
 
+attribute "boto/ebs/volume/force_detach",
+  :display_name => "boto EBS force detach",
+  :description => "Whether to force detachment when detaching an EBS volume from an instance.",
+  :default => "False",
+  :choice => [ "False", "True" ],
+  :required => "optional",
+  :recipes => [ "boto::ebs_detach_volume" ]  
+
 attribute "boto/ebs/volume/block_device",
   :display_name => "boto EBS volume block device",
   :description => "The EBS volume block device to use for operations such as backup and restore.",
