@@ -32,9 +32,11 @@ region = RegionInfo(endpoint='#{node['boto']['ec2']['region']['endpoint']}', nam
 connection = EC2Connection(region=region)
 
 # create a new volume from the snapshot
+print 'Creating volume from '+'#{node['boto']['ebs']['snapshot']['id']}.'
 volume = connection.create_volume(#{node['boto']['ebs']['volume']['size']}, '#{node['boto']['ec2']['availability_zone']}', '#{node['boto']['ebs']['snapshot']['id']}')
 
 # attach the volume
+print 'Attaching volume, '+volume.id+'.'
 volume.attach('#{node['boto']['ec2']['instance']['id']}', '#{node['boto']['ec2']['ebs']['block_device']}')
   EOH
 end
