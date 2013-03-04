@@ -53,7 +53,7 @@ attribute "boto/ebs/volume/force_detach",
   :required => "optional",
   :recipes => [ "boto::ebs_detach_volume" ]  
 
-attribute "boto/ebs/mount_point",
+attribute "boto/ebs/volume/mount_point",
   :display_name => "boto EBS mount point",
   :description => "The mount point used when attaching or detaching an EBS volume.",
   :default => "/mnt/ebs",
