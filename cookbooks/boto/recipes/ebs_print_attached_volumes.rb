@@ -23,9 +23,11 @@ script "restore_ebs_snapshot" do
   cwd "/tmp"
   code <<-EOH
 from boto.ec2.connection import EC2Connection
+from boto.ec2.regioninfo import RegionInfo
 from boto.utils import get_instance_metadata
 
-#instance_id = open('/var/spool/cloud/meta-data/instance-id', 'r').read()
+region = RegionInfo(endpoint='#{node['boto']['ec2']['region']['endpoint']}', name='#{node['boto']['ec2']['region']['name']}')
+connection = EC2Connection(region=region)
 
 conn = EC2Connection()
 m = get_instance_metadata()
