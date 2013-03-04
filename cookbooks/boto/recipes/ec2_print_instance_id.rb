@@ -27,6 +27,6 @@ from boto.utils import get_instance_metadata
 
 connection = EC2Connection()
 metadata = get_instance_metadata()
-print 'This instance's EC2 instance ID: ' + metadata['instance-id']
+print 'ID of this instance: '+metadata['instance-id']
   EOH
 end
