@@ -28,7 +28,8 @@ attribute "chef/install_method",
 attribute "chef/parent",
   :display_name => "Chef parent",
   :description => "The Chef platform this cookbook is used in.",
-  :default => "righscale",
+  :default => "vagrant",
+  :choice => [ "rightscale", "vagrant" ],
   :recipes => [ "chef::default", "chef::configure_chef_solo" ]
   
 attribute "chef/solo/config_file",
