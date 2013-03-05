@@ -20,7 +20,7 @@ directory "/etc/chef"
 template node['chef']['solo']['config_file'] do
   source "solo.rb.erb"
   variables(
-    :cookbook_path => node['chef']['solo']['cookbook_path'].join('", "'),
+    :cookbook_path => "\"#{node['chef']['solo']['cookbook_path'].join('", "')}\"",
     :json_attribs => node['chef']['solo']['json_attribs_file']
   )
 end
