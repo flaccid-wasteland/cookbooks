@@ -15,20 +15,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-p = package 'curl' do
-   action :nothing
-end
-p.run_action(:install)
-
-p = package 'bash' do
-   action :nothing
-end
-p.run_action(:install)
-
 case node['chef']['install_method']
 when "omnibus"
+  p = package "bash" do
+   action :nothing
+  end
+  p.run_action(:install)
+
+  remote_file "#{Chef::Config[:file_cache_path]}/install.sh" do
+    source "https://www.opscode.com/chef/install.sh"
+  end
+
+  file "#{Chef::Config[:file_cache_path]}/install.sh" do
+    owner "root"
+    group "root"
+    mode "0755"
+  end
+  
   execute "install_chef_with_omnibus_installer" do
-    command "curl -L https://www.opscode.com/chef/install.sh -v #{node['chef']['version']} | sudo bash"
+    command "#{Chef::Config[:file_cache_path]}/install.sh -v #{node['chef']['version']}"
+    user "root"
   end
 when "package"
   log "TODO: install by package."
