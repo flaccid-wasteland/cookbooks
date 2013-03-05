@@ -25,6 +25,12 @@ attribute "chef/install_method",
   :recipes => [ "chef::default", "chef::install" ],
   :choice => [ "omnibus", "package" ]
 
+attribute "chef/parent",
+  :display_name => "Chef parent",
+  :description => "The Chef platform this cookbook is used in.",
+  :default => "righscale",
+  :recipes => [ "chef::default" ]
+  
 attribute "chef/solo/config_file",
   :display_name => "Chef Solo configuration file",
   :description => "The Chef Solo configuration file aka solo.rb.",
@@ -43,3 +49,8 @@ attribute "chef/solo/json_attribs_file",
   :description => "The Chef JSON file for use with solo.rb.",
   :default => "/etc/chef/node.json",
   :recipes => [ "chef::configure_chef_solo" ]
+  
+attribute "chef/solo/json",
+  :display_name => "Chef JSON merge",
+  :description => "Chef JSON to use/merge",
+  :recipes => [ "chef::configure_chef_solo", "chef::run_chef_solo" ]
