@@ -31,7 +31,7 @@ attribute "chef/solo/config_file",
 attribute "chef/solo/cookbook_path",
   :display_name => "Chef Solo cookbook path",
   :description => "The Chef Solo cookbook path for use with solo.rb.",
-  :type => 'Array',
+  :type => "array",
   :default => [ "/var/chef/cookbooks", "/var/chef/site-cookbooks" ],
   :recipes => [ "chef::configure_chef_solo" ]
 
@@ -39,4 +39,4 @@ attribute "chef/solo/json_attribs_file",
   :display_name => "Chef JSON file",
   :description => "The Chef JSON file for use with solo.rb.",
   :default => "/etc/chef/node.json",
-  :recipes => [ "chef::configure_chef_solo" ]  
+  :recipes => [ "chef::configure_chef_solo" ]
