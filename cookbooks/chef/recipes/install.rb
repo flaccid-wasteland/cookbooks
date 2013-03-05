@@ -28,7 +28,7 @@ p.run_action(:install)
 case node['chef']['install_method']
 when "omnibus"
   execute "install_chef_with_omnibus_installer" do
-    command "curl -L https://www.opscode.com/chef/install.sh | sudo bash"
+    command "curl -L https://www.opscode.com/chef/install.sh -v #{node['chef']['version']} | sudo bash"
   end
 when "package"
   log "TODO: install by package."
