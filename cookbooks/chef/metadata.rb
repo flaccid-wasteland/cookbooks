@@ -7,6 +7,9 @@ version          "0.1.0"
 
 recipe           "chef::default", "Includes the chef::install recipe."
 recipe           "chef::install", "Installs Chef by the desired install method (default=omnibus)."
+recipe           "chef::configure_chef_solo", "Configures Chef Solo."
+recipe           "chef::rightscale_bootstrap", "Bootstraps and runs Chef Solo on a RightScale Server."
+recipe           "chef::run_chef_solo", "Runs Chef Solo."
 
 attribute "chef/version",
   :display_name => "Chef version",
