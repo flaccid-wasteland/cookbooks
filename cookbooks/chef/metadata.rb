@@ -29,7 +29,7 @@ attribute "chef/parent",
   :display_name => "Chef parent",
   :description => "The Chef platform this cookbook is used in.",
   :default => "righscale",
-  :recipes => [ "chef::default", "chef::configure" ]
+  :recipes => [ "chef::default", "chef::configure_chef_solo" ]
   
 attribute "chef/solo/config_file",
   :display_name => "Chef Solo configuration file",
