@@ -35,7 +35,8 @@ when "omnibus"
   execute "install_chef_with_omnibus_installer" do
     command "#{Chef::Config[:file_cache_path]}/install.sh -v #{node['chef']['version']}"
     user "root"
+    not_if { `/opt/chef/bin/chef-solo -v`.include? node['chef']['version'][0..-3] }
   end
 when "package"
-  log "TODO: install by package."
+  raise "TODO: install by package."
 end
