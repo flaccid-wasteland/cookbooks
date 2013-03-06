@@ -16,23 +16,18 @@
 # limitations under the License.
 
 # install rest_connection build/install deps
-pkg_deps = value_for_platform([ "centos", "redhat", "suse", "fedora" ] => {"default" => [ "libxml2", "libxml2-devel libxslt-devel"]}, [ "ubuntu", "debian" ] => {"default" => [ "libxml2", "libxml2-dev", "libxslt1-dev"]}, "archlinux" => {"default" => [ "libxml2", "libxslt"]})
-
+pkg_deps = value_for_platform(
+  [ "centos", "redhat", "suse", "fedora" ] => {"default" => [ "libxml2", "libxml2-devel libxslt-devel"]},
+  [ "ubuntu", "debian" ] => {"default" => [ "libxml2", "libxml2-dev", "libxslt1-dev"]},
+  "archlinux" => {"default" => [ "libxml2", "libxslt"]}
+)
+pkg_deps.push('make')
 pkg_deps.each { |pkg|
-  package pkg
+  p = package pkg do
+    action :nothing
+  end
+  p.run_action(:install)
 } unless ! pkg_deps
 
-gem_package "rest_connection"
 gem_package "i18n"
-
-# install to system as well if on RightScale
-if defined?(RightScale)
-  gem_package "rest_connection" do
-    gem_binary "/usr/bin/gem"
-  end
-  gem_package "i18n" do
-    gem_binary "/usr/bin/gem"
-  end
-end
-
 gem_package "rest_connection"
