@@ -42,8 +42,8 @@ if node['chef']['dump_attributes'] == 'true'
       attrs = JSON.parse("{}")
       
       # possible attribute methods: run_list, override_attrs, default_attrs, normal_attrs, automatic_attrs
-      attrs = attrs.merge(node.normal_attrs) unless node.normal_attrs.empty?
       attrs = attrs.merge(node.default_attrs) unless node.default_attrs.empty?
+      attrs = attrs.merge(node.normal_attrs) unless node.normal_attrs.empty?
       attrs = attrs.merge(node.override_attrs) unless node.override_attrs.empty?
       
       # see also, https://github.com/opscode/chef-server-webui/pull/7
