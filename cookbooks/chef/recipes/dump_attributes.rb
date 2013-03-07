@@ -18,7 +18,7 @@
 if node['chef']['dump_attributes'] == 'true'
   require 'pathname'
   
-  d = directory Pathname(node['chef']['dump']['file']).dirname do
+  d = directory Pathname(node['chef']['dump']['file']).dirname.to_s do
     action :nothing
   end
   d.run_action(:create)
