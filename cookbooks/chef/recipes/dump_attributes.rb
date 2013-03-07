@@ -45,7 +45,12 @@ if node['chef']['dump_attributes'] == 'true'
       attrs = attrs.merge(node.normal_attrs) unless node.normal_attrs.empty?
       attrs = attrs.merge(node.default_attrs) unless node.default_attrs.empty?
       attrs = attrs.merge(node.override_attrs) unless node.override_attrs.empty?
-      attrs = attrs.merge(JSON.parse("{ \"run_list\": #{node.run_list.expand(node.chef_environment).recipes.to_s.gsub('["', '[ "').gsub('"]', '" ]')} }")) unless ( node.run_list.empty? || node['chef']['dump']['run_list'] != 'true' )
+      
+      # see also, https://github.com/opscode/chef-server-webui/pull/7
+      recipe_json = "{ \"run_list\": \[ "
+      recipe_json << node.run_list.expand(node.chef_environment).recipes.map! { |k| "\"#{k}\"" }.join(",")
+      recipe_json << " \] }"
+      attrs = attrs.merge(JSON.parse(recipe_json))
       
       File.open(node['chef']['dump']['file'], 'w') { |file| file.write(JSON.pretty_generate(attrs)) }
     end
