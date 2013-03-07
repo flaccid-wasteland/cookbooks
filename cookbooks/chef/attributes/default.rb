@@ -4,6 +4,7 @@ default['chef']['parent'] = 'vagrant'
 default['chef']['json'] = nil
 default['chef']['solo']['config_file'] = '/etc/chef/solo.rb'
 default['chef']['solo']['json_attribs_file'] = '/etc/chef/node.json'
+default['chef']['dump_attributes'] = 'true'
 default['chef']['dump']['run_list'] = 'true'
 default['chef']['dump']['file'] = '/etc/chef/attributes.json'
 
