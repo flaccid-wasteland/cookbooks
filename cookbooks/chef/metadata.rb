@@ -6,6 +6,7 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.1.0"
 
 recipe           "chef::default", "Includes the chef::install recipe."
+recipe           "chef::dump_attributes", "Dumps attributes of the current Chef run to a local file."
 recipe           "chef::install", "Installs Chef by the desired install method (default=omnibus)."
 recipe           "chef::configure_chef_solo", "Configures Chef Solo."
 recipe           "chef::rightscale_bootstrap", "Bootstraps and runs Chef Solo on a RightScale Server."
@@ -25,6 +26,20 @@ attribute "chef/install_method",
   :recipes => [ "chef::default", "chef::install" ],
   :choice => [ "omnibus", "package" ]
 
+attribute "chef/dump_attributes",
+  :display_name => "Chef dump attributes",
+  :description => "Whether to dump attributes to a local file.",
+  :default => "false",
+  :recipes => [ "chef::dump_attributes" ],
+  :choice => [ "true", "false" ]
+  
+attribute "chef/dump/run_list",
+  :display_name => "Chef dump run list",
+  :description => "Whether to include the run_list in the attributes dump.",
+  :default => "true",
+  :recipes => [ "chef::dump_attributes" ],
+  :choice => [ "true", "false" ]
+  
 attribute "chef/parent",
   :display_name => "Chef parent",
   :description => "The Chef platform this cookbook is used in.",
