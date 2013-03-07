@@ -15,22 +15,41 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-directory "/etc/chef"
-
-log "Dumping current attributes to #{node['chef']['dump']['file']}."
-
-ruby_block "dump_node_attributes" do
-  block do
-    require 'json'
-
-    attrs = JSON.parse("{}")
-    
-    # possible attribute methods: run_list, override_attrs, default_attrs, normal_attrs, automatic_attrs
-    attrs = attrs.merge(node.normal_attrs) unless node.normal_attrs.empty?
-    attrs = attrs.merge(node.default_attrs) unless node.default_attrs.empty?
-    attrs = attrs.merge(node.override_attrs) unless node.override_attrs.empty?
-    attrs = attrs.merge(node.run_list) unless ( node.override_attrs.empty? || node['chef']['dump']['run_list'] != 'true' )
-    
-    File.open(node['chef']['dump']['file'], 'w') { |file| file.write(JSON.pretty_generate(attrs)) }
+if node['chef']['dump_attributes'] == 'true'
+  require 'pathname'
+  
+  d = directory Pathname(node['chef']['dump']['file']).dirname do
+    action :nothing
   end
+  d.run_action(:create)
+  
+  f = file node['chef']['dump']['file'] do
+    owner "root"
+    mode "0400"
+    action :nothing
+  end
+  f.run_action(:create)
+  
+  l = log "Dumping attributes to #{node['chef']['dump']['file']}." do
+    action :nothing
+  end
+  l.run_action(:write)
+  
+  r = ruby_block "dump_node_attributes" do
+    block do
+      require 'json'
+  
+      attrs = JSON.parse("{}")
+      
+      # possible attribute methods: run_list, override_attrs, default_attrs, normal_attrs, automatic_attrs
+      attrs = attrs.merge(node.normal_attrs) unless node.normal_attrs.empty?
+      attrs = attrs.merge(node.default_attrs) unless node.default_attrs.empty?
+      attrs = attrs.merge(node.override_attrs) unless node.override_attrs.empty?
+      attrs = attrs.merge(JSON.parse("{ \"run_list\": #{node.run_list.expand(node.chef_environment).recipes.to_s.gsub('["', '[ "').gsub('"]', '" ]')} }")) unless ( node.run_list.empty? || node['chef']['dump']['run_list'] != 'true' )
+      
+      File.open(node['chef']['dump']['file'], 'w') { |file| file.write(JSON.pretty_generate(attrs)) }
+    end
+    action :nothing
+  end
+  r.run_action(:create)
 end
