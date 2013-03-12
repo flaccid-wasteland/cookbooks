@@ -1,7 +1,7 @@
 # Cookbook Name:: rightscale
 # Recipe:: dump_attributes
 #
-# Copyright 2012, Chris Fordham
+# Copyright 2013, Chris Fordham
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
