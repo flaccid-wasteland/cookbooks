@@ -96,7 +96,7 @@ attribute "boto/ec2/availability_zone",
   :description => "The EC2 availability zone used for operations.",
   :default => "us-east-1a",
   :required => "recommended",
-  :choice => [ 'us-east-1a', 'us-west-1a', 'eu-west-1a', 'ap-southeast-1a' ],
+  :choice => [ 'us-east-1a', 'us-east-1b', 'us-east-1c', 'us-east-1d', 'us-east-1e', 'us-west-1a', 'us-west-1b', 'us-west-1c', 'eu-west-1a', 'eu-west-1b', 'eu-west-1c', 'ap-southeast-1a', 'ap-southeast-1b', 'ap-southeast-2a', 'ap-southeast-2b' ],
   :recipes => [ "boto::default", "boto::ebs_restore_snapshot" ]
 
 attribute "boto/install_method",
