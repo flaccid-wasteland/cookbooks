@@ -80,7 +80,7 @@ attribute "boto/ec2/region/endpoint",
   :description => "The EC2 region endpoint used for operations.",
   :default => "us-east-1.ec2.amazonaws.com",
   :required => "recommended",
-  :choice => [ 'us-east-1.ec2.amazonaws.com', 'us-west-1.ec2.amazonaws.com', 'eu-west-1.ec2.amazonaws.com', 'ap-southeast-1.ec2.amazonaws.com' ],
+  :choice => [ 'us-east-1.ec2.amazonaws.com', 'us-west-1.ec2.amazonaws.com', 'us-west-2.ec2.amazonaws.com', 'eu-west-1.ec2.amazonaws.com', 'ap-southeast-1.ec2.amazonaws.com', 'ap-southeast-2.ec2.amazonaws.com', 'sa-east-1.ec2.amazonaws.com', 'ap-northeast-1.ec2.amazonaws.com' ],
   :recipes => [ "boto::default", "boto::ebs_create_snapshot", "boto::ebs_restore_snapshot", "boto::ebs_attach_volume", "boto::ebs_detach_volume", "boto::ebs_print_attached_volumes" ]
 
 attribute "boto/ec2/region/name",
@@ -88,7 +88,7 @@ attribute "boto/ec2/region/name",
   :description => "The EC2 region used for operations.",
   :default => "us-east-1",
   :required => "recommended",
-  :choice => [ 'us-east-1', 'us-west-1', 'eu-west-1', 'ap-southeast-1' ],
+  :choice => [ 'us-east-1', 'us-west-1', 'eu-west-1', 'ap-southeast-1', 'sa-east-1', 'ap-northeast-1', 'us-west-2', 'ap-southeast-2' ],
   :recipes => [ "boto::default", "boto::ebs_create_snapshot", "boto::ebs_restore_snapshot", "boto::ebs_attach_volume", "boto::ebs_detach_volume", "boto::ebs_print_attached_volumes" ]
 
 attribute "boto/ec2/availability_zone",
