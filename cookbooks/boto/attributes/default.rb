@@ -7,6 +7,7 @@ default['boto']['src_checksum'] = "5528f3010c42dd0ed7b188a6917295f1"
 default['boto']['install_method'] = 'package'
 default['boto']['num_retries'] = 10
 default['boto']['debug'] = 0
+default['boto']['fsfreeze'] = "true"
 
 # python interpreter
 case node['platform']

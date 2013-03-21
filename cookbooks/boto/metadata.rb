@@ -26,6 +26,14 @@ recipe "boto::s3_fetch_file", "Fetches and stores a file locally from S3."
 recipe "boto::s3_fetch_and_extract_file", "Fetches and extracts a file from S3."
 recipe "boto::s3_store_file", "Stores a local file to an S3 bucket."
 
+attribute "boto/fsfreeze",
+  :display_name => "boto Filesystem Freeze",
+  :description => "Whether to use fsfreeze when creating EBS snapshots.",
+  :required => "recommended",
+  :default => "true",
+  :choice => [ "true", "false" ],
+  :recipes => [ "boto::ebs_create_snapshot" ]
+
 attribute "boto/ec2/instance/id",
   :display_name => "boto EC2 instance ID",
   :description => "The EC2 instance ID to use for operations such as backup and restore (default is the instance ID of the host running the recipe).",
@@ -59,7 +67,7 @@ attribute "boto/ebs/volume/mount_point",
   :default => "/mnt/ebs",
   :choice => [ "/mnt", "/mnt/ebs", "/media/ebs", "/mnt/ebs-temp" ],
   :required => "recommended",
-  :recipes => [ "boto::ebs_attach_volume", "boto::ebs_mount_volume", "boto::ebs_unmount_volume" ]   
+  :recipes => [ "boto::ebs_attach_volume", "boto::ebs_mount_volume", "boto::ebs_unmount_volume", "boto::ebs_create_snapshot" ]   
 
 attribute "boto/ebs/volume/block_device",
   :display_name => "boto EBS volume block device",
