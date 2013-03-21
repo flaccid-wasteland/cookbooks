@@ -17,6 +17,17 @@
 
 include_recipe "boto"
 
+execute "freeze_filesystem_#{node['boto']['ebs']['volume']['mount_point']}" do
+  command "fsfreeze --freeze #{node['boto']['ebs']['volume']['mount_point']}"
+  only_if { node['boto']['fsfreeze'] == true }
+end
+
+execute "unfreeze_filesystem_#{node['boto']['ebs']['volume']['mount_point']}" do
+  command "fsfreeze --unfreeze #{node['boto']['ebs']['volume']['mount_point']}"
+  only_if { node['boto']['fsfreeze'] == true }
+  action :nothing
+end
+
 script "create_ebs_snapshot" do
   interpreter node['boto']['python']['interpreter']
   user "root"
@@ -55,4 +66,5 @@ snapshot.add_tag('date', datetime.today().isoformat(' '))
 #log.info('Snapshot of %s on %s at %s' % (volume.attach_data.device, hostname, timestamp))
 #print 'EBS snapshot created: ' + snapshot + '.'
   EOH
+  notifies :run, "execute[unfreeze_filesystem_#{node['boto']['ebs']['volume']['mount_point']}]", :immediately"
 end
