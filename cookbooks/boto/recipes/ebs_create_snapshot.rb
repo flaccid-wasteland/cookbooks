@@ -32,6 +32,7 @@ script "create_ebs_snapshot" do
   interpreter node['boto']['python']['interpreter']
   user "root"
   cwd "/tmp"
+  notifies :run, "execute[unfreeze_filesystem_#{node['boto']['ebs']['volume']['mount_point']}]", :immediately
   code <<-EOH
 import sys
 
@@ -66,5 +67,4 @@ snapshot.add_tag('date', datetime.today().isoformat(' '))
 #log.info('Snapshot of %s on %s at %s' % (volume.attach_data.device, hostname, timestamp))
 #print 'EBS snapshot created: ' + snapshot + '.'
   EOH
-  notifies :run, "execute[unfreeze_filesystem_#{node['boto']['ebs']['volume']['mount_point']}]", :immediately"
 end
