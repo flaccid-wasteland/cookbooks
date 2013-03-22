@@ -62,7 +62,7 @@ import time
 wait_total = #{node['boto']['ebs']['snapshot']['complete_wait']}
 snapshot = connection.get_all_snapshots(str(new_snap_id))
 while snapshot[0].status != 'completed':
-    print "Snapshot status is '"+snapshot[0].status+"'; waited "+wait_total+' seconds so far, sleep another #{node['boto']['ebs']['snapshot']['complete_wait']} seconds.'
+    print "Snapshot status is '"+snapshot[0].status+"'; waited "+str(wait_total)+' seconds so far, sleep another #{node['boto']['ebs']['snapshot']['complete_wait']} seconds.'
     time.sleep(#{node['boto']['ebs']['snapshot']['complete_wait']})
     wait_total = wait_total + #{node['boto']['ebs']['snapshot']['complete_wait']}
     snapshot = connection.get_all_snapshots(str(new_snap_id))
