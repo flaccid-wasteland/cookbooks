@@ -59,13 +59,13 @@ snapshot.add_tag('date', datetime.today().isoformat(' '))
 
 import time
 wait_total = #{node['boto']['ebs']['snapshot']['complete_wait']}
-snapshot = conn.get_all_snapshots(str(snapshot.id))
+snapshot = connection.get_all_snapshots(str(snapshot.id))
 while snapshot[0].status != 'completed':
     print 'Snapshot status is ' + snapshot[0].status + ', ' \
           'wait ', wait_total, ' secs for the snapshot to complete.'
     time.sleep(#{node['boto']['ebs']['snapshot']['complete_wait']})
     wait_total = wait_total + #{node['boto']['ebs']['snapshot']['complete_wait']}
-    snapshot = conn.get_all_snapshots(str(snapshot.id))
+    snapshot = connection.get_all_snapshots(str(snapshot.id))
 print snapshot
 
 
