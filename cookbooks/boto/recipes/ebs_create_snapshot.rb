@@ -54,8 +54,20 @@ Take an EBS snapshot of the specified volume by vol-id
 """
 snapshot_description = 'Created on ' + datetime.today().isoformat(' ') + ' by boto Toolbox.'
 snapshot = connection.create_snapshot("#{node['boto']['ebs']['volume']['id']}", snapshot_description)
-
+print = 'New snapshot: '+snapshot.id
 snapshot.add_tag('date', datetime.today().isoformat(' '))
+
+import time
+wait_total = #{node['boto']['ebs']['snapshot']['complete_wait']}
+snapshot = conn.get_all_snapshots(str(snapshot.id))
+while snapshot[0].status != 'completed':
+    print 'Snapshot status is ' + snapshot[0].status + ', ' \
+          'wait ', wait_total, ' secs for the snapshot to complete.'
+    time.sleep(#{node['boto']['ebs']['snapshot']['complete_wait']})
+    wait_total = wait_total + #{node['boto']['ebs']['snapshot']['complete_wait']}
+    snapshot = conn.get_all_snapshots(str(snapshot.id))
+print snapshot
+
 
 # TODO tags
 #snapshot.add_tag('device', volume.attach_data.device)
