@@ -83,6 +83,13 @@ attribute "boto/ebs/snapshot/id",
   :required => "required",
   :recipes => [ "boto::ebs_restore_snapshot" ]
 
+attribute "boto/ebs/snapshot/complete_wait",
+  :display_name => "boto EBS snapshot complete wait",
+  :description => "The interval time in seconds to wait for an EBS snapshot to complete.",
+  :required => "optional",
+  :default => "5",
+  :recipes => [ "boto::ebs_create_snapshot" ]
+  
 attribute "boto/ec2/region/endpoint",
   :display_name => "boto EC2 region endpoint",
   :description => "The EC2 region endpoint used for operations.",

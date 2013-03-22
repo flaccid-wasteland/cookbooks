@@ -39,6 +39,7 @@ default['boto']['ebs']['volume']['block_device'] = '/dev/sde'
 default['boto']['ebs']['volume']['mount_point'] = '/mnt/ebs'
 default['boto']['ebs']['volume']['force_detach'] = 'False'
 default['boto']['ebs']['snapshot']['id'] = nil
+default['boto']['ebs']['snapshot']['complete_wait'] = 5
 
 # aws region defaults
 default['boto']['ec2']['region']['endpoint'] = 'us-east-1.ec2.amazonaws.com'
