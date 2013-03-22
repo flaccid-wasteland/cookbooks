@@ -54,7 +54,7 @@ Take an EBS snapshot of the specified volume by vol-id
 """
 snapshot_description = 'Created on ' + datetime.today().isoformat(' ') + ' by boto Toolbox.'
 snapshot = connection.create_snapshot("#{node['boto']['ebs']['volume']['id']}", snapshot_description)
-print = 'New snapshot: '+snapshot.id
+print 'New snapshot: '+snapshot.id
 snapshot.add_tag('date', datetime.today().isoformat(' '))
 
 import time
