@@ -1,4 +1,4 @@
-default['php_app']['name'] = 'my_php_application'
+default['php_app']['name'] = 'rs_phpmysql_testapp'
 default['php_app']['path'] = '/var/www'
 default['php_app']['system_user'] = 'root'
 default['php_app']['system_group'] = 'root'
