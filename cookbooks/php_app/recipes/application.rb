@@ -25,9 +25,15 @@ application "#{node['php_app']['name']}" do
   revision node['php_app']['revision']
   
   packages node['php_app']['packages']
-
+  
   php do
-    database_master_role "database_master"
+    database do
+      schema node['php_app']['db']['schema']
+      adapter node['php_app']['db']['adapter']
+      username node['php_app']['db']['username']
+      password node['php_app']['db']['password']
+      host node['php_app']['db']['host']
+    end
     local_settings_file "config.php"
   end
 
