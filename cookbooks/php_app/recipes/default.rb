@@ -17,6 +17,6 @@
 
 # version control helpers
 include_recipe "git"
-include_recipe "subversion" unless node['mediawiki_application']['repository_url'].include? '.git'
+include_recipe "subversion" unless node['php_app']['repository_url'].include? '.git'
 
 include_recipe "php_app::application"
