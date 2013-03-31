@@ -17,5 +17,5 @@ default['php_app']['db']['password'] = nil
 default['php_app']['initialize_database'] = 'no'       # initialize the database with base tables
 
 default['php_app']['php']['pear_packages'] = [ "mysql" ]
-default['php_app']['php']['local_settings_file'] = 'LocalSettings.php'
-default['php_app']['php']['settings_template'] = 'LocalSettings.php.erb'
+default['php_app']['php']['local_settings_file'] = 'config/db.php'
+default['php_app']['php']['settings_template'] = 'db.php.erb'
