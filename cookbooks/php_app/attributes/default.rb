@@ -10,7 +10,7 @@ default['php_app']['packages'] = nil
 
 default['php_app']['db']['host'] = 'localhost'
 default['php_app']['db']['adapter'] = 'mysql'
-default['php_app']['db']['schema'] = 'phptest'
+default['php_app']['db']['schema'] = 'world'
 default['php_app']['db']['username'] = 'root'
 default['php_app']['db']['password'] = nil
 
