@@ -15,4 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# version control helpers
+include_recipe "git"
+include_recipe "subversion" unless node['mediawiki_application']['repository_url'].include? '.git'
+
 include_recipe "php_app::application"
