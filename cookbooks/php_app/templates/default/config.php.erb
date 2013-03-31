@@ -2,10 +2,12 @@
 
 // Database settings
 
-$DBtype       = "<%= @database['adapter'] %>";
-$DBserver     = "<%= @database['host'] %>";
-$DBname       = "<%= @database['schema'] %>";
-$DBuser       = "<%= @database['username'] %>";
-$DBpassword   = "<%= @database['password'] %>";
+$db = array(
+    "adapter" => "<%= @database['adapter'] %>",
+    "host" => "<%= @database['host'] %>",
+    "username" => "<%= @database['username'] %>",
+    "password" => "<%= @database['password'] %>",
+    "schema" => "<%= @database['schema'] %>",
+);
 
 ?>
