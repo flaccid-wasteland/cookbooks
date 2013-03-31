@@ -1,5 +1,5 @@
 # Cookbook Name:: php_app
-# Recipe:: default
+# Recipe:: php_mysql
 #
 # Copyright 2013, Chris Fordham
 #
@@ -15,8 +15,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# version control helpers
-include_recipe "git"
-include_recipe "subversion" unless node['php_app']['repository_url'].include? '.git'
-include_recipe "php_app::php_mysql" if node['php_app']['db']['adapter'].include? 'mysql'
-include_recipe "php_app::application"
+case node['platform']
+  when "redhat","centos","scientific","fedora","suse","amazon"
+    package "php-mysql"
+  when "debian","ubuntu"
+    package "php5-mysql"
+    package "libapache2-mod-auth-mysql"
+end
