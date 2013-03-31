@@ -15,6 +15,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# for some reason these worker variables are needed as using the node attributes directly in the database block returns nilClass
+schema   = node['php_app']['db']['schema']
+adapter  = node['php_app']['db']['adapter']
+username = node['php_app']['db']['username']
+password = node['php_app']['db']['password']
+host     = node['php_app']['db']['host']
+
 application "#{node['php_app']['name']}" do
   path node['php_app']['path']
   owner node['php_app']['system_user']
@@ -28,11 +35,11 @@ application "#{node['php_app']['name']}" do
   
   php do
     database do
-      schema node['php_app']['db']['schema']
-      adapter node['php_app']['db']['adapter']
-      username node['php_app']['db']['username']
-      password node['php_app']['db']['password']
-      host node['php_app']['db']['host']
+      schema schema
+      adapter adapter
+      username username
+      password password
+      host host
     end
     local_settings_file "config.php"
   end
