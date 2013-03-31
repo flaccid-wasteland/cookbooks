@@ -19,4 +19,14 @@
 include_recipe "git"
 include_recipe "subversion" unless node['php_app']['repository_url'].include? '.git'
 
+if node['php_app']['adaptor'].include? 'mysql'
+  case node['platform']
+  when "redhat","centos","scientific","fedora","suse","amazon"
+    package "php-mysql"
+  when "debian","ubuntu"
+    package "php5-mysql"
+    package "libapache2-mod-auth-mysql"
+  end
+end
+
 include_recipe "php_app::application"
