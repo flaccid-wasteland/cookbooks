@@ -6,6 +6,7 @@ default['php_app']['repository_url'] = "git://github.com/rs-services/rs_phpmysql
 default['php_app']['revision'] = 'master'
 default['php_app']['deploy_action'] = 'deploy'
 default['php_app']['webapp_template'] = "web_app_basic.conf.erb"
+default['php_app']['packages'] = nil
 
 default['php_app']['db']['host'] = 'localhost'
 default['php_app']['db']['adapter'] = 'mysql'
