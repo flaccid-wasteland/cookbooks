@@ -41,7 +41,7 @@ application "#{node['php_app']['name']}" do
       password password
       host host
     end
-    local_settings_file "config.php"
+    local_settings_file node['php_app']['php']['local_settings_file']
   end
 
   mod_php_apache2 "mod_php_apache2_#{node['php_app']['name']}" do
