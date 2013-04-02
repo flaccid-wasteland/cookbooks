@@ -15,7 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# for some reason these worker variables are needed as using the node attributes directly in the database block returns nilClass
+# namespacing design issue. variables are needed as using the node attributes directly in the database block returns nilClass (coderanger notified, OptionsCollector to be updated)
+# can also be fixed by "db = node['mydbinfo']" (just has to not be a method call)
 schema   = node['php_app']['db']['schema']
 adapter  = node['php_app']['db']['adapter']
 username = node['php_app']['db']['username']
