@@ -28,5 +28,6 @@ directory node['librarian']['chef']['cookbook_path'] do
 end
 
 execute "fetch_cookbooks" do
+  cwd node['librarian']['chef']['cookbook_path']
   command "librarian-chef install --clean --verbose --path #{node['librarian']['chef']['cookbook_path']}"
 end
