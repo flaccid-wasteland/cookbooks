@@ -16,3 +16,4 @@
 # limitations under the License.
 
 chef_gem "librarian"
+chef_gem "librarian-chef"
