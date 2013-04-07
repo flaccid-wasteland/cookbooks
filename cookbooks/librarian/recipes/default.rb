@@ -17,3 +17,5 @@
 
 chef_gem "librarian"
 chef_gem "librarian-chef"
+
+include_recipe "librarian::deownload_cookbooks"
