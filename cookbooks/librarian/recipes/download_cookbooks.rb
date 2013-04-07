@@ -20,7 +20,7 @@ directory node['librarian']['chef']['cookbook_path'] do
 end
 
 if node['librarian']['chef']['cheffile']
-  remote_file "#{node['librarian']['chef']['cookbook_path']}/Cheffile" do
+  remote_file "/tmp/Cheffile" do
     source node['librarian']['chef']['cheffile']
   end
 else
@@ -28,5 +28,5 @@ else
 end
 
 execute "fetch_cookbooks" do
-  command "cd #{node['librarian']['chef']['cookbook_path']} && librarian-chef install --clean --verbose --path #{node['librarian']['chef']['cookbook_path']}"
+  command "cd /tmp && librarian-chef install --clean --verbose --path #{node['librarian']['chef']['cookbook_path']}"
 end
