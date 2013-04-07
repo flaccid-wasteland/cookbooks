@@ -15,12 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-g = gem_package "dnsruby" do
-  action :nothing
-end
- 
-g.run_action(:install)
-Gem.clear_paths
+chef_gem "dnsruby"
 
 require 'dnsruby'
 
