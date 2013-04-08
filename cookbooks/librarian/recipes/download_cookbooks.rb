@@ -28,5 +28,6 @@ else
 end
 
 execute "fetch_cookbooks" do
-  command "cd /tmp && librarian-chef install --clean --verbose --path #{node['librarian']['chef']['cookbook_path']}"
+  command "librarian-chef install --clean --verbose --path #{node['librarian']['chef']['cookbook_path']}"
+  cwd "/tmp"
 end
