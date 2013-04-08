@@ -25,10 +25,19 @@ template node['chef']['solo']['config_file'] do
   )
 end
 
-template node['chef']['solo']['json_attribs_file'] do
-  source "node.json.erb"
-end
-
 node['chef']['solo']['cookbook_path'].each { |cookbook_path|
   directory cookbook_path
 }
+
+if node['chef']['solo']['json']
+  require 'uri'
+  if node['chef']['solo']['json'] =~ URI::regexp
+    remote_file node['chef']['solo']['json_attribs_file'] do
+      source node['chef']['solo']['json']
+    end
+  else
+    template node['chef']['solo']['json_attribs_file'] do
+      source "node.json.erb"
+    end
+  end
+end
