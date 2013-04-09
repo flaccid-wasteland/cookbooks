@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-execute "run_chef_solo" do
-  command "chef-solo"
+ruby_block "run_chef_solo" do
+  block do
+    system('chef-solo')
+  end
 end
