@@ -28,7 +28,7 @@ else
 end
 
 execute "install_cookbooks_with_librarian" do
-  command "librarian-chef install --verbose --path #{node['librarian']['chef']['cookbook_path']}"
+  command "PATH=$PATH:/usr/local/bin librarian-chef install --verbose --path #{node['librarian']['chef']['cookbook_path']}"
   cwd "/tmp"
   not_if { Dir.entries(node['librarian']['chef']['cookbook_path']).count > 2 }       # this should be improved for idempotency, librarian update sometimes errors out
 end
