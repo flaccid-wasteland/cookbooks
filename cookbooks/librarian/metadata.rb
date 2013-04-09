@@ -31,3 +31,10 @@ attribute "librarian/install_git",
   :required => "optional",
   :choice => [ 'yes', 'no' ],
   :recipes => [ "librarian::default", "librarian::download_cookbooks"]
+  
+attribute "chef/parent",
+  :display_name => "Chef parent",
+  :description => "The Chef platform this cookbook is used in.",
+  :default => "vagrant",
+  :choice => [ "rightscale", "vagrant" ],
+  :recipes => [ "librarian::default", "librarian::download_cookbooks" ]
