@@ -16,11 +16,13 @@
 # limitations under the License.
 
 if node['chef']['parent'] == 'rightscale'
-  system('/opt/rightscale/sandbox/bin/ruby /opt/rightscale/sandbox/bin/gem install librarian librarian-chef')
+  execute "install_librarian_to_system" do
+    command "gem install librarian librarian-chef"
+  end
+else
+  chef_gem "librarian"
+  chef_gem "librarian-chef"
 end
-
-chef_gem "librarian"
-chef_gem "librarian-chef"
 
 include_recipe "git" if node['librarian']['install_git']
 include_recipe "librarian::download_cookbooks"
