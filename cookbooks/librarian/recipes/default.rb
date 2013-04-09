@@ -17,8 +17,9 @@
 
 if node['chef']['parent'] == 'rightscale'
   execute "install_librarian_to_system" do
-    command "gem install librarian librarian-chef"
+    command "gem install librarian librarian-chef --no-rdoc --no-ri"
   end
+  Gem.clear_paths
 else
   chef_gem "librarian"
   chef_gem "librarian-chef"
