@@ -9,6 +9,7 @@ default['chef']['solo']['json'] = false
 default['chef']['dump_attributes'] = 'true'
 default['chef']['dump']['run_list'] = 'true'
 default['chef']['dump']['file'] = '/etc/chef/attributes.json'
+default['chef']['solo']['log_file'] = '/var/log/chef-solo.log'
 
 if node['chef']['parent'] == 'rightscale'
   cache = '/var/cache/rightscale/cookbooks/default'

@@ -15,8 +15,25 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+p = package "coreutils" do
+  action :nothing
+end
+p.run_action(:install)
+
+directory "#{File.dirname(node['chef']['solo']['log_file'])}"
+
+file "#{node['chef']['solo']['log_file']}" do
+  owner "root"
+  group "root"
+  mode "0770"
+end
+
 ruby_block "run_chef_solo" do
   block do
-    system('chef-solo')
+    system("chef-solo | tee #{node['chef']['solo']['log_file']}")
   end
+end
+
+log "print_chef_solo_output" do
+  message "#{File.read(node['chef']['solo']['log_file'])}"
 end
