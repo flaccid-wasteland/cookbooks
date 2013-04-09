@@ -24,7 +24,7 @@ if node['librarian']['chef']['cheffile']
     source node['librarian']['chef']['cheffile']
   end
 else
-  raise "No Cheffile specified!"
+  raise "No Cheffile specified! Please ensure you have provided a Cheffile in the attribute, node/chef/cheffile."
 end
 
 execute "install_cookbooks_with_librarian" do
