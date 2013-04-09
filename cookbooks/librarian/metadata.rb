@@ -11,7 +11,7 @@ depends "git"
 recipe           "librarian::default", "Installs/configures librarian including cookbooks download as a default."
 recipe           "librarian::download_cookbooks", "Downloads cookbooks from the provided Cheffile."
 
-attribute "librarian/cookbook_path",
+attribute "librarian/chef/cookbook_path",
   :display_name => "Librarian cookbooks path",
   :description => "The folder to download/manage cookbooks with librarian-chef.",
   :required => "optional",
@@ -19,7 +19,7 @@ attribute "librarian/cookbook_path",
   :default => "/var/chef/cookbooks",
   :recipes => [ "librarian::default", "librarian::download_cookbooks"]
   
-attribute "librarian/cheffile",
+attribute "librarian/chef/cheffile",
   :display_name => "Librarian Cheffile",
   :description => "The Cheffile to use to download/manage cookbooks with librarian-chef (this can be a remote URL to a Cheffile).",
   :required => "required",
