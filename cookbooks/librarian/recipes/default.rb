@@ -15,6 +15,10 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+if node['chef']['parent'] == 'rightscale'
+  system('/opt/rightscale/sandbox/bin/ruby /opt/rightscale/sandbox/bin/gem install librarian librarian-chef')
+end
+
 chef_gem "librarian"
 chef_gem "librarian-chef"
 
