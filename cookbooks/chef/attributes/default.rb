@@ -10,6 +10,7 @@ default['chef']['dump_attributes'] = 'true'
 default['chef']['dump']['run_list'] = 'true'
 default['chef']['dump']['file'] = '/etc/chef/attributes.json'
 default['chef']['solo']['log_file'] = '/var/log/chef-solo.log'
+default['chef']['solo']['run_list'] = false
 
 if node['chef']['install_method'] == 'omnibus'
   default['chef']['solo']['binary'] = '/opt/chef/bin/chef-solo'
