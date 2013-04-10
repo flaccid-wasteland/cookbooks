@@ -6,6 +6,7 @@ description      'Installs/Configures librarian'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          '0.1.0'
 
+depends "chef"
 depends "git"
 
 recipe           "librarian::default", "Installs/configures librarian including cookbooks download as a default."
@@ -37,4 +38,11 @@ attribute "chef/parent",
   :description => "The Chef platform this cookbook is used in.",
   :default => "vagrant",
   :choice => [ "rightscale", "vagrant" ],
-  :recipes => [ "librarian::default", "librarian::download_cookbooks" ]
+  :recipes => [ "librarian::default", "librarian::install" ]
+  
+attribute "chef/install_method",
+  :display_name => "Chef install method",
+  :description => "The method to install Chef with (omnibus or package).",
+  :default => "omnibus",
+  :recipes => [ "librarian::default", "librarian::install" ],
+  :choice => [ "omnibus", "package" ]
