@@ -20,8 +20,12 @@ if node['chef']['parent'] == 'rightscale'
     command "gem install librarian librarian-chef --no-rdoc --no-ri"
   end
 else
-  gem_package "librarian"
-  gem_package "librarian-chef"
+  gem_package "librarian" do
+    gem_binary node['librarian']['gem_binary']
+  end
+  gem_package "librarian-chef" do
+    gem_binary node['librarian']['gem_binary']
+  end
 end
 
 include_recipe "git" if node['librarian']['install_git']
