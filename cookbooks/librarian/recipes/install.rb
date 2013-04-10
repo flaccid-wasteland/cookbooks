@@ -15,12 +15,18 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-gem_package "librarian" do
-  gem_binary node['librarian']['gem_binary']
-end
-
-gem_package "librarian-chef" do
-  gem_binary node['librarian']['gem_binary']
+if node['chef']['parent'] == 'rightscale'
+  # this is because the rightscale sandbox will not find the librarian-chef executable when installed with gem_package or chef_gem
+  execute "install_librarian_to_system" do
+    command "gem install librarian librarian-chef --no-rdoc --no-ri"
+  end
+else
+  gem_package "librarian" do
+    gem_binary node['librarian']['gem_binary']
+  end
+  gem_package "librarian-chef" do
+    gem_binary node['librarian']['gem_binary']
+  end
 end
 
 include_recipe "git" if node['librarian']['install_git']
