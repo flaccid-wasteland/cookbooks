@@ -1,5 +1,5 @@
 # Cookbook Name:: librarian
-# Recipe:: default
+# Recipe:: install
 #
 # Copyright 2013, Chris Fordham
 #
@@ -15,5 +15,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "librarian::install"
-include_recipe "librarian::download_cookbooks"
+if node['chef']['parent'] == 'rightscale'
+  execute "install_librarian_to_system" do
+    command "gem install librarian librarian-chef --no-rdoc --no-ri"
+  end
+else
+  gem_package "librarian"
+  gem_package "librarian-chef"
+end
+
+include_recipe "git" if node['librarian']['install_git']
