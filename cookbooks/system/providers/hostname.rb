@@ -111,11 +111,11 @@ end
 #  plugin "hostname"
 #end
 
-# manually update node & automatic attributes
+# manually update node & automatic attributes (probably won't do anything heh)
 node.automatic_attrs['hostname'] = `hostname -f`.strip
 node.automatic_attrs['fqdn'] = `hostname -f`.strip
-node['fqdn'] = `hostname -f`.strip
-node['hostname'] = `hostname -f`.strip
+node.set['fqdn'] = `hostname -f`.strip
+node.set['hostname'] = `hostname -f`.strip
 
 #node.save
 
