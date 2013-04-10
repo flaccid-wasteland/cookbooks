@@ -28,12 +28,14 @@ file "#{node['chef']['solo']['log_file']}" do
   mode "0770"
 end
 
+log "print_chef_solo_output" do
+  message "#{File.read(node['chef']['solo']['log_file'])}"
+  action :nothing
+end
+
 ruby_block "run_chef_solo" do
   block do
     system("chef-solo | tee #{node['chef']['solo']['log_file']}")
+    notifies :write, "execute[print_chef_solo_output]", :immediately
   end
-end
-
-log "print_chef_solo_output" do
-  message "#{File.read(node['chef']['solo']['log_file'])}"
 end
