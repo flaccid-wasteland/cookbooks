@@ -20,27 +20,21 @@ p = package "coreutils" do
 end
 p.run_action(:install)
 
-d = directory "#{File.dirname(node['chef']['solo']['log_file'])}" do
-  action :nothing
-end
-d.run_action(:create)
+directory "#{File.dirname(node['chef']['solo']['log_file'])}"
 
-f = file "#{node['chef']['solo']['log_file']}" do
+file "#{node['chef']['solo']['log_file']}" do
   owner "root"
   group "root"
   mode "0770"
-  action :nothing
-end
-f.run_action(:create)
-
-log "print_chef_solo_output" do
-  message "#{File.read(node['chef']['solo']['log_file'])}"
-  action :nothing
 end
 
 ruby_block "run_chef_solo" do
   block do
     system("chef-solo | tee #{node['chef']['solo']['log_file']}")
-    notifies :write, "execute[print_chef_solo_output]", :immediately
   end
+end
+
+log_file_path = Pathname(node['chef']['solo']['log_file'])
+ruby_block "print_chef_solo_output" do
+  block { Chef::Log.info log_file_path.read }
 end
