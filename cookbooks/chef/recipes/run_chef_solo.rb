@@ -20,13 +20,18 @@ p = package "coreutils" do
 end
 p.run_action(:install)
 
-directory "#{File.dirname(node['chef']['solo']['log_file'])}"
+d = directory "#{File.dirname(node['chef']['solo']['log_file'])}" do
+  action :nothing
+end
+d.run_action(:create)
 
-file "#{node['chef']['solo']['log_file']}" do
+f = file "#{node['chef']['solo']['log_file']}" do
   owner "root"
   group "root"
   mode "0770"
+  action :nothing
 end
+f.run_action(:create)
 
 log "print_chef_solo_output" do
   message "#{File.read(node['chef']['solo']['log_file'])}"
