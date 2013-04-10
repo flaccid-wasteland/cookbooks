@@ -11,6 +11,12 @@ default['chef']['dump']['run_list'] = 'true'
 default['chef']['dump']['file'] = '/etc/chef/attributes.json'
 default['chef']['solo']['log_file'] = '/var/log/chef-solo.log'
 
+if node['chef']['install_method'] = 'omnibus'
+  default['chef']['solo']['binary'] = '/opt/chef/bin/chef-solo'
+else
+  default['chef']['solo']['binary'] = 'chef-solo'
+end
+
 if node['chef']['parent'] == 'rightscale'
   cache = '/var/cache/rightscale/cookbooks/default'
   cache_subdirs = Array.new

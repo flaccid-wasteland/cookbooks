@@ -30,7 +30,7 @@ end
 
 ruby_block "run_chef_solo" do
   block do
-    system("chef-solo | tee #{node['chef']['solo']['log_file']}")
+    system("#{node['chef']['solo']['binary']} --config #{node['chef']['solo']['config_file']} --json-attributes #{node['chef']['solo']['json_attribs_file']} | tee #{node['chef']['solo']['log_file']}")
   end
 end
 
