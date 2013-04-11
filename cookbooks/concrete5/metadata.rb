@@ -5,21 +5,24 @@ description      "Installs/Configures concrete5"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.0.1"
 
-recipe "boto::default", "Currently a placeholder only."
-recipe "boto::configure", "Configures Concrete5."
+depends "git"
+
+recipe "concrete5::default", "Installs and configures concrete5."
+recipe "concrete5::configure", "Configures concrete5."
+recipe "concrete5::install", "Installs concrete5"
 
 attribute "concrete5/web_root",
   :display_name => "Concrete5 web root",
   :description => "The Concrete5 install directory/web document root.",
   :required => "recommended",
-  :default => '/var/www'
+  :default => '/var/www',
   :recipes => [ "concrete5::configure" ]
 
 attribute "concrete5/site/name",
   :display_name => "Concrete5 site name",
   :description => "The Concrete5 site name.",
   :required => "recommended",
-  :default => 'Concrete5'
+  :default => 'Concrete5',
   :recipes => [ "concrete5::configure" ]
 
 attribute "concrete5/site/description",
