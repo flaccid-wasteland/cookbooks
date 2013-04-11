@@ -66,7 +66,7 @@ while snapshot[0].status != 'completed':
     time.sleep(#{node['boto']['ebs']['snapshot']['complete_wait']})
     wait_total = wait_total + #{node['boto']['ebs']['snapshot']['complete_wait']}
     snapshot = connection.get_all_snapshots(str(new_snap_id))
-print 'EBS snapshot '+str(snapshot.id)+' complete.'
+print 'EBS snapshot '+str(new_snap_id)+' complete.'
 
 # TODO tags
 #snapshot.add_tag('device', volume.attach_data.device)
