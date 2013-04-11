@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe "git" if node['concrete5']['install']['git']
+
 directory node['concrete5']['install']['source_destination']
 
 if node['concrete5']['install']['source_only']
