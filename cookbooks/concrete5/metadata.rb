@@ -95,5 +95,5 @@ attribute "concrete5/image_upload/crop_size_limit",
   :display_name => "Concrete5 image upload crop size limit",
   :description => "The Concrete5 image upload crop size limit.",
   :required => "recommended",
-  :choice => "5 * 1024 * 1024"
+  :choice => "5 * 1024 * 1024",
   :recipes => [ "concrete5::configure" ]
