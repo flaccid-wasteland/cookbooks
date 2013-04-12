@@ -17,21 +17,9 @@
 
 include_recipe "git" if node['concrete5']['install']['git']
 
-directory node['concrete5']['install']['source_destination']
-
 if node['concrete5']['install']['source_only']
+  directory node['concrete5']['install']['source_destination']
   deploy_revision "#{node['concrete5']['install']['source_destination']}" do
-    repo 'git://github.com/concrete5/concrete5.git'
-    migrate false
-    #purge_before_symlink %w{one two folder/three}
-    #create_dirs_before_symlink []
-    #symlinks(
-    #  "one"   => "one",
-    #  "two"   => "two",
-    #  "three" => "folder/three"
-    #)
-    #before_restart do
-      # some Ruby code
-    #end
+    repo node['concrete5']['install']['source_url']
   end
 end
