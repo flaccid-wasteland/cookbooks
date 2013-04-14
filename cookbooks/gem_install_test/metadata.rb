@@ -18,4 +18,5 @@ attribute "gem_install_test/methods",
   :display_name => "Gem install methods",
   :description => "The install methods to execute with the test, gem_package and/or chef_gem.",
   :default => [ "gem_package", "chef_gem" ],
+  :type => "array",
   :recipes => [ "gem_install_test::default" ]
