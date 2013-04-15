@@ -22,4 +22,6 @@ if node['concrete5']['install']['source_only']
   deploy_revision "#{node['concrete5']['install']['source_destination']}" do
     repo node['concrete5']['install']['source_url']
   end
+else
+  include_recipe "concrete5::application"
 end
