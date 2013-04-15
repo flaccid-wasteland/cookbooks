@@ -36,11 +36,10 @@ application "#{node['concrete5']['site']['name']}" do
   
   php do
     database do
-      schema schema
-      adapter adapter
-      username username
-      password password
-      host host
+      db_schema schema
+      db_user username
+      db_password password
+      db_server host
     end
     local_settings_file node['concrete5']['site']['file']
   end
