@@ -6,6 +6,8 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version          "0.0.1"
 
 depends "git"
+depends "application"
+depends "application_php"
 
 recipe "concrete5::default", "Installs and configures concrete5."
 recipe "concrete5::configure", "Configures concrete5."
