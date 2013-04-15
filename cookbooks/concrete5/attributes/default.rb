@@ -1,7 +1,7 @@
 default['concrete5']['web_root'] = '/var/www'
 
 default['concrete5']['install']['git'] = true
-default['concrete5']['install']['source_only'] = true
+default['concrete5']['install']['source_only'] = false
 default['concrete5']['install']['source_destination'] = '/usr/share/concrete5'
 default['concrete5']['install']['source_url'] = "git://github.com/concrete5/concrete5.git"
 default['concrete5']['install']['deploy_key'] = nil
