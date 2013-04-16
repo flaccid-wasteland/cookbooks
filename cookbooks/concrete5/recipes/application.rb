@@ -21,8 +21,8 @@ schema = node['concrete5']['db']['schema']
 user = node['concrete5']['db']['user']
 password = node['concrete5']['db']['password']
 server = node['concrete5']['db']['server']
-name = default['concrete5']['site']['name']
-description = default['concrete5']['site']['description']
+name = node['concrete5']['site']['name']
+description = node['concrete5']['site']['description']
 password_salt = node['concrete5']['site']['password_salt']
 production_mode = node['concrete5']['site']['production_mode'] = '0'
 admin_group = node['concrete5']['site']['admin']['group'] = 'Administrators'
@@ -48,7 +48,7 @@ application "#{node['concrete5']['site']['name']}" do
       production_mode production_mode
       admin_group admin_group
       cache_library cache_library
-      test_email
+      test_email test_email
       image_upload_crop_size_limit image_upload_crop_size_limit
     end
     database do
