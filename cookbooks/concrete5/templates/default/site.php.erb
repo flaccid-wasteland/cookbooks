@@ -1,8 +1,8 @@
 <?php
-define('DB_SERVER', '<%= db_server %>');
-define('DB_USERNAME', '<%= db_user %>');
-define('DB_PASSWORD', '<%= db_password %>');
-define('DB_DATABASE', '<%= db_schema %>');
+define('DB_SERVER', '<%= @database['server'] %>');
+define('DB_USERNAME', '<%= @database['user'] %>');
+define('DB_PASSWORD', '<%= @database['password'] %>');
+define('DB_DATABASE', '<%= @database['schema'] %>');
 define('PASSWORD_SALT', '<%= password_salt %>');
 define('PRODUCTION_MODE', <%= production_mode %>);
 define('SITE_NAME', '<%= site_name %>');

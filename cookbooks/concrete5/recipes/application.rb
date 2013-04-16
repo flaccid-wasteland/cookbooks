@@ -17,11 +17,10 @@
 
 # namespacing design issue. variables are needed as using the node attributes directly in the database block returns nilClass (coderanger notified, OptionsCollector to be updated)
 # can also be fixed by "db = node['mydbinfo']" (just has to not be a method call)
-schema   = node['concrete5']['db']['schema']
-adapter  = node['concrete5']['db']['adapter']
-username = node['concrete5']['db']['user']
+schema = node['concrete5']['db']['schema']
+user = node['concrete5']['db']['user']
 password = node['concrete5']['db']['password']
-host     = node['concrete5']['db']['server']
+server = node['concrete5']['db']['server']
 
 application "#{node['concrete5']['site']['name']}" do
   path node['concrete5']['web_root']
@@ -36,10 +35,10 @@ application "#{node['concrete5']['site']['name']}" do
   
   php do
     database do
-      db_schema schema
-      db_user username
-      db_password password
-      db_server host
+      schema schema
+      user user
+      password password
+      server server
     end
     local_settings_file node['concrete5']['site']['file']
   end
