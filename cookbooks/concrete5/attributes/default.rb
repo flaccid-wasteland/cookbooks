@@ -10,9 +10,9 @@ default['concrete5']['install']['deploy_key'] = nil
 default['concrete5']['install']['revision'] = 'master'
 default['concrete5']['install']['packages'] = nil
 
+default['concrete5']['site']['file'] = 'config/site.php'
 default['concrete5']['site']['name'] = 'Concrete5'
 default['concrete5']['site']['description'] = 'Concrete5'
-default['concrete5']['site']['file'] = 'config/site.php'
 default['concrete5']['site']['password_salt'] = 'foobartodo'
 default['concrete5']['site']['production_mode'] = '0'
 default['concrete5']['site']['admin']['group'] = 'Administrators'
