@@ -42,7 +42,8 @@ application "#{node['concrete5']['site']['name']}" do
   packages node['concrete5']['install']['packages']
   
   php do
-    site do
+    # there is no OptionsCollector for a settings sub-resource here, this needs to be developed and contributed back to application_php
+    database do
       name name
       password_salt password_salt
       production_mode production_mode
@@ -50,14 +51,13 @@ application "#{node['concrete5']['site']['name']}" do
       cache_library cache_library
       test_email test_email
       image_upload_crop_size_limit image_upload_crop_size_limit
-    end
-    database do
       schema schema
       user user
       password password
       server server
     end
     local_settings_file node['concrete5']['site']['file']
+    settings_template "#{node['concrete5']['site']['file']}.erb"
   end
 
   mod_php_apache2 "mod_php_apache2_#{node['concrete5']['site']['name']}" do
