@@ -1,14 +1,18 @@
 <?php
+
+define('SITE_NAME', '<%= @database['name'] %>');
+define('SITE_DESCRIPTION', '<%= @database['description'] %>');
+
 define('DB_SERVER', '<%= @database['server'] %>');
 define('DB_USERNAME', '<%= @database['user'] %>');
 define('DB_PASSWORD', '<%= @database['password'] %>');
 define('DB_DATABASE', '<%= @database['schema'] %>');
-define('PASSWORD_SALT', '<%= @site['password_salt'] %>');
-define('PRODUCTION_MODE', <%= @site['production_mode'] %>);
-define('SITE_NAME', '<%= @site['name'] %>');
-define('SITE_DESCRIPTION', '<%= @site['description'] %>');
-define('TEST_EMAIL', '<%= @site['test_email'] %>');
-define('ADMIN_GROUP', '<%= @site['admin_group'] %>');
-define('CACHE_LIBRARY', '<%= @site['cache_library'] %>');
 
-define('IMAGE_UPLOAD_CROP_SIZE_LIMIT', <%= @site['image_upload_crop_size_limit'] %>);
+define('PASSWORD_SALT', '<%= @database['password_salt'] %>');
+define('PRODUCTION_MODE', <%= @database['production_mode'] %>);
+define('TEST_EMAIL', '<%= @database['test_email'] %>');
+define('ADMIN_GROUP', '<%= @database['admin_group'] %>');
+define('CACHE_LIBRARY', '<%= @database['cache_library'] %>');
+define('IMAGE_UPLOAD_CROP_SIZE_LIMIT', <%= @database['image_upload_crop_size_limit'] %>);
+
+?>
