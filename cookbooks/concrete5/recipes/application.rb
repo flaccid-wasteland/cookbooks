@@ -57,7 +57,7 @@ application "#{node['concrete5']['site']['name']}" do
       server server
     end
     local_settings_file node['concrete5']['site']['file']
-    settings_template "#{node['concrete5']['site']['file']}.erb"
+    settings_template "site.php.erb"
   end
 
   mod_php_apache2 "mod_php_apache2_#{node['concrete5']['site']['name']}" do
