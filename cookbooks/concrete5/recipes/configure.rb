@@ -27,11 +27,11 @@ template "#{node['concrete5']['web_root']}/config/site.php" do
     :db_user => node['concrete5']['db']['user'],
     :db_password => node['concrete5']['db']['password'],
     :db_schema => node['concrete5']['db']['schema'],
-    :password_salt => node['concrete5']['password_salt'],
-    :production_mode => node['concrete5']['production_mode'],
-    :admin_group => node['concrete5']['admin']['group'],
-    :cache_library => node['concrete5']['cache_library'],
-    :test_email => node['concrete5']['test']['email'],
-    :image_upload_crop_size_limit => node['concrete5']['image_upload']['crop_size_limit']
+    :password_salt => node['concrete5']['site']['password_salt'],
+    :production_mode => node['concrete5']['site']['production_mode'],
+    :admin_group => node['concrete5']['site']['admin']['group'],
+    :cache_library => node['concrete5']['site']['cache_library'],
+    :test_email => node['concrete5']['site']['test']['email'],
+    :image_upload_crop_size_limit => node['concrete5']['site']['image_upload']['crop_size_limit']
   })
 end
