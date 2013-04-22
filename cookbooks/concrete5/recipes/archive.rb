@@ -22,7 +22,7 @@ directory "#{Chef::Config[:file_cache_path]}/concrete5-working"
 
 remote_file "#{Chef::Config[:file_cache_path]}/concrete5-working/concrete5-#{node['concrete5']['install']['version']}.zip" do
   source node['concrete5']['install']['archive_url']
-  checksum default['concrete5']['install']['sha256sum']
+  checksum node['concrete5']['install']['sha256sum']
   backup 1
 end
 
