@@ -19,6 +19,7 @@ package "unzip"
 
 directory "#{Chef::Config[:file_cache_path]}/concrete5-cache"
 directory "#{Chef::Config[:file_cache_path]}/concrete5-working"
+directory node['concrete5']['web_root']
 
 remote_file "#{Chef::Config[:file_cache_path]}/concrete5-working/concrete5-#{node['concrete5']['install']['version']}.zip" do
   source node['concrete5']['install']['archive_url']
@@ -35,12 +36,13 @@ execute "extract_#{Chef::Config[:file_cache_path]}/concrete5-working/concrete5-#
   cwd "#{Chef::Config[:file_cache_path]}/concrete5-working"
 end
 
+# this really does remove everything in the web root
 execute "flush_#{node['concrete5']['web_root']}" do
   command "rm -Rf #{node['concrete5']['web_root']}/*"
 end
 
 execute "move_#{Chef::Config[:file_cache_path]}/concrete5-working/concrete5-#{node['concrete5']['install']['version']}_to_#{node['concrete5']['web_root']}" do
-  command "mv -fv #{Chef::Config[:file_cache_path]}/concrete5-cache/concrete#{node['concrete5']['install']['version']}/* #{node['concrete5']['web_root']}"
+  command "mv -fv #{Chef::Config[:file_cache_path]}/concrete5-cache/concrete#{node['concrete5']['install']['version']}/* #{node['concrete5']['web_root']}/"
 end
 
 include_recipe "concrete5::configure" unless node['concrete5']['install']['source_only']
