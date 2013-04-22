@@ -16,7 +16,7 @@
 # limitations under the License.
 
 template "#{node['concrete5']['web_root']}/config/site.php" do
-  source "site.php.erb"
+  source "site.php.configure.erb"
   mode 0440
   owner "root"
   group "root"
