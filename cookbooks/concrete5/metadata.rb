@@ -42,7 +42,7 @@ attribute "concrete5/db/server",
 attribute "concrete5/db/user",
   :display_name => "Concrete5 database user",
   :description => "The Concrete5 database username.",
-  :required => "required",
+  :required => "recommended",
   :default => "concrete5",
   :recipes => [ "concrete5::configure" ]
 
