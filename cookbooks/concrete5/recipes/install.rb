@@ -15,7 +15,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-case node['concrete5']['install_method']
+case node['concrete5']['install']['method']
   when 'archive'
     include_recipe "concrete5::archive"
   when 'git'
