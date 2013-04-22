@@ -15,13 +15,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "git" if node['concrete5']['install']['git']
-
-if node['concrete5']['install']['source_only']
-  directory node['concrete5']['install']['source_destination']
-  deploy_revision "#{node['concrete5']['install']['source_destination']}" do
-    repo node['concrete5']['install']['source_url']
-  end
-else
-  include_recipe "concrete5::application"
+case node['concrete5']['install_method']
+  when 'archive'
+    include_recipe "concrete5::archive"
+  when 'git'
+    include_recipe "concrete5::git"
+  else
+    raise "No installation method provided!"
 end
