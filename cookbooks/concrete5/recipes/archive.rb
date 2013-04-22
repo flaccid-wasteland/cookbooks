@@ -36,7 +36,7 @@ execute "extract_#{Chef::Config[:file_cache_path]}/concrete5-working/concrete5-#
 end
 
 execute "move_#{Chef::Config[:file_cache_path]}/concrete5-working/concrete5-#{node['concrete5']['install']['version']}_to_#{node['concrete5']['web_root']}" do
-  command "mv -v #{Chef::Config[:file_cache_path]}/concrete5-cache/concrete#{node['concrete5']['install']['version']}/* #{node['concrete5']['web_root']}"
+  command "mv -fv #{Chef::Config[:file_cache_path]}/concrete5-cache/concrete#{node['concrete5']['install']['version']}/* #{node['concrete5']['web_root']}"
 end
 
 include_recipe "concrete5::configure" unless node['concrete5']['install']['source_only']
