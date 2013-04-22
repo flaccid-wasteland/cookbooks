@@ -35,6 +35,10 @@ execute "extract_#{Chef::Config[:file_cache_path]}/concrete5-working/concrete5-#
   cwd "#{Chef::Config[:file_cache_path]}/concrete5-working"
 end
 
+execute "flush_#{node['concrete5']['web_root']}" do
+  command "rm -Rf #{node['concrete5']['web_root']}/*"
+end
+
 execute "move_#{Chef::Config[:file_cache_path]}/concrete5-working/concrete5-#{node['concrete5']['install']['version']}_to_#{node['concrete5']['web_root']}" do
   command "mv -fv #{Chef::Config[:file_cache_path]}/concrete5-cache/concrete#{node['concrete5']['install']['version']}/* #{node['concrete5']['web_root']}"
 end
