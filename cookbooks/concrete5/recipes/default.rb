@@ -16,5 +16,3 @@
 # limitations under the License.
 
 include_recipe "concrete5::install"
-
-include_recipe "concrete5::configure" unless node['concrete5']['install']['source_only']
