@@ -45,13 +45,13 @@ Same, but fetch and extract a zip file from S3 instead:
 
 ### Core Recipes
 
-`boto::default`						Includes the boto::install and boto::configure recipes to setup boto on a node.
-`boto::install`						Installs boto via the method specified by node['boto']['install_method'] (including install of Python by package).
-`boto::configure`					Configures the boto configuration file locally on the node (/etc/boto.cfg).
+ * `boto::default`					Includes the boto::install and boto::configure recipes to setup boto on a node.
+ * `boto::install`					Installs boto via the method specified by node['boto']['install_method'] (including install of Python by package).
+ * `boto::configure`				Configures the boto configuration file locally on the node (/etc/boto.cfg).
 
-`boto::install_from_package`		Installs boto by package only.
-`boto::install_from_pip`			Installs boto via Python PIP.
-`boto::install_from_source`			Installs boto from source.
+ * `boto::install_from_package`		Installs boto by package only.
+ * `boto::install_from_pip`			Installs boto via Python PIP.
+ * `boto::install_from_source`		Installs boto from source.
 
 ### Operational Recipes
 
@@ -59,23 +59,23 @@ These can be used in your run_lists and roles for more 'once-off' type operation
 In the future, LWRPs will be created to effectively deprecate these and will become a matter of convenience only.
 
 ### EBS
-`boto::ebs_attach_volume`			Attaches an EBS volume.
-`boto::ebs_create_snapshot`			Creates an EBS snapshot from an EBS volume.
-`boto::ebs_detach_volume`			Detaches an EBS volume from an EC2 instance.
-`boto::ebs_mount_volume`			Mounts an EBS volume locally on the system.
-`boto::ebs_print_attached_volumes`	Prints the attached volumes to an instance.
-`boto::ebs_restore_snapshot`		Restores an EBS snapshot to a new EBS volume.
-`boto::ebs_unmount_volume`			Unmounts an EBS volume from an EC2 instance.
+ * `boto::ebs_attach_volume`			Attaches an EBS volume.
+ * `boto::ebs_create_snapshot`			Creates an EBS snapshot from an EBS volume.
+ * `boto::ebs_detach_volume`			Detaches an EBS volume from an EC2 instance.
+ * `boto::ebs_mount_volume`				Mounts an EBS volume locally on the system.
+ * `boto::ebs_print_attached_volumes`	Prints the attached volumes to an instance.
+ * `boto::ebs_restore_snapshot`			Restores an EBS snapshot to a new EBS volume.
+ * `boto::ebs_unmount_volume`			Unmounts an EBS volume from an EC2 instance.
 
 ### S3
-`boto::s3_fetch_and_extract_file`	Fetches an archive from an S3 bucket and extracts its contents locally on the system.
-`boto::s3_fetch_file`				Fetches a file from an S3 bucket.
-`boto::s3_list_all_buckets`			Prints all S3 buckets.
-`boto::s3_store_file`				Uploads and stores a file in an S3 bucket.
+ * `boto::s3_fetch_and_extract_file`	Fetches an archive from an S3 bucket and extracts its contents locally on the system.
+ * `boto::s3_fetch_file`				Fetches a file from an S3 bucket.
+ * `boto::s3_list_all_buckets`			Prints all S3 buckets.
+ * `boto::s3_store_file`				Uploads and stores a file in an S3 bucket.
 
 ### EC2
-`boto::ec2_print_instance_id`		Prints the EC2 instance ID of the parent system.
-`boto::ec2_print_instance_metadata`	Prints the instance EC2 metadata of the parent system.
+ * `boto::ec2_print_instance_id`		Prints the EC2 instance ID of the parent system.
+ * `boto::ec2_print_instance_metadata`	Prints the instance EC2 metadata of the parent system.
 
 License and Author
 ==================
