@@ -12,6 +12,25 @@ boto is a Python interface to Amazon Web Services (https://github.com/boto/boto#
 
 ## General Usage
 
+### Attributes
+
+These attributes are set by the cookbook by default:
+
+ * node['boto']['fsfreeze'] - Whether to use fsfreeze when creating EBS snapshots; default is 'true'
+ * node['boto']['ebs']['volume']['size'] - The EBS volume size to use for operations such as backup and restore; default is '1'
+ * node['boto']['ebs']['volume']['force_detach'] - Whether to force detachment when detaching an EBS volume from an instance; default is 'False'
+ * node['boto']['ebs']['volume']['mount_point'] - The mount point used when attaching or detaching an EBS volume; default is '/mnt/ebs'
+ * node['boto']['ebs']['volume']['block_device'] - The EBS volume block device to use for operations such as backup and restore; default is '/dev/sdh'
+ * node['boto']['ebs']['snapshot']['complete_wait'] - The interval time in seconds to wait for an EBS snapshot to complete; default is '5'
+ * node['boto']['ec2']['region']['endpoint'] - The EC2 region endpoint used for operations; default is 'us-east-1.ec2.amazonaws.com'
+ * node['boto']['ec2']['region']['name'] - The EC2 region used for operations; default is 'us-east-1'
+ * node['boto']['ec2']['availability_zone'] - The EC2 availability zone used for operations; default is 'us-east-1a'
+ * node['boto']['install_method'] - The method used to install the boto library; default is 'package'
+ * node['boto']['num_retries'] - The number of times boto retries an action; default is '10'
+ * node['boto']['attribute'] - The debug level for boto; default is '0'
+
+### Runtime
+
 Example node.json to install & configure boto, plus fetch a file from S3:
 
 	{
@@ -41,9 +60,9 @@ Same, but fetch and extract a zip file from S3 instead:
 	  "run_list": [ "recipe[boto::default]", "recipe[boto::s3_fetch_and_extract_file]" ]
 	}
 
-## Recipes
+### Recipes
 
-### Core Recipes
+#### Core Recipes
 
  * `boto::default`					Includes the boto::install and boto::configure recipes to setup boto on a node.
  * `boto::install`					Installs boto via the method specified by node['boto']['install_method'] (including install of Python by package).
@@ -53,12 +72,12 @@ Same, but fetch and extract a zip file from S3 instead:
  * `boto::install_from_pip`			Installs boto via Python PIP.
  * `boto::install_from_source`		Installs boto from source.
 
-### Operational Recipes
+#### Operational Recipes
 
 These can be used in your run_lists and roles for more 'once-off' type operations, or used in Chef runs of their own on an ad-hoc basis.
 In the future, LWRPs will be created to effectively deprecate these and will become a matter of convenience only.
 
-### EBS
+##### EBS
  * `boto::ebs_attach_volume`			Attaches an EBS volume.
  * `boto::ebs_create_snapshot`			Creates an EBS snapshot from an EBS volume.
  * `boto::ebs_detach_volume`			Detaches an EBS volume from an EC2 instance.
@@ -67,13 +86,13 @@ In the future, LWRPs will be created to effectively deprecate these and will bec
  * `boto::ebs_restore_snapshot`			Restores an EBS snapshot to a new EBS volume.
  * `boto::ebs_unmount_volume`			Unmounts an EBS volume from an EC2 instance.
 
-### S3
+##### S3
  * `boto::s3_fetch_and_extract_file`	Fetches an archive from an S3 bucket and extracts its contents locally on the system.
  * `boto::s3_fetch_file`				Fetches a file from an S3 bucket.
  * `boto::s3_list_all_buckets`			Prints all S3 buckets.
  * `boto::s3_store_file`				Uploads and stores a file in an S3 bucket.
 
-### EC2
+##### EC2
  * `boto::ec2_print_instance_id`		Prints the EC2 instance ID of the parent system.
  * `boto::ec2_print_instance_metadata`	Prints the instance EC2 metadata of the parent system.
 
