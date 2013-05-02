@@ -16,18 +16,18 @@ boto is a Python interface to Amazon Web Services (https://github.com/boto/boto#
 
 These attributes are set by the cookbook by default:
 
- * node['boto']['fsfreeze'] - Whether to use fsfreeze when creating EBS snapshots; default is 'true'
- * node['boto']['ebs']['volume']['size'] - The EBS volume size to use for operations such as backup and restore; default is '1'
- * node['boto']['ebs']['volume']['force_detach'] - Whether to force detachment when detaching an EBS volume from an instance; default is 'False'
- * node['boto']['ebs']['volume']['mount_point'] - The mount point used when attaching or detaching an EBS volume; default is '/mnt/ebs'
- * node['boto']['ebs']['volume']['block_device'] - The EBS volume block device to use for operations such as backup and restore; default is '/dev/sdh'
- * node['boto']['ebs']['snapshot']['complete_wait'] - The interval time in seconds to wait for an EBS snapshot to complete; default is '5'
- * node['boto']['ec2']['region']['endpoint'] - The EC2 region endpoint used for operations; default is 'us-east-1.ec2.amazonaws.com'
- * node['boto']['ec2']['region']['name'] - The EC2 region used for operations; default is 'us-east-1'
- * node['boto']['ec2']['availability_zone'] - The EC2 availability zone used for operations; default is 'us-east-1a'
- * node['boto']['install_method'] - The method used to install the boto library; default is 'package'
- * node['boto']['num_retries'] - The number of times boto retries an action; default is '10'
- * node['boto']['attribute'] - The debug level for boto; default is '0'
+ * `node['boto']['fsfreeze']` - Whether to use fsfreeze when creating EBS snapshots; default is 'true'
+ * `node['boto']['ebs']['volume']['size']` - The EBS volume size to use for operations such as backup and restore; default is '1'
+ * `node['boto']['ebs']['volume']['force_detach']` - Whether to force detachment when detaching an EBS volume from an instance; default is 'False'
+ * `node['boto']['ebs']['volume']['mount_point']` - The mount point used when attaching or detaching an EBS volume; default is '/mnt/ebs'
+ * `node['boto']['ebs']['volume']['block_device']` - The EBS volume block device to use for operations such as backup and restore; default is '/dev/sdh'
+ * `node['boto']['ebs']['snapshot']['complete_wait']` - The interval time in seconds to wait for an EBS snapshot to complete; default is '5'
+ * `node['boto']['ec2']['region']['endpoint']` - The EC2 region endpoint used for operations; default is 'us-east-1.ec2.amazonaws.com'
+ * `node['boto']['ec2']['region']['name']` - The EC2 region used for operations; default is 'us-east-1'
+ * `node['boto']['ec2']['availability_zone']` - The EC2 availability zone used for operations; default is 'us-east-1a'
+ * `node['boto']['install_method']` - The method used to install the boto library; default is 'package'
+ * `node['boto']['num_retries']` - The number of times boto retries an action; default is '10'
+ * `node['boto']['attribute']` - The debug level for boto; default is '0'
 
 ### Runtime
 
