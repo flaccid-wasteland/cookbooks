@@ -15,11 +15,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# ensure make is installed in compile time
 p = package "make" do
   action :nothing
 end
 p.run_action(:install)
 
 include_recipe "git"
-
+include_recipe "runit"
 include_recipe "rails_app::application"
