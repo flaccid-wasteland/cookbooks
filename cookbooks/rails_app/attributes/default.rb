@@ -20,7 +20,7 @@ default['rails_app']['http_server'] = 'unicorn'
 default['rails_app']['server_aliases'] = %w{localhost}
 
 default['rails_app']['apache2']['webapp_template']['file'] = 'rails_app.basic.conf.erb'
-default['rails_app']['apache2']['webapp_template']['params'] = { }
+default['rails_app']['apache2']['webapp_template']['params'] = {}
 
 default['rails_app']['unicorn']['listen'] = nil
 default['rails_app']['unicorn']['working_directory'] = nil
