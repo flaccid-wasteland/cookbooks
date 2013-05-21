@@ -1,9 +1,10 @@
 default['rails_app']['name'] = 'rails_app'
 default['rails_app']['path'] = "/usr/local/#{node['rails_app']['name']}"
-default['rails_app']['gems'] = {}
+default['rails_app']['gems'] = []
 default['rails_app']['use_bundler'] = false
 default['rails_app']['owner'] = 'root'
 default['rails_app']['group'] = 'root'
+default['rails_app']['memcached']['enabled'] = false
 
 default['rails_app']['repository']['url'] = 'https://github.com/rightscale/examples'
 default['rails_app']['repository']['deploy_key'] = nil
@@ -16,8 +17,10 @@ default['rails_app']['database']['password'] = nil
 default['rails_app']['database']['master']['role'] = nil
 
 default['rails_app']['http_server'] = 'unicorn'
+default['rails_app']['server_aliases'] = %w{localhost}
 
-default['rails_app']['memcached']['enabled'] = false
+default['rails_app']['apache2']['webapp_template']['file'] = 'rails_app.basic.conf.erb'
+default['rails_app']['apache2']['webapp_template']['params'] = { }
 
 default['rails_app']['unicorn']['listen'] = nil
 default['rails_app']['unicorn']['working_directory'] = nil
