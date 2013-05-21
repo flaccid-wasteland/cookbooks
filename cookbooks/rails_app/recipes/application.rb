@@ -44,7 +44,7 @@ application "#{node['rails_app']['name']}" do
   case node['rails_app']['http_server']
   when "unicorn"
     unicorn do
-      before_fork	node['rails_app']['unicorn']['before_fork']
+      before_fork node['rails_app']['unicorn']['before_fork']
       port node['rails_app']['unicorn']['port']
       preload_app node['rails_app']['unicorn']['preload_app']
       worker_processes node['rails_app']['unicorn']['worker_processes']
@@ -52,6 +52,9 @@ application "#{node['rails_app']['name']}" do
     end
   when "apache2"
     passenger_apache2 do
+      server_aliases node['rails_app']['server_aliases']
+      webapp_template node['rails_app']['apache2']['webapp_template']['file']
+      params node['rails_app']['apache2']['webapp_template']['params']
     end
   end
   
