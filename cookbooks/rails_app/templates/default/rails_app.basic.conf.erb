@@ -1,12 +1,12 @@
 <VirtualHost *:80>
-  DocumentRoot <%= @params[:extra][:document_root] %>
+  DocumentRoot <%= @params[:docroot] %>
 
   RailsBaseURI /
   RailsEnv production
 
   PassengerMaxPoolSize 4
 
-  <Directory <%= @params[:extra][:document_root] %>>
+  <Directory <%= @params[:docroot] %>>
     AllowOverride None
     Order allow,deny
     Allow from all
