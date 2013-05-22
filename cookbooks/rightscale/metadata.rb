@@ -12,6 +12,14 @@ recipe "rightscale::default", "Sets up RightScale Monitoring, installs RightScal
 recipe "rightscale::tools", "Installs RightScale Tools (RubyGem)."
 recipe "rightscale::monitoring", "Sets up and configures RightScale Monitoring (collectd)."
 recipe "rightscale::server_tags", "Sets RightScale Server tags."
+recipe "rightscale::add_tags", "Adds tags to the node."
+
+attribute "rightscale/tags/add",
+  :display_name => "RightScale Tags Add",
+  :description => "An array of RightScale tags to add to the node.",
+  :required => "optional",
+  :type => "array",
+  :recipes => [ "rightscale::add_tags" ]
 
 attribute "rightscale/monitoring/collectd_plugins",
   :display_name => "RightScale Monitoring Plugins",
