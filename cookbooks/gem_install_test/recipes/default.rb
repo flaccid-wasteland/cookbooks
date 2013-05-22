@@ -1,7 +1,7 @@
-# Cookbook Name:: hello_world
+# Cookbook Name:: gem_install_test
 # Recipe:: default
 #
-# Copyright 2011, Chris Fordham
+# Copyright 2013, Chris Fordham
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,4 +15,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-log node['hello_world']['text']
+gem_package node['gem_install_test']['gem'] if node['gem_install_test']['methods'].include? 'gem_package'
+
+chef_gem node['gem_install_test']['gem'] if node['gem_install_test']['methods'].include? 'chef_gem'

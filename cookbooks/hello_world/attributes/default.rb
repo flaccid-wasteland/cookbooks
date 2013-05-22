@@ -1,0 +1,1 @@
+default['hello_world']['text'] = "Hello, world!"

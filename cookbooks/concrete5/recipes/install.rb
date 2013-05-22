@@ -1,7 +1,7 @@
-# Cookbook Name:: hello_world
+# Cookbook Name:: concrete5
 # Recipe:: default
 #
-# Copyright 2011, Chris Fordham
+# Copyright 2013, Chris Fordham
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -15,4 +15,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-log node['hello_world']['text']
+case node['concrete5']['install']['method']
+  when 'archive'
+    include_recipe "concrete5::archive"
+  when 'git'
+    include_recipe "concrete5::git"
+  else
+    raise "No installation method provided!"
+end
