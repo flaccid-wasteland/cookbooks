@@ -19,3 +19,14 @@ end
 new_resource.updated_by_last_action(true)
 
 end # close action :remove
+
+action :list do
+
+execute "rs_tag_list" do
+  command "rs_tag --list"
+  only_if "which rs_tag"
+end
+
+new_resource.updated_by_last_action(true)
+
+end # close action :remove
