@@ -16,7 +16,7 @@
 # limitations under the License.
 
 node['rightscale']['tags']['remove'].each {|tag|
-  rightscale_tag "tag" do
+  rightscale_tag "#{tag}" do
     action :remove
   end
 }

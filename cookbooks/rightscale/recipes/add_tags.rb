@@ -16,5 +16,5 @@
 # limitations under the License.
 
 node['rightscale']['tags']['add'].each {|tag|
-  rightscale_tag "tag"
+  rightscale_tag "#{tag}"
 }
