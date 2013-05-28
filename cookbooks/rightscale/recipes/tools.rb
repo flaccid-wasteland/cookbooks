@@ -1,5 +1,5 @@
 # Cookbook Name:: rightscale
-# Recipe:: install_tools
+# Recipe:: tools
 #
 # Copyright 2012, Chris Fordham
 #
