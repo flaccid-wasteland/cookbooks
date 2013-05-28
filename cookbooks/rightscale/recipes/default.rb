@@ -17,4 +17,4 @@
 
 include_recipe "rightscale::server_tags"
 include_recipe "rightscale::monitoring"
-include_recipe "rightscale::install_tools"
+include_recipe "rightscale::tools"
