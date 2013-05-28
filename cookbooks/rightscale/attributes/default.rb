@@ -4,7 +4,8 @@ default['rightscale']['monitoring']['collectd_plugins'] = [ "cpu", "df", "disk",
 default['rightscale']['instance_uuid'] = false
 default['rightscale']['servers']['sketchy']['hostname'] = nil
 
-default['rightscale']['tags']['add'] = nil
+default['rightscale']['tags']['add'] = []
+default['rightscale']['tags']['remove'] = []
 
 # hack/feature to override node attributes via a json provided in user-data
 if File.exist?('/var/spool/cloud/user-data.rb')
