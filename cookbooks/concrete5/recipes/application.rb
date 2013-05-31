@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe "git" if node['concrete5']['install']['git']
+
 # namespacing design issue. variables are needed as using the node attributes directly in the database block returns nilClass (coderanger notified, OptionsCollector to be updated)
 # can also be fixed by "db = node['mydbinfo']" (just has to not be a method call)
 schema = node['concrete5']['db']['schema']
