@@ -39,7 +39,7 @@ Example node.json to install & configure boto, plus fetch a file from S3:
 	    "aws_access_key_id":"foo",
 	    "aws_secret_access_key":"bar",
 	    "s3_fetch_bucket":"foo_bucket",
-	    "s3_fetch_file":"foo_file.txt",
+	    "s3_fetch_file":"foo_file.txt", 
 	    "s3_fetch_file_destination":"/tmp/foo_file.txt",
 	  },
 	  "run_list": [ "recipe[boto::default]", "recipe[boto::s3_fetch_file]" ]
