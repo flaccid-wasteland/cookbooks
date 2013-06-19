@@ -104,3 +104,10 @@ attribute "system/domain_name",
   :required => "recommended",
   :default => "localdomain",
   :recipes => [ "system::hostname", "system::default" ]
+
+attribute "system/upgrade_packages",
+  :display_name => "Upgrade Packages",
+  :description => "Whether or not the system::upgrade_packages recipe will physically update the system's installed packages (in compile time).",
+  :required => "optional",
+  :default => "true",
+  :recipes => [ "system::upgrade_packages" ]

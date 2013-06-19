@@ -32,4 +32,4 @@ e = execute "upgrade packages" do
   action :nothing
 end
 
-e.run_action(:run)
+e.run_action(:run) if node['system']['upgrade_packages']
