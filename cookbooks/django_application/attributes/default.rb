@@ -13,7 +13,7 @@ default['django_application']['before_deploy'] = nil
 default['django_application']['packages'] = nil
 
 default['django_application']['pip']['packages'] = nil
-default['django_application']['requirements'] = nil
+default['django_application']['requirements'] = 'blank/requirements.txt'
 default['django_application']['settings_template'] = 'local_settings.blank.py.erb'
 default['django_application']['collectstatic'] = false
-default['django_application']['debug'] = false
+default['django_application']['debug'] = false	
