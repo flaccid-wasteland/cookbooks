@@ -3,7 +3,7 @@ default['django_application']['path'] = "/srv/#{node['django_application']['name
 default['django_application']['owner'] = 'nobody'
 default['django_application']['group'] = 'nogroup'
 
-default['django_application']['repository']['url'] = "https://github.com/flaccid/django-blank.git"
+default['django_application']['repository']['url'] = "https://github.com/toast38coza/blank-django.git"
 default['django_application']['repository']['revision'] = 'master'
 
 default['django_application']['migrate'] = false
