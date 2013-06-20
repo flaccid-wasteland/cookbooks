@@ -1,4 +1,4 @@
-default['django_application']['name'] = 'django-blank'
+default['django_application']['name'] = 'blank-django'
 default['django_application']['path'] = "/srv/#{node['django_application']['name']}"
 default['django_application']['owner'] = 'nobody'
 default['django_application']['group'] = 'nogroup'
