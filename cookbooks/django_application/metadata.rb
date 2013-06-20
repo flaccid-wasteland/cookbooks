@@ -44,7 +44,7 @@ attribute "django_application/group",
 attribute "django_application/repository/url",
   :display_name => "Django Application Repository URL",
   :description => "The URL to the repository where the Django application is stored.",
-  :required => "required",
+  :required => "recommended",
   :default => "https://github.com/flaccid/django-blank.git",
   :choice => [ "https://github.com/flaccid/django-blank.git", "https://github.com/toast38coza/blank-django.git", "https://github.com/coderanger/packaginator.git" ],
   :recipes => [ "django_application::default", "django_application::application" ]
