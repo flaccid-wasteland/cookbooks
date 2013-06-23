@@ -15,9 +15,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe "update_package_list"
+
 upgrade_cmd = value_for_platform(
   ["ubuntu","debian"] => {
-    "default" => "export DEBIAN_FRONTEND=noninteractive; apt-get update && apt-get -y upgrade"
+    "default" => "export DEBIAN_FRONTEND=noninteractive; apt-get -y upgrade"
   },
   ["centos","redhat","scientific","fedora","amazon"] => {
     "default" => "yum -y update && yum -y upgrade"
