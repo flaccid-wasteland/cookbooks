@@ -9,12 +9,14 @@ version          "0.0.1"
   supports os
 end
 
+depends "apt"
 depends "cron"
 
 recipe "system::default", "Set the system hostname and timezone."
 recipe "system::timezone", "Sets the system timezone."
 recipe "system::hostname", "Sets the system hostname."
 recipe "system::upgrade_packages", "Upgrades the system's installed packages."
+recipe "system::update_package_list", "Updates the system's list of packages in the package manager's cache."
 
 attribute "system/timezone",
   :display_name => "Timezone",

@@ -1,5 +1,5 @@
 # Cookbook Name:: system
-# Recipe:: default
+# Recipe:: update_package_list
 #
 # Copyright 2012, Chris Fordham
 #
@@ -15,6 +15,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "system::update_package_list"
-include_recipe "system::timezone"
-include_recipe "system::hostname"
+include_recipe "apt" if platform_family?("debian")
