@@ -54,7 +54,7 @@ application "#{node['rails_app']['name']}" do
     passenger_apache2 do
       server_aliases node['rails_app']['server_aliases']
       webapp_template node['rails_app']['apache2']['webapp_template']['file']
-      params node['rails_app']['apache2']['webapp_template']['params']
+      params node['rails_app']['apache2']['webapp_template']['extra_params']
     end
   end
   
