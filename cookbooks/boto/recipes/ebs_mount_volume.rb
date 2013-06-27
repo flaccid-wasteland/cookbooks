@@ -17,6 +17,9 @@
 
 directory "#{node['boto']['ebs']['volume']['mount_point']}"
 
+# currently we test an infinite loop to wait for the block device file to exist, then sleep another 5 seconds before mounting;
+# if this proves to be impractical, a routine should be programmed that gives up after a timeout period.
 execute "mount_ebs_volume" do
- command "mount #{node['boto']['ebs']['volume']['block_device']} #{node['boto']['ebs']['volume']['mount_point']}"
+  command "echo 'Waiting for block device..."
+  command "while [ ! -f #{node['boto']['ebs']['volume']['block_device']} ]; do sleep 1; done; sleep 5 && mount -v #{node['boto']['ebs']['volume']['block_device']} #{node['boto']['ebs']['volume']['mount_point']}"
 end
