@@ -24,7 +24,7 @@ log "echo 'Waiting for block device before mounting..."
 
 execute "mount_ebs_volume" do
   command "sleep 5 && mount -v #{node['boto']['ebs']['volume']['block_device']} #{node['boto']['ebs']['volume']['mount_point']}"
-  action :none
+  action :nothing
 end
 
 execute "wait_for_ebs_volume" do
