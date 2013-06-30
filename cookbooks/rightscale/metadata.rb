@@ -15,6 +15,8 @@ recipe "rightscale::server_tags", "Sets RightScale Server tags."
 recipe "rightscale::add_tags", "Adds tags to the node."
 recipe "rightscale::remove_tags", "Remove tags on the node."
 recipe "rightscale::list_tags", "Lists tags on the node."
+recipe "rightscale::add_sandbox_to_path", "Adds the RightLink sandbox to PATH."
+recipe "rightscale::enforce_path_sanity", "Enforces PATH sanity."
 
 attribute "rightscale/tags/add",
   :display_name => "RightScale Tags Add",
