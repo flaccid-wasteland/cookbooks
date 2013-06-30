@@ -135,10 +135,10 @@ attribute "rails_app/apache2/webapp_template/extra_params",
   :required => "optional",
   :recipes => [ "rails_app::default", "rails_app::application" ]
 
+# cookbook requires type integer
 attribute "rails_app/unicorn/worker_timeout",
   :display_name => "Unicorn worker timeout",
   :description => "Unicorn worker timeout; default is 60",
-  :default => "60",
   :required => "optional",
   :recipes => [ "rails_app::default", "rails_app::application" ]
 
@@ -148,10 +148,10 @@ attribute "rails_app/unicorn/preload_app",
   :required => "optional",
   :recipes => [ "rails_app::default", "rails_app::application" ]
 
+# cookbook requires type integer
 attribute "rails_app/unicorn/worker_processes",
   :display_name => "Unicorn worker processes",
   :description => "Number of worker processes to spawn; default is 4",
-  :default => "4",
   :required => "optional",
   :recipes => [ "rails_app::default", "rails_app::application" ]
 
