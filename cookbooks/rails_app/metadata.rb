@@ -37,6 +37,7 @@ attribute "rails_app/packages",
   :display_name => "Rails Application Packages",
   :description => "An array of additional system packages to install for the application.",
   :required => "optional",
+  :type => "array",
   :recipes => [ "rails_app::default", "rails_app::application" ]
 
 attribute "rails_app/use_bundler",
