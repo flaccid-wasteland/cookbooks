@@ -15,6 +15,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include_recipe "rails_app::default"
+
 application "#{node['rails_app']['name']}" do
   path "#{node['rails_app']['path']}"
 
