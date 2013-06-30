@@ -116,7 +116,6 @@ attribute "rails_app/server_aliases",
   :display_name => "Rails Application Server Aliases",
   :description => "Host aliases to configure with the HTTP server.",
   :type => "array",
-  :choice => [ "localhost" ],
   :required => "recommended",
   :default => [ "localhost" ],
   :recipes => [ "rails_app", "rails_app::application" ]
