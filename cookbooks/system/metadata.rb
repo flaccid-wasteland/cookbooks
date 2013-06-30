@@ -112,4 +112,5 @@ attribute "system/upgrade_packages",
   :description => "Whether or not the system::upgrade_packages recipe will physically update the system's installed packages (in compile time).",
   :required => "optional",
   :default => "true",
+  :choice => [ "true", "false" ],
   :recipes => [ "system::upgrade_packages" ]

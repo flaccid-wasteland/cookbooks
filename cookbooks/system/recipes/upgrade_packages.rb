@@ -34,4 +34,6 @@ e = execute "upgrade packages" do
   action :nothing
 end
 
-e.run_action(:run) if node['system']['upgrade_packages']
+if node['system']['upgrade_packages']
+  e.run_action(:run) unless node['system']['upgrade_packages'] == 'false'     # supports type string if defined through metadata
+end
