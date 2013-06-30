@@ -124,7 +124,6 @@ attribute "rails_app/server_aliases",
 attribute "rails_app/apache2/webapp_template/file",
   :display_name => "Rails Application Apache2 Template",
   :description => "The name of the Chef template to use with apache2.",
-  :choice => [ "rails_app.basic.conf.erb" ],
   :required => "optional",
   :default => "rails_app.basic.conf.erb",
   :recipes => [ "rails_app", "rails_app::application" ]
