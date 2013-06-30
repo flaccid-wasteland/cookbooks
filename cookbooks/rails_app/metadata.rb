@@ -10,7 +10,7 @@ depends "application_ruby"
 depends "git"
 depends "runit"
 
-recipe "rails_app",               "Includes dependencies and sets up a Ruby on Rails application server."
+recipe "rails_app",               "Sets up a Ruby on Rails application server."
 recipe "rails_app::application",  "Sets up a Ruby on Rails application server."
 
 attribute "rails_app/name",
@@ -30,6 +30,12 @@ attribute "rails_app/path",
 attribute "rails_app/gems",
   :display_name => "Rails Application RubyGems",
   :description => "An array of additional gems to install.",
+  :required => "optional",
+  :recipes => [ "rails_app::default", "rails_app::application" ]
+
+attribute "rails_app/packages",
+  :display_name => "Rails Application Packages",
+  :description => "An array of additional system packages to install for the application.",
   :required => "optional",
   :recipes => [ "rails_app::default", "rails_app::application" ]
 
