@@ -251,8 +251,8 @@ attribute "rails_app/unicorn/mode",
   :recipes => [ "rails_app", "rails_app::application" ]
 
 attribute "rails_app/unicorn/copy_on_write",
-  :display_name => "Whether the app should take advantage of REE Copy On Write feature; default is false.",
-  :description => "Unicorn listen; default is nil",
+  :display_name => "Unicorn copy on write",
+  :description => "Whether the app should take advantage of REE Copy On Write feature; default is false.",
   :required => "optional",
   :recipes => [ "rails_app", "rails_app::application" ]
 
