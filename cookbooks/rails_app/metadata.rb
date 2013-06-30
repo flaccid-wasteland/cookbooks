@@ -109,7 +109,8 @@ attribute "rails_app/http_server",
   :display_name => "Rails Application HTTP Server",
   :description => "The HTTP server to use for the rails application.",
   :choice => [ "unicorn", "apache2" ],
-  :required => "optional",
+  :required => "recommended",
+  :default => "unicorn",
   :recipes => [ "rails_app::default", "rails_app::application" ]
 
 attribute "rails_app/server_aliases",
@@ -133,18 +134,6 @@ attribute "rails_app/apache2/webapp_template/extra_params",
   :type => "array",
   :required => "optional",
   :recipes => [ "rails_app::default", "rails_app::application" ]
-  
-attribute "rails_app/unicorn/listen",
-  :display_name => "Unicorn listen",
-  :description => "Unicorn listen; default is nil",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
-
-attribute "rails_app/unicorn/working_directory",
-  :display_name => "Unicorn working directory",
-  :description => "Unicorn working directory; default is nil",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
 
 attribute "rails_app/unicorn/worker_timeout",
   :display_name => "Unicorn worker timeout",
@@ -166,98 +155,123 @@ attribute "rails_app/unicorn/worker_processes",
   :required => "optional",
   :recipes => [ "rails_app::default", "rails_app::application" ]
 
-attribute "rails_app/unicorn/command_line",
-  :display_name => "Unicorn command line",
-  :description => "If set, specifies the unicorn commandline to set in the config file. Useful when sandboxing your unicorn installation",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
-
-attribute "rails_app/unicorn/forked_user",
-  :display_name => "Unicorn forked user",
-  :description => "User to run children as; default is nil.",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
-
-attribute "rails_app/unicorn/forked_group",
-  :display_name => "Unicorn forked group",
-  :description => "Group to run children as. You must specify a forked_user as well to use this attribute; default is nil.",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
-
-attribute "rails_app/unicorn/before_exec",
-  :display_name => "Unicorn before exec.",
-  :description => "Unicorn before exec; default is nil.",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
-
 attribute "rails_app/unicorn/before_fork",
   :display_name => "Unicorn before fork",
   :description => "Unicorn before_fork; default is nil.",
   :required => "optional",
   :recipes => [ "rails_app::default", "rails_app::application" ]
 
-attribute "rails_app/unicorn/after_fork",
-  :display_name => "Unicorn after fork",
-  :description => "Unicorn after fork; default is nil",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
+#attribute "rails_app/unicorn/listen",
+#  :display_name => "Unicorn listen",
+#  :description => "Unicorn listen; default is nil",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
 
-attribute "rails_app/unicorn/listen",
-  :display_name => "Unicorn listen",
-  :description => "Unicorn listen; default is nil",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
+#attribute "rails_app/unicorn/working_directory",
+#  :display_name => "Unicorn working directory",
+#  :description => "Unicorn working directory; default is nil",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
 
-attribute "rails_app/unicorn/pid",
-  :display_name => "Unicorn PID",
-  :description => "Unicorn PID file location; default is nil.",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
+#attribute "rails_app/unicorn/command_line",
+#  :display_name => "Unicorn command line",
+#  :description => "If set, specifies the unicorn commandline to set in the config file. Useful when sandboxing your unicorn installation",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
 
-attribute "rails_app/unicorn/stderr_path",
-  :display_name => "Unicorn stderr path",
-  :description => "Where stderr gets logged; default is nil.",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
+# not yet collected
+#attribute "rails_app/unicorn/forked_user",
+#  :display_name => "Unicorn forked user",
+#  :description => "User to run children as; default is nil.",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
 
-attribute "rails_app/unicorn/stdout_path",
-  :display_name => "Unicorn stdout path",
-  :description => "Where stdout gets logged; default is nil.",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
+# not yet collected
+#attribute "rails_app/unicorn/forked_group",
+#  :display_name => "Unicorn forked group",
+#  :description => "Group to run children as. You must specify a forked_user as well to use this attribute; default is nil.",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
 
-attribute "rails_app/unicorn/notifies",
-  :display_name => "Unicorn notifies",
-  :description => "How to notify another service if specified; default is nil.",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
+# not yet collected
+#attribute "rails_app/unicorn/before_exec",
+#  :display_name => "Unicorn before exec.",
+#  :description => "Unicorn before exec; default is nil.",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
 
-attribute "rails_app/unicorn/owner",
-  :display_name => "Unicorn owner",
-  :description => "Owner of the template; default is nil.",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
+# not yet collected
+#attribute "rails_app/unicorn/after_fork",
+#  :display_name => "Unicorn after fork",
+#  :description => "Unicorn after fork; default is nil",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
 
-attribute "rails_app/unicorn/group",
-  :display_name => "Unicorn group",
-  :description => "Group of the template; default is nil.",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
+# not yet collected
+#attribute "rails_app/unicorn/listen",
+#  :display_name => "Unicorn listen",
+#  :description => "Unicorn listen; default is nil",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
 
-attribute "rails_app/unicorn/mode",
-  :display_name => "Unicorn mode",
-  :description => "Mode of the template; default is nil.",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
+# not yet collected
+#attribute "rails_app/unicorn/pid",
+#  :display_name => "Unicorn PID",
+#  :description => "Unicorn PID file location; default is nil.",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
 
-attribute "rails_app/unicorn/copy_on_write",
-  :display_name => "Unicorn copy on write",
-  :description => "Whether the app should take advantage of REE Copy On Write feature; default is false.",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
+# not yet collected
+#attribute "rails_app/unicorn/stderr_path",
+#  :display_name => "Unicorn stderr path",
+#  :description => "Where stderr gets logged; default is nil.",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
 
-attribute "rails_app/unicorn/enable_stats",
-  :display_name => "Unicorn enable stats",
-  :description => "Whether the app should have GC profiling enabled for instrumentation; default is false.",
-  :required => "optional",
-  :recipes => [ "rails_app::default", "rails_app::application" ]
+# not yet collected
+#attribute "rails_app/unicorn/stdout_path",
+#  :display_name => "Unicorn stdout path",
+#  :description => "Where stdout gets logged; default is nil.",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
+
+# not yet collected
+#attribute "rails_app/unicorn/notifies",
+#  :display_name => "Unicorn notifies",
+#  :description => "How to notify another service if specified; default is nil.",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
+
+# not yet collected
+#attribute "rails_app/unicorn/owner",
+#  :display_name => "Unicorn owner",
+#  :description => "Owner of the template; default is nil.",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
+
+#attribute "rails_app/unicorn/group",
+#  :display_name => "Unicorn group",
+#  :description => "Group of the template; default is nil.",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
+
+# not yet collected
+#attribute "rails_app/unicorn/mode",
+#  :display_name => "Unicorn mode",
+#  :description => "Mode of the template; default is nil.",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
+
+# not yet collected
+#attribute "rails_app/unicorn/copy_on_write",
+#  :display_name => "Unicorn copy on write",
+#  :description => "Whether the app should take advantage of REE Copy On Write feature; default is false.",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
+
+# not yet collected
+#attribute "rails_app/unicorn/enable_stats",
+#  :display_name => "Unicorn enable stats",
+#  :description => "Whether the app should have GC profiling enabled for instrumentation; default is false.",
+#  :required => "optional",
+#  :recipes => [ "rails_app::default", "rails_app::application" ]
