@@ -126,7 +126,7 @@ attribute "rails_app/apache2/webapp_template/file",
   :description => "The name of the Chef template to use with apache2.",
   :choice => [ "rails_app.basic.conf.erb" ],
   :required => "optional",
-  :default => [ "rails_app.basic.conf.erb" ],
+  :default => "rails_app.basic.conf.erb",
   :recipes => [ "rails_app", "rails_app::application" ]
 
 attribute "rails_app/apache2/webapp_template/extra_params",
@@ -134,7 +134,6 @@ attribute "rails_app/apache2/webapp_template/extra_params",
   :description => "Extra parameters for the apache2 template.",
   :type => "array",
   :required => "optional",
-  :default => [ "rails_app.basic.conf.erb" ],
   :recipes => [ "rails_app", "rails_app::application" ]
   
 attribute "rails_app/unicorn/listen",
