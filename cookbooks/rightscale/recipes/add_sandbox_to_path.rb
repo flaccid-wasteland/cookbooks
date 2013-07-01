@@ -20,24 +20,22 @@
 r = ruby_block "add rightlink sandbox to path" do
   block do
 
-    # taken from https://github.com/opscode/chef/blob/master/lib/chef/client.rb
+    # derived from https://github.com/opscode/chef/blob/master/lib/chef/client.rb
     
-    SANDBOX_PATHS = %w[/opt/rightscale/sandbox/bin]
-    
-    def add_sandbox_to_path(env=ENV)
-      if Chef::Config[:enforce_path_sanity] && RUBY_PLATFORM !~ /mswin|mingw32|windows/
-        existing_paths = env["PATH"].split(':')
-        SANDBOX_PATHS.each do |sane_path|
-          unless existing_paths.include?(sane_path)
-            env_path = env["PATH"].dup
-            env_path << ':' unless env["PATH"].empty?
-            env_path << sane_path
-            env["PATH"] = env_path
-          end
+    if RUBY_PLATFORM !~ /mswin|mingw32|windows/
+      SANDBOX_PATHS = %w[/opt/rightscale/sandbox/bin]
+      env=ENV
+      existing_paths = env["PATH"].split(':')
+      SANE_PATHS.each do |sane_path|
+        unless existing_paths.include?(sane_path)
+          env_path = env["PATH"].dup
+          env_path << ':' unless env["PATH"].empty?
+          env_path << sane_path
+          env["PATH"] = env_path
         end
       end
+      ENV['PATH'] = env['PATH']
     end
-    add_sandbox_to_path
   end
   action :nothing
 end

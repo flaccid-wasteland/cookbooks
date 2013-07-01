@@ -19,25 +19,23 @@
 
 r = ruby_block "enforce path sanity" do
   block do
-
-    # taken from https://github.com/opscode/chef/blob/master/lib/chef/client.rb
     
-    SANE_PATHS = %w[/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin]
+     # derived from https://github.com/opscode/chef/blob/master/lib/chef/client.rb
     
-    def enforce_path_sanity(env=ENV)
-      if Chef::Config[:enforce_path_sanity] && RUBY_PLATFORM !~ /mswin|mingw32|windows/
-        existing_paths = env["PATH"].split(':')
-        SANE_PATHS.each do |sane_path|
-          unless existing_paths.include?(sane_path)
-            env_path = env["PATH"].dup
-            env_path << ':' unless env["PATH"].empty?
-            env_path << sane_path
-            env["PATH"] = env_path
-          end
+    if RUBY_PLATFORM !~ /mswin|mingw32|windows/
+      SANE_PATHS = %w[/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin]
+      env=ENV
+      existing_paths = env["PATH"].split(':')
+      SANE_PATHS.each do |sane_path|
+        unless existing_paths.include?(sane_path)
+          env_path = env["PATH"].dup
+          env_path << ':' unless env["PATH"].empty?
+          env_path << sane_path
+          env["PATH"] = env_path
         end
       end
+      ENV['PATH'] = env['PATH']
     end
-    enforce_path_sanity
   end
   action :nothing
 end
