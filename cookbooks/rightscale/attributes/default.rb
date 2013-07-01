@@ -1,3 +1,6 @@
+default['rightscale']['enforce_path_sanity'] = false
+default['rightscale']['add_sandbox_to_path'] = false
+
 default['rightscale']['monitoring']['collectd_plugins'] = [ "cpu", "df", "disk", "load", "memory", "processes", "swap", "users" ]
 
 # these are injected into the right_link run; defaults set for non rightscale nodes

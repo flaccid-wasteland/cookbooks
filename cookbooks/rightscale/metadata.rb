@@ -18,6 +18,18 @@ recipe "rightscale::list_tags", "Lists tags on the node."
 recipe "rightscale::add_sandbox_to_path", "Adds the RightLink sandbox to PATH."
 recipe "rightscale::enforce_path_sanity", "Enforces PATH sanity."
 
+attribute "rightscale/enforce_path_sanity",
+  :display_name => "RightScale Chef Enforce PATH Sanity",
+  :description => "Enforces PATH sanity by modifying ENV['PATH'].",
+  :required => "optional",
+  :recipes => [ "rightscale::add_sandbox_to_path" ]
+
+attribute "rightscale/add_sandbox_to_path",
+  :display_name => "RightScale Chef Add Sandbox to PATH",
+  :description => "Enforces PATH sanity by modify ENV['PATH'].",
+  :required => "optional",
+  :recipes => [ "rightscale::enforce_path_sanity" ]
+
 attribute "rightscale/tags/add",
   :display_name => "RightScale Tags Add",
   :description => "An array of RightScale tags to add to the node.",
