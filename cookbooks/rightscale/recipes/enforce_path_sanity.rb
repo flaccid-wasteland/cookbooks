@@ -24,7 +24,7 @@ r = ruby_block "enforce path sanity" do
     
     if RUBY_PLATFORM !~ /mswin|mingw32|windows/
       SANE_PATHS = %w[/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin]
-      env=ENV
+      env = ENV
       existing_paths = env["PATH"].split(':')
       SANE_PATHS.each do |sane_path|
         unless existing_paths.include?(sane_path)
