@@ -31,6 +31,7 @@ attribute "rails_app/gems",
   :display_name => "Rails Application RubyGems",
   :description => "An array of additional gems to install.",
   :required => "optional",
+  :type => "array",
   :recipes => [ "rails_app::default", "rails_app::application" ]
 
 attribute "rails_app/packages",
