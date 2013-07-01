@@ -22,13 +22,13 @@ attribute "rightscale/enforce_path_sanity",
   :display_name => "RightScale Chef Enforce PATH Sanity",
   :description => "Enforces PATH sanity by modifying ENV['PATH'].",
   :required => "optional",
-  :recipes => [ "rightscale::add_sandbox_to_path" ]
+  :recipes => [ "rightscale::default", "rightscale::add_sandbox_to_path" ]
 
 attribute "rightscale/add_sandbox_to_path",
   :display_name => "RightScale Chef Add Sandbox to PATH",
   :description => "Enforces PATH sanity by modify ENV['PATH'].",
   :required => "optional",
-  :recipes => [ "rightscale::enforce_path_sanity" ]
+  :recipes => [ "rightscale::default", "rightscale::enforce_path_sanity" ]
 
 attribute "rightscale/tags/add",
   :display_name => "RightScale Tags Add",
