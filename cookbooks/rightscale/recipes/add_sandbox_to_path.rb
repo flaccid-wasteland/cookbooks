@@ -24,9 +24,9 @@ r = ruby_block "add rightlink sandbox to path" do
     
     if RUBY_PLATFORM !~ /mswin|mingw32|windows/
       SANDBOX_PATHS = %w[/opt/rightscale/sandbox/bin]
-      env=ENV
+      env = ENV
       existing_paths = env["PATH"].split(':')
-      SANE_PATHS.each do |sane_path|
+      SANDBOX_PATHS.each do |sane_path|
         unless existing_paths.include?(sane_path)
           env_path = env["PATH"].dup
           env_path << ':' unless env["PATH"].empty?
