@@ -17,6 +17,7 @@ recipe "system::timezone", "Sets the system timezone."
 recipe "system::hostname", "Sets the system hostname."
 recipe "system::upgrade_packages", "Upgrades the system's installed packages."
 recipe "system::update_package_list", "Updates the system's list of packages in the package manager's cache."
+recipe "system::install_packages", "Installs packages to the system with it's native package manager."
 
 attribute "system/timezone",
   :display_name => "Timezone",
@@ -114,3 +115,17 @@ attribute "system/upgrade_packages",
   :default => "true",
   :choice => [ "true", "false" ],
   :recipes => [ "system::upgrade_packages" ]
+  
+attribute "system/packages/install",
+  :display_name => "Install Packages",
+  :description => "An array of system packages to install with the package resource in execute phase.",
+  :required => "optional",
+  :type => "array",
+  :recipes => [ "system::install_packages" ]
+
+attribute "system/packages/install_compile_time",
+  :display_name => "Install Packages Compile Phase",
+  :description => "An array of system packages to install with the package resource in compile phase.",
+  :required => "optional",
+  :type => "array",
+  :recipes => [ "system::install_packages" ]
