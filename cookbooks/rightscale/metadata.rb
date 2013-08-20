@@ -17,6 +17,8 @@ recipe "rightscale::remove_tags", "Remove tags on the node."
 recipe "rightscale::list_tags", "Lists tags on the node."
 recipe "rightscale::add_sandbox_to_path", "Adds the RightLink sandbox to PATH."
 recipe "rightscale::enforce_path_sanity", "Enforces PATH sanity."
+recipe "rightscale::standardize_chef_version", "Fix Chef version to standard GNU versioning instead of RightScale fork."
+recipe "rightscale::connect", "Connect the host to RightScale via BlueSkies."
 
 attribute "rightscale/enforce_path_sanity",
   :display_name => "RightScale Chef Enforce PATH Sanity",
@@ -29,6 +31,12 @@ attribute "rightscale/add_sandbox_to_path",
   :description => "Enforces PATH sanity by modify ENV['PATH'].",
   :required => "optional",
   :recipes => [ "rightscale::default", "rightscale::enforce_path_sanity" ]
+
+attribute "rightscale/data_request_url",
+  :display_name => "RightScale data request URL",
+  :description => "Connects the node to a RightScale server.",
+  :required => "optional",
+  :recipes => [ "rightscale::default", "rightscale::connect" ]
 
 attribute "rightscale/tags/add",
   :display_name => "RightScale Tags Add",
