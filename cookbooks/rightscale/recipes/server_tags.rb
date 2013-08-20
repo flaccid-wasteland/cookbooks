@@ -15,6 +15,13 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+# set right_link chef tag in compile time (as it could be modified by rightscale::standardize_chef_version recipe
+t = rightscale_tag "rightscale:chef_version=#{node['chef_packages']['chef']['version']}" do
+  action :nothing
+end
+
+t.run_action(add)
+
 # server hostname tag
 # http://tickets.opscode.com/browse/OHAI-389 prevents referencing node['fqdn']
 rightscale_tag "server:fqdn=#{`hostname --fqdn`.strip}"
