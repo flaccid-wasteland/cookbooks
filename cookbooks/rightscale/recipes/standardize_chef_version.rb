@@ -19,7 +19,11 @@
 
 # Patch Chef::Version
 class Chef
-  VERSION = node['chef_packages']['chef']['version'][0..-3]
+  require 'ohai'
+  o = Ohai::System.new
+  o.all_plugins
+
+  VERSION = o.chef_packages['chef']['version'].to_str[0..-3]
 end
 
 # another scripted technique with a pre rs chef run tool, such as cloud-init
