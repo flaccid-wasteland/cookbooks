@@ -72,31 +72,31 @@ attribute "php_app/packages",
   :recipes => [ "php_app::application" ]
 
 attribute "php_app/db/host",
-  :display_name => "PHP Application database host",
+  :display_name => "PHP Application DB host",
   :description => "The database hostname for the application.",
   :required => "recommended",
   :recipes => [ "php_app::application" ]
 
 attribute "php_app/db/adapter",
-  :display_name => "PHP Application database adapter",
+  :display_name => "PHP Application DB adapter",
   :description => "The database adapter for the application.",
   :required => "recommended",
   :recipes => [ "php_app::application" ]
   
 attribute "php_app/db/schema",
-  :display_name => "PHP Application schema",
+  :display_name => "PHP Application DB schema",
   :description => "The database schema for the application.",
   :required => "recommended",
   :recipes => [ "php_app::application" ]
 
 attribute "php_app/db/username",
-  :display_name => "PHP Application username",
+  :display_name => "PHP Application DB username",
   :description => "The database username for the application.",
-  :required => "required",
+  :required => "optional",
   :recipes => [ "php_app::application" ]
 
 attribute "php_app/db/password",
-  :display_name => "PHP Application password",
+  :display_name => "PHP Application DB password",
   :description => "The database password for the application.",
-  :required => "required",
+  :required => "optional",
   :recipes => [ "php_app::application" ]
