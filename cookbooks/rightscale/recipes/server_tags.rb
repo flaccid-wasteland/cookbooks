@@ -20,7 +20,7 @@ t = rightscale_tag "rightscale:chef_version=#{node['chef_packages']['chef']['ver
   action :nothing
 end
 
-t.run_action(add)
+t.run_action(:add)
 
 # server hostname tag
 # http://tickets.opscode.com/browse/OHAI-389 prevents referencing node['fqdn']
