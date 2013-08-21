@@ -27,5 +27,8 @@ class Chef
 end
 
 # another scripted technique with a pre rs chef run tool, such as cloud-init
-#sed -i "s/0.10.10.2/0.10.10/" /opt/rightscale/sandbox/lib/ruby/gems/1.8/gems/chef-0.10.10.2/lib/chef/version.rb
+# if uncommented, this would only work for subsquent chef runs
+#execute "standardize_chef_version" do
+#  command "sed -i "s/0.10.10.2/0.10.10/" /opt/rightscale/sandbox/lib/ruby/gems/1.8/gems/chef-0.10.10.2/lib/chef/version.rb"
+#end
 
