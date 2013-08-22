@@ -15,16 +15,36 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# fix chef version to standard gnu versioning instead of rs fork
-
-# Patch Chef::Version
+# prevent exception due to rs chef version naming
+# taken from https://github.com/rightscale/cookbooks_v14/blob/master/rightscale/rs-base/recipes/default.rb#L20-38
 class Chef
-  require 'ohai'
-  o = Ohai::System.new
-  o.all_plugins
-
-  VERSION = o.chef_packages['chef']['version'].to_str[0..-3]
+  class Version
+   def parse(str="")
+      @major, @minor, @patch =
+        case str.to_s
+        when /^(\d+)\.(\d+)\.(\d+).(\d+)$/    # this case handles RightScale versioning
+          [ $1.to_i, $2.to_i, $3.to_i ]
+        when /^(\d+)\.(\d+)\.(\d+)$/
+          [ $1.to_i, $2.to_i, $3.to_i ]
+        when /^(\d+)\.(\d+)$/
+          [ $1.to_i, $2.to_i, 0 ]
+        else
+          msg = "'#{str.to_s}' does not match 'x.y.z' or 'x.y'"
+          raise Chef::Exceptions::InvalidCookbookVersion.new( msg )
+        end
+    end
+  end
 end
+
+# fix chef version to standard gnu versioning instead of rs fork
+# this technique of overriding the already initialized constant doesn't seem to work
+#class Chef
+#  require 'ohai'
+#  o = Ohai::System.new
+#  o.all_plugins
+#
+#  VERSION = o.chef_packages['chef']['version'].to_str[0..-3]
+#end
 
 # another scripted technique with a pre rs chef run tool, such as cloud-init
 # if uncommented, this would only work for subsquent chef runs
