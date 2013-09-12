@@ -47,7 +47,7 @@ if node['cloud']
   }
 end
 
-# instance id tag
-rightscale_tag "server:instance_id=#{File.read('/var/spool/cloud/meta-data/instance-id').chomp}" do
-  only_if { File.exists?('/var/spool/cloud/meta-data/instance-id') }
+# instance id tag (only_if is not used because read of the file name is used directly in resource_name)
+if File.exists?('/var/spool/cloud/meta-data/instance-id')
+  rightscale_tag "server:instance_id=#{File.read('/var/spool/cloud/meta-data/instance-id').chomp}"
 end
