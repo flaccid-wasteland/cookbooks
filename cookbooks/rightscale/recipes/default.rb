@@ -17,6 +17,7 @@
 
 include_recipe "rightscale::enforce_path_sanity" if node['rightscale']['enforce_path_sanity']
 include_recipe "rightscale::add_sandbox_to_path" if node['rightscale']['add_sandbox_to_path']
+include_recipe "rightscale::connect"
 include_recipe "rightscale::server_tags"
 include_recipe "rightscale::monitoring"
 include_recipe "rightscale::tools"
