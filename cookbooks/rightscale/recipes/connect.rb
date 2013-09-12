@@ -17,4 +17,5 @@
 
 execute "connect host to rightscale" do
   command "rs_connect --attach #{node['rightscale']['data_request_url']} --force"
+  only_if { node['rightscale']['data_request_url'] }
 end
