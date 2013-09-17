@@ -17,27 +17,26 @@
 
 # adds path sanity and the rightlink sandbox to ENV['PATH']
 
-r = ruby_block "enforce path sanity" do
-  block do
-    
-     # derived from https://github.com/opscode/chef/blob/master/lib/chef/client.rb
-    
-    if RUBY_PLATFORM !~ /mswin|mingw32|windows/
-      SANE_PATHS = %w[/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin]
-      env = ENV
-      existing_paths = env["PATH"].split(':')
-      SANE_PATHS.each do |sane_path|
-        unless existing_paths.include?(sane_path)
-          env_path = env["PATH"].dup
-          env_path << ':' unless env["PATH"].empty?
-          env_path << sane_path
-          env["PATH"] = env_path
+if node['rightscale']['enforce_path_sanity'] == 'true'
+  r = ruby_block "enforce path sanity" do
+    block do
+      # derived from https://github.com/opscode/chef/blob/master/lib/chef/client.rb
+      if RUBY_PLATFORM !~ /mswin|mingw32|windows/
+        SANE_PATHS = %w[/usr/local/sbin /usr/local/bin /usr/sbin /usr/bin /sbin /bin]
+        env = ENV
+        existing_paths = env["PATH"].split(':')
+        SANE_PATHS.each do |sane_path|
+          unless existing_paths.include?(sane_path)
+            env_path = env["PATH"].dup
+            env_path << ':' unless env["PATH"].empty?
+            env_path << sane_path
+            env["PATH"] = env_path
+          end
         end
+        ENV['PATH'] = env['PATH']
       end
-      ENV['PATH'] = env['PATH']
     end
+    action :nothing
   end
-  action :nothing
+  r.run_action(:create)
 end
-
-r.run_action(:create)
