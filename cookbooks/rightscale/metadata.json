@@ -30,9 +30,7 @@
         "true",
         "false"
       ],
-      "default": [
-        "true"
-      ],
+      "default": "true",
       "recipes": [
         "rightscale::default",
         "rightscale::enforce_path_sanity"
@@ -48,9 +46,7 @@
         "true",
         "false"
       ],
-      "default": [
-        "false"
-      ],
+      "default": "false",
       "recipes": [
         "rightscale::default",
         "rightscale::add_sandbox_to_path"

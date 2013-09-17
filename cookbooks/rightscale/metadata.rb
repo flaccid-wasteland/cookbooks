@@ -25,7 +25,7 @@ attribute "rightscale/enforce_path_sanity",
   :description => "Whether to enforce Chef 'PATH sanity' by modifying ENV['PATH'].",
   :required => "optional",
   :choice => [ "true", "false"],
-  :default => [ "true" ],
+  :default => "true",
   :recipes => [ "rightscale::default", "rightscale::enforce_path_sanity" ]
 
 attribute "rightscale/add_sandbox_to_path",
@@ -33,7 +33,7 @@ attribute "rightscale/add_sandbox_to_path",
   :description => "Whether to add the right_link sandbox to ENV['PATH'].",
   :required => "optional",
   :choice => [ "true", "false"],
-  :default => [ "false" ],
+  :default => "false",
   :recipes => [ "rightscale::default", "rightscale::add_sandbox_to_path" ]
 
 attribute "rightscale/data_request_url",
