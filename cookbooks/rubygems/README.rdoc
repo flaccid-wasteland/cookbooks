@@ -1,8 +1,5 @@
-= DESCRIPTION:
+THIS COOKBOOK HAS MOVED
+=============================
 
-= REQUIREMENTS:
-
-= ATTRIBUTES:
-
-= USAGE:
-
+This is the former location for the rubygems cookbook for Chef.
+It has moved to https://github.com/xhost-cookbooks/rubygems.
