@@ -43,6 +43,7 @@ if node['chef']['dump_attributes'] == 'true'
       attrs = JSON.parse("{}")
       
       # possible attribute methods: run_list, override_attrs, default_attrs, normal_attrs, automatic_attrs
+      attrs = attrs.deep_merge(node.automatic_attrs) unless node.automatic_attrs.empty?
       attrs = attrs.deep_merge(node.default_attrs) unless node.default_attrs.empty?
       attrs = attrs.deep_merge(node.normal_attrs) unless node.normal_attrs.empty?
       attrs = attrs.deep_merge(node.override_attrs) unless node.override_attrs.empty?
